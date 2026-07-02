@@ -1,0 +1,12 @@
+# Core training/fine-tuning stack.
+# torch installed from https://download.pytorch.org/whl/cu121 (CUDA build) —
+# `pip install -r requirements.txt` alone will pull the CPU wheel instead;
+# install torch separately from the cu121 index first if you need GPU support.
+torch==2.5.1
+transformers==5.12.1
+peft==0.19.1
+trl==1.7.0
+accelerate==1.14.0
+
+# Data pipeline
+datasets==5.0.0

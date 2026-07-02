@@ -8,7 +8,7 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 
 ## Phase 1 — Foundation (Weeks 1–3)
 
-- [ ] Set up Python environment: PyTorch, HuggingFace Transformers, PEFT, TRL
+- [x] Set up Python environment: PyTorch, HuggingFace Transformers, PEFT, TRL (torch 2.5.1+cu121, transformers 5.12.1, peft 0.19.1, trl 1.7.0, accelerate 1.14.0 — see root `requirements.txt`)
 - [ ] Install TinyLlama via Ollama — confirm it runs locally
 - [ ] Run baseline evaluation — record all outputs and latency
 - [ ] Define and implement PDM formula (reference implementation exists in `Specs.md` Appendix A — port to `evaluation/pdm_scorer.py`)
@@ -80,5 +80,6 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 ## Known issues / environment notes
 
 - System Python 3.13 install is broken (`0x80070003` launch error on this machine). All scripts run via the Python 3.10 install at `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe`. Fix or reinstall 3.13 before relying on the `python3`/`python` shell aliases.
+- Local GPU is an NVIDIA MX450 with **2.15GB VRAM** — CUDA confirmed working (torch 2.5.1+cu121), but this is tight even for 4-bit QLoRA on TinyLlama 1.1B. Budget for cloud/Colab GPU time for anything beyond small-scale local iteration.
 - `chimbiwide_converter.py` needs the `datasets` package (`pip install datasets`) — not in a committed requirements file yet since `requirements.txt` doesn't exist at repo root.
 - README.md content predates `Specs.md` v1.0 (different RQs/domains/contributions) — reconciled 2026-07-02, see [README.md](../README.md).
