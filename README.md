@@ -1,55 +1,48 @@
 # Domain-Adaptive Lightweight NPC AI Framework
-### Parameter-Efficient Fine-Tuning for Real-Time Game NPC Dialogue
+### LoRA-Adapted TinyLlama for Persona-Stable, Runtime-Switchable Game NPC Dialogue
 
-> **Final Year Research Project** · Yugabharathi · AI / NLP / Game Development  
+> **Final Year Research Project** · IEEE Conference on Games (CoG) Track
 > Department of Computer Science
 
 ---
 
 ## Overview
 
-Modern games rely on either hand-authored NPC dialogue (expensive, static) or large cloud-hosted LLMs (slow, costly, impractical for consumer hardware). This project proposes a middle path: a single lightweight base model dynamically adapted with interchangeable **LoRA adapters** for different NPC personas and game domains.
+NPC dialogue systems fall into two failure modes: large cloud-hosted models (GPT-4o, Claude) give good quality but are too slow, expensive, and offline-incompatible for consumer game hardware; scripted dialogue trees are fast and cheap but brittle — any input outside the script collapses the persona immediately.
 
-The framework is directly motivated by two open problems identified in the literature:
+This project builds a framework around one shared **TinyLlama 1.1B** base model with multiple **LoRA domain adapters** — one per NPC archetype — swapped at runtime with no full model reload. Medieval RPG NPC dialogue is the primary research domain; healthcare and education adapters are trained as secondary domains to demonstrate generalizability.
 
-- Gallotta et al. (2024) survey the roles of LLMs in games and note that running AAA games and LLMs in parallel on consumer hardware is currently infeasible due to computational requirements — calling for lightweight, locally deployable alternatives.
-- Värtinen et al. (2022) demonstrate that fine-tuned GPT-2 can generate acceptable RPG quest descriptions, but highlight that entity consistency and contextual coherence remain unsolved — problems our game-state injection approach directly targets.
+Full specification, schema, and roadmap: [`DevFiles/Specs.md`](DevFiles/Specs.md). Task tracking: [`Docs/TODO.md`](Docs/TODO.md). Data pipeline docs: [`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
 
 ---
+
+## Research Contributions
+
+| # | Contribution | Type |
+|---|--------------|------|
+| 1 | **Persona Drift Metric (PDM)** — quantifies how much an NPC's dialect/voice degrades across a multi-turn conversation (Jaccard similarity of archaic-feature sets per turn vs. a reference set) | Novel metric |
+| 2 | **Adapter blending for mixed-persona NPCs** — interpolating two LoRA weight matrices (`W_blend = α·W_A + (1-α)·W_B`) to produce coherent hybrid personas (e.g. scholar-guard) | Novel technique |
+| 3 | **Medieval NPC dialogue dataset** — archetype-, intent-, and dialect-annotated dialogue pairs from hand-authored, Gutenberg-extracted, and LLM-augmented sources | Dataset |
+| 4 | **Lightweight framework + benchmarks** — 1.1B model + LoRA adapters vs. GPT-4o few-shot and full fine-tune, on persona consistency, latency, and memory footprint | Systems |
 
 ## Research Questions
 
 | ID | Question |
 |----|----------|
-| RQ1 | Can a sub-2B parameter model with domain-specific LoRA adapters produce NPC dialogue comparable in persona fidelity to larger general-purpose models? |
-| RQ2 | Does structured game-state context injection (location, inventory, quest status, relationship score) improve persona consistency across multi-turn NPC conversations? |
-| RQ3 | What is the tradeoff between model size and domain accuracy when adapters are swapped dynamically at inference time? |
-| RQ4 | Can dynamic adapter loading maintain a ≤300ms first-token latency on consumer CPU hardware — the practical real-time constraint for game dialogue? |
-
----
-
-## Novelty
-
-Prior work falls into two categories. Large model approaches (GPT-3/4, Claude) achieve good dialogue quality but are too slow and expensive for real-time game deployment. Small model approaches (fine-tuned GPT-2, TinyLlama baseline) are fast but suffer from persona drift and game-state blindness.
-
-This project combines, for the first time:
-
-1. **Sub-2B LoRA adapters** trained for NPC-specific persona fidelity (not general style transfer)
-2. **Structured game-state injection** — location, inventory, quests, relationship scores passed as context at inference time
-3. **Persona fidelity metric** — a probe classifier that tracks whether NPC responses stay in-character across conversation turns
-4. **Real-time latency constraint** — ≤300ms first token on laptop CPU, a game-specific requirement absent from academic NLP benchmarks
+| RQ1 | Can LoRA-adapted lightweight models achieve persona consistency comparable to large models at a fraction of inference cost? |
+| RQ2 | Does adapter blending produce coherent mixed-persona outputs, and how does blend ratio affect perceived character identity? |
+| RQ3 | How does persona drift change across multi-turn NPC dialogues, and how does fine-tuning reduce it? |
+| RQ4 | Can runtime adapter switching maintain real-time performance (<200ms) suitable for interactive games? |
 
 ---
 
 ## Domains
 
-| Domain | NPC Type | Key Challenge |
-|--------|----------|---------------|
-| **Medieval RPG** *(primary)* | Blacksmith, quest-giver, merchant | Archaic speech register, lore consistency, world-state awareness |
-| **Sci-Fi Merchant** *(secondary)* | Trader, informant | Technical jargon, bartering logic, future-setting vocabulary |
-| **CS Tutor** *(baseline)* | Educational assistant | Explanatory tone, non-game domain — used to test adapter specificity |
-
-> Healthcare was excluded as a domain. It introduces ethics review risk and dilutes the game AI narrative. Mentioned as future work only.
+| Domain | Role | Notes |
+|--------|------|-------|
+| **Medieval RPG NPCs** *(primary)* | Guard, merchant, scholar, noble, innkeeper, herbalist, clergy, peasant | All novel contributions (PDM, blending) are designed and validated here |
+| **Healthcare QA** *(secondary)* | Patient-facing assistant persona | Demonstrates framework generalizability; MedQuAD-derived dataset |
+| **Education / CS Tutoring** *(secondary)* | Tutoring assistant persona | Demonstrates framework generalizability |
 
 ---
 
@@ -57,31 +50,39 @@ This project combines, for the first time:
 
 <img src="./Docs/Daigram.jpg" alt="Architecture">
 
+```
+Player input ──▶ FastAPI backend ──▶ Domain Detector / Adapter Manager
+                                              │
+                          TinyLlama 1.1B base (always loaded)
+                                    + swapped/blended LoRA adapter
+                                              │
+                          PDM Scorer · BERTScore · Latency Logger
+```
+
+Request flow, adapter blending flow, and full component breakdown: see `Specs.md` section 4.
+
 ---
 
 ## Evaluation
 
-### Ablation Study
-
-Four conditions measured across four metrics. This is the core experimental contribution.
+Four comparison conditions measured per metric:
 
 | Condition | Description |
 |-----------|-------------|
-| A | Base model, no adapter |
-| B | Base model + generic style prompt |
-| C | Base model + LoRA adapter |
-| D | Base model + LoRA adapter + game-state injection *(expected best)* |
+| A | TinyLlama, no adapter (baseline floor) |
+| B | TinyLlama + Medieval LoRA (primary claim) |
+| C | GPT-4o few-shot, 5 examples (upper bound reference) |
+| D | TinyLlama full fine-tune (cost comparison) |
 
-### Metrics
+| Metric | Tool |
+|--------|------|
+| PDM (Persona Drift Metric) | Custom Python (`Specs.md` Appendix A) |
+| BERTScore F1 | `bert-score` |
+| Response latency | Python `time` |
+| Peak RAM | `psutil` |
+| Adapter storage | `os.path.getsize()` |
 
-| Metric | Measurement Method | Target |
-|--------|--------------------|--------|
-| **Persona Fidelity Score** | Probe classifier: response vs. persona profile | Primary metric |
-| **Style Consistency** | Human evaluation (5-point Likert) | Domain match |
-| **Persona Drift** | Fidelity score across turns 1, 3, 5, 10 | Stability over time |
-| **Latency** | Time-to-first-token on laptop CPU | ≤ 300ms |
-| **Memory** | Peak RAM during inference | ≤ 4GB |
-| **Model Size** | Adapter file size vs. full model | Storage efficiency |
+Plus a human evaluation protocol (20–30 participants, blind Likert rubric, Cohen's Kappa target κ > 0.6) and a 50-conversation persona stress test corpus (identity challenges, out-of-world references, modern-language probes, extended-pressure conversations). Full protocol: `Specs.md` section 8.
 
 ---
 
@@ -89,38 +90,47 @@ Four conditions measured across four metrics. This is the core experimental cont
 
 | Layer | Tool |
 |-------|------|
-| Base model | TinyLlama 1.1B (fallback: Qwen 0.5B) |
-| Fine-tuning | HuggingFace PEFT + LoRA |
-| Training | TRL + PyTorch |
+| Base model | TinyLlama 1.1B |
+| Fine-tuning | HuggingFace PEFT + LoRA (r=8, α=16 starting config) |
+| Training | TRL SFTTrainer + PyTorch |
 | Inference | llama.cpp / Ollama |
 | Backend | FastAPI + Python |
-| Frontend | React (demo only) |
-| Evaluation | GPT-4-as-judge + custom probe classifier |
+| Frontend | React + Next.js (demo UI) |
+| Tracking | Weights & Biases |
 
 ---
 
 ## Dataset
 
-A curated dataset of NPC dialogue pairs with structured persona tags and game-state annotations will be created and released as part of this project. Inspired by Värtinen et al.'s open quest dataset methodology, all data will be publicly available.
+Schema v1.0 — archetype, disposition, social class, location/time/world-state context, dialect markers, intent, and provenance per entry. Full schema: `Specs.md` section 6.
 
-**Target:** 500+ annotated dialogue pairs per domain  
-**Sources:** Public domain literature, fantasy game wikis, RPG dialogue corpora, educational QA datasets
+**Current state: 326 / 1,000+ target pairs**, in [`data/processed/medieval_npc_dataset.json`](data/processed/medieval_npc_dataset.json):
+
+| Source | Pairs | Status |
+|--------|------:|--------|
+| Hand-authored | 0 / 50 | Not started this pass |
+| Gutenberg — Shakespeare (Hamlet, Macbeth, Julius Caesar) | 126 | Done |
+| Gutenberg — Chaucer (Canterbury Tales) | 200 | Done |
+| Gutenberg — Malory | 0 | Not started |
+| `chimbiwide/NPC-Dialogue_v2` (filtered + register-rewritten) | 0 / ~300 | Filter working (255/300 pass); register rewrite not implemented |
+| `microsoft/crd3` (filtered) | 0 / ~200 | Not started |
+| GPT-4o augmentation (gap-fill) | 0 / ~200 | Gap-report tooling works; generation not run |
+
+Archetype coverage is currently skewed toward clergy/noble/peasant from the literary sources; guard, scholar, merchant, innkeeper, and herbalist are the priority gaps for the hand-authored and GPT-4o passes. Pipeline scripts and known issues documented in [`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
+
+A 50-entry persona stress-test corpus is planned as a held-out set (not used for training).
 
 ---
 
 ## Base Papers
 
-This project builds directly on the following two papers included in this repository:
+**[1] Large Language Models and Games: A Survey and Roadmap**
+Gallotta, Todd, Zammit, Earle, Liapis, Togelius, Yannakakis — arXiv:2402.18659 (2024)
+→ Identifies lightweight, locally deployable NPC dialogue as an open research direction; notes running LLMs alongside games on consumer hardware is currently infeasible.
 
-**[1] Large Language Models and Games: A Survey and Roadmap**  
-Gallotta, Todd, Zammit, Earle, Liapis, Togelius, Yannakakis — arXiv:2402.18659 (2024)  
-→ Provides the typology of LLM roles in games and identifies lightweight, locally deployable NPC dialogue as an open research direction. Notes that running LLMs alongside games on consumer hardware is currently infeasible — the core problem this project addresses.
-
-**[2] Generating Role-Playing Game Quests With GPT Language Models**  
-Värtinen, Hämäläinen, Guckelsberger — IEEE Transactions on Games, Vol. 16, No. 1 (2024)  
-→ Demonstrates GPT-2 fine-tuning for RPG quest generation and identifies entity consistency and contextual coherence as key unsolved problems in game-specific NLP. The quest dataset methodology and placeholder substitution technique directly inform our data pipeline.
-
----
+**[2] Generating Role-Playing Game Quests With GPT Language Models**
+Värtinen, Hämäläinen, Guckelsberger — IEEE Transactions on Games, Vol. 16, No. 1 (2024)
+→ GPT-2 fine-tuning for RPG quest generation; identifies entity consistency and contextual coherence as unsolved problems in game-specific NLP.
 
 ## Related Work
 
@@ -128,37 +138,46 @@ Värtinen, Hämäläinen, Guckelsberger — IEEE Transactions on Games, Vol. 16,
 |-------|-----------|
 | Hu et al., *LoRA* (2021) | Core PEFT technique used for all adapters |
 | Dettmers et al., *QLoRA* (2023) | Quantized fine-tuning for consumer hardware |
-| Park et al., *Generative Agents* (2023) | NPC social simulation; motivation for game-state injection |
+| Park et al., *Generative Agents* (2023) | NPC social simulation; motivation for persona consistency work |
 | Zhang et al., *TinyLlama* (2024) | Base model; open-source, sub-2B, consumer deployable |
+| Urbanek et al., *LIGHT* (2019) | Fantasy text-adventure dialogue dataset |
+| Zhou et al., *CharacterGLM* (2023) | Character-customized conversational LLMs |
+| Neph0s et al., *CoSER* (2025) | LLM persona simulation of established roles; informs scenario framing in the dataset schema |
+
+Full reference list: `Specs.md` section 12.
 
 ---
 
 ## Project Status
 
-- [x] Proposal finalized
+- [x] Proposal + full specification finalized (`DevFiles/Specs.md` v1.0)
 - [x] Literature review complete
-- [ ] Dataset curation (in progress)
-- [ ] Baseline experiments (Conditions A & B)
-- [ ] LoRA adapter training (Condition C)
-- [ ] Game-state injection (Condition D)
-- [ ] Evaluation pipeline
+- [x] Data pipeline scaffolded (`data/raw`, `data/processed`, `data/scripts`)
+- [x] Gutenberg extraction (Shakespeare + Chaucer) — 326 pairs
+- [ ] Dataset at 1,000+ pairs with balanced archetype distribution (326/1,000 — in progress)
+- [ ] Baseline evaluation (Condition A)
+- [ ] LoRA adapter training (medieval, healthcare, education)
+- [ ] Adapter blending implementation + experiments
+- [ ] Evaluation pipeline (PDM, BERTScore, latency, human eval)
 - [ ] Paper draft
+
+Detailed phase-by-phase checklist: [`Docs/TODO.md`](Docs/TODO.md).
 
 ---
 
 ## Publication Target
 
-**Primary:** IEEE Conference on Games (CoG) — Short Paper  
-**Secondary:** ACL Student Research Workshop
+**Primary:** IEEE Conference on Games (CoG)
+**Backup:** ACM FDG · IEEE Access · ArXiv preprint
 
 ---
 
-## Author
+## Team
 
 ### Mentor
 **Mr.K.Sudhakar**
 AP/CSE
-Kongu Engineering College 
+Kongu Engineering College
 
 **Yugabharathi J**
 **Soumya K**
