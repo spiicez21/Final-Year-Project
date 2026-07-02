@@ -10,3 +10,7 @@ accelerate==1.14.0
 
 # Data pipeline
 datasets==5.0.0
+requests==2.33.1
+
+# Experiment tracking (run `wandb login` with your API key before training)
+wandb==0.28.0

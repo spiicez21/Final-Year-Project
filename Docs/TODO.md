@@ -9,15 +9,15 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 ## Phase 1 — Foundation (Weeks 1–3)
 
 - [x] Set up Python environment: PyTorch, HuggingFace Transformers, PEFT, TRL (torch 2.5.1+cu121, transformers 5.12.1, peft 0.19.1, trl 1.7.0, accelerate 1.14.0 — see root `requirements.txt`)
-- [ ] Install TinyLlama via Ollama — confirm it runs locally
+- [x] Install TinyLlama via Ollama — confirm it runs locally (`ollama pull tinyllama`, 637MB, verified via 326-call baseline run)
 - [x] Run baseline evaluation — record all outputs and latency (Condition A, 326/326 entries, `evaluation/results/baseline_outputs.json` + `baseline_metrics.csv`; mean latency 3486ms, mean drift 0.9833 — see `Docs/DATA_PIPELINE.md` note below on the run)
-- [ ] Define and implement PDM formula (reference implementation exists in `Specs.md` Appendix A — port to `evaluation/pdm_scorer.py`)
-- [ ] Set up Weights & Biases project for experiment tracking
+- [x] Define and implement PDM formula (`evaluation/pdm_scorer.py`, ported from `Specs.md` Appendix A, validated against the spec's worked example — 0.9 drift on a persona-collapse conversation)
+- [ ] Set up Weights & Biases project for experiment tracking — `wandb` 0.28.0 installed, added to `requirements.txt`. **Blocked on you:** run `wandb login` with your API key (from wandb.ai/authorize) — can't complete OAuth from this session. Once logged in, create a project (e.g. `npc-ai-framework`) and pass `report_to="wandb"` in `TrainingArguments` when training starts.
 - [x] Create Git repo with `.gitignore` (`BlenderFiles`, `DevFiles` currently ignored — revisit once `training/adapters/` exists, per spec: `adapters/`, `__pycache__/`, `*.bin`)
 
 ## Phase 2 — Dataset (Weeks 4–6)
 
-- [ ] Expand hand-authored entries from 10 → 50 (focus on guard, merchant, herbalist archetypes — biggest gaps, see table below)
+- [x] First gap-fill batch, hand-authored in-session (no API cost): 27 entries — guard +7, herbalist +5, merchant +5, innkeeper +5, scholar +5 (`SYN-0327`..`SYN-0353`, `source: synthetic_claude`). Gaps still large (see table) — more passes needed, target was 50 total hand-authored.
 - [x] Run Gutenberg extractor on Shakespeare (Hamlet, Macbeth, Julius Caesar) — 126 pairs
 - [x] Run Gutenberg extractor on Chaucer (Canterbury Tales) — 200 pairs
 - [ ] Run Gutenberg extractor on Malory (*Le Morte d'Arthur*) — raw text not yet downloaded
@@ -26,23 +26,23 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 - [ ] Filter `microsoft/crd3` for fantasy dialogue entries — not started
 - [ ] GPT-4o augmentation pass targeting underrepresented archetypes (`gpt4o_augmentor.py` gap-report works via `--dry-run`; generation path untested — needs `OPENAI_API_KEY`)
 - [ ] Write `dataset_validator.py` (schema conformance, duplicate detection, archetype balance report)
-- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 326, see gap table)
+- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 353, see gap table)
 - [ ] Build 50-entry stress test corpus (`data/processed/stress_test_corpus.json`) — not started
 
-### Archetype gap (current 326 entries vs. spec target)
+### Archetype gap (current 353 entries vs. spec target)
 
 | Archetype | Target | Current | Gap |
 |-----------|-------:|--------:|----:|
-| Guard | 200 | 6 | 194 |
-| Scholar | 150 | 18 | 132 |
-| Merchant | 150 | 23 | 127 |
-| Innkeeper | 100 | 5 | 95 |
+| Guard | 200 | 13 | 187 |
+| Scholar | 150 | 23 | 127 |
+| Merchant | 150 | 28 | 122 |
+| Innkeeper | 100 | 10 | 90 |
 | Peasant | 150 | 63 | 87 |
 | Noble | 150 | 88 | 62 |
-| Herbalist | 50 | 0 | 50 |
+| Herbalist | 50 | 5 | 45 |
 | Clergy | 50 | 123 | 0 (over target — don't add more from Gutenberg) |
 
-**Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (326/1000).
+**Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (353/1000).
 
 ## Phase 3 — Training (Weeks 7–10)
 

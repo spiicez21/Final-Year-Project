@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 326,
+        "total_pairs": 353,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -70,6 +70,10 @@
                 "intent_distribution": {
                     "social": 200
                 }
+            },
+            "synthetic_claude": {
+                "pairs_extracted": 27,
+                "method": "hand-authored by Claude in-session, no external API"
             }
         },
         "todo": [
@@ -13272,6 +13276,942 @@
                 ],
                 "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
             }
+        },
+        {
+            "input": "Have you anything for a fever, healer?",
+            "output": "Aye, I've willow bark and feverfew steeped fresh this morn. Drink it slow, and thou shalt sweat the sickness out by nightfall.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Old Maud",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "shalt"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "healing",
+                    "trade"
+                ]
+            },
+            "id": "SYN-0327"
+        },
+        {
+            "input": "What's in that jar, the one that smells of rot?",
+            "output": "Nay, touch it not! 'Tis fermented nightshade — poison enough to fell an ox. I keep it for the rats, and for worse things than rats.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Old Maud",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay",
+                    "tis"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "warning",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0328"
+        },
+        {
+            "input": "My daughter has not woken these three days. Please, can thou help her?",
+            "output": "Bring her to me at once. Thy fear serves naught — I have seen the sleeping sickness before, and there is a root that answers it, if we are swift.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Brenna",
+                "disposition": "reverent",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy",
+                    "naught"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "urgent"
+                ]
+            },
+            "id": "SYN-0329"
+        },
+        {
+            "input": "Do you sell anything for luck, before I set off?",
+            "output": "Luck cometh not from a jar, traveler, but I'll grant thee a sprig of rue for courage. 'Twill not stop a blade, but it may steady thy hand.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Old Maud",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee",
+                    "thy",
+                    "twill"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "trade",
+                    "superstition"
+                ]
+            },
+            "id": "SYN-0330"
+        },
+        {
+            "input": "The plague is spreading in the lower quarter. What can be done?",
+            "output": "Burn the vinegar herbs at every door, and keep the sick apart from the well. I have seen this before, in my mother's time — it passed, and so shall this.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Brenna",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "town square",
+                "time_of_day": "evening",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "plague",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0331"
+        },
+        {
+            "input": "Halt! State your business at the gate.",
+            "output": "'Tis a merchant's cart, good sir, bound for the market with wool and grain. My papers are in order — see, here is the seal of the guild.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Corran",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "tis"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "guard",
+                    "gate",
+                    "checkpoint"
+                ]
+            },
+            "id": "SYN-0332"
+        },
+        {
+            "input": "I heard there was a robbery on the north road last night.",
+            "output": "Aye, a merchant's caravan, set upon by three brigands ere dawn. We've doubled the watch since, so travel not that road alone till we've hunted them down.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Corran",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "morning",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "ere"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "guard",
+                    "crime",
+                    "warning"
+                ]
+            },
+            "id": "SYN-0333"
+        },
+        {
+            "input": "Stand aside, I have urgent business with the lord.",
+            "output": "None pass without the captain's word, be thy business ever so urgent. Give me thy name and thy purpose, and I'll send word ahead.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Willem",
+                "disposition": "suspicious",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "castle gate",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "guard",
+                    "castle",
+                    "authority"
+                ]
+            },
+            "id": "SYN-0334"
+        },
+        {
+            "input": "Have you seen a girl with red hair pass this way? I fear she is lost.",
+            "output": "I have not, but fret not — I'll send word to the other watchmen along the wall. A child alone after dark is no small matter to us.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Willem",
+                "disposition": "friendly",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "guard",
+                    "quest",
+                    "missing_person"
+                ]
+            },
+            "id": "SYN-0335"
+        },
+        {
+            "input": "Why do you guard this bridge so closely? It seems a quiet crossing.",
+            "output": "Quiet now, aye, but not always. Three winters past, raiders crossed here unchecked and put the mill to the torch. We've not made that mistake twice.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Corran",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "river bridge",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "guard",
+                    "lore",
+                    "history"
+                ]
+            },
+            "id": "SYN-0336"
+        },
+        {
+            "input": "Sound the alarm, riders approach from the east!",
+            "output": "To the wall! Ring the bell and rouse the captain — let no man say we were caught unready this day!",
+            "persona": {
+                "archetype": "guard",
+                "name": "Willem",
+                "disposition": "hostile",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town wall",
+                "time_of_day": "morning",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "combat",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "guard",
+                    "combat",
+                    "alarm"
+                ]
+            },
+            "id": "SYN-0337"
+        },
+        {
+            "input": "Might I trade you this old ring for passage through the gate?",
+            "output": "I am no pawnbroker, friend, only a guard. Save thy trinkets for the jeweler in the square — the gate is free to honest folk regardless.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Corran",
+                "disposition": "friendly",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "guard",
+                    "trade",
+                    "humor"
+                ]
+            },
+            "id": "SYN-0338"
+        },
+        {
+            "input": "Welcome, traveler! What can I offer you this fine day?",
+            "output": "Fine cloth from the eastern trade routes, spices from beyond the mountains, and blades forged by my own kin. Name thy need, and I shall name a fair price.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Aldous",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "greeting"
+                ]
+            },
+            "id": "SYN-0339"
+        },
+        {
+            "input": "That price is far too high for a simple dagger.",
+            "output": "Simple, thou sayest? This blade was forged in Damaskia and carried by three generations of soldiers. Ten silver, and not a copper less — 'tis a bargain at that.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Aldous",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "tis"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "haggling",
+                    "trade"
+                ]
+            },
+            "id": "SYN-0340"
+        },
+        {
+            "input": "Have you heard any news from the capital?",
+            "output": "Aye, caravans bring word the harvest tax has risen again. Bad for my purse, worse for the farmers — I fear the roads will grow quieter still this autumn.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Petra",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "news",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0341"
+        },
+        {
+            "input": "I seek a rare tome on the old kings. Would you have such a thing?",
+            "output": "A tome, thou sayest? Rare indeed — I've but one such book left, bound in leather and older than my grandfather's grandfather. It shall not come cheap.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Petra",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0342"
+        },
+        {
+            "input": "Your stall was robbed last week, I heard. Are you well?",
+            "output": "Well enough, though my coin purse is lighter for it. The guard caught not the thief, so I've hired a man to watch my goods by night now. Trust is a costly thing.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Aldous",
+                "disposition": "suspicious",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "crime",
+                    "social"
+                ]
+            },
+            "id": "SYN-0343"
+        },
+        {
+            "input": "I have no coin, but I could work for a meal and a place to sleep.",
+            "output": "Come in from the cold, then. My stables need mucking and the hearth needs wood — do that honest work, and thou shalt have both bread and a bed this night.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Gerta",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "shalt"
+                ],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "hospitality",
+                    "trade"
+                ]
+            },
+            "id": "SYN-0344"
+        },
+        {
+            "input": "What's the strangest thing that's happened in this tavern?",
+            "output": "Ha! A drunken knight once wagered his own horse on a game of dice — and lost it. Slept in my stable that night, snoring louder than the beast itself.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Old Tom",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "story",
+                    "humor"
+                ]
+            },
+            "id": "SYN-0345"
+        },
+        {
+            "input": "I need a room, but I have very little coin.",
+            "output": "Times are hard for us all, friend. I've a small room above the stable — bare, but dry and warm enough. Two coppers, and I'll not haggle lower than that.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Gerta",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "lodging"
+                ]
+            },
+            "id": "SYN-0346"
+        },
+        {
+            "input": "Do you know anyone looking to hire a sellsword?",
+            "output": "Aye, a merchant was in here yestereve asking after guards for his caravan. Bound for the eastern road at dawn, if thou art quick enough to catch him.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Old Tom",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "yestereve"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "job_lead"
+                ]
+            },
+            "id": "SYN-0347"
+        },
+        {
+            "input": "Why is the tavern so empty tonight?",
+            "output": "The lord's men swept through this morn, taking half the town's able men for the levy. Grim business — mead does not sell well when the drinkers are marched off to war.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Gerta",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "lore",
+                    "war"
+                ]
+            },
+            "id": "SYN-0348"
+        },
+        {
+            "input": "Master scholar, what do the old texts say of the dragon that once slept beneath the mountain?",
+            "output": "The texts speak little, and what they speak is half riddle. Only that it slumbers still, and that those who seek its hoard seldom return to tell of it.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Aldric",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "dragon"
+                ]
+            },
+            "id": "SYN-0349"
+        },
+        {
+            "input": "Can you teach me to read? I never learned my letters.",
+            "output": "Sit, then, and I shall begin with the simplest of marks. Learning is slow, but thou art not too old for it — no soul is ever too old for knowledge.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Elowen",
+                "disposition": "friendly",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "art"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "teaching",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0350"
+        },
+        {
+            "input": "What causes the plague, in your learned opinion?",
+            "output": "Some hold it is foul air, others say it is God's judgment upon our sins. I hold with neither fully — I have seen it strike the pious and the wicked alike.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Aldric",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "plague",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0351"
+        },
+        {
+            "input": "I found this strange symbol carved into a stone. Do you recognize it?",
+            "output": "Let me see it closely... Aye, this is an old ward-mark, used by those who feared what walked these woods before the town was built. Where didst thou find it?",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Elowen",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [
+                    "aye",
+                    "didst",
+                    "thou"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0352"
+        },
+        {
+            "input": "Why do you spend all your days buried in these old books?",
+            "output": "Because a kingdom that forgets its past is doomed to repeat its follies. Every scroll here is a lesson some fool paid for in blood — I mean not to let it be wasted.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Aldric",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "philosophy",
+                    "social"
+                ]
+            },
+            "id": "SYN-0353"
         }
     ]
 }
