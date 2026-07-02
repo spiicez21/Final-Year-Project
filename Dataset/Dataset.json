@@ -1,0 +1,5150 @@
+{
+    "metadata": {
+        "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
+        "license": "Public Domain",
+        "schema_version": "1.0",
+        "total_pairs": 126,
+        "min_quality_threshold": 4,
+        "sources": {
+            "hamlet": {
+                "raw_turns": 949,
+                "pairs_extracted": 60,
+                "pairs_skipped": 805,
+                "avg_quality_score": 4.83,
+                "archetype_distribution": {
+                    "guard": 3,
+                    "scholar": 5,
+                    "noble": 37,
+                    "peasant": 15
+                },
+                "intent_distribution": {
+                    "social": 45,
+                    "quest": 4,
+                    "information": 11
+                }
+            },
+            "macbeth": {
+                "raw_turns": 518,
+                "pairs_extracted": 21,
+                "pairs_skipped": 441,
+                "avg_quality_score": 4.48,
+                "archetype_distribution": {
+                    "noble": 18,
+                    "peasant": 3
+                },
+                "intent_distribution": {
+                    "social": 17,
+                    "information": 3,
+                    "trade": 1
+                }
+            },
+            "caesar": {
+                "raw_turns": 647,
+                "pairs_extracted": 45,
+                "pairs_skipped": 547,
+                "avg_quality_score": 4.93,
+                "archetype_distribution": {
+                    "peasant": 13,
+                    "guard": 3,
+                    "noble": 24,
+                    "innkeeper": 5
+                },
+                "intent_distribution": {
+                    "social": 39,
+                    "information": 4,
+                    "quest": 2
+                }
+            }
+        },
+        "todo": [
+            "Fill 'unspecified' time_of_day fields",
+            "Verify archetype labels for abbreviated speaker names (Ham, Mac, etc.)",
+            "Add persona_stress_test entries manually",
+            "Combine with hand-authored MED-0001..0010 entries"
+        ]
+    },
+    "entries": [
+        {
+            "id": "GUT-0001",
+            "input": "You come most carefully vpon your houre",
+            "output": "'Tis now strook twelue, get thee to bed Francisco",
+            "persona": {
+                "archetype": "guard",
+                "name": "Bar",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0002",
+            "input": "Giue you good night",
+            "output": "O farwel honest Soldier, who hath relieu'd you?",
+            "persona": {
+                "archetype": "guard",
+                "name": "Mar",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0003",
+            "input": "In the same figure, like the King that's dead",
+            "output": "Thou art a Scholler; speake to it Horatio",
+            "persona": {
+                "archetype": "guard",
+                "name": "Mar",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0004",
+            "input": "Question it Horatio",
+            "output": "What art thou that vsurp'st this time of night,",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Hor",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "scholar",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0005",
+            "input": "See, it stalkes away",
+            "output": "Stay: speake; speake: I Charge thee, speake.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Hor",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "scholar",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0006",
+            "input": "Is it not like the King?",
+            "output": "As thou art to thy selfe,",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Hor",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "scholar",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0007",
+            "input": "He hath my Lord:",
+            "output": "Take thy faire houre Laertes, time be thine,",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0008",
+            "input": "'Tis sweet and commendable",
+            "output": "Let not thy Mother lose her Prayers Hamlet:",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0009",
+            "input": "Very like, very like: staid it long?",
+            "output": "While one with moderate hast might tell a hundred",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Hor",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "scholar",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0010",
+            "input": "It was, as I haue seene it in his life,",
+            "output": "Ile watch to Night; perchance 'twill wake againe",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "perchance"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0011",
+            "input": "Marry, well bethought:",
+            "output": "He hath my Lord of late, made many tenders",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ophe",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0012",
+            "input": "Marry Ile teach you; thinke your selfe a Baby,",
+            "output": "My Lord, he hath importun'd me with loue,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ophe",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0013",
+            "input": "I, fashion you may call it, go too, go too",
+            "output": "And hath giuen countenance to his speech,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ophe",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0014",
+            "input": "Indeed I heard it not: then it drawes neere the season,",
+            "output": "The King doth wake to night, and takes his rouse,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0015",
+            "input": "What if it tempt you toward the Floud my Lord?",
+            "output": "It wafts me still: goe on, Ile follow thee",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0016",
+            "input": "Nay, let's follow him.",
+            "output": "Where wilt thou lead me? speak; Ile go no further",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "wilt"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0017",
+            "input": "Alas poore Ghost",
+            "output": "Pitty me not, but lend thy serious hearing",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Gho",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0018",
+            "input": "Speake, I am bound to heare",
+            "output": "So art thou to reuenge, when thou shalt heare",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Gho",
+                "disposition": "suspicious",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0019",
+            "input": "Welcome deere Rosincrance and Guildensterne.",
+            "output": "Good Gentlemen, he hath much talk'd of you,",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "friendly",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0020",
+            "input": "Th' Ambassadors from Norwey, my good Lord,",
+            "output": "Thou still hast bin the father of good Newes",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "friendly",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0021",
+            "input": "Giue first admittance to th' Ambassadors,",
+            "output": "Thy selfe do grace to them, and bring them in.",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0022",
+            "input": "It may be very likely",
+            "output": "Hath there bene such a time, I'de fain know that,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Pol",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0023",
+            "input": "My most deare Lord?",
+            "output": "My excellent good friends? How do'st thou",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "friendly",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0024",
+            "input": "How comes it? doe they grow rusty?",
+            "output": "Nay, their indeauour keepes in the wonted",
+            "persona": {
+                "archetype": "noble",
+                "name": "Rosin",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0025",
+            "input": "Why, As by lot, God wot: and then you know, It",
+            "output": "I heard thee speak me a speech once, but it was",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0026",
+            "input": "Looke where he ha's not turn'd his colour, and",
+            "output": "'Tis well, Ile haue thee speake out the rest,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0027",
+            "input": "Madam, it so fell out, that certaine Players",
+            "output": "With all my heart, and it doth much content me",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0028",
+            "input": "I was the more deceiued",
+            "output": "Get thee to a Nunnerie. Why would'st thou",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thee",
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0029",
+            "input": "O helpe him, you sweet Heauens",
+            "output": "If thou doest Marry, Ile giue thee this Plague",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thee",
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0030",
+            "input": "Heere sweet Lord, at your Seruice",
+            "output": "Horatio, thou art eene as iust a man",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0031",
+            "input": "Nay, 'tis twice two moneths, my Lord",
+            "output": "So long? Nay then let the Diuel weare blacke,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0032",
+            "input": "'Tis briefe my Lord",
+            "output": "Full thirtie times hath Phoebus Cart gon round,",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0033",
+            "input": "So many iournies may the Sunne and Moone",
+            "output": "Faith I must leaue thee Loue, and shortly too:",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0034",
+            "input": "Make you a wholsome answere: my wits diseas'd.",
+            "output": "Then thus she sayes: your behauior hath stroke",
+            "persona": {
+                "archetype": "noble",
+                "name": "Rosin",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0035",
+            "input": "Now Mother, what's the matter?",
+            "output": "Hamlet, thou hast thy Father much offended",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 9,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0036",
+            "input": "No by the Rood, not so:",
+            "output": "Nay, then Ile set those to you that can speake",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0037",
+            "input": "Come, come, and sit you downe, you shall not",
+            "output": "What wilt thou do? thou wilt not murther me?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "wilt"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0038",
+            "input": "How now, a Rat? dead for a Ducate, dead",
+            "output": "Oh me, what hast thou done?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0039",
+            "input": "Oh me, what hast thou done?",
+            "output": "Nay I know not, is it the King?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0040",
+            "input": "I Lady, 'twas my word.",
+            "output": "What haue I done, that thou dar'st wag thy tong,",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0041",
+            "input": "Not this by no meanes that I bid you do:",
+            "output": "Be thou assur'd, if words be made of breath,",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Qu",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0042",
+            "input": "Not where he eats, but where he is eaten, a certaine",
+            "output": "What dost thou meane by this?",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0043",
+            "input": "Alas sweet Lady: what imports this Song?",
+            "output": "Say you? Nay pray you marke.",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ophe",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0044",
+            "input": "Indeed la? without an oath Ile make an end ont.",
+            "output": "How long hath she bin thus?",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0045",
+            "input": "They bore him bare fac'd on the Beer,",
+            "output": "Had'st thou thy wits, and did'st perswade Reuenge,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Laer",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0046",
+            "input": "Drown'd, drown'd",
+            "output": "Too much of water hast thou poore Ophelia,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Laer",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0047",
+            "input": "Is she to bee buried in Christian buriall, that",
+            "output": "I tell thee she is, and therefore make her Graue",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Other",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0048",
+            "input": "Will you ha the truth on't: if this had not",
+            "output": "Why there thou say'st. And the more pitty that",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Clo",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0049",
+            "input": "The Gallowes maker; for that Frame outliues a",
+            "output": "I like thy wit well in good faith, the Gallowes",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Clo",
+                "disposition": "friendly",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0050",
+            "input": "Masse, I cannot tell.",
+            "output": "Cudgell thy braines no more about it; for your",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Clo",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "graveyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0051",
+            "input": "Ha's this fellow no feeling of his businesse, that",
+            "output": "Custome hath made it in him a property of easinesse",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Hor",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "scholar",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0052",
+            "input": "Custome hath made it in him a property of easinesse",
+            "output": "'Tis ee'n so; the hand of little Imployment hath",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0053",
+            "input": "You lye out on't Sir, and therefore it is not yours:",
+            "output": "Thou dost lye in't, to be in't and say 'tis thine:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0054",
+            "input": "'Tis a quicke lye Sir, 'twill away againe from me",
+            "output": "What man dost thou digge it for?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0055",
+            "input": "What's that my Lord?",
+            "output": "Dost thou thinke Alexander lookt o'this fashion",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "royal chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0056",
+            "input": "Why, what a King is this?",
+            "output": "Does it not, thinkst thee, stand me now vpon",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "suspicious",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0057",
+            "input": "Your Lordship is right welcome back to Denmarke",
+            "output": "I humbly thank you Sir, dost know this waterflie?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ham",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0058",
+            "input": "I beseech you remember",
+            "output": "Nay, in good faith, for mine ease in good faith:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Osr",
+                "disposition": "friendly",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle battlements",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0059",
+            "input": "The phrase would bee more Germaine to the",
+            "output": "The King Sir, hath laid that in a dozen passes betweene",
+            "persona": {
+                "archetype": "noble",
+                "name": "Osr",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle corridor",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0060",
+            "input": "He is iustly seru'd.",
+            "output": "Ham. Heauen make thee free of it, I follow thee.",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Dyes",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Hamlet (Shakespeare, 1599)",
+                "source_play": "hamlet",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "hamlet",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0061",
+            "input": "Yes, as Sparrowes, Eagles;",
+            "output": "So well thy words become thee, as thy wounds,",
+            "persona": {
+                "archetype": "noble",
+                "name": "King",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thee",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0062",
+            "input": "Stay you imperfect Speakers, tell me more:",
+            "output": "The Earth hath bubbles, as the Water ha's,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Banq",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0063",
+            "input": "He has almost supt: why haue you left the chamber?",
+            "output": "Hath he ask'd for me?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Mac",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0064",
+            "input": "Thankes Sir: the like to you.",
+            "output": "Goe bid thy Mistresse, when my drinke is ready,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0065",
+            "input": "Goe bid thy Mistresse, when my drinke is ready,",
+            "output": "That which hath made the drunk, hath made me bold:",
+            "persona": {
+                "archetype": "peasant",
+                "name": "La",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0066",
+            "input": "Consider it not so deepely",
+            "output": "But wherefore could not I pronounce Amen?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Mac",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "wherefore"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0067",
+            "input": "Marry, Sir, Nose-painting, Sleepe, and Vrine.",
+            "output": "I beleeue, Drinke gaue thee the Lye last Night",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macd",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "throne room",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0068",
+            "input": "Tertius. Scena Prima.",
+            "output": "Thou hast it now, King, Cawdor, Glamis, all,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Banq",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0069",
+            "input": "Pronounce it for me Sir, to all our Friends,",
+            "output": "See they encounter thee with their harts thanks",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "friendly",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0070",
+            "input": "'Tis Banquo's then",
+            "output": "'Tis better thee without, then he within.",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle courtyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0071",
+            "input": "My Lord his throat is cut, that I did for him",
+            "output": "Thou art the best o'th' Cut-throats,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Mac",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0072",
+            "input": "Our duties, and the pledge",
+            "output": "Auant, & quit my sight, let the earth hide thee:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Mac",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "heath",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0073",
+            "input": "Almost at oddes with morning, which is which",
+            "output": "How say'st thou that Macduff denies his person",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0074",
+            "input": "Be bloody, bold, & resolute:",
+            "output": "Mac. Then liue Macduffe: what need I feare of thee?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Descends",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0075",
+            "input": "Shew his Eyes, and greeue his Hart,",
+            "output": "Thou art too like the Spirit of Banquo: Down:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "heath",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0076",
+            "input": "Then you'l by 'em to sell againe",
+            "output": "Thou speak'st withall thy wit,",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Wife",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0077",
+            "input": "What's the newest griefe?",
+            "output": "That of an houres age, doth hisse the speaker,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Rosse",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0078",
+            "input": "There is ten thousand",
+            "output": "Go pricke thy face, and ouer-red thy feare",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle chamber",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0079",
+            "input": "The English Force, so please you",
+            "output": "Take thy face hence. Seyton, I am sick at hart,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macb",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "castle courtyard",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0080",
+            "input": "Thou was't borne of woman;",
+            "output": "That way the noise is: Tyrant shew thy face,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macd",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0081",
+            "input": "He's worth no more,",
+            "output": "Haile King, for so thou art.",
+            "persona": {
+                "archetype": "noble",
+                "name": "Macd",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "great hall",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Macbeth (Shakespeare, 1603)",
+                "source_play": "macbeth",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "macbeth",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0082",
+            "input": "Why Sir, a Carpenter",
+            "output": "Where is thy Leather Apron, and thy Rule?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Mur",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0083",
+            "input": "Truely Sir, in respect of a fine Workman, I am",
+            "output": "But what Trade art thou? Answer me directly",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Mur",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0084",
+            "input": "A Trade Sir, that I hope I may vse, with a safe",
+            "output": "What Trade thou knaue? Thou naughty knaue,",
+            "persona": {
+                "archetype": "guard",
+                "name": "Fla",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0085",
+            "input": "What Trade thou knaue? Thou naughty knaue,",
+            "output": "Nay I beseech you Sir, be not out with me: yet",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Cobl",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0086",
+            "input": "Nay I beseech you Sir, be not out with me: yet",
+            "output": "What mean'st thou by that? Mend mee, thou",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Mur",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0087",
+            "input": "Why sir, Cobble you",
+            "output": "Thou art a Cobler, art thou?",
+            "persona": {
+                "archetype": "guard",
+                "name": "Fla",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "roman forum",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0088",
+            "input": "Truly sir, all that I liue by, is with the Aule: I",
+            "output": "But wherefore art not in thy Shop to day?",
+            "persona": {
+                "archetype": "guard",
+                "name": "Fla",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy",
+                    "wherefore",
+                    "art"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 9,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "guard",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0089",
+            "input": "Fellow, come from the throng, look vpon Caesar",
+            "output": "What sayst thou to me now? Speak once againe,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Caes",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0090",
+            "input": "Another generall shout?",
+            "output": "Why man, he doth bestride the narrow world",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cassi",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "roman forum",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0091",
+            "input": "You pul'd me by the cloake, would you speake",
+            "output": "I Caska, tell vs what hath chanc'd to day",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0092",
+            "input": "He fell downe in the Market-place, and foam'd",
+            "output": "'Tis very like he hath the Falling sicknesse",
+            "persona": {
+                "archetype": "noble",
+                "name": "Brut",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0093",
+            "input": "I will doe so: till then, thinke of the World.",
+            "output": "Brutus, thou art Noble: yet I see,",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Well",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "roman forum",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0094",
+            "input": "Those that haue knowne the Earth so full of",
+            "output": "But wherefore did you so much tempt the Heauens?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cask",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "wherefore"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0095",
+            "input": "Shall I entreat a word?",
+            "output": "Here lyes the East: doth not the Day breake",
+            "persona": {
+                "archetype": "noble",
+                "name": "Decius",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0096",
+            "input": "Here lyes the East: doth not the Day breake",
+            "output": "O pardon, Sir, it doth; and yon grey Lines,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cin",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0097",
+            "input": "Neuer feare that: If he be so resolu'd,",
+            "output": "Nay, we will all of vs, be there to fetch him",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cas",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "nay"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0098",
+            "input": "To know my errand Madam",
+            "output": "I would haue had thee there and heere agen",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Por",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "innkeeper",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0099",
+            "input": "Madam, what should I do?",
+            "output": "Yes, bring me word Boy, if thy Lord look well,",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Por",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "innkeeper",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0100",
+            "input": "Sooth Madam, I heare nothing.",
+            "output": "Come hither Fellow, which way hast thou bin?",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Por",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "innkeeper",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0101",
+            "input": "Madam not yet, I go to take my stand,",
+            "output": "Thou hast some suite to Caesar, hast thou not?",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Por",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "innkeeper",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0102",
+            "input": "That I haue Lady, if it will please Caesar",
+            "output": "Why know'st thou any harme's intended towards",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Por",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "innkeeper",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0103",
+            "input": "Is there no voyce more worthy then my owne,",
+            "output": "I kisse thy hand, but not in flattery Caesar:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0104",
+            "input": "But heere comes Antony:",
+            "output": "O mighty Caesar! Dost thou lye so lowe?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ant",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "dost"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0105",
+            "input": "He did receiue his Letters, and is comming,",
+            "output": "Thy heart is bigge: get thee a-part and weepe:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Ant",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thee",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0106",
+            "input": "With courtesie, and with respect enough,",
+            "output": "Thou hast describ'd",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0107",
+            "input": "Manet Brutus and Cassius.",
+            "output": "That you haue wrong'd me, doth appear in this:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cassi",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0108",
+            "input": "For shame you Generals; what do you meane?",
+            "output": "Ha, ha, how vildely doth this Cynicke rime?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cas",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0109",
+            "input": "Come in Titinius:",
+            "output": "Portia, art thou gone?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Cass",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0110",
+            "input": "Farwell euery one.",
+            "output": "Giue me the Gowne. Where is thy Instrument?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Exeunt",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0111",
+            "input": "It is my duty Sir",
+            "output": "I should not vrge thy duty past thy might,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Brut",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0112",
+            "input": "I haue slept my Lord already",
+            "output": "It was well done, and thou shalt sleepe againe:",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "suspicious",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0113",
+            "input": "Thy euill Spirit Brutus?",
+            "output": "Why com'st thou?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0114",
+            "input": "Why com'st thou?",
+            "output": "To tell thee thou shalt see me at Philippi",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Ghost",
+                "disposition": "suspicious",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thee",
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 7,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0115",
+            "input": "My Lord, I do not know that I did cry",
+            "output": "Yes that thou did'st: Did'st thou see any thing?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0116",
+            "input": "Octauius, leade your Battaile softly on",
+            "output": "Vpon the right hand I, keepe thou the left",
+            "persona": {
+                "archetype": "noble",
+                "name": "Octa",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0117",
+            "input": "Come, come, the cause. If arguing make vs swet,",
+            "output": "Caesar, thou canst not dye by Traitors hands.",
+            "persona": {
+                "archetype": "noble",
+                "name": "Brut",
+                "disposition": "hostile",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "roman forum",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0118",
+            "input": "Caesar, thou canst not dye by Traitors hands.",
+            "output": "O if thou wer't the Noblest of thy Straine,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Bru",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "marketplace",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0119",
+            "input": "No, this was he Messala,",
+            "output": "Mistrust of good successe hath done this deed.",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Messa",
+                "disposition": "friendly",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "battlefield",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "hath"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0120",
+            "input": "Mistrust of good successe hath done this deed.",
+            "output": "What Pindarus? Where art thou Pindarus?",
+            "persona": {
+                "archetype": "noble",
+                "name": "Tit",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0121",
+            "input": "Yet Country-men: O yet, hold vp your heads",
+            "output": "What Bastard doth not? Who will go with me?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Cato",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "senate steps",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "doth"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0122",
+            "input": "I am Brutus, Marcus Brutus, I,",
+            "output": "O yong and Noble Cato, art thou downe?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Luc",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "roman forum",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "art"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 5,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0123",
+            "input": "Statillius shew'd the Torch-light, but my Lord",
+            "output": "Sit thee downe, Clitus: slaying is the word,",
+            "persona": {
+                "archetype": "noble",
+                "name": "Brut",
+                "disposition": "neutral",
+                "social_class": "noble"
+            },
+            "context": {
+                "location": "patrician villa",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "noble",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0124",
+            "input": "Shall I doe such a deed?",
+            "output": "What ill request did Brutus make to thee?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Clit",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0125",
+            "input": "What man is that?",
+            "output": "My Masters man. Strato, where is thy Master?",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Messa",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 6,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        },
+        {
+            "id": "GUT-0126",
+            "input": "Free from the Bondage you are in Messala,",
+            "output": "So Brutus should be found. I thank thee Brutus",
+            "persona": {
+                "archetype": "peasant",
+                "name": "Lucil",
+                "disposition": "neutral",
+                "social_class": "peasant"
+            },
+            "context": {
+                "location": "city streets",
+                "time_of_day": "unspecified",
+                "world_state": "medieval"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thee"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
+                "source_play": "caesar",
+                "quality_score": 4,
+                "tags": [
+                    "gutenberg",
+                    "public_domain",
+                    "shakespeare",
+                    "caesar",
+                    "peasant",
+                    "auto_extracted"
+                ],
+                "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping."
+            }
+        }
+    ]
+}
