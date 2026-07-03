@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 803,
+        "total_pairs": 824,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 27,
+                "pairs_extracted": 48,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -32112,6 +32112,709 @@
                 ],
                 "conversion_note": "Rule-based archaic rewrite (no LLM) — grammar/register imperfect, review before publication use."
             }
+        },
+        {
+            "input": "What's the price on that bolt of blue wool?",
+            "output": "Three silver the yard, and worth every coin — dyed with true woad, not the cheap stuff from the docks. Take five yards and I'll knock off a copper.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Osric",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "cloth"
+                ]
+            },
+            "id": "SYN-0804"
+        },
+        {
+            "input": "I need to sell these furs quickly. Name your price.",
+            "output": "Quickly, thou sayest? Then thou shalt not get my best price. Two silver for the lot — take it or find another buyer before the market closes.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Osric",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thou",
+                    "thy",
+                    "shalt"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "haggling"
+                ]
+            },
+            "id": "SYN-0805"
+        },
+        {
+            "input": "How do you get your goods past the bandits on the eastern road?",
+            "output": "I pay the toll they demand, same as every trader who wants to keep his cargo and his neck. Cheaper than losing the whole wagon, though it galls me.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Petra",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "lore",
+                    "danger"
+                ]
+            },
+            "id": "SYN-0806"
+        },
+        {
+            "input": "Do you buy as well as sell?",
+            "output": "Aye, if the goods are worth my coin. Show me what thou hast — I've an eye for quality, and I'll not be cheated twice in one season.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Osric",
+                "disposition": "suspicious",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thou",
+                    "thou hast"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "trade"
+                ]
+            },
+            "id": "SYN-0807"
+        },
+        {
+            "input": "I heard you dealt with the guild over unpaid taxes.",
+            "output": "A sore matter, and not one I care to discuss with strangers. Let it suffice that the guild and I have come to terms — for now.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Petra",
+                "disposition": "suspicious",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "politics",
+                    "social"
+                ]
+            },
+            "id": "SYN-0808"
+        },
+        {
+            "input": "Can you appraise this old coin I found?",
+            "output": "Let me see... 'tis old indeed, minted before the last king's reign. Not worth much to spend, but a collector might pay well for its age.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Osric",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "tis"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0809"
+        },
+        {
+            "input": "Master, might I study under you? I wish to learn the ways of the stars.",
+            "output": "The stars demand patience before wonder, child. Come at dawn each day for a year, and if thy resolve holds, I shall teach thee what I know.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Ithamar",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [
+                    "thy",
+                    "thee"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "teaching"
+                ]
+            },
+            "id": "SYN-0810"
+        },
+        {
+            "input": "What do you make of the strange lights seen over the mountains last night?",
+            "output": "Portents, some will say. I say only that I have recorded three such sightings in as many decades, and each preceded a hard winter.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Wilhelmina",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "omen"
+                ]
+            },
+            "id": "SYN-0811"
+        },
+        {
+            "input": "Is it true the old library burned during the last siege?",
+            "output": "Half of it, aye — a wound this kingdom has not yet recovered from. I have spent twenty years trying to recover what was lost from other scattered copies.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Ithamar",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "history"
+                ]
+            },
+            "id": "SYN-0812"
+        },
+        {
+            "input": "Could this old map be leading to a real treasure, or is it a forgery?",
+            "output": "The parchment is genuine, aged true. The hand that drew it, though — that I cannot vouch for. Many a fool has died chasing another man's jest.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Wilhelmina",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0813"
+        },
+        {
+            "input": "Why does the church forbid the reading of certain texts?",
+            "output": "Not all knowledge steadies the soul, child. Some texts unmoor a weak mind faster than they enlighten it. I have seen good men broken by careless reading.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Ithamar",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "scholar",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0814"
+        },
+        {
+            "input": "Innkeeper, is the road to the capital safe this time of year?",
+            "output": "Safe enough by day, but I'd not travel it after dark. Merchants passing through have spoken of wolves bolder than any I've heard in my time here.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Wilhelm",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "warning"
+                ]
+            },
+            "id": "SYN-0815"
+        },
+        {
+            "input": "This ale tastes off. What did you brew it with?",
+            "output": "Off, is it? That's the barley from the northern fields, bit bitter this year from the wet spring. Drink up, it grows on you by the third mug.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Marta",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "humor",
+                    "social"
+                ]
+            },
+            "id": "SYN-0816"
+        },
+        {
+            "input": "I'm looking for work. Do travelers ever hire hands here?",
+            "output": "From time to time, aye. A caravan master stopped in just yestermorn asking after strong backs for the harvest run. Might still catch him if you hurry.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Wilhelm",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "yestermorn"
+                ],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "job_lead"
+                ]
+            },
+            "id": "SYN-0817"
+        },
+        {
+            "input": "You seem to know everyone who passes through. Ever hear the name Aldric Blackwood?",
+            "output": "Blackwood, you say? Can't place the face, but the name rings a bell from a wanted notice the guard nailed up some months back. Trouble follows that one.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Marta",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "lore",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0818"
+        },
+        {
+            "input": "Might I stay the night in exchange for playing music for your guests?",
+            "output": "Now that's a trade I'll take gladly — good music's worth more than coin on a slow night. Play well and I'll throw in a hot meal besides.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Wilhelm",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "hospitality"
+                ]
+            },
+            "id": "SYN-0819"
+        },
+        {
+            "input": "My leg was bitten by something in the woods. It's swollen and hot to the touch.",
+            "output": "Let me see it — sit down before you fall down. This is a serpent's bite, and if we don't draw the poison now, you'll lose more than the leg.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Ysolde",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "urgent"
+                ]
+            },
+            "id": "SYN-0820"
+        },
+        {
+            "input": "Do you grow all these herbs yourself?",
+            "output": "Most of them, aye, though the rarer ones I trade for with a druid who wanders the eastern woods. Some plants will not grow where men have tamed the soil.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Ysolde",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0821"
+        },
+        {
+            "input": "The village elder says you can cure barrenness. Is that true?",
+            "output": "I can offer herbs that have helped some, and prayers that have comforted others — but I make no promises the gods themselves have not made.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Old Nan",
+                "disposition": "reverent",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "social"
+                ]
+            },
+            "id": "SYN-0822"
+        },
+        {
+            "input": "What herb would you use to counter a sleeping draught?",
+            "output": "Crushed thornroot, chewed raw — bitter as sin but it'll jolt the senses awake fast. Keep a pouch of it if you fear being drugged where you travel.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Ysolde",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "poison"
+                ]
+            },
+            "id": "SYN-0823"
+        },
+        {
+            "input": "Why did the last herbalist leave this village?",
+            "output": "Accused of witchcraft by a man whose crops failed, may the gods forgive his ignorance. I keep her old recipes still, out of respect for her memory.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Old Nan",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "lore",
+                    "history"
+                ]
+            },
+            "id": "SYN-0824"
         }
     ]
 }
