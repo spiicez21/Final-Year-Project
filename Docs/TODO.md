@@ -19,7 +19,8 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 
 - [x] First gap-fill batch, hand-authored in-session (no API cost): 27 entries — guard +7, herbalist +5, merchant +5, innkeeper +5, scholar +5 (`SYN-0327`..`SYN-0353`, `source: synthetic_claude`).
 - [x] Second gap-fill batch, hand-authored in-session: 21 entries — merchant +6, scholar +5, innkeeper +5, herbalist +5 (`SYN-0804`..`SYN-0824`). Checked CRD3 as an alternative first — dead end, HF dropped script-based dataset loading and CRD3 has no Parquet conversion.
-- [x] Third gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0825`..`SYN-0844`). Gaps narrowing but still real — target was 50 total hand-authored, well past that now across three batches (68 total), continuing since it's the only source hitting these archetypes cleanly.
+- [x] Third gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0825`..`SYN-0844`).
+- [x] Fourth gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0845`..`SYN-0864`). 88 hand-authored entries total across four batches, well past the original 50-entry target — continuing since it's the only source hitting these archetypes cleanly.
 - [x] Run Gutenberg extractor on Shakespeare (Hamlet, Macbeth, Julius Caesar) — 126 pairs
 - [x] Run Gutenberg extractor on Chaucer (Canterbury Tales) — 200 pairs
 - [x] Run Gutenberg extractor on Malory (*Le Morte Darthur*, Rhys ed., Gutenberg #46853) — 300 pairs, quality≥5. Required a new extraction mode: this edition has **no quotation marks at all**, dialogue is only marked by an inline `<clause>, said <name>` tag (Early Modern English convention). Added `parse_tagged_dialogue()` + `TAGGED_SOURCES` to `gutenberg_extractor.py`. Known limitation: only the first `said X` tag per clause is stripped, so a few multi-speaker clauses leave a stray embedded tag in the output text — not worth over-engineering, flagged for the eventual `dataset_validator.py` pass.
@@ -28,23 +29,23 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 - [x] Filter `microsoft/crd3` for fantasy dialogue entries — **dead end, not pursued.** HF's `datasets` library (5.0.0) no longer supports script-based dataset loading at all (`RuntimeError: Dataset scripts are no longer supported`), and CRD3 has no official Parquet conversion (the dataset viewer explicitly refuses to auto-convert it). Would require downgrading `datasets` or hand-fetching raw GitHub dumps. Even then: real actual-play D&D transcripts are modern spoken English (same heavy-rewrite burden as chimbiwide) and dominated by adventurer PCs, not merchant/innkeeper NPCs — poor effort-to-payoff for our specific gaps. Skipped in favor of hand-authored batches.
 - [ ] GPT-4o augmentation pass targeting underrepresented archetypes (`gpt4o_augmentor.py` gap-report works via `--dry-run`; generation path untested — needs `OPENAI_API_KEY`; superseded in practice by hand-authored batches, see above)
 - [ ] Write `dataset_validator.py` (schema conformance, duplicate detection, archetype balance report)
-- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 844, see gap table)
+- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 864, see gap table)
 - [ ] Build 50-entry stress test corpus (`data/processed/stress_test_corpus.json`) — not started
 
-### Archetype gap (current 844 entries vs. spec target)
+### Archetype gap (current 864 entries vs. spec target)
 
 | Archetype | Target | Current | Gap |
 |-----------|-------:|--------:|----:|
-| Merchant | 150 | 39 | 111 |
-| Scholar | 150 | 55 | 95 |
-| Innkeeper | 100 | 22 | 78 |
-| Herbalist | 50 | 15 | 35 |
+| Merchant | 150 | 44 | 106 |
+| Scholar | 150 | 60 | 90 |
+| Innkeeper | 100 | 27 | 73 |
+| Herbalist | 50 | 20 | 30 |
 | Guard | 200 | 187 | 13 |
 | Noble | 150 | 182 | 0 (over — don't add more) |
 | Peasant | 150 | 221 | 0 (over — don't add more) |
 | Clergy | 50 | 123 | 0 (over — don't add more) |
 
-Merchant/scholar/innkeeper/herbalist still the only real gaps (319 entries away from balanced 1,000). Three hand-authored batches in (68 entries total) — keep going the same way, ~15-20 more batches of this size to close it fully, or accept a smaller-than-1000 but balanced set and move to Phase 3 sooner (a judgment call for you, not a technical blocker).
+Merchant/scholar/innkeeper/herbalist still the only real gaps (299 entries away from balanced 1,000). Four hand-authored batches in (88 entries total) — same open question as before: keep grinding batches, or call ~850-900 balanced entries good enough and move to Phase 3 sooner (a judgment call for you, not a technical blocker).
 
 **Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (844/1000).
 

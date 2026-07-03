@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 844,
+        "total_pairs": 864,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 68,
+                "pairs_extracted": 88,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -33483,6 +33483,671 @@
                 ]
             },
             "id": "SYN-0844"
+        },
+        {
+            "input": "I've a shipment of iron ore stuck at the border. The tariff collector wants double.",
+            "output": "Double, the greedy dog. Pay it for now — I'll send word to the guild, they've dealt with that collector before and know how to make him see reason.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Guthrie",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "trade_dispute"
+                ]
+            },
+            "id": "SYN-0845"
+        },
+        {
+            "input": "What's the finest blade you have for sale?",
+            "output": "This one here, forged by a smith who studied under the dwarves themselves. Balanced like a dancer, sharp as a tax collector's tongue. Fifteen gold, and cheap at that.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Ansel",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "weapons"
+                ]
+            },
+            "id": "SYN-0846"
+        },
+        {
+            "input": "I overheard you speaking of a rival merchant's ruin. What happened to him?",
+            "output": "Overextended himself buying up grain before a harvest that never failed as he'd hoped. Lost everything within a season. A lesson I keep close to my chest.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Guthrie",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "lore",
+                    "cautionary_tale"
+                ]
+            },
+            "id": "SYN-0847"
+        },
+        {
+            "input": "Could you teach me the basics of fair trading?",
+            "output": "Rule one: know thy goods better than the buyer does. Rule two: never seem desperate to sell. Rule three: a smile costs nothing and earns much. Learn those, and the rest follows.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Ansel",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [
+                    "thy"
+                ],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "teaching",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0848"
+        },
+        {
+            "input": "Do you deal in stolen goods? I won't tell if you don't.",
+            "output": "Watch thy tongue, stranger. I've a license from the guild and a reputation thirty years in the making — I'll not risk either for whatever thou art peddling.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Guthrie",
+                "disposition": "hostile",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [
+                    "thy",
+                    "thou art"
+                ],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "refusal",
+                    "social"
+                ]
+            },
+            "id": "SYN-0849"
+        },
+        {
+            "input": "How does one become a court scholar? I have no noble blood.",
+            "output": "Blood matters less than the king believes and more than he admits. Master three languages and one useful science, and even a peasant's son may earn a seat at the table.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Osbert",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "information",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0850"
+        },
+        {
+            "input": "What do you know of the ruins south of the river?",
+            "output": "Older than any kingdom now standing, by the masonry style. My predecessor spent a decade cataloguing the carvings before the roof collapsed on him. I have not dared go back.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Theodora",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0851"
+        },
+        {
+            "input": "Is magic real, in your learned opinion, or merely trickery?",
+            "output": "I have measured effects I cannot explain by any natural law I know. Whether that is 'magic' or simply science we have not yet named, I leave to better minds than mine.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Osbert",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "philosophy",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0852"
+        },
+        {
+            "input": "Why do the nobles fund your research at all? What do they gain?",
+            "output": "Prestige, mostly, and the occasional practical use — better maps, better calendars, better excuses for taxation. I take their coin and give them knowledge; neither of us asks too many questions.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Theodora",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "politics"
+                ]
+            },
+            "id": "SYN-0853"
+        },
+        {
+            "input": "I brought you a strange fossil I found in the quarry. What is it?",
+            "output": "By my word — I have read of such things but never held one. This creature swam in seas that covered this very quarry, long before men or even dragons walked here.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Osbert",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "discovery"
+                ]
+            },
+            "id": "SYN-0854"
+        },
+        {
+            "input": "Do you water down the wine here, like they say?",
+            "output": "Never the wine — only fools cheat a drinker on his wine and expect return custom. I water the ale for the loudest drunks after midnight, and not a soul's complained yet.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Thom",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "humor",
+                    "social"
+                ]
+            },
+            "id": "SYN-0855"
+        },
+        {
+            "input": "I lost everything gambling downstairs. Can I work off a debt to you instead?",
+            "output": "Downstairs games aren't mine to answer for, but aye, I can use another pair of hands in the kitchen. Wash pots till winter and we'll call it even. Fair?",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Agnes",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0856"
+        },
+        {
+            "input": "What do the local guards drink when they're off duty?",
+            "output": "Same swill as everyone, though the captain fancies himself above it and orders the good mead. Pays double and never notices I water his down same as the rest.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Thom",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "humor",
+                    "information"
+                ]
+            },
+            "id": "SYN-0857"
+        },
+        {
+            "input": "A stranger left this locked box under a table and never returned. What should I do with it?",
+            "output": "Leave it with me, I'll keep it behind the bar a fortnight in case he comes back for it. After that, well — finders keepers is an old rule in this house.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Agnes",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0858"
+        },
+        {
+            "input": "How do you keep the peace between so many rowdy travelers each night?",
+            "output": "A firm voice, a good ear for trouble brewing before it starts, and a cudgel behind the bar for those who don't listen to either. Rarely need the last one, thank the gods.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Thom",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "social"
+                ]
+            },
+            "id": "SYN-0859"
+        },
+        {
+            "input": "I've been cursed, or so the priest says. Can herbs undo a curse?",
+            "output": "Herbs mend the body, not the soul — if a priest names it a curse, best let him unname it too. But I'll brew you something to ease the fever it's given you, at least.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Wren",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "lore",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0860"
+        },
+        {
+            "input": "What's the difference between a healer and a herbalist, truly?",
+            "output": "A healer prays over the wound. I know which root stops the bleeding. Both have their place — I just prefer mine come with fewer sermons.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Correll",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "humor",
+                    "information"
+                ]
+            },
+            "id": "SYN-0861"
+        },
+        {
+            "input": "Do you sell anything that could help me stay hidden from pursuers?",
+            "output": "A salve of crushed nightshade leaves masks a hound's nose to your scent for a few hours. Won't hide you from eyes, mind — only from what follows a trail.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Wren",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "trade",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0862"
+        },
+        {
+            "input": "You seem to know a great deal for someone who never left this village.",
+            "output": "My grandmother traveled with a physician's caravan for twenty years before settling here. She taught me everything before her hands grew too stiff to work — I've simply kept her books.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Correll",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "social",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0863"
+        },
+        {
+            "input": "What would happen if I ate one of those red berries growing by your door?",
+            "output": "You'd be dead by supper, most like. Those are there to warn apprentices, not to eat. Everything I truly sell is on the shelves inside, labeled plain.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Wren",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "warning",
+                    "information"
+                ]
+            },
+            "id": "SYN-0864"
         }
     ]
 }
