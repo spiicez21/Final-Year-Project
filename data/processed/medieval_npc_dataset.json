@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 884,
+        "total_pairs": 904,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 108,
+                "pairs_extracted": 128,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -34807,6 +34807,666 @@
                 ]
             },
             "id": "SYN-0884"
+        },
+        {
+            "input": "I've a wagon of salt from the coast. Is there demand for it here?",
+            "output": "Always demand for salt, friend — meat won't keep the winter without it. I'll take the whole load off you now, or you can sell it piecemeal and lose half to spoilage first.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Bertram",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "goods"
+                ]
+            },
+            "id": "SYN-0885"
+        },
+        {
+            "input": "Do you extend credit to regular customers?",
+            "output": "For those who've paid honest before, aye, within reason. Cross me once on a debt though, and you'll find every stall in this market suddenly remembers your face.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isolde",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "credit"
+                ]
+            },
+            "id": "SYN-0886"
+        },
+        {
+            "input": "I need a wagon fixed before dawn. Do you know a wheelwright who'd work through the night?",
+            "output": "Garrick, two stalls down, owes me a favor and drinks little enough to still have steady hands after dark. Tell him Bertram sent you, and mention the favor plainly.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Bertram",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "favor"
+                ]
+            },
+            "id": "SYN-0887"
+        },
+        {
+            "input": "Why is the price of bread so high this month?",
+            "output": "Blight took half the wheat fields east of here. What's left costs the miller more, costs me more, costs you more. Not greed, just a hard season working its way down the chain.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isolde",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0888"
+        },
+        {
+            "input": "I want to invest in your next shipment. What's the risk?",
+            "output": "Pirates off the southern cape, storms this time of year, and a rival buyer who'd love to see my ship delayed. Good returns if it lands, nothing at all if it doesn't. Your choice.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Bertram",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "investment"
+                ]
+            },
+            "id": "SYN-0889"
+        },
+        {
+            "input": "I found this odd device in a ruin. Do you know its purpose?",
+            "output": "Bring it closer to the light. Gears this fine were not made by any smith in this kingdom — this is dwarvish work, or older still. I would test it outside, if I were you.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Godfrey",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0890"
+        },
+        {
+            "input": "What causes a person to lose their memory after a fever?",
+            "output": "The physicians speak of humors unbalanced by heat. I have seen it enough times to suspect the brain itself is bruised, though I lack the means to confirm such a theory.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Beatrix",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "medicine"
+                ]
+            },
+            "id": "SYN-0891"
+        },
+        {
+            "input": "Would you accompany me to the ruins? I need someone who can read the old inscriptions.",
+            "output": "A field expedition — my knees protest but my curiosity overrules them. Give me a day to gather my tools and a lantern, and I shall join you at first light.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Godfrey",
+                "disposition": "friendly",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "expedition"
+                ]
+            },
+            "id": "SYN-0892"
+        },
+        {
+            "input": "Do the stars truly foretell a person's fate, as astrologers claim?",
+            "output": "I have charted a thousand births against a thousand fates and found no pattern worth trusting a life to. The stars are beautiful, but they do not care for us as much as we wish they did.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Beatrix",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0893"
+        },
+        {
+            "input": "How do you afford all these rare books on a scholar's stipend?",
+            "output": "Most were gifted by a wealthy patron who values my discretion more than my findings. I do not ask what he does with the reports I write him, and he does not ask how I spend his coin.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Godfrey",
+                "disposition": "suspicious",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "intrigue"
+                ]
+            },
+            "id": "SYN-0894"
+        },
+        {
+            "input": "I need a place to hide from the men chasing me. Will you take me in?",
+            "output": "This is an inn, not a sanctuary, but I'll not turn away a frightened soul without hearing the tale first. Speak quick and quiet, before they come asking at my door.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Aveline",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "danger"
+                ]
+            },
+            "id": "SYN-0895"
+        },
+        {
+            "input": "What's the best meal you serve here?",
+            "output": "The venison stew, hands down — my own recipe, been perfecting it twenty years. Comes with fresh bread if you're not too late in the evening for the baker's last batch.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Osgood",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "food"
+                ]
+            },
+            "id": "SYN-0896"
+        },
+        {
+            "input": "Why do so few travelers stop here compared to the inn on the main road?",
+            "output": "Main road's faster, aye, but it's also where the toll bandits work. I get the smarter travelers — the ones who'd rather walk an extra mile than lose their purse.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Aveline",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0897"
+        },
+        {
+            "input": "I overheard the guards talking about a raid on this inn. Should I leave?",
+            "output": "A raid, you say? Not the first time they've searched here on some lord's suspicion, and never found more than my cellar's worth of cheap wine. Stay if you've nothing to hide.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Osgood",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "danger"
+                ]
+            },
+            "id": "SYN-0898"
+        },
+        {
+            "input": "Do you remember a woman traveling alone who stayed here a week ago?",
+            "output": "Might do. Describe her proper and I'll tell you if my memory matches, but I'll not hand out details on my guests to just anyone who walks in asking.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Aveline",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0899"
+        },
+        {
+            "input": "How does a merchant guild actually settle disputes between its members?",
+            "output": "A council of elders hears both sides and rules by majority. Refuse the ruling and you lose your guild seal — and no one honest trades with an unsealed merchant twice.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isolde",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "medium",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0900"
+        },
+        {
+            "input": "Can I trust the scales you weigh grain with, or should I bring my own?",
+            "output": "Bring your own if it eases your mind, I'll not take offense. But mine are inspected by the guild warden twice a year — cheating on weights costs a merchant his license fast.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Bertram",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "trust"
+                ]
+            },
+            "id": "SYN-0901"
+        },
+        {
+            "input": "What is the oldest surviving map in your collection, and what does it show?",
+            "output": "A sea chart three centuries old, showing coastlines that no longer match the shore as it stands today. Either the mapmaker erred badly, or the sea itself has moved since.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Beatrix",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0902"
+        },
+        {
+            "input": "I'd like to donate my late father's books to your collection.",
+            "output": "A generous gift, and one I accept gladly and gratefully. Tell me his name, and I shall record it in the ledger of donors — his memory will outlast us both this way.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Godfrey",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "quest"
+                ]
+            },
+            "id": "SYN-0903"
+        },
+        {
+            "input": "Is there any food left, or has the kitchen closed for the night?",
+            "output": "Kitchen's closed, but I always keep bread and cheese back for late arrivals. Sit by the fire, I'll bring it out shortly — no traveler goes hungry under my roof.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Osgood",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "hospitality"
+                ]
+            },
+            "id": "SYN-0904"
         }
     ]
 }
