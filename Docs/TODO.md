@@ -20,29 +20,31 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 - [x] First gap-fill batch, hand-authored in-session (no API cost): 27 entries — guard +7, herbalist +5, merchant +5, innkeeper +5, scholar +5 (`SYN-0327`..`SYN-0353`, `source: synthetic_claude`). Gaps still large (see table) — more passes needed, target was 50 total hand-authored.
 - [x] Run Gutenberg extractor on Shakespeare (Hamlet, Macbeth, Julius Caesar) — 126 pairs
 - [x] Run Gutenberg extractor on Chaucer (Canterbury Tales) — 200 pairs
-- [ ] Run Gutenberg extractor on Malory (*Le Morte d'Arthur*) — raw text not yet downloaded
+- [x] Run Gutenberg extractor on Malory (*Le Morte Darthur*, Rhys ed., Gutenberg #46853) — 300 pairs, quality≥5. Required a new extraction mode: this edition has **no quotation marks at all**, dialogue is only marked by an inline `<clause>, said <name>` tag (Early Modern English convention). Added `parse_tagged_dialogue()` + `TAGGED_SOURCES` to `gutenberg_extractor.py`. Known limitation: only the first `said X` tag per clause is stripped, so a few multi-speaker clauses leave a stray embedded tag in the output text — not worth over-engineering, flagged for the eventual `dataset_validator.py` pass.
 - [x] Build chimbiwide conversion pipeline: download + medieval-plausibility filter working (255/300 rows pass)
 - [ ] Implement `register_rewrite()` in `chimbiwide_converter.py` (currently raises `NotImplementedError` — needs LLM backend + IP scrub before merge, per spec's "Medium IP Risk" note)
 - [ ] Filter `microsoft/crd3` for fantasy dialogue entries — not started
 - [ ] GPT-4o augmentation pass targeting underrepresented archetypes (`gpt4o_augmentor.py` gap-report works via `--dry-run`; generation path untested — needs `OPENAI_API_KEY`)
 - [ ] Write `dataset_validator.py` (schema conformance, duplicate detection, archetype balance report)
-- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 353, see gap table)
+- [ ] Reach 1,000 total entries with balanced archetype distribution (currently 653, see gap table)
 - [ ] Build 50-entry stress test corpus (`data/processed/stress_test_corpus.json`) — not started
 
-### Archetype gap (current 353 entries vs. spec target)
+### Archetype gap (current 653 entries vs. spec target)
 
 | Archetype | Target | Current | Gap |
 |-----------|-------:|--------:|----:|
-| Guard | 200 | 13 | 187 |
-| Scholar | 150 | 23 | 127 |
+| Scholar | 150 | 33 | 117 |
 | Merchant | 150 | 28 | 122 |
+| Guard | 200 | 162 | 38 |
 | Innkeeper | 100 | 10 | 90 |
-| Peasant | 150 | 63 | 87 |
-| Noble | 150 | 88 | 62 |
 | Herbalist | 50 | 5 | 45 |
+| Noble | 150 | 132 | 18 |
+| Peasant | 150 | 160 | 0 (slightly over — don't add more from Gutenberg) |
 | Clergy | 50 | 123 | 0 (over target — don't add more from Gutenberg) |
 
-**Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (353/1000).
+Merchant/innkeeper/herbalist are now the worst gaps — Gutenberg literary sources (Shakespeare, Chaucer, Malory) structurally don't have many of those characters. Next fill needs hand-authored/synthetic entries or a merchant/tavern-heavy source (CRD3, chimbiwide).
+
+**Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (653/1000).
 
 ## Phase 3 — Training (Weeks 7–10)
 

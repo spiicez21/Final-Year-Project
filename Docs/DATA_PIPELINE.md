@@ -11,7 +11,8 @@ data/
 │   │   ├── hamlet.txt       # Gutenberg #1524
 │   │   ├── macbeth.txt      # Gutenberg #1533
 │   │   ├── caesar.txt       # Gutenberg #1785
-│   │   └── canterbury.txt   # Gutenberg #2383 (Purves ed.)
+│   │   ├── canterbury.txt   # Gutenberg #2383 (Purves ed.)
+│   │   └── malory.txt       # Gutenberg #46853, Le Morte Darthur (Rhys ed.)
 │   └── huggingface/         # HF `datasets` cache (gitignored-worthy, large)
 │
 ├── processed/
@@ -27,7 +28,7 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 
 ## Current dataset state
 
-326 entries in `data/processed/medieval_npc_dataset.json`:
+653 entries in `data/processed/medieval_npc_dataset.json`:
 
 | Source | Pairs | Method |
 |--------|------:|--------|
@@ -35,16 +36,18 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 | Julius Caesar | 45 | Play speaker-cue extraction |
 | Macbeth | 21 | Play speaker-cue extraction |
 | Canterbury Tales | 200 | Frame-narrative quote extraction |
+| Le Morte Darthur (Malory) | 300 | Inline dialogue-tag extraction (no quotation marks in this edition) |
+| Hand-authored (Claude, in-session) | 27 | Direct schema-conformant writing, targeted at worst gaps |
 
-Archetype distribution: clergy 123, noble 88, peasant 63, merchant 23, scholar 18, guard 6, innkeeper 5. Guard/scholar/merchant/innkeeper/herbalist are badly underrepresented relative to the target table in `Specs.md` — that's what `gpt4o_augmentor.py` and the CRD3 filter pass are for.
+Archetype distribution: guard 162, peasant 160, clergy 123, noble 132, scholar 33, merchant 28, innkeeper 10, herbalist 5. Merchant/innkeeper/herbalist are now the worst gaps relative to the target table in `Specs.md` — Gutenberg literary sources structurally don't have many of those characters, so closing them needs hand-authored entries, CRD3, or chimbiwide (once its register-rewrite is implemented).
 
 ## `gutenberg_extractor.py`
 
 ```
-python data/scripts/gutenberg_extractor.py --plays hamlet macbeth caesar canterbury [--min-quality N] [--max-pairs N]
+python data/scripts/gutenberg_extractor.py --plays hamlet macbeth caesar canterbury malory [--min-quality N] [--max-pairs N]
 ```
 
-Idempotent — skips any play already present in the dataset's `metadata.sources`. Two parsing modes, dispatched by source:
+Idempotent — skips any play already present in the dataset's `metadata.sources`. Three parsing modes, dispatched by source:
 
 - **Play mode** (hamlet, macbeth, caesar): regex-matches `SPEAKER. line` cues, pairs consecutive turns from different speakers as `(input, output)`, maps speaker abbreviation → archetype via `ARCHETYPE_MAP`.
 - **Poem mode** (canterbury, and any future source added to `POEM_SOURCES`): Chaucer's *Canterbury Tales* has no speaker cues — it's a frame narrative where pilgrims tell tales and quoted dialogue is embedded in verse. The extractor:
@@ -52,10 +55,20 @@ Idempotent — skips any play already present in the dataset's `metadata.sources
   2. Extracts all `“...”` quoted spans, skipping anything before the first tale header (title page, preface, table of contents — these produced garbage on the first run and are explicitly excluded).
   3. Assigns archetype from the enclosing tale-teller via `TALE_TELLER_ARCHETYPE` (e.g. Knight → noble, Miller → peasant, Pardoner → clergy).
   4. Pairs consecutive quotes as `(input, output)`, dropping fragments (<3 words), run-ons (>60 words), and mojibake.
+- **Tagged mode** (malory, and any future source added to `TAGGED_SOURCES`): this edition of *Le Morte Darthur* has **no quotation marks whatsoever** — dialogue is only marked by an inline `<clause>, said <name>` tag (genuine Early Modern English convention, not an OCR artifact). The extractor:
+  1. Bounds extraction between the first real chapter header (`CHAP. I.`) and the glossary/index, skipping the ~4000-line table of contents and front matter.
+  2. Splits the body into clauses on `.`/`;` boundaries.
+  3. Searches each clause for a dialogue tag via `DIALOGUE_TAG`, whose speaker capture is restricted to titles (`king`, `sir`, `dame`, etc., optionally + a proper name) or a bare capitalized proper name — **not** arbitrary lowercase words. (First version was too permissive and matched idioms like "she said so they departed" as if "so they departed" were a speaker name — silently corrupting ~40% of extracted lines. Restricting to title/proper-noun patterns fixed it; verify with a sample if you touch this regex.)
+  4. Splices out the tag, reassembling the clause into a clean utterance, and maps archetype via `MALORY_ARCHETYPE_MAP` (e.g. "sir" → guard, "king"/"queen"/"duke" → noble, "merlin"/"hermit"/"bishop" → scholar/clergy).
+  5. Drops clauses containing `_..._` (Gutenberg italic markers — chapter-title fragments, not dialogue).
 
 `quality_score()` is a cheap heuristic (length, dialect-marker presence, word count) — not a substitute for manual review. `--min-quality` gates it, `--max-pairs` caps output (sorted by score, highest first) so a single dense source doesn't blow past the target archetype distribution.
 
-**Gotcha hit during the first canterbury run:** the initial version had no lower bound on where quote-scanning started, so it pulled 1963 "pairs" out of front-matter and footnotes (single words, TOC fragments). Fixed by bounding extraction to start at the first tale header. If you extend `POEM_SOURCES` to a new text, sanity-check a sample of the first ~10 extracted pairs before trusting the count.
+**Gotchas hit so far:**
+- **Canterbury:** the initial version had no lower bound on where quote-scanning started, so it pulled 1963 "pairs" out of front-matter and footnotes (single words, TOC fragments). Fixed by bounding extraction to start at the first tale header.
+- **Malory:** see tagged-mode point 3 above — the regex over-match issue. Also, only the *first* `said X` tag per clause is stripped, so a handful of multi-speaker clauses leave a stray embedded tag in the output text (not worth chasing further; flagged for `dataset_validator.py`).
+
+If you extend `POEM_SOURCES` or `TAGGED_SOURCES` to a new text, sanity-check a sample of the first ~10-15 extracted pairs before trusting the count — both prior sources produced silently-wrong output on the first attempt.
 
 ## `chimbiwide_converter.py`
 
@@ -92,6 +105,5 @@ Reads current archetype counts from the processed dataset, diffs against `ARCHET
 ## Not yet built
 
 - `dataset_validator.py` — schema conformance, duplicate detection, archetype/intent balance report. Referenced in `Specs.md`'s file tree but doesn't exist yet.
-- Malory (*Le Morte d'Arthur*) raw text — spec roadmap mentions Chaucer *and* Malory; only Chaucer is downloaded.
 - `microsoft/crd3` filter pass — not started.
 - `stress_test_corpus.json` (50 persona-breaking conversations) — not started, and per spec is held out from training entirely.
