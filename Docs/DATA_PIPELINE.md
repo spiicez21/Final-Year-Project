@@ -28,7 +28,7 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 
 ## Current dataset state
 
-653 entries in `data/processed/medieval_npc_dataset.json`:
+803 entries in `data/processed/medieval_npc_dataset.json`:
 
 | Source | Pairs | Method |
 |--------|------:|--------|
@@ -38,8 +38,9 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 | Canterbury Tales | 200 | Frame-narrative quote extraction |
 | Le Morte Darthur (Malory) | 300 | Inline dialogue-tag extraction (no quotation marks in this edition) |
 | Hand-authored (Claude, in-session) | 27 | Direct schema-conformant writing, targeted at worst gaps |
+| chimbiwide/NPC-Dialogue_v2 | 150 | HF filter + rule-based archaic rewrite (no LLM) |
 
-Archetype distribution: guard 162, peasant 160, clergy 123, noble 132, scholar 33, merchant 28, innkeeper 10, herbalist 5. Merchant/innkeeper/herbalist are now the worst gaps relative to the target table in `Specs.md` — Gutenberg literary sources structurally don't have many of those characters, so closing them needs hand-authored entries, CRD3, or chimbiwide (once its register-rewrite is implemented).
+Archetype distribution: peasant 221, guard 187, noble 182, clergy 123, scholar 45, merchant 28, innkeeper 12, herbalist 5. Merchant/scholar/innkeeper/herbalist are now the only real gaps relative to the target table in `Specs.md` — none of the sources mined so far (Shakespeare, Chaucer, Malory, chimbiwide) produce many of those characters. Closing them needs targeted hand-authored entries or CRD3.
 
 ## `gutenberg_extractor.py`
 
@@ -73,7 +74,8 @@ If you extend `POEM_SOURCES` or `TAGGED_SOURCES` to a new text, sanity-check a s
 ## `chimbiwide_converter.py`
 
 ```
-python data/scripts/chimbiwide_converter.py --limit 300
+python data/scripts/chimbiwide_converter.py --limit 300                       # filter + rewrite, report only
+python data/scripts/chimbiwide_converter.py --limit 300 --merge --max-entries 150   # also merge into the dataset
 ```
 
 Source: `chimbiwide/NPC-Dialogue_v2` on HuggingFace, config `dialogue` (not the default — must be passed explicitly or `load_dataset` errors). Requires `pip install datasets`.
@@ -88,9 +90,11 @@ messages[2:] = alternating user/assistant — real dialogue turns
 
 `is_medieval_plausible()` drops rows containing modern-leakage terms (phone, internet, wifi, police, rupees, etc.) as a first-pass filter — most source content is contemporary-adjacent fantasy/noir, not medieval, and needs a register rewrite regardless of passing this filter.
 
-**`register_rewrite()` intentionally raises `NotImplementedError`.** It needs an LLM backend (GPT-4o via `gpt4o_augmentor.py`'s client, or local) to convert modern-register dialogue into archaic NPC voice, and `Specs.md` flags this source as medium IP risk requiring a scrub pass before any entries are merged or published. Do not remove the guard without implementing the rewrite.
+**`register_rewrite()` is a rule-based rewriter, not an LLM call.** Deterministic, no API key, no cost: contraction expansion (`don't` → `do not`, `I'm` → `I am`), `you`/`your`/`yours` → `thou`/`thy`/`thine`, irregular thou-verb fixups both directions (`thou are` → `thou art`, and inverted questions `are thou` → `art thou`), sentence-start capitalization, and a small modern-vocabulary swap list (`okay` → `aye, it is well`, `police` → `watchmen`, etc.). It is intentionally modest — grammar isn't perfect (e.g. `you` collapses to `thou` regardless of subject/object case, so some object-position uses that should be `thee` come out as `thou`), and it does not fix genre/setting mismatches (a few entries still read as noir/frontier rather than medieval fantasy, just with archaic-flavored grammar). Every merged entry is tagged `register_rewritten` with `quality_score: 5` so it's flagged for review, not presented as gold-quality.
 
-Last run (`--limit 300`): 255 medieval-plausible / 45 dropped / 0 unparseable. Stops before merge — nothing from chimbiwide is in `medieval_npc_dataset.json` yet.
+`build_entries()` takes only the *first* dialogue pair per conversation (avoids oversampling one character/scene across a long roleplay chat into many near-duplicate entries). `--max-entries` caps the final merge count.
+
+Last run (`--limit 300 --merge --max-entries 150`): 255 medieval-plausible / 45 dropped / 0 unparseable → 150 merged as `CHM-####` entries, `source: chimbiwide`.
 
 ## `gpt4o_augmentor.py`
 
