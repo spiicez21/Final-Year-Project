@@ -12,7 +12,7 @@ Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 agai
 - [x] Install TinyLlama via Ollama — confirm it runs locally (`ollama pull tinyllama`, 637MB, verified via 326-call baseline run)
 - [x] Run baseline evaluation — record all outputs and latency (Condition A, 326/326 entries, `evaluation/results/baseline_outputs.json` + `baseline_metrics.csv`; mean latency 3486ms, mean drift 0.9833 — see `Docs/DATA_PIPELINE.md` note below on the run)
 - [x] Define and implement PDM formula (`evaluation/pdm_scorer.py`, ported from `Specs.md` Appendix A, validated against the spec's worked example — 0.9 drift on a persona-collapse conversation)
-- [ ] Set up Weights & Biases project for experiment tracking — `wandb` 0.28.0 installed, added to `requirements.txt`. **Blocked on you:** run `wandb login` with your API key (from wandb.ai/authorize) — can't complete OAuth from this session. Once logged in, create a project (e.g. `npc-ai-framework`) and pass `report_to="wandb"` in `TrainingArguments` when training starts.
+- [x] Set up Weights & Biases project for experiment tracking — logged in as `spicez21` (`spicez21-kongu-engineering-college` org), verified via `wandb.Api()`. No project created yet — pass `report_to="wandb"` + `project="npc-ai-framework"` in `TrainingArguments` when adapter training starts; W&B auto-creates the project on first run.
 - [x] Create Git repo with `.gitignore` (`BlenderFiles`, `DevFiles` currently ignored — revisit once `training/adapters/` exists, per spec: `adapters/`, `__pycache__/`, `*.bin`)
 
 ## Phase 2 — Dataset (Weeks 4–6)
