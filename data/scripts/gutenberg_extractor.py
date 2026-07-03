@@ -21,10 +21,26 @@ PLAY_META = {
     "macbeth": "Project Gutenberg — Macbeth (Shakespeare, 1606)",
     "caesar": "Project Gutenberg — Julius Caesar (Shakespeare, 1599)",
     "canterbury": "Project Gutenberg — The Canterbury Tales (Chaucer, c.1400, Purves ed.)",
+    "malory": "Project Gutenberg — Le Morte Darthur (Malory, c.1470, Rhys ed.)",
 }
 
 # Sources parsed as verse/frame-narrative (quoted-speech extraction) rather than play speaker-cues.
 POEM_SOURCES = {"canterbury"}
+
+# Sources with no quotation marks at all — dialogue is only marked by an
+# inline "said <name>" tag embedded in the prose (Early Modern English style).
+TAGGED_SOURCES = {"malory"}
+
+# Malory speaker-noun -> archetype. Matched by substring against the
+# extracted "said X" name, longest/most-specific keys checked first.
+MALORY_ARCHETYPE_MAP = {
+    "merlin": "scholar", "hermit": "clergy", "bishop": "clergy", "archbishop": "clergy",
+    "priest": "clergy", "abbess": "clergy",
+    "king": "noble", "queen": "noble", "duke": "noble", "earl": "noble", "prince": "noble",
+    "lady": "noble", "dame": "noble", "damosel": "noble",
+    "sir": "guard", "knight": "guard",
+    "squire": "peasant", "shepherd": "peasant", "carter": "peasant", "cowherd": "peasant",
+}
 
 # Tale-teller -> archetype, keyed by the header text (lowercased, stripped of "the"/"'s tale").
 TALE_TELLER_ARCHETYPE = {
@@ -64,11 +80,29 @@ DIALECT_PATTERNS = {
 
 SPEAKER_LINE = re.compile(r"^([A-Z][A-Za-z0-9 .']{1,20})\.\s*(.*)$")
 
+# Matches an inline dialogue tag e.g. ", said the king" / "; said Sir Ulfius,"
+# Speaker must be a title (+ optional proper name) or a bare proper name —
+# NOT arbitrary lowercase words, else idioms like "she said so they departed"
+# (= "she agreed") get misread as a tag with speaker "so they departed".
+_MALORY_TITLE = r"(?:king|queen|duke|earl|prince|lord|lady|dame|damosel|knight|hermit|bishop|priest|squire|sir)"
+_MALORY_SPEAKER = rf"(?:(?:the\s+)?{_MALORY_TITLE}(?:\s+[A-Z][a-z]+)?|[A-Z][a-z]+)"
+DIALOGUE_TAG = re.compile(rf",?\s*\b(?:said|quoth|answered)\s+({_MALORY_SPEAKER})(?=[,;:.\n]|$)", re.IGNORECASE)
+BODY_HEADER = re.compile(r"^\s*CHAP\.\s+I\.\s*$")
+GLOSSARY_HEADER = re.compile(r"^\s*GLOSSARY AND INDEX\.?\s*$")
+
 
 def archetype_for(speaker: str) -> str:
     key = speaker.strip().lower().rstrip(".")
     for prefix, archetype in ARCHETYPE_MAP.items():
         if key.startswith(prefix):
+            return archetype
+    return "peasant"
+
+
+def malory_archetype_for(speaker: str) -> str:
+    key = speaker.strip().lower()
+    for keyword, archetype in MALORY_ARCHETYPE_MAP.items():
+        if keyword in key:
             return archetype
     return "peasant"
 
@@ -151,12 +185,49 @@ def parse_poem_dialogue(raw_text: str):
     return quotes
 
 
+def parse_tagged_dialogue(raw_text: str):
+    """Extract dialogue from prose with no quotation marks at all (Malory's
+    Le Morte Darthur, Rhys ed.) — utterances are marked only by an inline
+    '<clause>, said <name>' tag. Bounded to the body between the first
+    real chapter header and the glossary/index (front-matter TOC also
+    contains the word 'said'-adjacent chapter summaries and would otherwise
+    pollute the extraction)."""
+    lines = raw_text.splitlines()
+    body_start = next((i for i, line in enumerate(lines) if BODY_HEADER.match(line)), None)
+    body_end = next((i for i, line in enumerate(lines) if GLOSSARY_HEADER.match(line)), len(lines))
+    if body_start is None:
+        return []
+    body = "\n".join(lines[body_start:body_end])
+
+    # Clause-level units: dialogue tags rarely span across period/semicolon boundaries.
+    clauses = re.split(r"(?<=[.;])\s+", body)
+
+    utterances = []  # (archetype, text)
+    for clause in clauses:
+        if "_" in clause:
+            continue  # italic chapter-title fragment, not dialogue
+        match = DIALOGUE_TAG.search(clause)
+        if not match:
+            continue
+        speaker = match.group(1).strip()
+        if len(speaker.split()) > 4:
+            continue  # tag regex over-matched into the next clause
+        utterance = (clause[: match.start()] + " " + clause[match.end():]).strip()
+        utterance = re.sub(r"\s+", " ", utterance).strip(" ,;:.")
+        utterance = re.sub(r"\s+,", ",", utterance)  # stray comma left by tag splice
+        word_count = len(utterance.split())
+        if word_count < 3 or word_count > 60:
+            continue
+        utterances.append((malory_archetype_for(speaker), utterance))
+    return utterances
+
+
 def extract_pairs(play: str, min_quality: int = 4):
     raw_path = RAW_DIR / f"{play}.txt"
     raw_text = raw_path.read_text(encoding="utf-8", errors="ignore")
 
-    if play in POEM_SOURCES:
-        quotes = parse_poem_dialogue(raw_text)
+    if play in POEM_SOURCES or play in TAGGED_SOURCES:
+        quotes = parse_poem_dialogue(raw_text) if play in POEM_SOURCES else parse_tagged_dialogue(raw_text)
         pairs, skipped = [], 0
         for (arch_a, text_a), (arch_b, text_b) in zip(quotes, quotes[1:]):
             score = quality_score(text_a, text_b)
@@ -195,6 +266,14 @@ def extract_pairs(play: str, min_quality: int = 4):
     return pairs, skipped, len(turns)
 
 
+def _era_tag(play: str) -> str:
+    if play in POEM_SOURCES:
+        return "chaucer"
+    if play in TAGGED_SOURCES:
+        return "malory"
+    return "shakespeare"
+
+
 def build_entry(play: str, idx: int, pair: dict) -> dict:
     archetype = pair["archetype"] if "archetype" in pair else archetype_for(pair["speaker"])
     return {
@@ -224,7 +303,7 @@ def build_entry(play: str, idx: int, pair: dict) -> dict:
             "source": PLAY_META.get(play, f"Project Gutenberg — {play.title()}"),
             "source_play": play,
             "quality_score": pair["quality_score"],
-            "tags": ["gutenberg", "public_domain", "chaucer" if play in POEM_SOURCES else "shakespeare", play, archetype, "auto_extracted"],
+            "tags": ["gutenberg", "public_domain", _era_tag(play), play, archetype, "auto_extracted"],
             "conversion_note": "Auto-extracted. Review: location, world_state. Verify archetype mapping.",
         },
     }
