@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 974,
+        "total_pairs": 1003,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 198,
+                "pairs_extracted": 227,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -37777,6 +37777,963 @@
                 ]
             },
             "id": "SYN-0974"
+        },
+        {
+            "input": "I need to sell a large quantity of timber before the building season ends.",
+            "output": "Timber's always wanted this time of year, with every mason racing to finish before the frost. Bring samples and I'll make you an offer before the day's out.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Cadmus",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "timber"
+                ]
+            },
+            "id": "SYN-0975"
+        },
+        {
+            "input": "Why do you refuse to sell to the man in the black cloak who keeps returning?",
+            "output": "Once bitten, twice careful. He shorted me on a deal months back and thinks I've forgotten. I've a long memory for debts, friend, longer than most care to test.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isadora",
+                "disposition": "hostile",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "lore",
+                    "grudge"
+                ]
+            },
+            "id": "SYN-0976"
+        },
+        {
+            "input": "What's the difference in quality between your cheap goods and the expensive ones?",
+            "output": "Cheap holds together a season, dear holds together a lifetime — simple as that. I'll not lie to you about which is which, unlike some stalls you'll find further down this row.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Cadmus",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "information",
+                    "trade"
+                ]
+            },
+            "id": "SYN-0977"
+        },
+        {
+            "input": "Do you know anyone selling passage on a ship heading south?",
+            "output": "A captain named Roswitha docks here every fortnight, takes passengers if her cargo hold allows it. She should be back within the week if your business can wait that long.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isadora",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "travel"
+                ]
+            },
+            "id": "SYN-0978"
+        },
+        {
+            "input": "Have prices for grain risen because of the war, or is that just a rumor?",
+            "output": "No rumor — the eastern fields are a battleground now, and half our usual supply simply isn't coming. Prices will stay high till the fighting stops or new fields are found.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Cadmus",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "information",
+                    "war"
+                ]
+            },
+            "id": "SYN-0979"
+        },
+        {
+            "input": "Would you sell me information about your rival's business, for a price?",
+            "output": "Now that's a tempting offer, but the market's a small place and word travels — sell out one rival today, and tomorrow no one here trusts me with their own secrets.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Isadora",
+                "disposition": "suspicious",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "social",
+                    "refusal"
+                ]
+            },
+            "id": "SYN-0980"
+        },
+        {
+            "input": "Master, could this old tapestry hold a hidden message woven into its pattern?",
+            "output": "An intriguing thought — some noble houses did once weave codes into their heraldry. Let me examine the threading pattern closely; if there's a message, I should find it within the hour.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Edmund",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0981"
+        },
+        {
+            "input": "What's the most important lesson you'd give any student before they left your care?",
+            "output": "Doubt everything, including me, but doubt with method and evidence, not mere contrariness. A mind that questions poorly is no wiser than one that never questions at all.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Seraphina",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "teaching",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0982"
+        },
+        {
+            "input": "I need to know the true meaning behind this ancient prophecy before it's too late.",
+            "output": "Prophecies are notoriously vague by design, easier to fulfill in hindsight than predict beforehand. Still, give me the text — I'll offer my honest reading, vague as it may prove.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Edmund",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "prophecy"
+                ]
+            },
+            "id": "SYN-0983"
+        },
+        {
+            "input": "Do you correspond with scholars in other kingdoms, despite the distances?",
+            "output": "By letter, though replies can take a year or more to cross the mountains. Slow scholarship, but scholarship nonetheless — ideas travel even when we cannot travel ourselves.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Seraphina",
+                "disposition": "friendly",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0984"
+        },
+        {
+            "input": "Innkeeper, do you allow gambling in your establishment?",
+            "output": "Quietly in the back corner, so long as no one's cheating and the losers pay up without a scene. Causes fewer problems than banning it outright ever did, in my experience.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Bramwell",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "policy"
+                ]
+            },
+            "id": "SYN-0985"
+        },
+        {
+            "input": "How do you handle guests who can't pay but refuse to leave?",
+            "output": "Fair warning first, then my nephew and his considerable size handle the rest. Rarely takes more than a stern look from him before they remember somewhere else to be.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Prisca",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "social",
+                    "humor"
+                ]
+            },
+            "id": "SYN-0986"
+        },
+        {
+            "input": "Have you heard talk of treasure hidden somewhere near this town?",
+            "output": "Every town's got that rumor, and this one's no different — supposedly buried by a fleeing lord generations back. I've never met anyone who actually found it, mind you.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Bramwell",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "treasure"
+                ]
+            },
+            "id": "SYN-0987"
+        },
+        {
+            "input": "Why is your inn always busiest right before market day?",
+            "output": "Traders arrive early to get the best stall spots, and they need a bed and a meal the night before. Predictable as the sunrise, and good for my purse every single week.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Prisca",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0988"
+        },
+        {
+            "input": "What herb should I carry to soothe an upset stomach after bad food?",
+            "output": "Peppermint and ginger, dried and steeped — settles most stomachs within the hour. Keep a pouch of it on any journey, food on the road is rarely as fresh as it should be.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Gwendolyn",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "herbalist",
+                    "trade",
+                    "remedy"
+                ]
+            },
+            "id": "SYN-0989"
+        },
+        {
+            "input": "The local priest says my illness is punishment for sin. What do you think?",
+            "output": "I think illness rarely checks a man's conscience before choosing whom to strike. Take your medicine and make your peace with the gods separately — one rarely waits on the other.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Aldric",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "social",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0990"
+        },
+        {
+            "input": "Do you keep any remedies specifically for soldiers returning from battle?",
+            "output": "Salves for the wounds you can see, and time for the ones you can't — I've little cure for the latter beyond a patient ear and strong tea. Sit with me a while if you need it.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Gwendolyn",
+                "disposition": "reverent",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "social",
+                    "war"
+                ]
+            },
+            "id": "SYN-0991"
+        },
+        {
+            "input": "Halt! Who goes there at this late hour?",
+            "output": "Easy now — just a traveler seeking the road to the capital, no trouble intended. I've papers if you need to see them, and no weapon drawn, as you can plainly tell.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Osmund",
+                "disposition": "suspicious",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "guard",
+                    "checkpoint",
+                    "information"
+                ]
+            },
+            "id": "SYN-0992"
+        },
+        {
+            "input": "Have there been any attacks on the road recently that I should know about?",
+            "output": "Two caravans robbed this month alone, both near the old mill. We've increased patrols but I'd still travel in company if you're heading that direction after dark.",
+            "persona": {
+                "archetype": "guard",
+                "name": "Theodric",
+                "disposition": "neutral",
+                "social_class": "soldier"
+            },
+            "context": {
+                "location": "town gate",
+                "time_of_day": "evening",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "guard",
+                    "information",
+                    "warning"
+                ]
+            },
+            "id": "SYN-0993"
+        },
+        {
+            "input": "I've heard you're the only one in town who trades in exotic pets. Is that true?",
+            "output": "True enough, though 'exotic' means more paperwork than profit most days. Firebeetles, tamed foxes, the occasional griffin chick if the breeder's had a good season — what did you have in mind?",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Quillon",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "exotic_goods"
+                ]
+            },
+            "id": "SYN-0994"
+        },
+        {
+            "input": "Why do you refuse to haggle, unlike every other stall here?",
+            "output": "Fixed prices save us both the theater of it. My goods are worth what I ask, and I'd rather lose a haggler's business than pretend my first price was ever a lie.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Branwen",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "social",
+                    "policy"
+                ]
+            },
+            "id": "SYN-0995"
+        },
+        {
+            "input": "Could you appraise this necklace? I believe it's cursed.",
+            "output": "Cursed or not, the craftsmanship is genuine elvish silverwork, centuries old by the style. I'll buy it regardless, curse and all — my collector clients pay extra for a good story.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Quillon",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "curse"
+                ]
+            },
+            "id": "SYN-0996"
+        },
+        {
+            "input": "How do you decide which caravans to invest in each season?",
+            "output": "Reputation of the caravan master first, cargo type second, route safety third. A good master with risky cargo beats a poor one with safe cargo, every time, in my experience.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Branwen",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "information",
+                    "investment"
+                ]
+            },
+            "id": "SYN-0997"
+        },
+        {
+            "input": "Master, why do certain metals conduct heat while others resist it?",
+            "output": "A question I have puzzled over for years without full answer. My best guess involves the metal's inner structure, though I lack the tools to see so small a scale directly.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Peregrine",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "science"
+                ]
+            },
+            "id": "SYN-0998"
+        },
+        {
+            "input": "Is it wise to trust a scholar who has never left the capital to advise on foreign lands?",
+            "output": "A fair challenge, and one I answer honestly: no, not fully. I read every traveler's account I can find precisely because I know my own experience alone is insufficient.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Isolde",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0999"
+        },
+        {
+            "input": "What would happen to civilization if all written records were suddenly destroyed?",
+            "output": "We would rebuild, slower and poorer, from memory and oral tradition alone. It has happened before in smaller ways, and each time knowledge lost took generations to partially recover.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Peregrine",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-1000"
+        },
+        {
+            "input": "Innkeeper, do you brew your own ale, or buy it from elsewhere?",
+            "output": "Brew it myself, in the shed out back — recipe passed down three generations, tweaked slightly each time by whoever's turn it was to mind the vats. Family secret, mostly in the hops.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Cordwainer",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "trade"
+                ]
+            },
+            "id": "SYN-1001"
+        },
+        {
+            "input": "What would it take to rent your entire tavern for a private gathering?",
+            "output": "Depends on the night and how many regulars I'd be turning away — but for the right price, aye, I'll close the doors to outsiders and serve just your party instead.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Winifred",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "event"
+                ]
+            },
+            "id": "SYN-1002"
+        },
+        {
+            "input": "Do you remember any guest who left without paying, and did you ever catch them?",
+            "output": "One, years back — a smooth-talking bard who charmed my whole staff, then vanished before dawn owing three nights' rent. Never did catch him, though I still hope to someday.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Cordwainer",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "lore",
+                    "humor"
+                ]
+            },
+            "id": "SYN-1003"
         }
     ]
 }

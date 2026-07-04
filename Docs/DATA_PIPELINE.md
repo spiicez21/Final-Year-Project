@@ -28,7 +28,7 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 
 ## Current dataset state
 
-803 entries in `data/processed/medieval_npc_dataset.json`:
+**1,003 entries** in `data/processed/medieval_npc_dataset.json` — 1,000-entry spec target met (2026-07-04):
 
 | Source | Pairs | Method |
 |--------|------:|--------|
@@ -37,8 +37,10 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 | Macbeth | 21 | Play speaker-cue extraction |
 | Canterbury Tales | 200 | Frame-narrative quote extraction |
 | Le Morte Darthur (Malory) | 300 | Inline dialogue-tag extraction (no quotation marks in this edition) |
-| Hand-authored (Claude, in-session) | 27 | Direct schema-conformant writing, targeted at worst gaps |
 | chimbiwide/NPC-Dialogue_v2 | 150 | HF filter + rule-based archaic rewrite (no LLM) |
+| Hand-authored (Claude, in-session, no API cost) | 227 | Direct schema-conformant writing across 12 batches, targeted at worst archetype gaps |
+
+Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. Merchant/scholar/innkeeper/herbalist are still under the per-archetype target table in `Specs.md` (noble/peasant/clergy are over target) — the 1,000-count milestone is met, but true archetype balance would need several more hundred entries skewed toward those four. Revisit if Phase 4 evaluation shows weak persona consistency for those archetypes specifically.
 
 Archetype distribution: peasant 221, guard 187, noble 182, clergy 123, scholar 45, merchant 28, innkeeper 12, herbalist 5. Merchant/scholar/innkeeper/herbalist are now the only real gaps relative to the target table in `Specs.md` — none of the sources mined so far (Shakespeare, Chaucer, Malory, chimbiwide) produce many of those characters. Closing them needs targeted hand-authored entries or CRD3.
 
