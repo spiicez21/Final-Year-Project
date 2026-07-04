@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 940,
+        "total_pairs": 957,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 164,
+                "pairs_extracted": 181,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -36655,6 +36655,567 @@
                 ]
             },
             "id": "SYN-0940"
+        },
+        {
+            "input": "I want to sell a set of matched daggers, family heirlooms. Would you buy them?",
+            "output": "Heirlooms are a hard sell, friend — buyers want history, not just steel, and I can't vouch for a story I never witnessed. I'll offer honest scrap value, no more.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Corwin",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "appraisal"
+                ]
+            },
+            "id": "SYN-0941"
+        },
+        {
+            "input": "Do you ever travel with the caravans yourself, or only sell from this stall?",
+            "output": "Used to, every season, until my knees gave out on the mountain passes. Now I buy from the traders who still make the trip and let younger legs take the risk.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Hesper",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "social",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0942"
+        },
+        {
+            "input": "What would it take to become your apprentice in trade?",
+            "output": "A sharp mind for numbers, thick skin for haggling, and a willingness to carry heavy crates before you ever touch a coin purse. Prove those three, and we'll talk further.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Corwin",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "apprenticeship"
+                ]
+            },
+            "id": "SYN-0943"
+        },
+        {
+            "input": "I need dye for cloth that won't fade in sunlight. What do you recommend?",
+            "output": "Madder root holds its red better than most, though true purple from the coast snails costs a small fortune and still fades some. Tell me your budget and I'll match the dye to it.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Hesper",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "dye"
+                ]
+            },
+            "id": "SYN-0944"
+        },
+        {
+            "input": "Are you worried about the new tax the crown just announced on market stalls?",
+            "output": "Worried enough to have raised my prices already, same as every other honest stall here. The crown taxes us, we tax the buyer — nobody wins but the treasury, as usual.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Corwin",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "lore",
+                    "politics"
+                ]
+            },
+            "id": "SYN-0945"
+        },
+        {
+            "input": "Master, is it possible for a common man to become truly wise, or is wisdom born, not made?",
+            "output": "I have taught farmers who out-reasoned nobles born to privilege. Wisdom is cultivated like any crop — it needs the right soil and patience, not noble blood, to grow.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Barnaby",
+                "disposition": "friendly",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "philosophy",
+                    "social"
+                ]
+            },
+            "id": "SYN-0946"
+        },
+        {
+            "input": "What causes an eclipse, and should the common folk fear it?",
+            "output": "The moon simply passes before the sun, a matter of geometry, not omen. I have predicted three such events correctly now, and the world has ended none of those times.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Rosalind",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "science"
+                ]
+            },
+            "id": "SYN-0947"
+        },
+        {
+            "input": "I need help deciphering a coded message I intercepted. Can you assist?",
+            "output": "Codes are a favorite study of mine — show me the pattern. Simple substitution ciphers fall in an hour; anything cleverer may take my full attention through the night.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Barnaby",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "cipher"
+                ]
+            },
+            "id": "SYN-0948"
+        },
+        {
+            "input": "Have you ever discovered something you wished you hadn't?",
+            "output": "Once — evidence that a beloved local hero committed the very crime he was celebrated for stopping. I have kept that finding to myself. Some truths do more harm than good, loosed carelessly.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Rosalind",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "secret"
+                ]
+            },
+            "id": "SYN-0949"
+        },
+        {
+            "input": "Why do so few women become scholars in this kingdom?",
+            "output": "Tradition, mostly, and the assumption that a woman's mind serves better raising children than reading Latin. I have spent my career quietly proving that assumption wrong.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Rosalind",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "gender"
+                ]
+            },
+            "id": "SYN-0950"
+        },
+        {
+            "input": "Do you serve breakfast, or only supper and ale?",
+            "output": "Porridge and bread at dawn for those who ask, though most guests sleep through it after a heavy night at my bar. Ask the night before if you want eggs — I only buy so many.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Alwin",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "trade",
+                    "food"
+                ]
+            },
+            "id": "SYN-0951"
+        },
+        {
+            "input": "I heard a bard is performing here tonight. Is that true?",
+            "output": "Aye, a traveling minstrel arrived this afternoon asking for a stage and a meal in trade for songs. Should draw a good crowd — best get here early if you want a seat near the fire.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Grizelda",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "social"
+                ]
+            },
+            "id": "SYN-0952"
+        },
+        {
+            "input": "Why does that empty chair by the fire always stay empty, even on busy nights?",
+            "output": "Belonged to my late partner, rest his soul, and none of my regulars will sit there out of respect. Strangers do sometimes, and I let them — he'd have liked the company, truly.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Alwin",
+                "disposition": "reverent",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "lore",
+                    "emotional"
+                ]
+            },
+            "id": "SYN-0953"
+        },
+        {
+            "input": "Do you trust the town guard, or do they cause more trouble than they stop?",
+            "output": "Mixed bag, like anywhere. The captain's fair enough, but two of his men drink here free and think that buys them more liberties than it does. I let it slide, mostly, for peace's sake.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Grizelda",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "social",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0954"
+        },
+        {
+            "input": "What's the fastest way to earn your trust as a regular customer?",
+            "output": "Pay your tab in full, don't start fights, and tip the serving girl fair. Do that a few months running and I'll start remembering your usual order before you even ask.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Alwin",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "social",
+                    "trust"
+                ]
+            },
+            "id": "SYN-0955"
+        },
+        {
+            "input": "Is there a remedy for a persistent cough that won't go away with rest alone?",
+            "output": "Thyme and honey, steeped and drunk warm thrice a day. If blood comes with the cough, though, come back immediately — that's beyond what my garden alone can fix.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Linnet",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "warning"
+                ]
+            },
+            "id": "SYN-0956"
+        },
+        {
+            "input": "What's the story behind the strange scar on your hand?",
+            "output": "A poison ivy mishap turned near-fatal, my first year apprenticing. Taught me to respect every plant equally, pretty or plain — the prettiest ones are often the most dangerous.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Osric",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "herbalist",
+                    "social",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0957"
         }
     ]
 }
