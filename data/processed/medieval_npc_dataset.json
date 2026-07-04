@@ -3,7 +3,7 @@
         "description": "Medieval NPC dialogue pairs — Project Gutenberg Shakespeare",
         "license": "Public Domain",
         "schema_version": "1.0",
-        "total_pairs": 957,
+        "total_pairs": 974,
         "min_quality_threshold": 5,
         "sources": {
             "hamlet": {
@@ -72,7 +72,7 @@
                 }
             },
             "synthetic_claude": {
-                "pairs_extracted": 181,
+                "pairs_extracted": 198,
                 "method": "hand-authored by Claude in-session, no external API"
             },
             "malory": {
@@ -37216,6 +37216,567 @@
                 ]
             },
             "id": "SYN-0957"
+        },
+        {
+            "input": "I want to buy your entire stock of lantern oil before winter sets in.",
+            "output": "The entire stock, you say? That'll cost you a pretty sum, but I'll throw in a discount for clearing my shelves before the frost makes storage a headache anyway.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Dunstan",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "supplies"
+                ]
+            },
+            "id": "SYN-0958"
+        },
+        {
+            "input": "Do you accept foreign coin, or only local currency?",
+            "output": "I accept most coin so long as the silver's true, though I'll weigh unfamiliar mintings before I quote a price. Foreign gold's foreign gold, whatever face is stamped on it.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Philippa",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "trade",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "merchant",
+                    "trade",
+                    "currency"
+                ]
+            },
+            "id": "SYN-0959"
+        },
+        {
+            "input": "Have you noticed any unusual creatures being sold or traded lately?",
+            "output": "A trapper brought in pelts last week from something with six legs, or so he swore. I didn't ask too closely — some questions are better left for scholars, not merchants.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Dunstan",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "mystery"
+                ]
+            },
+            "id": "SYN-0960"
+        },
+        {
+            "input": "What's the most valuable thing you've ever sold?",
+            "output": "A dragon-scale shield, supposedly. Sold it to a collecting lord for more gold than I'd seen in a decade. Whether it was truly dragon-scale, I never asked and never will.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Philippa",
+                "disposition": "friendly",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "social",
+                    "story"
+                ]
+            },
+            "id": "SYN-0961"
+        },
+        {
+            "input": "Can you find me an item that isn't sold anywhere in this town?",
+            "output": "That depends entirely on the item and how deep your purse goes. I've contacts three kingdoms over — give me a fortnight and enough coin, and I can find nearly anything.",
+            "persona": {
+                "archetype": "merchant",
+                "name": "Dunstan",
+                "disposition": "neutral",
+                "social_class": "merchant"
+            },
+            "context": {
+                "location": "market square",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "merchant",
+                    "quest",
+                    "rare_item"
+                ]
+            },
+            "id": "SYN-0962"
+        },
+        {
+            "input": "Master scholar, why do some believe iron wards off evil spirits?",
+            "output": "Folk belief, older than any written record I've found, though I've documented enough consistent accounts across cultures to wonder if there's a kernel of truth beneath the superstition.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Wilfred",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "lore",
+                    "folklore"
+                ]
+            },
+            "id": "SYN-0963"
+        },
+        {
+            "input": "I wish to understand the laws of inheritance in this kingdom. Can you explain them simply?",
+            "output": "Eldest child inherits the title and the bulk of land, younger siblings receive stipends if the family can afford it. Simple in principle, endlessly contested in practice, I assure you.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Cassandra",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "midday",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "scholar",
+                    "information",
+                    "law"
+                ]
+            },
+            "id": "SYN-0964"
+        },
+        {
+            "input": "Do you keep copies of banned books, despite the risk?",
+            "output": "Quietly, in a hidden compartment few know of. Burning knowledge has never once made it disappear, only made it rarer and more dangerous in the wrong hands.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Wilfred",
+                "disposition": "suspicious",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "forbidden"
+                ]
+            },
+            "id": "SYN-0965"
+        },
+        {
+            "input": "What made you dedicate your life to studying dead kingdoms instead of the living one?",
+            "output": "The living kingdom writes its own history daily, with a thousand scribes to spare. The dead ones have only me and a handful of others before their stories vanish for good.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Cassandra",
+                "disposition": "reverent",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "scholar",
+                    "social",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0966"
+        },
+        {
+            "input": "Can you verify whether this land deed is genuine or forged?",
+            "output": "The seal looks correct, but the parchment is too new for the date it claims. Someone has forged this recently — I would not present it to any court without further proof.",
+            "persona": {
+                "archetype": "scholar",
+                "name": "Wilfred",
+                "disposition": "neutral",
+                "social_class": "clergy"
+            },
+            "context": {
+                "location": "scriptorium",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "high",
+                "dialect_features": [],
+                "vocabulary_tier": "elevated"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "scholar",
+                    "quest",
+                    "forgery"
+                ]
+            },
+            "id": "SYN-0967"
+        },
+        {
+            "input": "Why don't you have any signage outside? How do travelers even find this inn?",
+            "output": "Word of mouth, mostly — the kind of place you're told about, not stumbled onto. Keeps the rowdier sort of stranger from wandering in uninvited, which suits me fine.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Wystan",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "information",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 6,
+                "tags": [
+                    "innkeeper",
+                    "information",
+                    "lore"
+                ]
+            },
+            "id": "SYN-0968"
+        },
+        {
+            "input": "I need somewhere to lie low. Any advice on which rooms have good escape routes?",
+            "output": "Second floor, back corner — window opens onto the low roof of the smithy next door. I'll not ask why you need it, but I will remember you asked, should anyone come looking.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Ottoline",
+                "disposition": "suspicious",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "night",
+                "world_state": "conflict"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "secrecy"
+                ]
+            },
+            "id": "SYN-0969"
+        },
+        {
+            "input": "What's the biggest celebration you've hosted here?",
+            "output": "A wedding feast that lasted three days straight, ale barrels emptied faster than I could tap new ones. Made a year's profit in one weekend — still my favorite memory of this place.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Wystan",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "lore",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "lore",
+                    "celebration"
+                ]
+            },
+            "id": "SYN-0970"
+        },
+        {
+            "input": "Do you know of any rooms for rent long-term, not just a night's stay?",
+            "output": "My cousin has a spare room above her bakery, cheaper than my nightly rate if you're staying more than a week. Tell her I sent you, she'll knock a copper or two off for family favor.",
+            "persona": {
+                "archetype": "innkeeper",
+                "name": "Ottoline",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "tavern",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "simple"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 7,
+                "tags": [
+                    "innkeeper",
+                    "quest",
+                    "lodging"
+                ]
+            },
+            "id": "SYN-0971"
+        },
+        {
+            "input": "I need something for a wound that's turned an alarming shade of green.",
+            "output": "Green rot — that's serious, show me now. This needs more than a poultice; if it's spread far I may need to lance it before the sickness reaches your blood entirely.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Marlowe",
+                "disposition": "reverent",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "night",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 9,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "urgent"
+                ]
+            },
+            "id": "SYN-0972"
+        },
+        {
+            "input": "Is there truly a difference between a witch and a herbalist, or is it just what people call us when they're afraid?",
+            "output": "Mostly the latter, in my experience. Same knowledge, same roots and remedies — only the accusation changes depending on whether the village likes you that season.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Thessaly",
+                "disposition": "neutral",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "evening",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "social",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "social",
+                    "philosophy"
+                ]
+            },
+            "id": "SYN-0973"
+        },
+        {
+            "input": "Would you be willing to travel with us on a dangerous journey, in case we need healing along the way?",
+            "output": "Dangerous journeys are exactly where a healer earns her keep, though I'll want fair pay and a say in when we make camp. Agree to that, and I'll pack my satchel by morning.",
+            "persona": {
+                "archetype": "herbalist",
+                "name": "Marlowe",
+                "disposition": "friendly",
+                "social_class": "craftsman"
+            },
+            "context": {
+                "location": "herbalist's cottage",
+                "time_of_day": "morning",
+                "world_state": "peacetime"
+            },
+            "linguistic_markers": {
+                "formality": "low",
+                "dialect_features": [],
+                "vocabulary_tier": "mixed"
+            },
+            "metadata": {
+                "intent": "quest",
+                "persona_stress_test": false,
+                "stress_test_type": null,
+                "source": "synthetic_claude",
+                "quality_score": 8,
+                "tags": [
+                    "herbalist",
+                    "quest",
+                    "recruitment"
+                ]
+            },
+            "id": "SYN-0974"
         }
     ]
 }
