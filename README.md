@@ -118,7 +118,9 @@ Schema v1.0 — archetype, disposition, social class, location/time/world-state 
 
 Archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. Merchant/scholar/innkeeper/herbalist remain under the per-archetype target table in `Specs.md` (noble/peasant/clergy are over) — not a blocker for Phase 3 training, but worth another pass if persona drift evaluation shows weakness in those archetypes. Pipeline scripts and known issues documented in [`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
 
-A 50-entry persona stress-test corpus is planned as a held-out set (not used for training).
+A 50-entry persona stress-test corpus ([`data/processed/stress_test_corpus.json`](data/processed/stress_test_corpus.json)) is built and held out — not used for training. Covers identity challenges, out-of-world references, modern slang, and 10+ turn extended-pressure conversations across all 8 archetypes, per the protocol in `Specs.md` section 8.
+
+Dataset validated with `dataset_validator.py`: 1003/1003 entries pass schema conformance, 0 duplicate ids, 0 duplicate input/output pairs.
 
 ---
 

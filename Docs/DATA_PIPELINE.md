@@ -16,12 +16,14 @@ data/
 │   └── huggingface/         # HF `datasets` cache (gitignored-worthy, large)
 │
 ├── processed/
-│   └── medieval_npc_dataset.json   # Main training dataset, schema v1.0
+│   ├── medieval_npc_dataset.json   # Main training dataset, schema v1.0
+│   └── stress_test_corpus.json     # 50 held-out persona-breaking conversations (NOT for training)
 │
 └── scripts/
-    ├── gutenberg_extractor.py      # Play + poem dialogue extraction
+    ├── gutenberg_extractor.py      # Play + poem + tagged-dialogue extraction
     ├── chimbiwide_converter.py     # HF chimbiwide/NPC-Dialogue_v2 filter + rewrite
-    └── gpt4o_augmentor.py          # Gap-fill synthesis for underrepresented archetypes
+    ├── gpt4o_augmentor.py          # Gap-fill synthesis for underrepresented archetypes (superseded by hand-authored batches)
+    └── dataset_validator.py        # Schema conformance, duplicate detection, archetype balance report
 ```
 
 Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe` (system 3.13 is broken on this machine — see [TODO.md](TODO.md)).
@@ -106,10 +108,27 @@ python data/scripts/gpt4o_augmentor.py --archetype guard --count 20             
 python data/scripts/gpt4o_augmentor.py --all --limit-per-archetype 10               # gap-fill pass, all archetypes
 ```
 
-Reads current archetype counts from the processed dataset, diffs against `ARCHETYPE_TARGETS` (from `Specs.md` section 6), and calls GPT-4o to generate schema-conformant entries for the gap. Requires `OPENAI_API_KEY` — costs money per call, hence `--dry-run` exists and `--limit-per-archetype` defaults small. Not yet run against the live API in this repo.
+Reads current archetype counts from the processed dataset, diffs against `ARCHETYPE_TARGETS` (from `Specs.md` section 6), and calls GPT-4o to generate schema-conformant entries for the gap. Requires `OPENAI_API_KEY` — costs money per call, hence `--dry-run` exists and `--limit-per-archetype` defaults small. **Superseded in practice** — twelve hand-authored batches (227 entries, `source: synthetic_claude`) closed the same archetype gaps at zero API cost. Kept in the repo in case `OPENAI_API_KEY` becomes available later.
+
+## `dataset_validator.py`
+
+```
+python data/scripts/dataset_validator.py            # full report
+python data/scripts/dataset_validator.py --strict    # exit 1 on schema errors (CI use)
+```
+
+Checks required fields per schema v1.0 (top-level, `persona`, `context`, `linguistic_markers`, `metadata`), valid enum values (archetype, disposition, intent), duplicate ids, and duplicate input/output pairs — these are hard errors. Also flags (non-fatal warnings) known extraction artifacts: mojibake, suspiciously short outputs, and the documented Malory stray-dialogue-tag issue (`STRAY_TAG_PATTERN` on `GUT-*` ids). Prints an archetype-balance report against `Specs.md`'s target table and a source breakdown.
+
+Last run: 1003/1003 entries valid, 0 schema errors, 19 warnings (all the known Malory artifact, ~6% of the 300 Malory entries — nothing new).
+
+## `stress_test_corpus.json`
+
+Not a script output — hand-authored directly, 50 entries, **held out, never used in training**. Structurally different from the main dataset: no pre-written NPC output, since the point is to run each conversation's player-side turns against whichever condition (A/B/C/D) is under test and see where the persona breaks (`Specs.md` section 8: PDM > 0.7 and no archaic markers present = break).
+
+Schema: `{"id": "STRESS-####", "archetype": "...", "stress_test_type": "...", "turns": ["...", "..."]}`.
+
+Type breakdown (matches `Specs.md` exactly): 15 `identity_challenge` ("are you an AI?"), 15 `out_of_world_reference` (WiFi, Netflix, credit cards), 12 `modern_language` (slang the NPC must survive in-voice), 8 `extended_pressure` (10-11 turns each, one per archetype, escalating from normal conversation into direct AI-identity pressure and back).
 
 ## Not yet built
 
-- `dataset_validator.py` — schema conformance, duplicate detection, archetype/intent balance report. Referenced in `Specs.md`'s file tree but doesn't exist yet.
-- `microsoft/crd3` filter pass — not started.
-- `stress_test_corpus.json` (50 persona-breaking conversations) — not started, and per spec is held out from training entirely.
+- `microsoft/crd3` filter pass — dead end, not pursued. See `Docs/TODO.md` Phase 2 for the full reasoning (HF dropped script-based dataset loading, no Parquet conversion exists for CRD3).
