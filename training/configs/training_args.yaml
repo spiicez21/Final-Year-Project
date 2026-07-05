@@ -1,0 +1,16 @@
+# Training arguments — DevFiles/Specs.md section 5 starting config.
+# bf16 not fp16: fp16 requires torch's GradScaler, which crashed
+# ("not implemented for BFloat16") because TinyLlama-1.1B-Chat-v1.0's
+# checkpoint has some layers natively in bf16 and mixing fp16-scaled
+# gradients with bf16 params breaks the scaler. bf16 training needs no
+# loss scaling at all, sidestepping the issue. MX450 (Turing, compute
+# cap 7.5) reports bf16 support via torch.cuda.is_bf16_supported() —
+# software-emulated (no native bf16 tensor cores), works but not fast.
+num_train_epochs: 3
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+learning_rate: 2.0e-4
+fp16: false
+bf16: true
+logging_steps: 10
+save_strategy: "epoch"

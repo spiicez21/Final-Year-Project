@@ -59,7 +59,10 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
 
 ## Phase 3 — Training (Weeks 7–10)
 
-- [ ] Train medieval adapter (r=8, α=16, 3 epochs)
+- [x] Set up `training/` pipeline: `train_adapter.py` (QLoRA via `transformers`+`peft`+`trl` SFTTrainer), `configs/lora_config.yaml`, `configs/training_args.yaml`. Base model: `TinyLlama/TinyLlama-1.1B-Chat-v1.0` (same variant as the Ollama baseline, for a fair Condition A vs B comparison). 4-bit QLoRA (nf4, double quant) — the 2.15GB MX450 can't fit fp16 full-model training.
+  - **Real bug hit and fixed:** fp16 training crashed (`_amp_foreach_non_finite_check_and_unscale_cuda not implemented for BFloat16`) because TinyLlama-Chat's checkpoint has some layers natively in bf16, and mixing fp16-scaled gradients with bf16 params breaks torch's GradScaler. Fixed by training in bf16 end-to-end instead (no loss scaler needed) — MX450 reports `torch.cuda.is_bf16_supported() == True` (software-emulated, Turing has no native bf16 tensor cores, but it works).
+  - Smoke-tested at 5 and 50 samples before committing to a full run — 50-sample timing (~55s/step, cold) badly overestimated the real full-dataset speed (~17s/step warm) — don't trust small-sample timing extrapolations on this hardware.
+- [x] Train medieval adapter (r=8, α=16, 3 epochs) — **done.** 1003 samples, 189 steps, 108.8 min actual runtime (GPU thermal-throttled a few times mid-run, 63°C observed — added time beyond the ~54min best-case estimate, still nowhere near the 3hr worst case). Loss 3.36 → 1.58-1.83, mean token accuracy 0.42 → 0.69. Adapter: `training/adapters/medieval_r8/adapter_model.safetensors`, 2.26MB (spec budget: <500MB — comfortably under). W&B run `medieval-r8-adapter` (project defaulted to `huggingface`, not `npc-ai-framework` — fix `project=` in `SFTConfig` for future runs, cosmetic only).
 - [ ] Train healthcare adapter
 - [ ] Train education adapter
 - [ ] Run LoRA rank ablation (r = 4, 8, 16, 32) on medieval adapter

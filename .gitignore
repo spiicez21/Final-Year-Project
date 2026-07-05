@@ -1,6 +1,13 @@
 BlenderFiles
 DevFiles
 
+# Model weights / training artifacts
+training/adapters/
+*.bin
+*.safetensors
+data/raw/huggingface/
+.cache/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -13,3 +20,4 @@ env/
 # macOS / Windows
 .DS_Store
 Thumbs.db
+wandb/

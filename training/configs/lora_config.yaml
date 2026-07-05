@@ -1,0 +1,8 @@
+# LoRA hyperparameters — DevFiles/Specs.md section 5 starting config.
+# r=8 is the recommended baseline; Phase 3 rank ablation sweeps r = 4, 8, 16, 32.
+r: 8
+lora_alpha: 16
+target_modules: ["q_proj", "v_proj"]
+lora_dropout: 0.05
+bias: "none"
+task_type: "CAUSAL_LM"
