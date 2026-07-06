@@ -13,4 +13,10 @@ learning_rate: 2.0e-4
 fp16: false
 bf16: true
 logging_steps: 10
+# Note: train_adapter.py hardcodes save_strategy="steps"/save_steps=15
+# regardless of this value — a full epoch-boundary-only checkpoint scheme
+# lost an entire hour of r=16 training to an unexplained crash (GPU driver
+# reset under thermal load, no traceback) before the first epoch checkpoint
+# at step 63. This field is kept for reference/spec-alignment but is
+# overridden in code.
 save_strategy: "epoch"

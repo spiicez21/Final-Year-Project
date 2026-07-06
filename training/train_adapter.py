@@ -137,7 +137,13 @@ def main():
         fp16=train_cfg["fp16"],
         bf16=train_cfg.get("bf16", False),
         logging_steps=train_cfg["logging_steps"],
-        save_strategy=train_cfg["save_strategy"],
+        # Step-based checkpointing, not epoch-based: this hardware has crashed
+        # mid-epoch under thermal load before (driver reset, no traceback,
+        # lost a full hour of an r=16 run at step 56/189). Saving every 15
+        # steps (~4-5min) means a crash loses minutes, not an epoch.
+        save_strategy="steps",
+        save_steps=15,
+        save_total_limit=3,
         report_to="none" if args.no_wandb else "wandb",
         run_name=f"{args.domain}-r{lora_cfg['r']}-adapter",
         dataset_text_field="text",
@@ -153,8 +159,18 @@ def main():
         peft_config=peft_config,
     )
 
+    resume_checkpoint = None
+    if output_dir.exists():
+        checkpoints = sorted(
+            output_dir.glob("checkpoint-*"),
+            key=lambda p: int(p.name.split("-")[1]),
+        )
+        if checkpoints:
+            resume_checkpoint = str(checkpoints[-1])
+            print(f"resuming from checkpoint: {resume_checkpoint}")
+
     print("starting training...")
-    trainer.train()
+    trainer.train(resume_from_checkpoint=resume_checkpoint)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     trainer.save_model(str(output_dir))
