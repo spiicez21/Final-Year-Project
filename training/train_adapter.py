@@ -49,6 +49,25 @@ def load_config(name: str) -> dict:
 
 
 def build_dataset(domain: str, tokenizer, max_samples: int = None) -> Dataset:
+    """Builds a prompt/completion dataset, NOT a flat 'text' field.
+
+    Bug this fixes: TRL's SFTTrainer only masks the prompt out of the loss
+    (completion_only_loss) when the dataset has "prompt"/"completion" columns
+    (see trl.trainer.sft_trainer.SFTTrainer, line ~352: completion_only_loss
+    defaults to `"prompt" in dataset_sample and "completion" in dataset_sample`).
+    With a flat pre-templated "text" field, every token — including the
+    templated system prompt and the player's question — contributed to the
+    loss equally. Since the system prompt is long, constant, and trivially
+    memorizable, and the assistant's archaic vocabulary was a small fraction
+    of total tokens, six full training runs (r=8/16/32, alpha=16/32, 3/8
+    epochs) all converged nicely on loss/accuracy while producing zero
+    archaic dialect markers at generation time — the gradient signal for the
+    thing we actually wanted to learn was being diluted by the prompt tokens.
+
+    TinyLlama-Chat's own chat_template.jinja has no {% generation %} tags, so
+    the alternative fix (assistant_masks via return_assistant_tokens_mask)
+    isn't available — prompt/completion is the template-independent fix.
+    """
     path = DATASET_PATHS[domain]
     if not path.exists():
         raise FileNotFoundError(
@@ -61,19 +80,23 @@ def build_dataset(domain: str, tokenizer, max_samples: int = None) -> Dataset:
         entries = entries[:max_samples]
 
     system_template = SYSTEM_PROMPTS.get(domain, "You are a helpful NPC. Stay in character.")
-    texts = []
+    prompts, completions = [], []
     for e in entries:
         archetype = e.get("persona", {}).get("archetype", "npc")
         system = system_template.format(archetype=archetype)
-        messages = [
+        prompt_messages = [
             {"role": "system", "content": system},
             {"role": "user", "content": e["input"]},
-            {"role": "assistant", "content": e["output"]},
         ]
-        text = tokenizer.apply_chat_template(messages, tokenize=False)
-        texts.append(text)
+        prompt = tokenizer.apply_chat_template(prompt_messages, tokenize=False, add_generation_prompt=True)
+        # template's add_generation_prompt block already leaves a trailing
+        # newline after "<|assistant|>" (matches its own assistant-turn
+        # pattern "<|assistant|>\n{content}") — don't add a second one.
+        completion = e["output"] + tokenizer.eos_token
+        prompts.append(prompt)
+        completions.append(completion)
 
-    return Dataset.from_dict({"text": texts})
+    return Dataset.from_dict({"prompt": prompts, "completion": completions})
 
 
 def load_quantized_model():
@@ -117,6 +140,13 @@ def main():
         dir_suffix += f"_a{lora_cfg['lora_alpha']}"
     if train_cfg["num_train_epochs"] != 3:
         dir_suffix += f"_e{int(train_cfg['num_train_epochs'])}"
+    if args.max_samples:
+        # Prevents smoke tests from colliding with (and overwriting) a real
+        # full-dataset run's directory just because rank/alpha/epochs match —
+        # this exact collision destroyed the original medieval_r8 baseline's
+        # weights once already (harmless in that case since already
+        # documented, but don't repeat it).
+        dir_suffix += f"_smoketest{args.max_samples}"
     output_dir = ADAPTERS_DIR / f"{args.domain}_{dir_suffix}"
 
     print(f"loading base model: {BASE_MODEL} (4-bit QLoRA)")
@@ -154,7 +184,6 @@ def main():
         save_total_limit=3,
         report_to="none" if args.no_wandb else "wandb",
         run_name=f"{args.domain}-{dir_suffix}-adapter",
-        dataset_text_field="text",
         max_length=512,
         packing=False,
     )
