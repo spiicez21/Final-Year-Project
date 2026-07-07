@@ -48,8 +48,17 @@ def load_config(name: str) -> dict:
     return yaml.safe_load((CONFIGS_DIR / name).read_text(encoding="utf-8"))
 
 
-def build_dataset(domain: str, tokenizer, max_samples: int = None) -> Dataset:
+def build_dataset(domain: str, tokenizer, max_samples: int = None, id_prefix: str = None) -> Dataset:
     """Builds a prompt/completion dataset, NOT a flat 'text' field.
+
+    `id_prefix`: keep only entries whose id starts with this (e.g. "GUT-").
+    Added to test whether training on only the genuinely archaic-pronoun-dense
+    subset (all 626 GUT-* entries have >=1 dialect_features marker, vs 79.5%
+    across the full 1003-entry mix) produces measurable dialect markers at
+    generation time — the fixed-loss-masking runs still showed zero, and the
+    working theory is that chimbiwide/hand-authored entries (medieval-themed
+    but often pronoun-light) dilute the "always use thee/thou" signal even
+    though "sound medieval" comes through fine. See Docs/TODO.md Phase 3.
 
     Bug this fixes: TRL's SFTTrainer only masks the prompt out of the loss
     (completion_only_loss) when the dataset has "prompt"/"completion" columns
@@ -76,6 +85,8 @@ def build_dataset(domain: str, tokenizer, max_samples: int = None) -> Dataset:
         )
     data = json.loads(path.read_text(encoding="utf-8"))
     entries = data["entries"]
+    if id_prefix:
+        entries = [e for e in entries if e["id"].startswith(id_prefix)]
     if max_samples:
         entries = entries[:max_samples]
 
@@ -123,6 +134,7 @@ def main():
     parser.add_argument("--epochs", type=int, default=None, help="override training_args.yaml epoch count")
     parser.add_argument("--lora-r", type=int, default=None, help="override lora_config.yaml rank (for ablation)")
     parser.add_argument("--lora-alpha", type=int, default=None, help="override lora_config.yaml alpha (scales adapter's effective pull)")
+    parser.add_argument("--id-prefix", default=None, help="train only on entries whose id starts with this, e.g. GUT- (dialect-density experiment)")
     parser.add_argument("--no-wandb", action="store_true")
     args = parser.parse_args()
 
@@ -147,6 +159,8 @@ def main():
         # weights once already (harmless in that case since already
         # documented, but don't repeat it).
         dir_suffix += f"_smoketest{args.max_samples}"
+    if args.id_prefix:
+        dir_suffix += f"_{args.id_prefix.rstrip('-').lower()}only"
     output_dir = ADAPTERS_DIR / f"{args.domain}_{dir_suffix}"
 
     print(f"loading base model: {BASE_MODEL} (4-bit QLoRA)")
@@ -154,7 +168,7 @@ def main():
     model = load_quantized_model()
 
     print(f"building dataset for domain '{args.domain}'" + (f" (max {args.max_samples} samples)" if args.max_samples else ""))
-    dataset = build_dataset(args.domain, tokenizer, args.max_samples)
+    dataset = build_dataset(args.domain, tokenizer, args.max_samples, args.id_prefix)
     print(f"dataset size: {len(dataset)}")
 
     peft_config = LoraConfig(
