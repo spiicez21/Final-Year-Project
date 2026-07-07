@@ -104,6 +104,21 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
   - This is the first genuine quantitative evidence for RQ1 (LoRA-adapted TinyLlama achieves better persona consistency than the zero-shot baseline) — modest in absolute terms (most responses still drift fully, B's mean drift is still close to 1.0), but real, reproducible, and measured across the full comparison set rather than a handful of cherry-picked prompts.
   - Results saved: `evaluation/results/condition_b_outputs.json`, `condition_b_metrics.csv`.
   - **Not yet done:** Condition C (GPT-4o few-shot — needs API key) and Condition D (full fine-tune) haven't been run, so this is only an A-vs-B comparison so far, not the full 4-condition table the spec's evaluation framework calls for.
+
+- [x] **Caught and fixed a train/test contamination bug in the above comparison — the 326-prompt numbers above are invalid, don't cite them.** The Condition A baseline (`baseline_outputs.json`) was captured early in the session using the dataset's *first* 326 entries — all `GUT-*` ids (Hamlet/Macbeth/Caesar/Canterbury). `medieval_r8_gutonly` was later trained on **all 626** `GUT-*` entries — a strict superset. Checked directly: **326/326 baseline eval prompts were in the adapter's training set.** The reported "improvement" partly or mostly reflects memorization, not generalization.
+  - **Fix:** built a genuinely held-out eval set from the 377 `SYN-*`/`CHM-*` entries (never seen by `medieval_r8_gutonly`'s training). Extended `run_baseline.py` with `--id-prefix`/`--exclude-prefix`/`--output-name` and `run_condition_b.py` with `--baseline-name`/`--output-name` to support arbitrary eval subsets without clobbering existing results.
+  - Ran Condition A and B on this held-out set (`baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json`, 377 entries each).
+  - **Second data-quality wrinkle found while computing this:** 206/377 held-out entries have *empty* `reference_features` (many hand-authored/chimbiwide entries were deliberately written in natural, non-forced-archaic prose). For those, `single_turn_drift` trivially scores 0 whenever the model output also happens to have zero archaic markers — which zero-shot baseline always does — inflating Condition A's apparent quality on that subset for reasons that have nothing to do with persona consistency. Restricted the real comparison to the **171 entries with genuine reference markers**.
+  - **Final, valid, uncontaminated result:**
+
+    | Metric (171 held-out entries, real reference markers) | Condition A | Condition B (`medieval_r8_gutonly`) |
+    |---|---:|---:|
+    | Mean drift | 0.9766 | **0.9396** |
+    | Any archaic marker present | 8/171 (4.7%) | **24/171 (14.0%)** |
+
+  - Smaller effect size than the contaminated number, but genuine — this is real evidence of generalization, not memorization, and this is the number to cite.
+  - **Side finding, worth flagging honestly:** on the other 206 entries (intentionally non-archaic reference prose), Condition B's mean drift got *worse* than baseline (0.4456 → 0.6516 on that subset) — the adapter appears to over-insert archaic vocabulary even in contexts where the reference wanted plain natural prose. A real overfitting-to-register trade-off from training on the Gutenberg-only (100% archaic-dense) subset — worth discussing as a limitation, not hiding.
+  - Results: `evaluation/results/baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json` (+ matching `_metrics.csv` files). The original contaminated `baseline_outputs.json`/`condition_b_outputs.json` are kept for reference but should not be cited as a valid A-vs-B comparison.
 - [ ] Implement adapter blending function (`training/blend_adapters.py` — reference impl in `Specs.md` Appendix B)
 - [ ] Test blending at α = 0.2, 0.5, 0.8 (medieval × scholar)
 - [ ] Save all adapter checkpoints with W&B run IDs

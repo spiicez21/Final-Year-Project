@@ -25,22 +25,24 @@ from pdm_scorer import extract_features, single_turn_drift
 
 DATASET_PATH = Path(__file__).resolve().parents[1] / "data" / "processed" / "medieval_npc_dataset.json"
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
-OUTPUTS_PATH = RESULTS_DIR / "baseline_outputs.json"
-METRICS_CSV = RESULTS_DIR / "baseline_metrics.csv"
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL = "tinyllama"
 
 
-def load_entries(limit: int = None):
+def load_entries(limit: int = None, id_prefix: str = None, exclude_prefix: str = None):
     data = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
     entries = data["entries"]
+    if id_prefix:
+        entries = [e for e in entries if e["id"].startswith(id_prefix)]
+    if exclude_prefix:
+        entries = [e for e in entries if not e["id"].startswith(exclude_prefix)]
     return entries[:limit] if limit else entries
 
 
-def load_existing():
-    if OUTPUTS_PATH.exists():
-        return {r["id"]: r for r in json.loads(OUTPUTS_PATH.read_text(encoding="utf-8"))}
+def load_existing(outputs_path: Path):
+    if outputs_path.exists():
+        return {r["id"]: r for r in json.loads(outputs_path.read_text(encoding="utf-8"))}
     return {}
 
 
@@ -68,9 +70,12 @@ def call_ollama(prompt: str, timeout: int = 120, retries: int = 4):
     raise last_exc
 
 
-def run(limit: int = None, resume: bool = False):
-    entries = load_entries(limit)
-    existing = load_existing() if resume else {}
+def run(limit: int = None, resume: bool = False, id_prefix: str = None, exclude_prefix: str = None, output_name: str = "baseline"):
+    outputs_path = RESULTS_DIR / f"{output_name}_outputs.json"
+    metrics_csv = RESULTS_DIR / f"{output_name}_metrics.csv"
+
+    entries = load_entries(limit, id_prefix, exclude_prefix)
+    existing = load_existing(outputs_path) if resume else {}
     results = list(existing.values())
 
     for i, entry in enumerate(entries, 1):
@@ -100,24 +105,24 @@ def run(limit: int = None, resume: bool = False):
         print(f"[{i}/{len(entries)}] {entry['id']} ({entry['persona']['archetype']}) "
               f"{latency_ms:.0f}ms drift={drift}", flush=True)
 
-        _save(results)  # flush every entry — a crash mid-run shouldn't lose more than one call
+        _save(results, outputs_path, metrics_csv)  # flush every entry — a crash mid-run shouldn't lose more than one call
         time.sleep(0.5)  # be gentle on the 2GB-VRAM server between calls
 
-    _save(results)
-    _summarize(results)
+    _save(results, outputs_path, metrics_csv)
+    _summarize(results, outputs_path, metrics_csv)
 
 
-def _save(results):
+def _save(results, outputs_path, metrics_csv):
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUTS_PATH.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    outputs_path.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    with open(METRICS_CSV, "w", encoding="utf-8") as f:
+    with open(metrics_csv, "w", encoding="utf-8") as f:
         f.write("id,archetype,latency_ms,drift_score,response_len\n")
         for r in results:
             f.write(f"{r['id']},{r['archetype']},{r['latency_ms']},{r['drift_score']},{len(r['baseline_response'])}\n")
 
 
-def _summarize(results):
+def _summarize(results, outputs_path, metrics_csv):
     if not results:
         print("no results")
         return
@@ -127,15 +132,19 @@ def _summarize(results):
     print(f"entries: {len(results)}")
     print(f"latency ms  — mean: {sum(latencies)/len(latencies):.0f}  min: {min(latencies):.0f}  max: {max(latencies):.0f}")
     print(f"drift score — mean: {sum(drifts)/len(drifts):.4f}  min: {min(drifts):.4f}  max: {max(drifts):.4f}")
-    print(f"wrote {OUTPUTS_PATH} and {METRICS_CSV}")
+    print(f"wrote {outputs_path} and {metrics_csv}")
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--id-prefix", default=None, help="only include entries whose id starts with this")
+    parser.add_argument("--exclude-prefix", default=None, help="exclude entries whose id starts with this")
+    parser.add_argument("--output-name", default="baseline", help="output filename stem, e.g. 'baseline_heldout'")
     args = parser.parse_args()
-    run(limit=args.limit, resume=args.resume)
+    run(limit=args.limit, resume=args.resume, id_prefix=args.id_prefix,
+        exclude_prefix=args.exclude_prefix, output_name=args.output_name)
 
 
 if __name__ == "__main__":
