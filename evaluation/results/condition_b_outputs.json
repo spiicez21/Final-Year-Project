@@ -1,0 +1,4912 @@
+[
+  {
+    "id": "GUT-0001",
+    "archetype": "guard",
+    "prompt": "You come most carefully vpon your houre",
+    "reference_output": "'Tis now strook twelue, get thee to bed Francisco",
+    "condition_b_response": "I am a knight, and I will not be afeard",
+    "latency_ms": 4388.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0002",
+    "archetype": "guard",
+    "prompt": "Giue you good night",
+    "reference_output": "O farwel honest Soldier, who hath relieu'd you?",
+    "condition_b_response": "Nay, I will not, for I am a knight, and thou art a knight, and I will not be a knight, for I am a knight, and thou art a knight, and I will not be a knight, for I am a knight, and thou art a knight, and I will not be a knight, for I am a",
+    "latency_ms": 16648.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0003",
+    "archetype": "guard",
+    "prompt": "In the same figure, like the King that's dead",
+    "reference_output": "Thou art a Scholler; speake to it Horatio",
+    "condition_b_response": "I am the King, and I am dead",
+    "latency_ms": 3854.6,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0004",
+    "archetype": "scholar",
+    "prompt": "Question it Horatio",
+    "reference_output": "What art thou that vsurp'st this time of night,",
+    "condition_b_response": "Nay, I will not, for I know not what thou meanest",
+    "latency_ms": 3409.5,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0005",
+    "archetype": "scholar",
+    "prompt": "See, it stalkes away",
+    "reference_output": "Stay: speake; speake: I Charge thee, speake.",
+    "condition_b_response": "Nay, it hath no heart, but it stalketh",
+    "latency_ms": 4790.0,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "hath",
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0006",
+    "archetype": "scholar",
+    "prompt": "Is it not like the King?",
+    "reference_output": "As thou art to thy selfe,",
+    "condition_b_response": "Nay, it is not like the King, for he hath no such power",
+    "latency_ms": 5501.7,
+    "reference_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "hath",
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0007",
+    "archetype": "noble",
+    "prompt": "He hath my Lord:",
+    "reference_output": "Take thy faire houre Laertes, time be thine,",
+    "condition_b_response": "I will not have him, for I will not have him",
+    "latency_ms": 4715.1,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0008",
+    "archetype": "peasant",
+    "prompt": "'Tis sweet and commendable",
+    "reference_output": "Let not thy Mother lose her Prayers Hamlet:",
+    "condition_b_response": "And I will tell thee, that I am a knight, and I am come to this place to fight for the honour of my country, and to defend the honour of my lord, and to defend the honour of my lady, and to defend the honour of my lord, and to defend the honour of my lady, and to defend the honour of my lord, and to defend the honour of",
+    "latency_ms": 17378.5,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0009",
+    "archetype": "scholar",
+    "prompt": "Very like, very like: staid it long?",
+    "reference_output": "While one with moderate hast might tell a hundred",
+    "condition_b_response": "Nay, I will not, for I am a scholar, and I will not be a fool.",
+    "latency_ms": 5476.0,
+    "reference_features": [
+      "hast"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0010",
+    "archetype": "noble",
+    "prompt": "It was, as I haue seene it in his life,",
+    "reference_output": "Ile watch to Night; perchance 'twill wake againe",
+    "condition_b_response": "And I am glad that I am not a knight, for I would not have thee to be my knight, for I am not a knight, and I am not a knight, and I am not a knight, and I am not a knight, and I am not a knight, and I am not a knight, and I am not a knight,",
+    "latency_ms": 16825.0,
+    "reference_features": [
+      "perchance"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0011",
+    "archetype": "noble",
+    "prompt": "Marry, well bethought:",
+    "reference_output": "He hath my Lord of late, made many tenders",
+    "condition_b_response": "I will not marry thee, for I am a knight, and thou art a knight, and I am a knight, and thou art a knight, and I am a knight, and thou art a knight, and I am a knight, and thou art a knight, and I am a knight, and thou art a knight, and I am a",
+    "latency_ms": 19246.2,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0012",
+    "archetype": "noble",
+    "prompt": "Marry Ile teach you; thinke your selfe a Baby,",
+    "reference_output": "My Lord, he hath importun'd me with loue,",
+    "condition_b_response": "Thou art a goodly man, and I am glad of thy company",
+    "latency_ms": 5312.5,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0013",
+    "archetype": "noble",
+    "prompt": "I, fashion you may call it, go too, go too",
+    "reference_output": "And hath giuen countenance to his speech,",
+    "condition_b_response": "I, fashion you may call it, go too, go too",
+    "latency_ms": 4931.5,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0014",
+    "archetype": "noble",
+    "prompt": "Indeed I heard it not: then it drawes neere the season,",
+    "reference_output": "The King doth wake to night, and takes his rouse,",
+    "condition_b_response": "And now, my lord, I will tell thee, that I am a knight, and I am come to this place to seek my fortune, and to seek my lady, and to seek my lord, and to seek my lady, and to seek my lord, and to seek my lady, and to seek my lord, and to seek my lady, and to seek my lord, and to",
+    "latency_ms": 16698.6,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0015",
+    "archetype": "noble",
+    "prompt": "What if it tempt you toward the Floud my Lord?",
+    "reference_output": "It wafts me still: goe on, Ile follow thee",
+    "condition_b_response": "Nay, I will not be tempted, for I am not of thy race",
+    "latency_ms": 5670.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0020",
+    "archetype": "noble",
+    "prompt": "Th' Ambassadors from Norwey, my good Lord,",
+    "reference_output": "Thou still hast bin the father of good Newes",
+    "condition_b_response": "I am a knight, and I am come to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of England, to the King of",
+    "latency_ms": 15495.5,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0023",
+    "archetype": "noble",
+    "prompt": "My most deare Lord?",
+    "reference_output": "My excellent good friends? How do'st thou",
+    "condition_b_response": "I am not a man, but a knight, and I am knight of the Round Table, and I am knight of the Round Table, and I am knight of the Round Table, and I am knight of the Round Table, and I am knight of the Round Table, and I am knight of the Round Table, and I am knight of the Round Table",
+    "latency_ms": 17414.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0024",
+    "archetype": "noble",
+    "prompt": "How comes it? doe they grow rusty?",
+    "reference_output": "Nay, their indeauour keepes in the wonted",
+    "condition_b_response": "Nay, they are not rusty, but they are old, and have been long in the world",
+    "latency_ms": 6374.1,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0025",
+    "archetype": "noble",
+    "prompt": "Why, As by lot, God wot: and then you know, It",
+    "reference_output": "I heard thee speak me a speech once, but it was",
+    "condition_b_response": "Nay, I know not, but I know it well",
+    "latency_ms": 4745.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0026",
+    "archetype": "noble",
+    "prompt": "Looke where he ha's not turn'd his colour, and",
+    "reference_output": "'Tis well, Ile haue thee speake out the rest,",
+    "condition_b_response": "Nay, I will not, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I",
+    "latency_ms": 16447.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0027",
+    "archetype": "noble",
+    "prompt": "Madam, it so fell out, that certaine Players",
+    "reference_output": "With all my heart, and it doth much content me",
+    "condition_b_response": "I am glad, that I am not a Play-wright, for I would not have you to be so, for I am not able to write a Play.",
+    "latency_ms": 8940.1,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0028",
+    "archetype": "noble",
+    "prompt": "I was the more deceiued",
+    "reference_output": "Get thee to a Nunnerie. Why would'st thou",
+    "condition_b_response": "I am a knight, and I am not deceived",
+    "latency_ms": 4637.1,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0029",
+    "archetype": "noble",
+    "prompt": "O helpe him, you sweet Heauens",
+    "reference_output": "If thou doest Marry, Ile giue thee this Plague",
+    "condition_b_response": "O helpe me, thou sweet Heauen",
+    "latency_ms": 4322.1,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0030",
+    "archetype": "noble",
+    "prompt": "Heere sweet Lord, at your Seruice",
+    "reference_output": "Horatio, thou art eene as iust a man",
+    "condition_b_response": "I am a knight, and I am knightly",
+    "latency_ms": 4742.2,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0031",
+    "archetype": "noble",
+    "prompt": "Nay, 'tis twice two moneths, my Lord",
+    "reference_output": "So long? Nay then let the Diuel weare blacke,",
+    "condition_b_response": "Nay, it is but one moneth, my Lord",
+    "latency_ms": 4740.6,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0032",
+    "archetype": "noble",
+    "prompt": "'Tis briefe my Lord",
+    "reference_output": "Full thirtie times hath Phoebus Cart gon round,",
+    "condition_b_response": "I am a knight, and I am knightly",
+    "latency_ms": 4720.8,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0033",
+    "archetype": "noble",
+    "prompt": "So many iournies may the Sunne and Moone",
+    "reference_output": "Faith I must leaue thee Loue, and shortly too:",
+    "condition_b_response": "I am a knight, and I am a knight",
+    "latency_ms": 4737.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0034",
+    "archetype": "noble",
+    "prompt": "Make you a wholsome answere: my wits diseas'd.",
+    "reference_output": "Then thus she sayes: your behauior hath stroke",
+    "condition_b_response": "I know not what I say, but I will tell thee, that I am a knight, and that I am come to the castle of the king, to the king’s service, and to the king’s service I will go, and I will not stay in the castle, but I will go to the king’s service, and I will not stay in the castle.",
+    "latency_ms": 19119.5,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0035",
+    "archetype": "peasant",
+    "prompt": "Now Mother, what's the matter?",
+    "reference_output": "Hamlet, thou hast thy Father much offended",
+    "condition_b_response": "I am not a peasant, but a knight, and I am come to the castle to see my lord",
+    "latency_ms": 6985.2,
+    "reference_features": [
+      "hast",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0036",
+    "archetype": "peasant",
+    "prompt": "No by the Rood, not so:",
+    "reference_output": "Nay, then Ile set those to you that can speake",
+    "condition_b_response": "I will not have thee to be a peasant, for I am a knight",
+    "latency_ms": 5748.3,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0037",
+    "archetype": "peasant",
+    "prompt": "Come, come, and sit you downe, you shall not",
+    "reference_output": "What wilt thou do? thou wilt not murther me?",
+    "condition_b_response": "Nay, I will not sit, for I am a peasant, and I am not able to sit",
+    "latency_ms": 6817.4,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0038",
+    "archetype": "peasant",
+    "prompt": "How now, a Rat? dead for a Ducate, dead",
+    "reference_output": "Oh me, what hast thou done?",
+    "condition_b_response": "Nay, I am a knight, and I will have my revenge",
+    "latency_ms": 5588.6,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0039",
+    "archetype": "noble",
+    "prompt": "Oh me, what hast thou done?",
+    "reference_output": "Nay I know not, is it the King?",
+    "condition_b_response": "I have done no wrong, but only told thee the truth",
+    "latency_ms": 4730.8,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0040",
+    "archetype": "peasant",
+    "prompt": "I Lady, 'twas my word.",
+    "reference_output": "What haue I done, that thou dar'st wag thy tong,",
+    "condition_b_response": "Nay, I will not have it, for I will not have it.",
+    "latency_ms": 5575.9,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0041",
+    "archetype": "peasant",
+    "prompt": "Not this by no meanes that I bid you do:",
+    "reference_output": "Be thou assur'd, if words be made of breath,",
+    "condition_b_response": "Nay, I will not, for I am a peasant, and I will not do it",
+    "latency_ms": 6419.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0042",
+    "archetype": "noble",
+    "prompt": "Not where he eats, but where he is eaten, a certaine",
+    "reference_output": "What dost thou meane by this?",
+    "condition_b_response": "I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a knight, and I am a",
+    "latency_ms": 18830.3,
+    "reference_features": [
+      "dost",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0047",
+    "archetype": "peasant",
+    "prompt": "Is she to bee buried in Christian buriall, that",
+    "reference_output": "I tell thee she is, and therefore make her Graue",
+    "condition_b_response": "Nay, for I will not have her buried in Christian buriall, for I will have her buried in the buriall of the heathen",
+    "latency_ms": 8957.2,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0048",
+    "archetype": "peasant",
+    "prompt": "Will you ha the truth on't: if this had not",
+    "reference_output": "Why there thou say'st. And the more pitty that",
+    "condition_b_response": "I will not say it, for I know not what it is",
+    "latency_ms": 5327.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0049",
+    "archetype": "peasant",
+    "prompt": "The Gallowes maker; for that Frame outliues a",
+    "reference_output": "I like thy wit well in good faith, the Gallowes",
+    "condition_b_response": "Nay, I will not have it, for I will not have it",
+    "latency_ms": 4941.8,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0050",
+    "archetype": "peasant",
+    "prompt": "Masse, I cannot tell.",
+    "reference_output": "Cudgell thy braines no more about it; for your",
+    "condition_b_response": "Nay, I will not tell thee, for I know not what thou sayest.",
+    "latency_ms": 5882.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0051",
+    "archetype": "scholar",
+    "prompt": "Ha's this fellow no feeling of his businesse, that",
+    "reference_output": "Custome hath made it in him a property of easinesse",
+    "condition_b_response": "Nay, I am a scholar, and I will not be a fool",
+    "latency_ms": 5058.3,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0052",
+    "archetype": "noble",
+    "prompt": "Custome hath made it in him a property of easinesse",
+    "reference_output": "'Tis ee'n so; the hand of little Imployment hath",
+    "condition_b_response": "And so, Sir, I will not have it",
+    "latency_ms": 4337.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0053",
+    "archetype": "noble",
+    "prompt": "You lye out on't Sir, and therefore it is not yours:",
+    "reference_output": "Thou dost lye in't, to be in't and say 'tis thine:",
+    "condition_b_response": "I will not have it, for I will not have it, and I will not have it, for I will not have it, and I will not have it, for I will not have it, and I will not have it, for I will not have it, and I will not have it, for I will not have it, and I will not have it, for I will not",
+    "latency_ms": 17505.1,
+    "reference_features": [
+      "dost",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0054",
+    "archetype": "noble",
+    "prompt": "'Tis a quicke lye Sir, 'twill away againe from me",
+    "reference_output": "What man dost thou digge it for?",
+    "condition_b_response": "Nay, Sir, I will not have it, for I will not have it",
+    "latency_ms": 5416.3,
+    "reference_features": [
+      "dost",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0055",
+    "archetype": "noble",
+    "prompt": "What's that my Lord?",
+    "reference_output": "Dost thou thinke Alexander lookt o'this fashion",
+    "condition_b_response": "That's a good thing, for I'll not have thee to be a fool",
+    "latency_ms": 5276.0,
+    "reference_features": [
+      "dost",
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0056",
+    "archetype": "noble",
+    "prompt": "Why, what a King is this?",
+    "reference_output": "Does it not, thinkst thee, stand me now vpon",
+    "condition_b_response": "I am the King of this land, and I will have my will",
+    "latency_ms": 4977.0,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0057",
+    "archetype": "noble",
+    "prompt": "Your Lordship is right welcome back to Denmarke",
+    "reference_output": "I humbly thank you Sir, dost know this waterflie?",
+    "condition_b_response": "And I will tell you, that I am a knight, and I am come to Denmarke to seek my fortune, and to seek my lady, and to seek my lord, and to seek my lord’s lady, and to seek my lord’s lady’s lady, and to seek my lord’s lady’s lady, and to seek my lord’s lady’",
+    "latency_ms": 17280.3,
+    "reference_features": [
+      "dost"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0058",
+    "archetype": "noble",
+    "prompt": "I beseech you remember",
+    "reference_output": "Nay, in good faith, for mine ease in good faith:",
+    "condition_b_response": "I beseech thee, remember",
+    "latency_ms": 3968.5,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0059",
+    "archetype": "noble",
+    "prompt": "The phrase would bee more Germaine to the",
+    "reference_output": "The King Sir, hath laid that in a dozen passes betweene",
+    "condition_b_response": "I am a knight, and I am not a knight, but a knight of the court",
+    "latency_ms": 6512.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0060",
+    "archetype": "peasant",
+    "prompt": "He is iustly seru'd.",
+    "reference_output": "Ham. Heauen make thee free of it, I follow thee.",
+    "condition_b_response": "And I will not be thy seruant, for I am a peasant, and thou art a knight.",
+    "latency_ms": 7793.7,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0061",
+    "archetype": "noble",
+    "prompt": "Yes, as Sparrowes, Eagles;",
+    "reference_output": "So well thy words become thee, as thy wounds,",
+    "condition_b_response": "And I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool,",
+    "latency_ms": 15497.6,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0062",
+    "archetype": "noble",
+    "prompt": "Stay you imperfect Speakers, tell me more:",
+    "reference_output": "The Earth hath bubbles, as the Water ha's,",
+    "condition_b_response": "I will tell thee, and tell thee well, that I am a knight, and I am come to this place, and I am come to this place to fight with the knights of the castle, and I am come to this place to fight with the knights of the castle, and I am come to this place to fight with the knights of the castle, and I am come",
+    "latency_ms": 16501.3,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0063",
+    "archetype": "noble",
+    "prompt": "He has almost supt: why haue you left the chamber?",
+    "reference_output": "Hath he ask'd for me?",
+    "condition_b_response": "I am a knight, and I am come to the castle to fight",
+    "latency_ms": 5387.2,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0064",
+    "archetype": "noble",
+    "prompt": "Thankes Sir: the like to you.",
+    "reference_output": "Goe bid thy Mistresse, when my drinke is ready,",
+    "condition_b_response": "And I will tell you, Sir, that I am a knight, and I am come to this place to fight for the honour of my country, and to defend the honour of my lord, and to save my lord from the dangers that are in this land.",
+    "latency_ms": 13129.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0065",
+    "archetype": "peasant",
+    "prompt": "Goe bid thy Mistresse, when my drinke is ready,",
+    "reference_output": "That which hath made the drunk, hath made me bold:",
+    "condition_b_response": "God save thee, and may thy Mistress be well",
+    "latency_ms": 4951.2,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0066",
+    "archetype": "noble",
+    "prompt": "Consider it not so deepely",
+    "reference_output": "But wherefore could not I pronounce Amen?",
+    "condition_b_response": "I know not what thou meaneth",
+    "latency_ms": 3680.3,
+    "reference_features": [
+      "wherefore"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0067",
+    "archetype": "noble",
+    "prompt": "Marry, Sir, Nose-painting, Sleepe, and Vrine.",
+    "reference_output": "I beleeue, Drinke gaue thee the Lye last Night",
+    "condition_b_response": "Nay, Sir, I will not, for I am a knight, and I will not be a knight, and I will not be a knight, and I will not be a knight, and I will not be a knight, and I will not be a knight, and I will not be a knight, and I will not be a knight, and",
+    "latency_ms": 18232.2,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0068",
+    "archetype": "noble",
+    "prompt": "Tertius. Scena Prima.",
+    "reference_output": "Thou hast it now, King, Cawdor, Glamis, all,",
+    "condition_b_response": "Tertius, thou hast done well, and thou hast done well.",
+    "latency_ms": 5362.0,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0069",
+    "archetype": "noble",
+    "prompt": "Pronounce it for me Sir, to all our Friends,",
+    "reference_output": "See they encounter thee with their harts thanks",
+    "condition_b_response": "And I will tell you, Sir, that I am a knight, and I am come to this place, and I will tell you all that I know, and I will tell you all that I know, and I will tell you all that I know, and I will tell you all that I know, and I will tell you all that I know, and I will tell you all that",
+    "latency_ms": 18885.9,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0070",
+    "archetype": "noble",
+    "prompt": "'Tis Banquo's then",
+    "reference_output": "'Tis better thee without, then he within.",
+    "condition_b_response": "Nay, it is not so, for I am not Banquo",
+    "latency_ms": 5407.2,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0071",
+    "archetype": "noble",
+    "prompt": "My Lord his throat is cut, that I did for him",
+    "reference_output": "Thou art the best o'th' Cut-throats,",
+    "condition_b_response": "Nay, I will not have it, for I will not have it",
+    "latency_ms": 5659.1,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0072",
+    "archetype": "noble",
+    "prompt": "Our duties, and the pledge",
+    "reference_output": "Auant, & quit my sight, let the earth hide thee:",
+    "condition_b_response": "Our pledge, and our duty",
+    "latency_ms": 3511.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0073",
+    "archetype": "noble",
+    "prompt": "Almost at oddes with morning, which is which",
+    "reference_output": "How say'st thou that Macduff denies his person",
+    "condition_b_response": "I am a knight, and I am not a knight, but a knight of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the",
+    "latency_ms": 19181.1,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0074",
+    "archetype": "peasant",
+    "prompt": "Be bloody, bold, & resolute:",
+    "reference_output": "Mac. Then liue Macduffe: what need I feare of thee?",
+    "condition_b_response": "I will not be so, I will not be so,",
+    "latency_ms": 4719.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0075",
+    "archetype": "noble",
+    "prompt": "Shew his Eyes, and greeue his Hart,",
+    "reference_output": "Thou art too like the Spirit of Banquo: Down:",
+    "condition_b_response": "I will not, for I am a Nun, and I will not be a Nun, for I am a Nun, and I will not be a Nun, for I am a Nun, and I will not be a Nun, for I am a Nun, and I will not be a Nun, for I am a Nun, and I will not be",
+    "latency_ms": 18541.8,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0076",
+    "archetype": "peasant",
+    "prompt": "Then you'l by 'em to sell againe",
+    "reference_output": "Thou speak'st withall thy wit,",
+    "condition_b_response": "Nay, I'll not sell thee, for I'll sell thee to the King of France, and he will give thee a good reward for thy service",
+    "latency_ms": 9513.0,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee",
+      "thy"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0077",
+    "archetype": "noble",
+    "prompt": "What's the newest griefe?",
+    "reference_output": "That of an houres age, doth hisse the speaker,",
+    "condition_b_response": "I am not able to tell you, for I am not able to tell you,",
+    "latency_ms": 5016.9,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0078",
+    "archetype": "noble",
+    "prompt": "There is ten thousand",
+    "reference_output": "Go pricke thy face, and ouer-red thy feare",
+    "condition_b_response": "And I will not have it",
+    "latency_ms": 3153.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0079",
+    "archetype": "noble",
+    "prompt": "The English Force, so please you",
+    "reference_output": "Take thy face hence. Seyton, I am sick at hart,",
+    "condition_b_response": "I am a knight, and I will not be a knight, but a knight of the English",
+    "latency_ms": 6507.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0080",
+    "archetype": "noble",
+    "prompt": "Thou was't borne of woman;",
+    "reference_output": "That way the noise is: Tyrant shew thy face,",
+    "condition_b_response": "Thou art a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is a woman, and a woman is",
+    "latency_ms": 17578.2,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0081",
+    "archetype": "noble",
+    "prompt": "He's worth no more,",
+    "reference_output": "Haile King, for so thou art.",
+    "condition_b_response": "Nay, he is a noble knight, and I am a knight, and we are both knights, and we are both knights, and we are both knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights,",
+    "latency_ms": 18427.8,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0082",
+    "archetype": "peasant",
+    "prompt": "Why Sir, a Carpenter",
+    "reference_output": "Where is thy Leather Apron, and thy Rule?",
+    "condition_b_response": "I know not, Sir, but I will tell thee, that I am a Carpenter, and I have been a Carpenter for many years, and I know all the tricks of the trade, and I can make a good Carpenter.",
+    "latency_ms": 12027.8,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0083",
+    "archetype": "peasant",
+    "prompt": "Truely Sir, in respect of a fine Workman, I am",
+    "reference_output": "But what Trade art thou? Answer me directly",
+    "condition_b_response": "And I will tell you, Sir, that I am a great Workman, and I have done many things, and I have done them well, and I have done them in the best way, and I have done them in the best way, and I have done them in the best way, and I have done them in the best way, and I have done them in the best way,",
+    "latency_ms": 18717.4,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0094",
+    "archetype": "noble",
+    "prompt": "Those that haue knowne the Earth so full of",
+    "reference_output": "But wherefore did you so much tempt the Heauens?",
+    "condition_b_response": "Thou hast done well, and thou shalt be rewarded",
+    "latency_ms": 4908.6,
+    "reference_features": [
+      "wherefore"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0095",
+    "archetype": "noble",
+    "prompt": "Shall I entreat a word?",
+    "reference_output": "Here lyes the East: doth not the Day breake",
+    "condition_b_response": "Nay, I will not, for I am a knight, and I will not be a knight, but a knight of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the castle of the",
+    "latency_ms": 17690.8,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0096",
+    "archetype": "noble",
+    "prompt": "Here lyes the East: doth not the Day breake",
+    "reference_output": "O pardon, Sir, it doth; and yon grey Lines,",
+    "condition_b_response": "Nay, but the Sun hath his rest",
+    "latency_ms": 4106.7,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "hath",
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0097",
+    "archetype": "noble",
+    "prompt": "Neuer feare that: If he be so resolu'd,",
+    "reference_output": "Nay, we will all of vs, be there to fetch him",
+    "condition_b_response": "I will not be so resolu'd, for I am not so resolu'd as thou art",
+    "latency_ms": 6822.0,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0098",
+    "archetype": "innkeeper",
+    "prompt": "To know my errand Madam",
+    "reference_output": "I would haue had thee there and heere agen",
+    "condition_b_response": "I know not, but I will tell thee",
+    "latency_ms": 4101.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0099",
+    "archetype": "innkeeper",
+    "prompt": "Madam, what should I do?",
+    "reference_output": "Yes, bring me word Boy, if thy Lord look well,",
+    "condition_b_response": "I will tell thee, that thou shalt be a good hostess, and that thou shalt be well rewarded for thy goodness.",
+    "latency_ms": 8280.5,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0100",
+    "archetype": "innkeeper",
+    "prompt": "Sooth Madam, I heare nothing.",
+    "reference_output": "Come hither Fellow, which way hast thou bin?",
+    "condition_b_response": "Nay, I am not mad, but I am a wise man, and I know that thou art a wise woman, and that thou hast a good heart, and that thou hast a good heart, and that thou hast a good heart, and that thou hast a good heart, and that thou hast a good heart, and that thou hast a good heart, and that thou hast a good heart",
+    "latency_ms": 18197.0,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "hast",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0101",
+    "archetype": "innkeeper",
+    "prompt": "Madam not yet, I go to take my stand,",
+    "reference_output": "Thou hast some suite to Caesar, hast thou not?",
+    "condition_b_response": "Thou hast not yet done thy part, thou art not yet a good knight",
+    "latency_ms": 5769.1,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "hast",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0102",
+    "archetype": "innkeeper",
+    "prompt": "That I haue Lady, if it will please Caesar",
+    "reference_output": "Why know'st thou any harme's intended towards",
+    "condition_b_response": "Nay, I will not have it, for I am a woman",
+    "latency_ms": 4440.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0103",
+    "archetype": "noble",
+    "prompt": "Is there no voyce more worthy then my owne,",
+    "reference_output": "I kisse thy hand, but not in flattery Caesar:",
+    "condition_b_response": "I am a knight, and I will not be a knight,",
+    "latency_ms": 5251.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0104",
+    "archetype": "noble",
+    "prompt": "But heere comes Antony:",
+    "reference_output": "O mighty Caesar! Dost thou lye so lowe?",
+    "condition_b_response": "I am not so well, as I was yesterday, and I am not able to speak, but I will speak to thee, and I will tell thee all that I have heard.",
+    "latency_ms": 9747.4,
+    "reference_features": [
+      "dost",
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0105",
+    "archetype": "noble",
+    "prompt": "He did receiue his Letters, and is comming,",
+    "reference_output": "Thy heart is bigge: get thee a-part and weepe:",
+    "condition_b_response": "And I will not be afeard, for I am a noble NPC, and I will not be afeard of any man, but I will be afeard of the King, and of the King’s men, and of the King’s men, and of the King’s men, and of the King’s men, and of the King’s men,",
+    "latency_ms": 18563.3,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0106",
+    "archetype": "noble",
+    "prompt": "With courtesie, and with respect enough,",
+    "reference_output": "Thou hast describ'd",
+    "condition_b_response": "And I will not have thee to be a fool,",
+    "latency_ms": 4441.1,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0107",
+    "archetype": "noble",
+    "prompt": "Manet Brutus and Cassius.",
+    "reference_output": "That you haue wrong'd me, doth appear in this:",
+    "condition_b_response": "Nay, I am not a man, but a knight.",
+    "latency_ms": 5144.8,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0108",
+    "archetype": "noble",
+    "prompt": "For shame you Generals; what do you meane?",
+    "reference_output": "Ha, ha, how vildely doth this Cynicke rime?",
+    "condition_b_response": "I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and I will not be a fool, and",
+    "latency_ms": 18016.5,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0109",
+    "archetype": "noble",
+    "prompt": "Come in Titinius:",
+    "reference_output": "Portia, art thou gone?",
+    "condition_b_response": "I am not a man of thy nation, but of the Romans, and I am a knight of the order of the Temple, and I am come to the court of the king, to seek the hand of the fairest of the fair, and to be knighted by him.",
+    "latency_ms": 14589.0,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0110",
+    "archetype": "peasant",
+    "prompt": "Farwell euery one.",
+    "reference_output": "Giue me the Gowne. Where is thy Instrument?",
+    "condition_b_response": "Farewell, my lord, and farewell, my lady",
+    "latency_ms": 4939.7,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0111",
+    "archetype": "noble",
+    "prompt": "It is my duty Sir",
+    "reference_output": "I should not vrge thy duty past thy might,",
+    "condition_b_response": "And I will not have it",
+    "latency_ms": 3633.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0119",
+    "archetype": "peasant",
+    "prompt": "No, this was he Messala,",
+    "reference_output": "Mistrust of good successe hath done this deed.",
+    "condition_b_response": "And I will not have thee to be a peasant, for I am a knight",
+    "latency_ms": 5851.1,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0120",
+    "archetype": "noble",
+    "prompt": "Mistrust of good successe hath done this deed.",
+    "reference_output": "What Pindarus? Where art thou Pindarus?",
+    "condition_b_response": "I will not be thy friend, for I know thee not.",
+    "latency_ms": 4934.1,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0121",
+    "archetype": "peasant",
+    "prompt": "Yet Country-men: O yet, hold vp your heads",
+    "reference_output": "What Bastard doth not? Who will go with me?",
+    "condition_b_response": "Nay, for I am a knight, and I will not be a knight, but a knight of the castle",
+    "latency_ms": 7180.9,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0122",
+    "archetype": "peasant",
+    "prompt": "I am Brutus, Marcus Brutus, I,",
+    "reference_output": "O yong and Noble Cato, art thou downe?",
+    "condition_b_response": "I am Brutus, and thou art Brutus,",
+    "latency_ms": 4942.5,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0131",
+    "archetype": "noble",
+    "prompt": "O May, with all thy flowers and thy green, Right welcome be thou, faire freshe May, I hope that I some green here getten may.",
+    "reference_output": "I grant it thee.",
+    "condition_b_response": "O thou art a noble NPC, and I am a noble NPC, and we are both of the same age, and we are both of the same sex, and we are both of the same name, and we are both of the same rank, and we are both of the same rank, and we are both of the same rank, and we are both of the same rank, and",
+    "latency_ms": 18799.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0132",
+    "archetype": "noble",
+    "prompt": "Fie Upon a lord that will have no mercy, But be a lion both in word and deed, To them that be in repentance and dread, As well as-to a proud dispiteous unpitying That will maintaine what he first began. That lord hath little of discretion, That in such case : But weigheth pride and humbless .",
+    "reference_output": "Help, for thou may’st best of all.",
+    "condition_b_response": "Fie, thou art a fool, and a foolish fool, That thou shouldst be so bold, and so boldly, That thou shouldst be so boldly, and so boldly, That thou shouldst be so boldly, and so boldly, That thou shouldst be so boldly, and so boldly, That thou shouldst be so boldly, and so",
+    "latency_ms": 19591.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0133",
+    "archetype": "noble",
+    "prompt": "Help, for thou may’st best of all.",
+    "reference_output": "What amounteth this, alas! I put me under thy protection, Diane, and in thy disposition.",
+    "condition_b_response": "Thou art a noble knight, and I am a knight, and we are both knights, and we are both knights, and we are both knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights, and we are all knights, and we",
+    "latency_ms": 17623.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0134",
+    "archetype": "noble",
+    "prompt": "I am ashamed doubteless.",
+    "reference_output": "Daughter, hold thy peace. Mars hath his will, his knight hath all his boon, And by mine head thou shalt be eased soon.",
+    "condition_b_response": "I am a knight, and I am not ashamed of my name.",
+    "latency_ms": 5558.1,
+    "reference_features": [
+      "hath",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0135",
+    "archetype": "noble",
+    "prompt": "Farewell, Have good day.",
+    "reference_output": "Why wouldest thou be dead?",
+    "condition_b_response": "Farewell, Have good day.",
+    "latency_ms": 3888.7,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0136",
+    "archetype": "peasant",
+    "prompt": "that will not I, For I will speak, or elles go my way!",
+    "reference_output": "Thou art a fool; thy wit is overcome.",
+    "condition_b_response": "I will speak, and I will speak well",
+    "latency_ms": 4114.0,
+    "reference_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0140",
+    "archetype": "peasant",
+    "prompt": "Ye muste be full derne* as in this case.",
+    "reference_output": "Nay, thereof care thee nought",
+    "condition_b_response": "Nay, I am not a peasant, but a knight, and I am knightly in my deed.",
+    "latency_ms": 7674.6,
+    "reference_features": [
+      "nay",
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0141",
+    "archetype": "peasant",
+    "prompt": "A clerk had , he could a carpenter beguile.",
+    "reference_output": "Now, dear lady, if thy will be, I pray that ye will rue* on me",
+    "condition_b_response": "And I will tell thee, that I am a carpenter, and I have a wife, and I have a son, and I have a daughter, and I have a daughter-in-law, and I have a son-in-law, and I have a daughter-in-law, and I have a daughter, and I have a daughter-in-law, and I",
+    "latency_ms": 18823.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0142",
+    "archetype": "peasant",
+    "prompt": "Alas! Shall all time world be lost eftsoones* now?",
+    "reference_output": "What sayest thou? What? think on God, as we do, men that swink.*",
+    "condition_b_response": "Nay, nay, I will not have it so, for I will not have it so",
+    "latency_ms": 6411.6,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0143",
+    "archetype": "peasant",
+    "prompt": "What sayest thou? What? think on God, as we do, men that swink.*",
+    "reference_output": "Fetch me a drink; And after will I speak in privity Of certain thing that toucheth thee and me: I will tell it no other man certain.",
+    "condition_b_response": "Nay, I will not, for I am a peasant, and I know not what I say.",
+    "latency_ms": 6844.5,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0144",
+    "archetype": "peasant",
+    "prompt": "John, mine host full lief loved Thou shalt upon thy truthe swear me here, That to no wight thou shalt my counsel wray betray For it is Christes counsel that I say, And if thou tell it man, thou art forlore: lost<28> For this vengeance thou shalt have therefor, That if thou wraye *.",
+    "reference_output": "Nay, Christ forbid it for his holy blood!",
+    "condition_b_response": "Thou shalt not be avenged, for I will not be avenged, For I am a man, and not a woman, And I will not be avenged, for I am a man, and not a woman",
+    "latency_ms": 13031.9,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0145",
+    "archetype": "peasant",
+    "prompt": "Nay, Christ forbid it for his holy blood!",
+    "reference_output": "I am no blab, talker Nor, though I say it, am I . Say what thou wilt, I shall it never tell To child or wife, by him that harried Hell.",
+    "condition_b_response": "Nay, I will not, for I am a peasant, and I am not a knight",
+    "latency_ms": 8632.9,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0146",
+    "archetype": "peasant",
+    "prompt": "Why, yes, for God",
+    "reference_output": "Hast thou not heard",
+    "condition_b_response": "And I will tell thee, that I am a knight, and I am come to seek my lady, and I will not be thy knight, for I am a knight, and I will not be thy knight, for I am a knight, and I will not be thy knight, for I am a knight, and I will not be thy knight, for",
+    "latency_ms": 23461.3,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0147",
+    "archetype": "peasant",
+    "prompt": "What do ye, honeycomb, sweet Alisoun? My faire bird, my sweet cinamome cinnamon, sweet spice Awaken, leman mistress Full little thinke ye upon my woe, That for your love I sweat I go. and sweat. , leman, I have such love-longing, true is my mourning. *turtle-dove I may not eat, no more than a maid.",
+    "reference_output": "Go from the window, thou jack fool",
+    "condition_b_response": "I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat, I will not eat,",
+    "latency_ms": 30552.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0148",
+    "archetype": "peasant",
+    "prompt": "and well away! That true love ever was so ill beset: Then kiss me, since that it may be no bet better For Jesus’ love, and for the love of me.",
+    "reference_output": "Wilt thou then go thy way therewith?",
+    "condition_b_response": "And now, my lord, I will not be thy wife, for I am not yet married, but I will be thy wife, and I will be thy wife for ever.",
+    "latency_ms": 11393.1,
+    "reference_features": [
+      "thou",
+      "thy",
+      "wilt"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0149",
+    "archetype": "peasant",
+    "prompt": "Yea, certes, leman",
+    "reference_output": "Then make thee ready",
+    "condition_b_response": "And I will tell thee, that I am a knight, and I am come to this place to fight for the honour of my country, and to save my lord from the dangers that are in this land.",
+    "latency_ms": 4823.1,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0150",
+    "archetype": "peasant",
+    "prompt": "I come anon.",
+    "reference_output": "Now peace, and thou shalt laugh anon thy fill.",
+    "condition_b_response": "I am a peasant, and I come to thee, and I will tell thee all that is in my heart.",
+    "latency_ms": 2041.7,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0151",
+    "archetype": "peasant",
+    "prompt": "Now peace, and thou shalt laugh anon thy fill.",
+    "reference_output": "I am a lord at all degrees: For after this I hope there cometh more; Leman, thy grace, and, sweete bird, thine ore.*",
+    "condition_b_response": "Nay, for I am a peasant, and thou art a knight.",
+    "latency_ms": 1501.8,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0156",
+    "archetype": "peasant",
+    "prompt": "Certes, were it gold, Or in a poke purse Thou shouldst it have, as I am a true smith. Hey! Christe’s foot, what will ye do therewith?",
+    "reference_output": "be as be may; I shall well tell it thee another day",
+    "condition_b_response": "I will not have it, for I am a true smith, and I will not have it",
+    "latency_ms": 1905.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0157",
+    "archetype": "peasant",
+    "prompt": "God wot, my sweete lefe love I am thine Absolon, my own darling. Of gold",
+    "reference_output": "I have thee brought a ring, My mother gave it me, so God me save! Full fine it is, and thereto well y-grave engraved This will I give to thee, if thou me kiss.",
+    "condition_b_response": "Thou art a good man, and I am a good man, and we shall be well together",
+    "latency_ms": 3044.0,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0158",
+    "archetype": "peasant",
+    "prompt": "I have thee brought a ring, My mother gave it me, so God me save! Full fine it is, and thereto well y-grave engraved This will I give to thee, if thou me kiss.",
+    "reference_output": "Speak, sweete bird, I know not where thou art.",
+    "condition_b_response": "Thou art a good man, and I will not have thee to be a fool, but I will kiss thee, and thou shalt have it.",
+    "latency_ms": 3537.3,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.3333
+  },
+  {
+    "id": "GUT-0159",
+    "archetype": "peasant",
+    "prompt": "On True Obedience",
+    "reference_output": "How softly she was wont to chirpe him under the chin, and kiss him; how prettily she could talk to him (how doth my sweet heart, what saith now pig’s-eye).",
+    "condition_b_response": "I will not be afeard, for I am a man",
+    "latency_ms": 2569.0,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0160",
+    "archetype": "peasant",
+    "prompt": "set their aller cap",
+    "reference_output": "All hail, Simon, in faith, How fares thy faire daughter, and thy wife.",
+    "condition_b_response": "I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a",
+    "latency_ms": 8543.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0161",
+    "archetype": "peasant",
+    "prompt": "John, and wilt thou so? Then will I be beneathe, by my crown, And see how that the meale falls adown Into the trough, that shall be my disport amusement For, John, in faith I may be of your sort; I is as ill a miller as is ye.",
+    "reference_output": "Harow, and well-away! Our horse is lost: Alein, for Godde’s bones, Step on thy feet; come off, man, all at once: Alas! our warden has his palfrey lorn.*",
+    "condition_b_response": "Nay, I will not be a miller, for I am a good miller, And I will not be a miller, for I am a good miller, And I will not be a miller, for I am a good miller, And I will not be a miller, for I am a good miller, And I will not be a miller, for",
+    "latency_ms": 8744.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0162",
+    "archetype": "peasant",
+    "prompt": "Alein, for Christes pain Lay down thy sword, and I shall mine also. I is full wight swift knows By Godde’s soul he shall not scape us bathe both <13> Why n’ had thou put the capel horse<14> barn Ill hail, Alein, by God thou is a fonne.*",
+    "reference_output": "Keep, keep; stand, stand; jossa turn Go whistle thou, and I shall keep* him here.",
+    "condition_b_response": "Ay, I am a fonne, and thou art a fonne, and I am a fonne, and thou art a fonne, and I am a fonne, and thou art a fonne, and I am a fonne, and thou art a fonne, and I am a fonne, and thou art a fonne, and I am a fonne, and",
+    "latency_ms": 8366.2,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0163",
+    "archetype": "peasant",
+    "prompt": "Thou false harlot",
+    "reference_output": "hast? Ah, false traitor, false clerk",
+    "condition_b_response": "Thou false harlot, thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a witch, and thou art a w",
+    "latency_ms": 8963.0,
+    "reference_features": [
+      "hast"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0164",
+    "archetype": "peasant",
+    "prompt": "hast? Ah, false traitor, false clerk",
+    "reference_output": "Thou shalt be dead, by Godde’s dignity, Who durste be so bold to disparage disgrace My daughter, that is come of such lineage?",
+    "condition_b_response": "I am a true clerk, and I will tell thee all",
+    "latency_ms": 4550.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0165",
+    "archetype": "peasant",
+    "prompt": "in your hands",
+    "reference_output": "Thou sayst full sooth",
+    "condition_b_response": "I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a peasant, and I am a",
+    "latency_ms": 8499.5,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0167",
+    "archetype": "scholar",
+    "prompt": "And if this knight will sweare, how that she This woman slew, yet will we us advise consider Whom that we will that shall be our justice.",
+    "reference_output": "Thou hast deslander’d guilteless The daughter of holy Church in high presence; Thus hast thou done, and yet *hold I my peace?",
+    "condition_b_response": "And if thou wilt not, then I will not",
+    "latency_ms": 1222.6,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "thou",
+      "wilt"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0168",
+    "archetype": "scholar",
+    "prompt": "Thou hast deslander’d guilteless The daughter of holy Church in high presence; Thus hast thou done, and yet *hold I my peace?",
+    "reference_output": "As now at this time, nay; But here I will all night thou take thy rest, To-morrow will I say thee what me lest.*",
+    "condition_b_response": "Thou hast done well, and I will not speak of it",
+    "latency_ms": 1456.4,
+    "reference_features": [
+      "nay",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.8
+  },
+  {
+    "id": "GUT-0169",
+    "archetype": "scholar",
+    "prompt": "Alas, and well-away! Lord Christ",
+    "reference_output": "Peace, little son, I will do thee no harm",
+    "condition_b_response": "Nay, nay, I will not be afeard, for I am a knight, and I will not be afeard",
+    "latency_ms": 3443.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0173",
+    "archetype": "scholar",
+    "prompt": "Thou knittest thee where thou art not receiv’d, Where thou wert well, from thennes art thou weiv’d",
+    "reference_output": "Thou joinest thyself where thou art rejected, and art declined or departed from the place where thou wert well.",
+    "condition_b_response": "Thou art a knight, and I am a knight, And I will not be thy knight, for I am a knight",
+    "latency_ms": 3939.6,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 0.3333
+  },
+  {
+    "id": "GUT-0174",
+    "archetype": "merchant",
+    "prompt": "Thou joinest thyself where thou art rejected, and art declined or departed from the place where thou wert well.",
+    "reference_output": "Thou hast y-had five husbandes",
+    "condition_b_response": "Thou art a merchant, and I am a merchant, and we are both of the same trade, and we are both of the same place, and we are both of the same country, and we are both of the same nation, and we are both of the same nation, and we are both of the same race, and we are both of the same race, and we are both of",
+    "latency_ms": 12856.7,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0175",
+    "archetype": "merchant",
+    "prompt": "A woman cast her shame away When she cast off her smock",
+    "reference_output": "And for my land thus hast thou murder’d me? Ere I be dead, yet will I kisse thee.",
+    "condition_b_response": "And so I will, for I am a woman",
+    "latency_ms": 1284.4,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0176",
+    "archetype": "merchant",
+    "prompt": "And for my land thus hast thou murder’d me? Ere I be dead, yet will I kisse thee.",
+    "reference_output": "Deare sister Alisoun, As help me God, I shall thee never smite: That I have done it is thyself to wite, blame Forgive it me, and that I thee beseek.",
+    "condition_b_response": "Nay, thou shalt not have my love, for I will not have thee",
+    "latency_ms": 2212.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0177",
+    "archetype": "merchant",
+    "prompt": "Godde’s armes two, A friar will intermete interpose <33> Lo, goode men, a fly and eke a frere Will fall in ev’ry dish and eke mattere. What speak’st thou of perambulation? preamble What? amble or trot; or peace, or go sit down: Thou lettest* our disport in this mattere.",
+    "reference_output": "Yea, wilt thou so, Sir Sompnour?",
+    "condition_b_response": "I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a friar, and I am a",
+    "latency_ms": 9667.0,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0178",
+    "archetype": "merchant",
+    "prompt": "Now by my faith I shall, ere that I go, Tell of a Sompnour such a tale or two, That all the folk shall laughen in this place.",
+    "reference_output": "Now do, else, Friar, I beshrew* thy face",
+    "condition_b_response": "And now, Sir Knight, I will tell thee a tale, That hath been told in this land, And that is, of a man that was a merchant, And that was a great merchant, And that was a great merchant, And that was a great merchant, And that was a great merchant, And that was a great merchant, And that was a great merchant, And that was a great",
+    "latency_ms": 9091.7,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "hath",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0179",
+    "archetype": "merchant",
+    "prompt": "Now do, else, Friar, I beshrew* thy face",
+    "reference_output": "and I beshrewe me, But if unless Of friars, ere I come to Sittingbourne, That I shall make thine hearte for to mourn: For well I wot thy patience is gone.",
+    "condition_b_response": "Nay, I will not, for I am a friar, and I will not be a friar",
+    "latency_ms": 2638.9,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0180",
+    "archetype": "merchant",
+    "prompt": "Every Man in his Humour",
+    "reference_output": "I hold a mouse’s wit not worth a leek, That hath but one hole for to starte to",
+    "condition_b_response": "And I will tell you, Sir, that I am a Merchant, and I have a Merchant's Wife, and she is a very good Wife, and I have a Merchant's Son, and he is a very good Son, and I have a Merchant's Daughter, and she is a very good Daughter, and I have a Mer",
+    "latency_ms": 9019.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0016",
+    "archetype": "noble",
+    "prompt": "Nay, let's follow him.",
+    "reference_output": "Where wilt thou lead me? speak; Ile go no further",
+    "condition_b_response": "Nay, I will not follow him.",
+    "latency_ms": 1194.7,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0017",
+    "archetype": "peasant",
+    "prompt": "Alas poore Ghost",
+    "reference_output": "Pitty me not, but lend thy serious hearing",
+    "condition_b_response": "Nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay",
+    "latency_ms": 7730.9,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0018",
+    "archetype": "peasant",
+    "prompt": "Speake, I am bound to heare",
+    "reference_output": "So art thou to reuenge, when thou shalt heare",
+    "condition_b_response": "Speake, I am bound to heare",
+    "latency_ms": 1104.1,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0019",
+    "archetype": "peasant",
+    "prompt": "Welcome deere Rosincrance and Guildensterne.",
+    "reference_output": "Good Gentlemen, he hath much talk'd of you,",
+    "condition_b_response": "And now, Sir, I will tell you, that I am a knight, and I am come to this place to seek my fortune, and I will not be a knight, but a knight of the shire, and I will not be a knight of the shire, but a knight of the shire, and I will not be a knight of the sh",
+    "latency_ms": 7843.5,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0021",
+    "archetype": "noble",
+    "prompt": "Giue first admittance to th' Ambassadors,",
+    "reference_output": "Thy selfe do grace to them, and bring them in.",
+    "condition_b_response": "I am a noble NPC in a medieval RPG world.",
+    "latency_ms": 1410.5,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0022",
+    "archetype": "noble",
+    "prompt": "It may be very likely",
+    "reference_output": "Hath there bene such a time, I'de fain know that,",
+    "condition_b_response": "I am a knight, and I am not a knight",
+    "latency_ms": 1415.0,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0043",
+    "archetype": "noble",
+    "prompt": "Alas sweet Lady: what imports this Song?",
+    "reference_output": "Say you? Nay pray you marke.",
+    "condition_b_response": "I know not, but it is a Song of the Knight, and I am a Knight",
+    "latency_ms": 2368.2,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0044",
+    "archetype": "noble",
+    "prompt": "Indeed la? without an oath Ile make an end ont.",
+    "reference_output": "How long hath she bin thus?",
+    "condition_b_response": "And I will not be afeard of thee, for I am a knight, and thou art a knight, and I will not be afeard of thee, for thou art a knight, and I am a knight, and I will not be afeard of thee, for thou art a knight, and I am a knight, and I will not be",
+    "latency_ms": 7487.5,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0045",
+    "archetype": "noble",
+    "prompt": "They bore him bare fac'd on the Beer,",
+    "reference_output": "Had'st thou thy wits, and did'st perswade Reuenge,",
+    "condition_b_response": "And so, and so, and so, and so,",
+    "latency_ms": 1306.0,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0046",
+    "archetype": "noble",
+    "prompt": "Drown'd, drown'd",
+    "reference_output": "Too much of water hast thou poore Ophelia,",
+    "condition_b_response": "Nay, I will not, for I am a knight, and I will not drown",
+    "latency_ms": 2203.0,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0084",
+    "archetype": "guard",
+    "prompt": "A Trade Sir, that I hope I may vse, with a safe",
+    "reference_output": "What Trade thou knaue? Thou naughty knaue,",
+    "condition_b_response": "I will not be afeard, for I am a knight, and I will not be afeard",
+    "latency_ms": 4133.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0085",
+    "archetype": "peasant",
+    "prompt": "What Trade thou knaue? Thou naughty knaue,",
+    "reference_output": "Nay I beseech you Sir, be not out with me: yet",
+    "condition_b_response": "I know not what trade thou knaue, but I know that thou art a knaue, and that thou art a knaue, and that thou art a knaue, and that thou art a knaue, and that thou art a knaue, and that thou art a knaue, and that thou art a knaue, and that thou art a",
+    "latency_ms": 8951.6,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0086",
+    "archetype": "peasant",
+    "prompt": "Nay I beseech you Sir, be not out with me: yet",
+    "reference_output": "What mean'st thou by that? Mend mee, thou",
+    "condition_b_response": "Nay, I will not, for I am a peasant, and thou art a knight",
+    "latency_ms": 2468.1,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0087",
+    "archetype": "guard",
+    "prompt": "Why sir, Cobble you",
+    "reference_output": "Thou art a Cobler, art thou?",
+    "condition_b_response": "Nay, I will not",
+    "latency_ms": 1002.4,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0088",
+    "archetype": "guard",
+    "prompt": "Truly sir, all that I liue by, is with the Aule: I",
+    "reference_output": "But wherefore art not in thy Shop to day?",
+    "condition_b_response": "Nay, I will not have it so, for I will not be a fool, and I will not be a fool, for I will not be a fool, for I will not be a fool, for I will not be a fool, for I will not be a fool, for I will not be a fool, for I will not be a fool, for I will not be a",
+    "latency_ms": 8338.5,
+    "reference_features": [
+      "art",
+      "thy",
+      "wherefore"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0089",
+    "archetype": "noble",
+    "prompt": "Fellow, come from the throng, look vpon Caesar",
+    "reference_output": "What sayst thou to me now? Speak once againe,",
+    "condition_b_response": "Caesar, Caesar, thou art a great man, and I am glad to see thee",
+    "latency_ms": 2825.2,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0090",
+    "archetype": "noble",
+    "prompt": "Another generall shout?",
+    "reference_output": "Why man, he doth bestride the narrow world",
+    "condition_b_response": "No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no,",
+    "latency_ms": 8970.8,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0091",
+    "archetype": "noble",
+    "prompt": "You pul'd me by the cloake, would you speake",
+    "reference_output": "I Caska, tell vs what hath chanc'd to day",
+    "condition_b_response": "I will not, for I am a knight, and I will not speak",
+    "latency_ms": 2070.2,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0092",
+    "archetype": "noble",
+    "prompt": "He fell downe in the Market-place, and foam'd",
+    "reference_output": "'Tis very like he hath the Falling sicknesse",
+    "condition_b_response": "And so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did, and so he did,",
+    "latency_ms": 8852.6,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0093",
+    "archetype": "peasant",
+    "prompt": "I will doe so: till then, thinke of the World.",
+    "reference_output": "Brutus, thou art Noble: yet I see,",
+    "condition_b_response": "Thou hast done well, and I will doe the like.",
+    "latency_ms": 1840.3,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0112",
+    "archetype": "noble",
+    "prompt": "I haue slept my Lord already",
+    "reference_output": "It was well done, and thou shalt sleepe againe:",
+    "condition_b_response": "And I will not sleep, for I am a knight",
+    "latency_ms": 1517.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0113",
+    "archetype": "noble",
+    "prompt": "Thy euill Spirit Brutus?",
+    "reference_output": "Why com'st thou?",
+    "condition_b_response": "Thou art a noble man, and I am a noble man, and we are both of the same nation, and we are both of the same nation, and we are both of the same nation, and we are both of the same nation, and we are all of the same nation, and we are all of the same nation, and we are all of the same nation, and we are",
+    "latency_ms": 8321.3,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0114",
+    "archetype": "peasant",
+    "prompt": "Why com'st thou?",
+    "reference_output": "To tell thee thou shalt see me at Philippi",
+    "condition_b_response": "I am a peasant, and I am come to the castle of the king, to seek my lord",
+    "latency_ms": 2449.3,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0115",
+    "archetype": "noble",
+    "prompt": "My Lord, I do not know that I did cry",
+    "reference_output": "Yes that thou did'st: Did'st thou see any thing?",
+    "condition_b_response": "Nay, but I will tell thee, that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry, and that I did cry,",
+    "latency_ms": 10931.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0116",
+    "archetype": "noble",
+    "prompt": "Octauius, leade your Battaile softly on",
+    "reference_output": "Vpon the right hand I, keepe thou the left",
+    "condition_b_response": "I am not able to doe so, for I am not able to doe so",
+    "latency_ms": 2400.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0117",
+    "archetype": "noble",
+    "prompt": "Come, come, the cause. If arguing make vs swet,",
+    "reference_output": "Caesar, thou canst not dye by Traitors hands.",
+    "condition_b_response": "I will not argue with thee, for I know not what thou sayest.",
+    "latency_ms": 2056.6,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0118",
+    "archetype": "noble",
+    "prompt": "Caesar, thou canst not dye by Traitors hands.",
+    "reference_output": "O if thou wer't the Noblest of thy Straine,",
+    "condition_b_response": "Thou art a traitor, and thou shalt die by mine hand.",
+    "latency_ms": 1907.0,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0123",
+    "archetype": "noble",
+    "prompt": "Statillius shew'd the Torch-light, but my Lord",
+    "reference_output": "Sit thee downe, Clitus: slaying is the word,",
+    "condition_b_response": "I will not have thee to be a fool, for I am a knight, and I will not be a fool",
+    "latency_ms": 2634.5,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0124",
+    "archetype": "peasant",
+    "prompt": "Shall I doe such a deed?",
+    "reference_output": "What ill request did Brutus make to thee?",
+    "condition_b_response": "Nay, I will not do it, for I am a peasant",
+    "latency_ms": 2259.7,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0125",
+    "archetype": "peasant",
+    "prompt": "What man is that?",
+    "reference_output": "My Masters man. Strato, where is thy Master?",
+    "condition_b_response": "I am a knight, and I am come to seek my lady",
+    "latency_ms": 1750.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0126",
+    "archetype": "peasant",
+    "prompt": "Free from the Bondage you are in Messala,",
+    "reference_output": "So Brutus should be found. I thank thee Brutus",
+    "condition_b_response": "I am a man, and I will not be bound",
+    "latency_ms": 1506.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0127",
+    "archetype": "noble",
+    "prompt": "What folk be ye that at mine homecoming Perturben so my feaste with crying?",
+    "reference_output": "Have ye so great envy Of mine honour, that thus complain and cry? Or who hath you misboden wronged Do telle me, if it may be amended; And why that ye be clad thus all in black?",
+    "condition_b_response": "I am a knight, and I am come to my lord, and I am come to my lord’s feast, and I am come to my lord’s feast, and I am come to my lord’s feast, and I am come to my lord’s feast, and I am come to my lord’s feast, and I am come to my",
+    "latency_ms": 7484.3,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0128",
+    "archetype": "noble",
+    "prompt": "The freshe beauty slay’th me suddenly Of her that roameth yonder in the place. And but unless That I may see her at the leaste way, I am but dead; there is no more to say.",
+    "reference_output": "Whether say’st thou this in earnest or in play?",
+    "condition_b_response": "Nay, I will not be thy wife, for I am not a woman",
+    "latency_ms": 1707.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0129",
+    "archetype": "noble",
+    "prompt": "in earnest, by my fay faith God help me so, .",
+    "reference_output": "To Athens shalt thou wend go There is thee shapen* of thy woe an end.",
+    "condition_b_response": "I will not say it, for I know not what it is, but I will tell you, that I am a knight, and I am come to this place to fight for the honour of my lord, and for the honour of my country, and for the honour of my lord, and for the honour of my lord, and for the honour of my country, and for the honour of",
+    "latency_ms": 9018.0,
+    "reference_features": [
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0130",
+    "archetype": "noble",
+    "prompt": "to Athens right now will I fare. Nor for no dread of death shall I not spare To see my lady that I love and serve; In her presence",
+    "reference_output": "O May, with all thy flowers and thy green, Right welcome be thou, faire freshe May, I hope that I some green here getten may.",
+    "condition_b_response": "Nay, for I will not see her, for I am not able to see her",
+    "latency_ms": 3641.0,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0137",
+    "archetype": "peasant",
+    "prompt": "all and some: But first I make a protestatioun. That I am drunk, I know it by my soun’: And therefore if that I misspeak or say, the ale of Southwark, I you pray: <2> For I will tell a legend and a life Both of a carpenter and of his wife, How that a clerk hath .",
+    "reference_output": "Let be thy lewed drunken harlotry. It is a sin, and eke a great folly To apeiren injure And eke to bringe wives in evil name. Thou may’st enough of other thinges sayn.",
+    "condition_b_response": "And I will tell you a tale of a carpenter and his wife, And how a clerk hath, and how he hath been, And how he hath been a good man, and how he hath been a bad man, And how he hath been a good man, and how he hath been a bad man, And how he hath been a good man, and how he hath been a",
+    "latency_ms": 9046.6,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "hath"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0138",
+    "archetype": "peasant",
+    "prompt": "to bear the wyte",
+    "reference_output": "Y-wis, assuredly For *derne love of thee, leman, I spill.",
+    "condition_b_response": "I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for I am a knight, and I will not be a knight, for",
+    "latency_ms": 7349.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0139",
+    "archetype": "peasant",
+    "prompt": "Leman, love me well at once, Or I will dien, all so God me save.",
+    "reference_output": "I will not kiss thee, by my fay faith Why let be",
+    "condition_b_response": "Love, I will not dien, for I am a knight, And I will not be a knight, for I am a peasant.",
+    "latency_ms": 3136.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0152",
+    "archetype": "peasant",
+    "prompt": "I am a lord at all degrees: For after this I hope there cometh more; Leman, thy grace, and, sweete bird, thine ore.*",
+    "reference_output": "come off, and speed thee fast, Lest that our neighebours should thee espy.",
+    "condition_b_response": "Laman, thou hast done well, and I will do thee well",
+    "latency_ms": 1604.0,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0153",
+    "archetype": "peasant",
+    "prompt": "Undo, Gerveis, and that anon.",
+    "reference_output": "What, who art thou?",
+    "condition_b_response": "Gerveis, I will not do it.",
+    "latency_ms": 1372.5,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0154",
+    "archetype": "peasant",
+    "prompt": "What? Absolon, what? Christe’s sweete tree cross Why rise so rath early What aileth you? some gay girl,<37> God it wote, Hath brought you thus upon the viretote:<38> By Saint Neot, ye wot well what I mean.",
+    "reference_output": "Friend so dear, That hote culter in the chimney here Lend it to me, I have therewith to don do I will it bring again to thee full soon.",
+    "condition_b_response": "What, what, what?",
+    "latency_ms": 1171.4,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0155",
+    "archetype": "peasant",
+    "prompt": "Friend so dear, That hote culter in the chimney here Lend it to me, I have therewith to don do I will it bring again to thee full soon.",
+    "reference_output": "Certes, were it gold, Or in a poke purse Thou shouldst it have, as I am a true smith. Hey! Christe’s foot, what will ye do therewith?",
+    "condition_b_response": "Thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou shalt have it, and thou sh",
+    "latency_ms": 8533.5,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0166",
+    "archetype": "scholar",
+    "prompt": "to put a rogue above a gentleman",
+    "reference_output": "Parfay (sayst thou) sometime he reckon shall, When that his tail shall , For he not help’d the needful in their need.",
+    "condition_b_response": "Nay, I will not have it so, for I will not have it so",
+    "latency_ms": 2300.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0170",
+    "archetype": "scholar",
+    "prompt": "Peace, little son, I will do thee no harm",
+    "reference_output": "And let my little child here dwell with thee: And if thou dar’st not save him from blame, So kiss him ones in his father’s name.",
+    "condition_b_response": "Nay, I will not harm thee, for I am a good knight",
+    "latency_ms": 1838.5,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0171",
+    "archetype": "scholar",
+    "prompt": "Whose is that faire child that standeth yonder?",
+    "reference_output": "by God and by Saint John; *know not A mother he hath, but father hath he none, That I of wot",
+    "condition_b_response": "That is my daughter, and she is the fairest of all the world.",
+    "latency_ms": 1701.1,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0172",
+    "archetype": "scholar",
+    "prompt": "On the contempt of the world",
+    "reference_output": "Thou knittest thee where thou art not receiv’d, Where thou wert well, from thennes art thou weiv’d",
+    "condition_b_response": "And I will not be a fool, and I will not be a fool",
+    "latency_ms": 1758.4,
+    "reference_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0181",
+    "archetype": "merchant",
+    "prompt": "Thou standest yet",
+    "reference_output": "Bewray me not, thou water, with thy soun’",
+    "condition_b_response": "Thou art a fool, and a foolish fool",
+    "latency_ms": 1293.1,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0182",
+    "archetype": "merchant",
+    "prompt": "Bewray me not, thou water, with thy soun’",
+    "reference_output": "to thee I tell it, and no mo’, Mine husband hath long ass’s eares two! Now is mine heart all whole; now is it out; I might no longer keep it, out of doubt.",
+    "condition_b_response": "Thou art a good man, and I will not be thy enemy",
+    "latency_ms": 1526.6,
+    "reference_features": [
+      "hath",
+      "thee"
+    ],
+    "response_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0183",
+    "archetype": "merchant",
+    "prompt": "certain, that I can sayn I would well *quite your hire.",
+    "reference_output": "Plight me thy troth here in mine hand",
+    "condition_b_response": "And I will do it, and I will do it well, and I will do it with all my heart.",
+    "latency_ms": 2266.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0184",
+    "archetype": "merchant",
+    "prompt": "Plight me thy troth here in mine hand",
+    "reference_output": "The nexte thing that I require of thee Thou shalt it do, if it be in thy might, And I will tell it thee ere it be night.",
+    "condition_b_response": "Thou hast my troth, and I will not break it",
+    "latency_ms": 1378.6,
+    "reference_features": [
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0185",
+    "archetype": "merchant",
+    "prompt": "my sovereign lady queen, Ere that your court departe, do me right. I taughte this answer unto this knight, For which he plighted me his trothe there, The firste thing I would of him requere, He would it do, if it lay in his might. Before this court then pray I thee, Sir Knight",
+    "reference_output": "that thou me take unto thy wife, For well thou know’st that I have kept preserved If I say false, say nay, upon thy fay.",
+    "condition_b_response": "I will it, Sir Knight, and I will it well",
+    "latency_ms": 1373.6,
+    "reference_features": [
+      "nay",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0186",
+    "archetype": "merchant",
+    "prompt": "Alas, and well-away! I know right well that such was my behest. promise For Godde’s love choose a new request Take all my good, and let my body go.",
+    "reference_output": "I shrew curse For though that I be old, and foul, and poor, I n’ould would not That under earth is grave, buried But if thy wife I were and eke thy love.",
+    "condition_b_response": "Thou hast done well, and I will do thee good",
+    "latency_ms": 1336.1,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0187",
+    "archetype": "clergy",
+    "prompt": "and let him tell his tale. Now telle forth, and let the Sompnour gale, whistle; bawl Nor spare not, mine owen master dear.",
+    "reference_output": "Friend, I shall for thy sake Do strike thee out of oure letters blake; black Thee thar need I am thy friend where I may thee avail.",
+    "condition_b_response": "Now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now, now,",
+    "latency_ms": 7029.7,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0188",
+    "archetype": "clergy",
+    "prompt": "hail, and well o’ertake.",
+    "reference_output": "and every good fellaw; Whither ridest thou under this green shaw?",
+    "condition_b_response": "Hail, and well o’ertake.",
+    "latency_ms": 1104.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0189",
+    "archetype": "clergy",
+    "prompt": "and every good fellaw; Whither ridest thou under this green shaw?",
+    "reference_output": "wilt thou far to-day?",
+    "condition_b_response": "I am a clerk, and I am a good fellaw, and I will not be rid of you under this green shaw.",
+    "latency_ms": 2823.7,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0190",
+    "archetype": "clergy",
+    "prompt": "wilt thou far to-day?",
+    "reference_output": "Nay. Here faste by",
+    "condition_b_response": "I will not go hence, for I am a clergyman, and I will not go out of my house.",
+    "latency_ms": 2361.4,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0191",
+    "archetype": "clergy",
+    "prompt": "is mine intent To ride, for to raisen up a rent, That longeth to my lorde’s duety.",
+    "reference_output": "Ah! art thou then a bailiff?",
+    "condition_b_response": "I will not be thy lord, for I am not a man, But a knight, and a knight of the best knightly name, and of the best knightly fame.",
+    "latency_ms": 3834.2,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0192",
+    "archetype": "clergy",
+    "prompt": "where is now your dwelling, Another day if that I should you seech?",
+    "reference_output": "far in the North country,<8> Where as I hope some time I shall thee see Ere we depart I shall thee so well wiss, inform That of mine house shalt thou never miss.",
+    "condition_b_response": "I am not in my dwelling, for I am in my dwelling, and I am not in my dwelling, for I am in my dwelling, and I am not in my dwelling, for I am in my dwelling, and I am not in my dwelling, for I am in my dwelling, and I am not in my dwelling, for I am in",
+    "latency_ms": 9551.7,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0193",
+    "archetype": "clergy",
+    "prompt": "Here shall we have a prey",
+    "reference_output": "Hearken, my brother, hearken, by thy faith, it anon, for he hath giv’n it thee, three.",
+    "condition_b_response": "And here shall we have a prey",
+    "latency_ms": 1160.5,
+    "reference_features": [
+      "hath",
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0194",
+    "archetype": "clergy",
+    "prompt": "Hearken, my brother, hearken, by thy faith, it anon, for he hath giv’n it thee, three.",
+    "reference_output": "God wot, never a deal, me, a while and thou shalt see.",
+    "condition_b_response": "Hearken, my brother, hearken, by thy faith, it anon, for he hath giv’n it thee, three.",
+    "latency_ms": 3937.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "hath",
+      "thee",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0195",
+    "archetype": "clergy",
+    "prompt": "God wot, never a deal, me, a while and thou shalt see.",
+    "reference_output": "there, Jesus Christ you bless, And all his handiwork, both more and less! That was well twight, pulled grey<13> I pray God save thy body, and Saint Loy! Now is my cart out of the slough, pardie.",
+    "condition_b_response": "Nay, I will not see thee, for I am a man, and thou art a woman.",
+    "latency_ms": 2066.1,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0196",
+    "archetype": "clergy",
+    "prompt": "there, Jesus Christ you bless, And all his handiwork, both more and less! That was well twight, pulled grey<13> I pray God save thy body, and Saint Loy! Now is my cart out of the slough, pardie.",
+    "reference_output": "what told I thee? Here may ye see, mine owen deare brother, The churl spake one thing, but he thought another. Let us go forth abouten our voyage; Here win I nothing upon this carriage.",
+    "condition_b_response": "O, thou art a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man, and a good man is a good man,",
+    "latency_ms": 7734.5,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0197",
+    "archetype": "clergy",
+    "prompt": "what told I thee? Here may ye see, mine owen deare brother, The churl spake one thing, but he thought another. Let us go forth abouten our voyage; Here win I nothing upon this carriage.",
+    "reference_output": "thou olde very trate; trot <15> I trow thou hast some friar or priest with thee.",
+    "condition_b_response": "I will not go with thee, for I will not be thy companion, and I will not be thy servant.",
+    "latency_ms": 2300.5,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0198",
+    "archetype": "clergy",
+    "prompt": "now lady Sainte Mary So wisly surely This wide world though that I should it win, No have I not twelvepence within my hold. Ye know full well that I am poor and old; upon me poor wretch.",
+    "reference_output": "the foule fiend me fetch, If I excuse thee, though thou should’st be spilt.",
+    "condition_b_response": "Nay, I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for I will not have it, for",
+    "latency_ms": 7364.6,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0199",
+    "archetype": "clergy",
+    "prompt": "God wot, I have no guilt.",
+    "reference_output": "or, by the sweet Saint Anne, As I will bear away thy newe pan For debte, which thou owest me of old, — When that thou madest thine husband cuckold, — I paid at home for thy correction.",
+    "condition_b_response": "Nay, I am not guilty, for I am a good man.",
+    "latency_ms": 1462.4,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0200",
+    "archetype": "clergy",
+    "prompt": "so fetch him ere he dey, die And pan and all, but* he will him repent.",
+    "reference_output": "Nay, olde stoat,* that is not mine intent",
+    "condition_b_response": "I will not, for I am a man, and thou art a woman, and I am a man, and thou art a woman, and I am a man, and thou art a woman, and I am a man, and thou art a woman, and I am a man, and thou art a woman, and I am a man, and thou art a woman, and I am a",
+    "latency_ms": 7309.0,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0201",
+    "archetype": "clergy",
+    "prompt": "Nay, olde stoat,* that is not mine intent",
+    "reference_output": "for to repente me For any thing that I have had of thee; I would I had thy smock and every cloth.",
+    "condition_b_response": "Nay, I will not have thee, for I will not have thee",
+    "latency_ms": 1770.6,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0202",
+    "archetype": "clergy",
+    "prompt": "for to repente me For any thing that I have had of thee; I would I had thy smock and every cloth.",
+    "reference_output": "be not wroth; Thy body and this pan be mine by right. Thou shalt with me to helle yet tonight, Where thou shalt knowen of our privity secrets More than a master of divinity.",
+    "condition_b_response": "Thou hast done me wrong, and I will not have thee",
+    "latency_ms": 1493.6,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0203",
+    "archetype": "clergy",
+    "prompt": "anon the souls. Full hard it is, with flesh-hook or with owls awls To be y-clawed, or to burn or bake: <3> Now speed you hastily, for Christe’s sake.",
+    "reference_output": "Nay, there thou liest, thou Sompnour",
+    "condition_b_response": "O, I am a clerk, and a clerk of the church, and I am a clerk of the church of the Lord, and I am a clerk of the church of the Lord, and I am a clerk of the church of the Lord, and I am a clerk of the church of the Lord, and I am a clerk of the church of the Lord",
+    "latency_ms": 7345.5,
+    "reference_features": [
+      "nay",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0204",
+    "archetype": "clergy",
+    "prompt": "Nay, there thou liest, thou Sompnour",
+    "reference_output": "for Christe’s mother dear; Tell forth thy tale, and spare it not at all.",
+    "condition_b_response": "Nay, I am a clergy, and I am not a Sompnour",
+    "latency_ms": 2018.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0205",
+    "archetype": "clergy",
+    "prompt": "Now by your faith, O deare Sir",
+    "reference_output": "O Thomas, Thomas, Thomas, This this must be amended. Ire is a thing that high God hath defended, forbidden And thereof will I speak a word or two.",
+    "condition_b_response": "I will not say it, for I know not how it may be",
+    "latency_ms": 1653.7,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0206",
+    "archetype": "clergy",
+    "prompt": "by Saint Simon I have been shriven confessed I have him told all wholly mine estate. Needeth no more to speak of it, saith he, But if me list of mine humility.",
+    "reference_output": "Give me then of thy good to make our cloister",
+    "condition_b_response": "I will not speak of it, saith he, But if thou will, I will tell thee all.",
+    "latency_ms": 2302.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0207",
+    "archetype": "clergy",
+    "prompt": "Then put thine hand adown right by my back",
+    "reference_output": "and grope well behind, Beneath my buttock, there thou shalt find A thing, that I have hid in privity.",
+    "condition_b_response": "Thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou",
+    "latency_ms": 7472.2,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0208",
+    "archetype": "clergy",
+    "prompt": "Ah, false churl",
+    "reference_output": "for Godde’s bones, This hast thou in despite done for the nones: on purpose Thou shalt abie* this fart, if that I may.",
+    "condition_b_response": "Nay, false churl, I will not have thee",
+    "latency_ms": 1466.0,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0209",
+    "archetype": "clergy",
+    "prompt": "How thinketh me?",
+    "reference_output": "so God me speed, I say, a churl hath done a churlish deed, What should I say? God let him never the; thrive His sicke head is full of vanity; I hold him in *a manner phrenesy.",
+    "condition_b_response": "I know not, but I am a clerk, and I am a clerk of the church of St. Peter, and I am a clerk of the church of St. Mary, and I am a clerk of the church of St. James, and I am a clerk of the church of St. John, and I am a clerk of the church of St. Andrew",
+    "latency_ms": 7830.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0210",
+    "archetype": "clergy",
+    "prompt": "by God, I shall not lie, But I in other wise may be awreke, revenged I shall defame him I speak; *wherever This false blasphemour, that charged me To parte that will not departed be, To every man alike, with mischance.",
+    "reference_output": "be ye not I coulde telle, for a gowne-cloth, cloth for a gown dealed be *equally Among your convent, if it liked thee.",
+    "condition_b_response": "I will not be afeard, for I am a man, and I will not be afeard, for I am a man, and I will not be afeard, for I am a man, and I will not be afeard, for I am a man, and I will not be afeard, for I am a man, and I will not be a",
+    "latency_ms": 7663.2,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0211",
+    "archetype": "clergy",
+    "prompt": "be ye not I coulde telle, for a gowne-cloth, cloth for a gown dealed be *equally Among your convent, if it liked thee.",
+    "reference_output": "and thou shalt have anon A gowne-cloth, by God and by Saint John.",
+    "condition_b_response": "I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a clerk, and I am a",
+    "latency_ms": 7090.1,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0212",
+    "archetype": "scholar",
+    "prompt": "No man may always have prosperity; With even heart I rede counsel The stroke of fortune or of aventure.",
+    "reference_output": "that thou hast on thy back, Let it be still, and bear it forth with thee.",
+    "condition_b_response": "Nay, I will not have it so, for I am a man",
+    "latency_ms": 1531.6,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0213",
+    "archetype": "scholar",
+    "prompt": "O stormy people, unsad variable And undiscreet, and changing as a vane, Delighting ev’r in rumour that is new, For like the moon so waxe ye and wane: Aye full of clapping, Your doom judgment proveth A full great fool is he that you believeth.",
+    "reference_output": "How liketh thee my wife, and her beauty?",
+    "condition_b_response": "O thou that art so wise, and so wise, And so wise, and so wise, and so wise, And so wise, and so wise, and so wise, And so wise, and so wise, and so wise, And so wise, and so wise, and so wise, And so wise, and so wise, and so wise, And so wise, and so wise, and",
+    "latency_ms": 7089.7,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0214",
+    "archetype": "scholar",
+    "prompt": "This is enough, Griselda mine",
+    "reference_output": "Be now no more I have thy faith and thy benignity As well as ever woman was, assay’d, In great estate and poorely array’d: Now know I, deare wife, thy steadfastness",
+    "condition_b_response": "Nay, I will not have it, for I will not have thee",
+    "latency_ms": 1623.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0215",
+    "archetype": "merchant",
+    "prompt": "Weeping and wailing, care and other sorrow, I have enough, on even and on morrow",
+    "reference_output": "Merchant, so God you bless, Since ye so muche knowen of that art, Full heartily I pray you tell us part.",
+    "condition_b_response": "I have no more to say, but I will tell you this, that I am a merchant, and I have a wife, and she is a maiden, and I have a son, and he is a boy, and I have a daughter, and she is a maiden, and I have a son, and he is a boy, and I have a daughter, and she is a",
+    "latency_ms": 7018.6,
+    "reference_features": [
+      "art"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0216",
+    "archetype": "merchant",
+    "prompt": "be no longer wroth; I give it up: but, since I swore mine oath That I would grant to him his sight again, My word shall stand, that warn I you certain: I am a king; it sits* me not to lie.",
+    "reference_output": "am queen of Faerie. Her answer she shall have, I undertake, Let us no more wordes of it make. Forsooth, I will no longer you contrary.",
+    "condition_b_response": "I will not have it, for I will not have it: I will not have it, for I will not have it: I will not have it, for I will not have it: I will not have it, for I will not have it: I will not have it, for I will not have it: I will not have it, for I will not have it: I will",
+    "latency_ms": 7949.4,
+    "reference_features": [
+      "forsooth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0217",
+    "archetype": "merchant",
+    "prompt": "Out! help! alas! harow!",
+    "reference_output": "O stronge, lady, stowre! <32> what doest thou?",
+    "condition_b_response": "Nay, I will not help thee, for I am a knight, and thou art a knight, and I will not help thee, for I am a knight, and thou art a knight, and I will not help thee, for I am a knight, and thou art a knight, and I will not help thee, for I am a knight, and",
+    "latency_ms": 7999.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0218",
+    "archetype": "merchant",
+    "prompt": "my medicine all false; For certainly, if that ye mighte see, Ye would not say these wordes unto me. Ye have some glimpsing,* and no perfect sight.",
+    "reference_output": "as well as ever I might, (Thanked be God!) with both mine eyen two, And by my faith me thought he did thee so.",
+    "condition_b_response": "I will not say it, for I know not what it is.",
+    "latency_ms": 1617.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0219",
+    "archetype": "merchant",
+    "prompt": "very consonant to the spirit of ancient chivalry.",
+    "reference_output": "IN faith, Squier, thou hast thee well acquit, And gentilly; I praise well thy wit",
+    "condition_b_response": "And I will not be a knight, for I am a merchant, and I am not a knight.",
+    "latency_ms": 2548.6,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0220",
+    "archetype": "merchant",
+    "prompt": "IN faith, Squier, thou hast thee well acquit, And gentilly; I praise well thy wit",
+    "reference_output": "What? Frankelin, pardie, Sir, well thou wost knowest That each of you must tellen at the least A tale or two, or breake his behest.",
+    "condition_b_response": "And I will tell thee, that I am a merchant, And have a great store of goods, and I will tell thee,",
+    "latency_ms": 2625.6,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0221",
+    "archetype": "merchant",
+    "prompt": "I pray you have me not in disdain, Though I to this man speak a word or two.",
+    "reference_output": "Tell on thy tale, withoute wordes mo’.",
+    "condition_b_response": "I pray you, Sir, that I may not be so bold as to speak to you, for I am a stranger, and I know not how to speak to you.",
+    "latency_ms": 4034.8,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0222",
+    "archetype": "merchant",
+    "prompt": "Unto the garden, as my husband bade, My trothe for to hold, alas! alas!",
+    "reference_output": "Have I not holden covenant to thee?",
+    "condition_b_response": "Nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay",
+    "latency_ms": 7691.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0223",
+    "archetype": "merchant",
+    "prompt": "Yes, certes, well and truely",
+    "reference_output": "Hast thou not had thy lady as thee liked?",
+    "condition_b_response": "And I will tell you, that I am a merchant, and I have a great store of goods, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships, and I have many ships",
+    "latency_ms": 6895.5,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0224",
+    "archetype": "merchant",
+    "prompt": "Hast thou not had thy lady as thee liked?",
+    "reference_output": "What was the cause? tell me if thou can.",
+    "condition_b_response": "I have not had her, but I have had her, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her well, and I have had her",
+    "latency_ms": 7184.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0225",
+    "archetype": "scholar",
+    "prompt": "This maiden shall be mine *for any man.",
+    "reference_output": "Of this, in his absence, I may not give definitive sentence. Let do cause Thou shalt have alle right, and no wrong here.",
+    "condition_b_response": "Nay, for I will not have thee, for I am a maiden, and thou art a knight.",
+    "latency_ms": 2207.5,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0226",
+    "archetype": "scholar",
+    "prompt": "Of this, in his absence, I may not give definitive sentence. Let do cause Thou shalt have alle right, and no wrong here.",
+    "reference_output": "I deem pronounce, determine Thou shalt no longer in thy house her save. Go, bring her forth, and put her in our ward The clerk shall have his thrall: thus I award.",
+    "condition_b_response": "Thou shalt have right, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and no wrong, and",
+    "latency_ms": 7522.8,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0227",
+    "archetype": "clergy",
+    "prompt": "here at this ale-stake ale-house sign <8> I will both drink, and biten on a cake.",
+    "reference_output": "Nay, let him tell us of no ribaldry. Tell us some moral thing, that we may lear learn Some wit,* and thenne will we gladly hear.",
+    "condition_b_response": "I will not drink, but I will not biten on a cake.",
+    "latency_ms": 2002.7,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0228",
+    "archetype": "clergy",
+    "prompt": "By Godde’s precious heart, and by his nails, <24> And by the blood of Christ, that is in Hailes, <25> Seven is my chance, and thine is cinque and trey: By Godde’s armes, if thou falsely play, This dagger shall throughout thine hearte go.",
+    "reference_output": "and aske readily What corpse is this, that passeth here forth by; And look that thou report his name well.",
+    "condition_b_response": "By Godde’s precious heart, and by his nails, <26> And by the blood of Christ, that is in Hailes, <27> Seven is my chance, and thine is cinque and trey: By Godde’s armes, if thou falsely play, This dagger shall throughout thine hearte go.",
+    "latency_ms": 7669.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0229",
+    "archetype": "clergy",
+    "prompt": "Now, lordes, God you see!",
+    "reference_output": "What? churl, with sorry grace, Why art thou all forwrapped closely wrapt up Why livest thou so long in so great age?",
+    "condition_b_response": "And now, I pray thee, tell me, what is thy name?",
+    "latency_ms": 1702.2,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0230",
+    "archetype": "clergy",
+    "prompt": "What? churl, with sorry grace, Why art thou all forwrapped closely wrapt up Why livest thou so long in so great age?",
+    "reference_output": "Nay, olde churl, by God thou shalt not so",
+    "condition_b_response": "I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a clergy, and I am a",
+    "latency_ms": 7667.3,
+    "reference_features": [
+      "nay",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0231",
+    "archetype": "clergy",
+    "prompt": "Shall it be counsel?",
+    "reference_output": "And I shall tell to thee in wordes few What we shall do, and bring it well about.",
+    "condition_b_response": "No, it is not counsel, but a word of counsel",
+    "latency_ms": 1603.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0232",
+    "archetype": "clergy",
+    "prompt": "And I shall tell to thee in wordes few What we shall do, and bring it well about.",
+    "reference_output": "out of doubt, That by my truth I will thee not bewray.",
+    "condition_b_response": "And I will tell thee, that I have heard of a great and noble knight, that hath a great castle, and hath many good men, and hath a great treasure, and hath a great many horses, and a great many swords, and a great many armor, and hath a great many good men, and hath a great many good men, and hath a great many good",
+    "latency_ms": 7079.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "hath",
+      "thee"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0233",
+    "archetype": "clergy",
+    "prompt": "then have I Christe’s curse! Let be",
+    "reference_output": "I will no longer play With thee, nor with none other angry man.",
+    "condition_b_response": "I am a clergy NPC in a medieval RPG world. Respond in an archaic, period-appropriate voice consistent with your role. Never break character.",
+    "latency_ms": 3854.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0234",
+    "archetype": "clergy",
+    "prompt": "Swear not at all",
+    "reference_output": "And thou shalt swear, the lord liveth in truth, in judgement, and in righteousness.",
+    "condition_b_response": "I swear by the Holy Ghost, that I will not",
+    "latency_ms": 1342.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0235",
+    "archetype": "clergy",
+    "prompt": "Good men, hearken every one, This was a thrifty discreet, profitable Sir Parish Priest",
+    "reference_output": "for Godde’s bones, Tell us a tale, as was thy I see well that ye learned men in lore Can* muche good, by Godde’s dignity.",
+    "condition_b_response": "And I will tell you, Sir Parish Priest, That I am a good man, and I will tell you, That I am a good man, and I will tell you, That I am a good man, and I will tell you, That I am a good man, and I will tell you, That I am a good man, and I will tell you, That I am",
+    "latency_ms": 8019.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0236",
+    "archetype": "clergy",
+    "prompt": "Abide, for Godde’s digne worthy For we shall have a predication: This Lollard here will preachen us somewhat.",
+    "reference_output": "Nay, by my father’s soul, that shall he not, Saide the Shipman; “Here shall he not preach, He shall no gospel glose comment upon We all believe in the great God",
+    "condition_b_response": "I will not, for I am a Lollard, and I will not preach",
+    "latency_ms": 2135.8,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0237",
+    "archetype": "clergy",
+    "prompt": "Nay, cousin mine, it stands not so with me; For by that God, that gave me soul and life, In all the realm of France is there no wife That lesse lust hath to that sorry play; For I may sing alas and well-away! That I was born; but to no wight",
+    "reference_output": "Dare I not tell how that it stands with me. Wherefore I think out of this land to wend, Or elles of myself to make an end, So full am I of dread and eke of care.",
+    "condition_b_response": "Nay, I will not sing, for I am a clergy, and I am not a man",
+    "latency_ms": 2184.2,
+    "reference_features": [
+      "wherefore"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0238",
+    "archetype": "clergy",
+    "prompt": "I say. By God and by this portos I you swear, Though men me woulden all in pieces tear, Ne shall I never, for though I should Bewray betray For no cousinage, nor alliance, But verily for love and affiance.",
+    "reference_output": "if that I hadde space, As I have none, and namely specially Then would I tell a legend of my life, What I have suffer’d since I was a wife With mine husband, all although “Nay",
+    "condition_b_response": "And now, Sir, I will tell you, That I am a knight, And I am knighted by the King of England, And I am knighted by the King of France, And I am knighted by the King of Scotland, And I am knighted by the King of Ireland, And I am knighted by the King of Spain, And I am",
+    "latency_ms": 7204.9,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0239",
+    "archetype": "clergy",
+    "prompt": "by God ye have enough",
+    "reference_output": "and I forgive it thee; But by thy life be no more so large; liberal, lavish Keep better my good, this give I thee in charge.",
+    "condition_b_response": "I am a clerk, and I am a clerk",
+    "latency_ms": 1312.3,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0240",
+    "archetype": "clergy",
+    "prompt": "O Hebrew people, alas! Is this to you a thing that is honest, creditable, becoming That such a boy shall walken as him lest In your despite, and sing of such sentence, Which is against your lawe’s reverence?",
+    "reference_output": "O deare child! I halse implore <12> In virtue of the holy Trinity; Tell me what is thy cause for to sing, Since that thy throat is cut, to my seeming.",
+    "condition_b_response": "O thou, that art so bold, and so boldly, And so boldly, and so boldly, and so boldly, And so boldly, and so boldly, and so boldly, And so boldly, and so boldly, and so boldly, And so boldly, and so boldly, and so boldly, And so boldly, and so",
+    "latency_ms": 7529.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0241",
+    "archetype": "clergy",
+    "prompt": "Domine, dominus noster,quam admirabile est nomen tuum in universa terra.",
+    "reference_output": "Out of the mouths of babes and sucklings hast Thou ordained strength.",
+    "condition_b_response": "Domine, quam magnus est nomen tuum, et quam magnus est nomen tuum, et quam magnus est nomen tuum, et quam magnus est nomen tuum, et quam magnus est nomen tuum, et quam magnus est nomen tuum, et quam magnus est nomen tuum, et",
+    "latency_ms": 8039.8,
+    "reference_features": [
+      "hast",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0242",
+    "archetype": "clergy",
+    "prompt": "O soul mother of the Redeemer",
+    "reference_output": "What man art thou?",
+    "condition_b_response": "O thou that art the mother of the Redeemer,",
+    "latency_ms": 1674.7,
+    "reference_features": [
+      "art",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0243",
+    "archetype": "clergy",
+    "prompt": "Yea, that is good",
+    "reference_output": "now shall we hear Some dainty thing, me thinketh by thy cheer.",
+    "condition_b_response": "And I will tell thee, that I am a priest, and that I have been a priest for many years, and that I have been a priest in this land, and that I have been a priest in this land for many years, and that I have been a priest in this land for many years, and that I have been a priest in this land for many years, and that I have",
+    "latency_ms": 7316.5,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0244",
+    "archetype": "clergy",
+    "prompt": "now shall we hear Some dainty thing, me thinketh by thy cheer.",
+    "reference_output": "Child, young man thou prick out of mine haunt, *unless Anon I slay thy steed With mace. Here is the Queen of Faery, With harp, and pipe, and symphony, Dwelling in this place.",
+    "condition_b_response": "Nay, I will not hear it, for I am not a man",
+    "latency_ms": 1726.5,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0245",
+    "archetype": "clergy",
+    "prompt": "for thou makest me So weary of thy very lewedness, stupidity, ignorance <1> That, all so wisly surely Mine eares ache for thy drafty worthless <2> Now such a rhyme the devil I beteche: commend to This may well be rhyme doggerel",
+    "reference_output": "why wilt thou lette prevent More of my tale than any other man, Since that it is the best rhyme that I can?",
+    "condition_b_response": "For I am a clerk, and I am a clerk",
+    "latency_ms": 1788.6,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0246",
+    "archetype": "clergy",
+    "prompt": "Alas! my lord",
+    "reference_output": "should of his weeping stint, that hath so great a cause to weep? Jesus Christ, our Lord, himself wept for the death of Lazarus his friend.",
+    "condition_b_response": "Alas, my lord, that thou art so far from thy wonted way",
+    "latency_ms": 2001.7,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0247",
+    "archetype": "clergy",
+    "prompt": "Farewell, father, I must die",
+    "reference_output": "Alas! Fortune, and well-away! To thy false wheel my woe all may I wite.",
+    "condition_b_response": "Farewell, father, I must die",
+    "latency_ms": 1130.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0248",
+    "archetype": "clergy",
+    "prompt": "Alas! Fortune, and well-away! To thy false wheel my woe all may I wite.",
+    "reference_output": "Father, do not so, alas! But rather eat the flesh upon us two. Our flesh thou gave us, our flesh take us fro’, And eat enough",
+    "condition_b_response": "Nay, nay, thou hast not done me wrong, for I am not a fool.",
+    "latency_ms": 2184.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0249",
+    "archetype": "clergy",
+    "prompt": "One Lord, one faith, one God withoute mo’, One Christendom, one Father of all also, Aboven all, and over all everywhere.",
+    "reference_output": "Believ’st thou this or no? say yea or nay.",
+    "condition_b_response": "And I will be thy father, and thou shalt be my son.",
+    "latency_ms": 1681.8,
+    "reference_features": [
+      "nay",
+      "thou"
+    ],
+    "response_features": [
+      "thou",
+      "thy"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0250",
+    "archetype": "clergy",
+    "prompt": "That in this world I love no man so; I pray you that my brother may have grace To know the truth, as I do in this place.",
+    "reference_output": "God liketh thy request, And bothe, with the palm of martyrdom, Ye shalle come unto this blissful rest.",
+    "condition_b_response": "And now, my lord, I will tell thee the truth, and I will not lie to thee.",
+    "latency_ms": 2371.3,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0251",
+    "archetype": "clergy",
+    "prompt": "in what wise?",
+    "reference_output": "That shall I thee devise describe “The angel of God hath me the truth y-taught, Which thou shalt see, if that thou wilt reny renounce The idols, and be clean, and elles nought.",
+    "condition_b_response": "I know not, but I am a clergy NPC in a medieval RPG world",
+    "latency_ms": 2038.4,
+    "reference_features": [
+      "hath",
+      "thee",
+      "thou",
+      "wilt"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0252",
+    "archetype": "clergy",
+    "prompt": "if that I shall not lie.",
+    "reference_output": "This day I take thee for mine ally.",
+    "condition_b_response": "I will not lie, but I will tell thee the truth.",
+    "latency_ms": 1471.5,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0253",
+    "archetype": "clergy",
+    "prompt": "Brother dear, First tell me whither I shall, and to what man?",
+    "reference_output": "come forth with goode cheer, I will thee lead unto the Pope Urban.",
+    "condition_b_response": "I know not, but I will tell thee, and thou shalt know it.",
+    "latency_ms": 1754.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0254",
+    "archetype": "clergy",
+    "prompt": "To Urban? brother mine Valerian",
+    "reference_output": "wilt thou me thither lead? Me thinketh that it were a wondrous deed. “Meanest thou not that Urban",
+    "condition_b_response": "I am not a man of the world, but of the world of the world",
+    "latency_ms": 1806.7,
+    "reference_features": [
+      "thou",
+      "wilt"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0255",
+    "archetype": "clergy",
+    "prompt": "wilt thou me thither lead? Me thinketh that it were a wondrous deed. “Meanest thou not that Urban",
+    "reference_output": "O sister dear, Saidest thou not right now in this mannere, There was but one God, Lord in soothfastness, truth And now of three how may’st thou bear witness?",
+    "condition_b_response": "I will not go with thee, for I am not able to go with thee.",
+    "latency_ms": 1910.7,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0256",
+    "archetype": "clergy",
+    "prompt": "That shall I tell",
+    "reference_output": "ere that I go. Right as a man hath sapiences mental faculties Memory, engine, wit <11> So in one being of divinity Three persones there maye right well be.",
+    "condition_b_response": "And I will tell thee, that I am a clergy NPC in a medieval RPG world",
+    "latency_ms": 2176.1,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0257",
+    "archetype": "clergy",
+    "prompt": "Of conscience, and of good faith unfeigned.",
+    "reference_output": "Takest thou no heed Of my power?",
+    "condition_b_response": "And I will not have thee to be a clergy, for I am a knight.",
+    "latency_ms": 2442.1,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0258",
+    "archetype": "clergy",
+    "prompt": "full little is to dread; For every mortal manne’s power is But like a bladder full of wind, y-wis; certainly For with a needle’s point, when it is blow’, May all the boast of it be laid full low.",
+    "reference_output": "Full wrongfully begunnest thou",
+    "condition_b_response": "And yet, if thou be a man, thou shalt not be so, For thou art a man, and not a man, and not a man, And thou shalt not be a man, for thou art a man, And thou shalt not be a man, for thou art a man, And thou shalt not be a man, for thou art a man, And thou sh",
+    "latency_ms": 7303.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0259",
+    "archetype": "clergy",
+    "prompt": "And yet in wrong is thy perseverance. Know’st thou not how our mighty princes free Have thus commanded and made ordinance, That every Christian wight shall have penance, punishment But if that he his Christendom withsay, deny And go all quit, if he will it renay?",
+    "reference_output": "Your princes erren, as your nobley* doth",
+    "condition_b_response": "And if thou wilt not, then I will not",
+    "latency_ms": 1314.0,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [
+      "thou",
+      "wilt"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0260",
+    "archetype": "clergy",
+    "prompt": "and with a Ye make us guilty, and it is not sooth: true For ye that knowe well our innocence, Forasmuch as we do aye reverence To Christ, and for we bear a Christian name, Ye put on us a crime and eke a blame. “But we that knowe thilke name so For virtuous, we may it not withsay.",
+    "reference_output": "Choose one of these two, Do sacrifice, or Christendom renay, That thou may’st now escape by that way.",
+    "condition_b_response": "And now, I pray you, what is thy name?",
+    "latency_ms": 1518.1,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0261",
+    "archetype": "clergy",
+    "prompt": "Choose one of these two, Do sacrifice, or Christendom renay, That thou may’st now escape by that way.",
+    "reference_output": "O judge, Wouldest thou that I reny innocence? To make me a wicked wight",
+    "condition_b_response": "Thou shalt not escape, for I will not",
+    "latency_ms": 1575.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0262",
+    "archetype": "clergy",
+    "prompt": "I speake not but steadfastly",
+    "reference_output": "Do away thy boldness",
+    "condition_b_response": "I speake not but steadfastly",
+    "latency_ms": 1113.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0263",
+    "archetype": "clergy",
+    "prompt": "Do away thy boldness",
+    "reference_output": "And sacrifice to our gods, ere thou go. I recke not what wrong that thou me proffer, For I can suffer it as a philosopher. “But those wronges may I not endure, That thou speak’st of our goddes here",
+    "condition_b_response": "Thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou",
+    "latency_ms": 8379.3,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0264",
+    "archetype": "clergy",
+    "prompt": "Sirs, now in the morning tide Out of your hostelry I saw you ride, And warned here my lord and sovereign, Which that to ride with you is full fain, For his disport; he loveth dalliance.",
+    "reference_output": "Friend, for thy warning God give thee good chance",
+    "condition_b_response": "Nay, I will not have it, for I am not a man to be so, But I will have it, and I will have it well.",
+    "latency_ms": 3025.5,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0265",
+    "archetype": "clergy",
+    "prompt": "Friend, for thy warning God give thee good chance",
+    "reference_output": "certain it woulde seem Thy lord were wise, and so I may well deem; He is full jocund also, dare I lay; Can he aught tell a merry tale or tway, With which he gladden may this company?",
+    "condition_b_response": "Nay, for I am a clerk, and I know not how to speak",
+    "latency_ms": 1710.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0266",
+    "archetype": "clergy",
+    "prompt": "certain it woulde seem Thy lord were wise, and so I may well deem; He is full jocund also, dare I lay; Can he aught tell a merry tale or tway, With which he gladden may this company?",
+    "reference_output": "I pray thee tell me than, Is he a clerk,* or no? Tell what he is.",
+    "condition_b_response": "Nay, I will not tell a merry tale, for I am not a merry man",
+    "latency_ms": 2137.2,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0267",
+    "archetype": "clergy",
+    "prompt": "I pray thee tell me than, Is he a clerk,* or no? Tell what he is.",
+    "reference_output": "Nay, he is greater than a clerk, y-wis",
+    "condition_b_response": "I know not, Sir, but I know he is a clerk, and a good one, and a good man.",
+    "latency_ms": 2617.4,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0268",
+    "archetype": "clergy",
+    "prompt": "Nay, he is greater than a clerk, y-wis",
+    "reference_output": "Thereof good Yeoman, “quoth our Host; “Since of the conning knowledge Tell how he doth, I pray thee heartily, Since that be is so crafty and so sly. wise Where dwelle ye, if it to telle be?",
+    "condition_b_response": "Nay, he is greater than a clerk, y-wis",
+    "latency_ms": 1675.5,
+    "reference_features": [
+      "doth",
+      "thee"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0269",
+    "archetype": "clergy",
+    "prompt": "Lurking in hernes corners Where as these robbers and these thieves by kind nature Holde their privy fearful residence, As they that dare not show their presence, So fare we, if I shall say the soothe.",
+    "reference_output": "let me talke to thee; Why art thou so discolour’d of thy face?",
+    "condition_b_response": "Nay, I will not say it, for I am not a man to say it, But I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and I will say it, and",
+    "latency_ms": 7059.3,
+    "reference_features": [
+      "art",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0270",
+    "archetype": "clergy",
+    "prompt": "let me talke to thee; Why art thou so discolour’d of thy face?",
+    "reference_output": "Hold thou thy peace,and speak no wordes mo’: For if thou do, thou shalt Thou slanderest me here in this company And eke discoverest that thou shouldest hide.",
+    "condition_b_response": "I am not discoloured, but I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and I am not well, and",
+    "latency_ms": 7210.6,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0271",
+    "archetype": "clergy",
+    "prompt": "Lend me a mark",
+    "reference_output": "but dayes three, And at my day I will it quite thee. And if it so be that thou find me false, Another day hang me up by the halse.",
+    "condition_b_response": "I will not lend thee a mark, for I am not a knight",
+    "latency_ms": 1659.6,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0272",
+    "archetype": "clergy",
+    "prompt": "it shall be done, y-wis.",
+    "reference_output": "for, in token I thee love",
+    "condition_b_response": "I will not be afeard, for I am a man",
+    "latency_ms": 1403.3,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0273",
+    "archetype": "clergy",
+    "prompt": "Rise up, Sir Priest",
+    "reference_output": "Put in thine hand and grope; There shalt thou finde silver, as I hope.",
+    "condition_b_response": "And let us pray, for thy sake",
+    "latency_ms": 923.2,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0274",
+    "archetype": "clergy",
+    "prompt": "Yet will I make assay The second time, that ye may take heed, And be expert of this, and, in your need, Another day assay in mine absence This discipline, and this crafty science. Let take another ounce",
+    "reference_output": "Though poor I be, crafty skilful I warn thee well, yet is there more behind. Is any copper here within?",
+    "condition_b_response": "And now, Sir, I will not be so bold, And I will not be so bold, Sir, as thou wouldst have me be",
+    "latency_ms": 2760.6,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0275",
+    "archetype": "clergy",
+    "prompt": "I trow there be.",
+    "reference_output": "Elles go buy us some, and that as swithe. swiftly Now, goode Sir, go forth thy way and hie* thee.",
+    "condition_b_response": "I know not, but I will tell thee, that there is no man in all the world that hath so much knowledge of the world as I have.",
+    "latency_ms": 3055.7,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [
+      "hath",
+      "thee"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0276",
+    "archetype": "peasant",
+    "prompt": "The chemical tables of Senior Zadith, son of Hamuel",
+    "reference_output": "God give thee sorrow What aileth thee to sleepe Hast thou had fleas all night, or art drunk? Or had thou with some quean whore laboured So that thou mayest not hold up thine head?",
+    "condition_b_response": "And the chemical tables of Zadith, son of Hamuel,",
+    "latency_ms": 1516.7,
+    "reference_features": [
+      "art",
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0277",
+    "archetype": "peasant",
+    "prompt": "Cuckoo, cuckoo, cuckoo!",
+    "reference_output": "what song sing’st thou now? Wert thou not wont so merrily to sing, That to my heart it was a rejoicing To hear thy voice? alas! what song is this?",
+    "condition_b_response": "Nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay, nay",
+    "latency_ms": 7169.7,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0278",
+    "archetype": "clergy",
+    "prompt": "wonder sorrowful and anguishous",
+    "reference_output": "For, certes, our Lord Jesus Christ hath spared us so benignly in our follies, that if he had not pity on man’s soul, a sorry song might we all sing.",
+    "condition_b_response": "I am a clergyman, and I am a clergyman",
+    "latency_ms": 1467.6,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0279",
+    "archetype": "clergy",
+    "prompt": "go, of which I have oft said to you, and now I say it weeping, that they be enemies of the cross of Christ, of which the end is death, and of which their womb [stomach] is their God and their glory",
+    "reference_output": "If that thou, because of humility, makest a leasing on thyself, though thou were not in sin before, yet art thou then in sin through thy leasing.",
+    "condition_b_response": "O, that I had been a Christian, and had not been a Christian, that I might have been a Christian, and not a Christian",
+    "latency_ms": 2655.7,
+    "reference_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0280",
+    "archetype": "clergy",
+    "prompt": "in sign he looked after Love’s grace",
+    "reference_output": "but he hath been right subject unto Love.",
+    "condition_b_response": "And so I’ll go, and thou shalt have thy will",
+    "latency_ms": 1419.1,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thou",
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0281",
+    "archetype": "clergy",
+    "prompt": "for all their beauty stood in Rosial; she seemed like a thing celestial.",
+    "reference_output": "in art of love he writes",
+    "condition_b_response": "And so it was, that I did not know her name, but I knew her by her beauty, and by her beauty I knew her name.",
+    "latency_ms": 3066.3,
+    "reference_features": [
+      "art"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0282",
+    "archetype": "clergy",
+    "prompt": "in art of love he writes",
+    "reference_output": "My name? alas, my heart, why mak’st thou strange? why so cold Philogenet I call’d am far and near, or distant? clear for grace, *petition Me thinks I see some mercy in your face",
+    "condition_b_response": "I am a clerk, and I am a clerk",
+    "latency_ms": 1316.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0283",
+    "archetype": "clergy",
+    "prompt": "Now mercy! sweet",
+    "reference_output": "hath made you so dismay’d?",
+    "condition_b_response": "Nay, I will not, for I am a clergy NPC",
+    "latency_ms": 1579.3,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0284",
+    "archetype": "clergy",
+    "prompt": "and break them not for sloth nor ignorance.",
+    "reference_output": "doth him great grievance",
+    "condition_b_response": "I will not break them, for I am a good knight, and I will not break them.",
+    "latency_ms": 2159.9,
+    "reference_features": [
+      "doth"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0285",
+    "archetype": "clergy",
+    "prompt": "Yea, keep that well",
+    "reference_output": "thou speak’st not worth a pin.",
+    "condition_b_response": "And I will do it, for I am a good knight",
+    "latency_ms": 1395.4,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0286",
+    "archetype": "clergy",
+    "prompt": "be in deformity.",
+    "reference_output": "that ever hath Nature Y-formed us this woeful life t’endure.",
+    "condition_b_response": "I am a clergy NPC in a medieval RPG world.",
+    "latency_ms": 1436.0,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0287",
+    "archetype": "clergy",
+    "prompt": "If we our secret counsel break, Our ladies will have scorn us certain, And peradventure thinke great disdain",
+    "reference_output": "Come forth Avaunter! now I ring thy bell!",
+    "condition_b_response": "Nay, for I know that thou art a good knight, And thou shalt have no scorn, for thou art a good knight",
+    "latency_ms": 3056.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0288",
+    "archetype": "clergy",
+    "prompt": "And there I bode till that the season fell.",
+    "reference_output": "My lippes open, Lord of Love, I cry, And let my mouth thy praising now bewry.",
+    "condition_b_response": "And there I bode till that the season fell.",
+    "latency_ms": 1202.8,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0289",
+    "archetype": "clergy",
+    "prompt": "What meaneth all this merry fare?",
+    "reference_output": "And honour to the Lord of Love must be, That hath this feast so solemn and so high",
+    "condition_b_response": "I know not, but I will tell thee all, and thou shalt know it.",
+    "latency_ms": 1839.8,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0290",
+    "archetype": "clergy",
+    "prompt": "And honour to the Lord of Love must be, That hath this feast so solemn and so high",
+    "reference_output": "I thanke God that I should end the song, And all the service which hath been so long.",
+    "condition_b_response": "And so, my lord, I will not be thy guest, But I will be thy guest, and I will be thy guest",
+    "latency_ms": 2597.6,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0291",
+    "archetype": "clergy",
+    "prompt": "Of Queen Annelida and False Arcite",
+    "reference_output": "Alas! why wearest thou so wide a cope?",
+    "condition_b_response": "Nay, I will not have thee to be a knight, for I am not able to do that",
+    "latency_ms": 2109.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0292",
+    "archetype": "clergy",
+    "prompt": "O Lord our Lord.",
+    "reference_output": "The heavens declare (thy glory).",
+    "condition_b_response": "O Lord, Lord of all the earth,",
+    "latency_ms": 1088.5,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0293",
+    "archetype": "clergy",
+    "prompt": "Command, O Lord",
+    "reference_output": "Lord, if it be thou, bid me come to thee on the water.",
+    "condition_b_response": "Thou hast done well, O Lord, to send me to this place, for I have found a good place here, and I will not go away from it.",
+    "latency_ms": 3155.9,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0294",
+    "archetype": "clergy",
+    "prompt": "Tu autem, Domine, miserere nobis.",
+    "reference_output": "But do thou, O Lord, have pity on us!",
+    "condition_b_response": "Nunc est nocte, et nocte est nocte.",
+    "latency_ms": 1650.6,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0295",
+    "archetype": "clergy",
+    "prompt": "Te Deum Amoris",
+    "reference_output": "Thee, God of Love (we praise).",
+    "condition_b_response": "O, how sweet is thy voice, and how sweet thy song",
+    "latency_ms": 1475.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thy"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0296",
+    "archetype": "clergy",
+    "prompt": "Praise ye the Lord.",
+    "reference_output": "O Lord our God, how excellent is thy name.",
+    "condition_b_response": "And praise ye the Lord.",
+    "latency_ms": 879.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0297",
+    "archetype": "clergy",
+    "prompt": "the morrow after Saint Valentine’s Day",
+    "reference_output": "that died on the crois, cross Give sorrow on thee, and on thy lewed voice! Full little joy have I now of thy cry.",
+    "condition_b_response": "And so I’ll go to the church, and there I’ll pray",
+    "latency_ms": 1785.4,
+    "reference_features": [
+      "thee",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0298",
+    "archetype": "clergy",
+    "prompt": "Ah, good Nightingale",
+    "reference_output": "A little hast thou been too long hen; hence, absent For here hath been the lewd cuckow, And sung songs rather sooner I pray to God that evil fire her bren!",
+    "condition_b_response": "Nay, good Nightingale, thou hast done me good",
+    "latency_ms": 1365.6,
+    "reference_features": [
+      "hast",
+      "hath",
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "nay",
+      "thou"
+    ],
+    "drift_score": 0.5
+  },
+  {
+    "id": "GUT-0299",
+    "archetype": "clergy",
+    "prompt": "A little hast thou been too long hen; hence, absent For here hath been the lewd cuckow, And sung songs rather sooner I pray to God that evil fire her bren!",
+    "reference_output": "Now, good Cuckoo, go somewhere away, And let us that can singe dwelle here; For ev’ry wight escheweth shuns Thy songes be so elenge,* in good fay.",
+    "condition_b_response": "Nay, I will not have thee to be a cuckow, For I will not have thee to be a cuckow, And I will not have thee to be a cuckow, And I will not have thee to be a cuckow, And I will not have thee to be a cuckow, And I will not have thee to be a cuckow,",
+    "latency_ms": 7409.7,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0300",
+    "archetype": "clergy",
+    "prompt": "Now, good Cuckoo, go somewhere away, And let us that can singe dwelle here; For ev’ry wight escheweth shuns Thy songes be so elenge,* in good fay.",
+    "reference_output": "wost thou not what it is? When that I say, ‘ocy, ocy,’ y-wis, Then mean I that I woulde wonder fain That all they were shamefully slain, ‘ocy, ocy,’ I grede.",
+    "condition_b_response": "Nay, I will not, for I am a good man, And I will not be a fool, for I am a good man.",
+    "latency_ms": 2914.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0301",
+    "archetype": "clergy",
+    "prompt": "wost thou not what it is? When that I say, ‘ocy, ocy,’ y-wis, Then mean I that I woulde wonder fain That all they were shamefully slain, ‘ocy, ocy,’ I grede.",
+    "reference_output": "be still! For Love hath no reason but his will; For ofttime untrue folk he easeth, And true folk so bitterly displeaseth, That for default of grace* he lets them spill.",
+    "condition_b_response": "O, thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and thou art a fool, and",
+    "latency_ms": 7535.9,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0302",
+    "archetype": "clergy",
+    "prompt": "Alas, that ever I was bore! I can for teen* not say one worde more",
+    "reference_output": "my hearte will to-break To heare thus this lewd bird speak Of Love, and of his worshipful service. Now, God of Love, thou help me in some wise, That I may on this cuckoo be awreak!",
+    "condition_b_response": "Nay, but I will tell thee, that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy,",
+    "latency_ms": 7250.8,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0303",
+    "archetype": "clergy",
+    "prompt": "Farewell, farewell, popinjay",
+    "reference_output": "Friend, forsooth I thank thee That thou hast lik’d me to rescow; rescue And one avow to Love make I now, That all this May I will thy singer be.",
+    "condition_b_response": "Farewell, farewell, popinjay",
+    "latency_ms": 1189.8,
+    "reference_features": [
+      "forsooth",
+      "hast",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0304",
+    "archetype": "clergy",
+    "prompt": "Friend, forsooth I thank thee That thou hast lik’d me to rescow; rescue And one avow to Love make I now, That all this May I will thy singer be.",
+    "reference_output": "and be thou not dismay’d, Though thou have heard the cuckoo me; <6> thee also, Believe thou not the cuckoo, the love’s foe, For all that he hath said is strong leasing.",
+    "condition_b_response": "Thou art a good man, and I am glad That thou hast made me so, for I am glad That thou hast made me so, for I am glad That thou hast made me so, for I am glad That thou hast made me so, for I am glad That thou hast made me so, for I am glad That thou hast made me so, for I am glad That thou hast",
+    "latency_ms": 7319.3,
+    "reference_features": [
+      "hath",
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "art",
+      "hast",
+      "thou"
+    ],
+    "drift_score": 0.8
+  },
+  {
+    "id": "GUT-0305",
+    "archetype": "clergy",
+    "prompt": "and be thou not dismay’d, Though thou have heard the cuckoo me; <6> thee also, Believe thou not the cuckoo, the love’s foe, For all that he hath said is strong leasing.",
+    "reference_output": "thereto shall nothing me bring For love, and it hath done me much woe.",
+    "condition_b_response": "Thou art a fool, and thou art a fool, And thou art a fool, and thou art a fool, And thou art a fool, and thou art a fool, And thou art a fool, and thou art a fool, And thou art a fool, and thou art a fool, And thou art a fool, and thou art a fool, And thou art a fool, and thou",
+    "latency_ms": 7239.0,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [
+      "art",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0306",
+    "archetype": "clergy",
+    "prompt": "I shrew* all them that be of love untrue.",
+    "reference_output": "for I must wend, go And, God of Love, that can right well and may, As much joy sende thee this day, As any lover yet he ever send!",
+    "condition_b_response": "I will not have thee to be a fool, for I am a man, and not a fool.",
+    "latency_ms": 2192.8,
+    "reference_features": [
+      "thee"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0307",
+    "archetype": "clergy",
+    "prompt": "Ye witte know How the cuckoo and I fast have chide, quarrelled Ever since that it was daylight; I pray you all that ye do me right On that foul false unkind bride.",
+    "reference_output": "Term of life love hath withhold me",
+    "condition_b_response": "I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will not have it, I will",
+    "latency_ms": 7517.4,
+    "reference_features": [
+      "hath"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0308",
+    "archetype": "clergy",
+    "prompt": "Yea, withoute dread",
+    "reference_output": "Thou hast thee so well borne In looking of mine old book all to-torn, Of which Macrobius That *somedeal of thy labour would I quite.",
+    "condition_b_response": "And I will tell thee, that I am a clergy NPC, and I am of the order of the knights, and I am a knight of the order of the knights, and I am a knight of the order of the knights, and I am a knight of the order of the knights, and I am a knight of the order of the kn",
+    "latency_ms": 7170.0,
+    "reference_features": [
+      "hast",
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 0.75
+  },
+  {
+    "id": "GUT-0309",
+    "archetype": "clergy",
+    "prompt": "Have done and let us wend",
+    "reference_output": "alas! ye will us shend! *ruin When will your cursed pleading have an end? How should a judge either party believe, For yea or nay, withouten any preve?",
+    "condition_b_response": "And so farewell, and let us go",
+    "latency_ms": 1028.8,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0310",
+    "archetype": "clergy",
+    "prompt": "Never may she the! thrive Lo such a thing ’tis t’have a tongue loose! Now, pardie: fool, yet were it bet better Have held thy peace, than show’d thy nicety; foolishness It lies not in his wit, nor in his will, But sooth is said, a fool cannot be still.",
+    "reference_output": "Nay! God forbid a lover shoulde change!",
+    "condition_b_response": "Nay, I will not be a fool, for I am a man",
+    "latency_ms": 1656.2,
+    "reference_features": [
+      "nay"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 0.0
+  },
+  {
+    "id": "GUT-0311",
+    "archetype": "clergy",
+    "prompt": "roamed up and down",
+    "reference_output": "that art in bliss, From Me save!",
+    "condition_b_response": "And I saw a man, a man of the clergy,",
+    "latency_ms": 1377.6,
+    "reference_features": [
+      "art"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0312",
+    "archetype": "clergy",
+    "prompt": "though it were piped of a mouse",
+    "reference_output": "Hold up thy head, for all is well! Saint Julian, lo! bon hostel! <17> See here the House of Fame, lo May’st thou not heare that I do?",
+    "condition_b_response": "I am a clerk, and I am a clerk",
+    "latency_ms": 1281.8,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0313",
+    "archetype": "clergy",
+    "prompt": "against the rockes hollow, When tempests do the shippes swallow. And let a man stand, out of doubt, A mile thence, and hear it rout. roar Or elles like the last humbling dull low distant noise After the clap of a thund’ring, When Jovis hath the air y-beat; But it doth me for feare sweat.",
+    "reference_output": "Nay, dread thee not thereof",
+    "condition_b_response": "And now, I pray thee, tell me, What is thy name?",
+    "latency_ms": 1647.4,
+    "reference_features": [
+      "nay",
+      "thee"
+    ],
+    "response_features": [
+      "thee",
+      "thy"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0314",
+    "archetype": "clergy",
+    "prompt": "Nay, dread thee not thereof",
+    "reference_output": "It is nothing will bite thee, Thou shalt no harme have, truly.",
+    "condition_b_response": "Nay, I will not",
+    "latency_ms": 801.7,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0315",
+    "archetype": "clergy",
+    "prompt": "It is nothing will bite thee, Thou shalt no harme have, truly.",
+    "reference_output": "Walke forth apace, And take *thy chance of what That thou shalt find in Fame’s place.",
+    "condition_b_response": "Thou shalt not have any harm, I warrant thee.",
+    "latency_ms": 1526.4,
+    "reference_features": [
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0316",
+    "archetype": "clergy",
+    "prompt": "Heried praised Goddess of Renown and Fame!",
+    "reference_output": "Grant us, Lady sheen, bright, lovely Each of us of thy grace a boon.",
+    "condition_b_response": "And so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so, and so",
+    "latency_ms": 7017.7,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0317",
+    "archetype": "clergy",
+    "prompt": "Grant us, Lady sheen, bright, lovely Each of us of thy grace a boon.",
+    "reference_output": "we be Folk that here beseeche thee That thou grant us now good fame, And let our workes have good name In full recompensatioun Of good work, give us good renown “I warn* it you",
+    "condition_b_response": "Thou hast done well, and I will do thee well",
+    "latency_ms": 1316.7,
+    "reference_features": [
+      "thee",
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.3333
+  },
+  {
+    "id": "GUT-0318",
+    "archetype": "clergy",
+    "prompt": "For that it list* me not",
+    "reference_output": "and fast thee hie, Until thou at my Lady be, And take thy clarions eke with thee, And speed thee forth.",
+    "condition_b_response": "Nay, for that it list* me not",
+    "latency_ms": 1163.1,
+    "reference_features": [
+      "thee",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0319",
+    "archetype": "clergy",
+    "prompt": "let your workes be dead.",
+    "reference_output": "and be ye wood? And for to do good, And for to have of that no fame? to have my name? Nay, ye shall lie every one! Blow thy trump, and that anon",
+    "condition_b_response": "I am a clerk, and I will not be a clerk.",
+    "latency_ms": 1638.6,
+    "reference_features": [
+      "nay",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0320",
+    "archetype": "clergy",
+    "prompt": "and be ye wood? And for to do good, And for to have of that no fame? to have my name? Nay, ye shall lie every one! Blow thy trump, and that anon",
+    "reference_output": "thou Aeolus, I hote, command And ring these folkes works by note, That all the world may of it hear.",
+    "condition_b_response": "And I will tell thee, that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I am a clergy, and that I",
+    "latency_ms": 7286.7,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0321",
+    "archetype": "clergy",
+    "prompt": "thou Aeolus, I hote, command And ring these folkes works by note, That all the world may of it hear.",
+    "reference_output": "by my troth; Now Aeolus, withoute sloth, Take out thy trump of gold",
+    "condition_b_response": "Thou art a good man, and I will do thee well",
+    "latency_ms": 1566.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "art",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0322",
+    "archetype": "clergy",
+    "prompt": "I grant it you",
+    "reference_output": "y-wis. But what art thou that say’st this tale, That wearest on thy hose a pale, vertical stripe And on thy tippet such a bell?",
+    "condition_b_response": "And I will not have it",
+    "latency_ms": 800.4,
+    "reference_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0323",
+    "archetype": "clergy",
+    "prompt": "sooth to tell, I am y-wis, That burnt the temple of Isidis, In Athenes, lo! that city.",
+    "reference_output": "And wherefore didst thou so?",
+    "condition_b_response": "And I am a priest, and a priest of Isidis, And I have done this deed, and I have done it well.",
+    "latency_ms": 2970.7,
+    "reference_features": [
+      "thou",
+      "wherefore"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0324",
+    "archetype": "clergy",
+    "prompt": "By my thrift!",
+    "reference_output": "thou Aeolus, Hear’st thou what these folk prayen us?",
+    "condition_b_response": "Thou hast done well, and I will do thee good",
+    "latency_ms": 1283.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [
+      "hast",
+      "thee",
+      "thou"
+    ],
+    "drift_score": 0.6667
+  },
+  {
+    "id": "GUT-0325",
+    "archetype": "clergy",
+    "prompt": "And I will trumpen it, pardie!",
+    "reference_output": "Friend, what is thy name? Art thou come hither to have fame?",
+    "condition_b_response": "And I will trumpen it, pardie!",
+    "latency_ms": 1257.9,
+    "reference_features": [
+      "art",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "GUT-0326",
+    "archetype": "clergy",
+    "prompt": "I came not hither, For no such cause, by my head! Sufficeth me, as I were dead, That no wight have my name in hand. I wot myself best how I stand, For what I dree, suffer I will myself it alle drink, Certain, for the more part, As far forth as I know mine art.",
+    "reference_output": "What doest thou here, then",
+    "condition_b_response": "I am a clergy, and I am a clergy, And I am a clergy, and I am a clergy, And I am a clergy, and I am a clergy, And I am a clergy, and I am a clergy, And I am a clergy, and I am a clergy, And I am a clergy, and I am a",
+    "latency_ms": 7016.9,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  }
+]

@@ -92,6 +92,18 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
   - **Root cause confirmed:** it wasn't rank, alpha, epochs, or even the loss-masking bug (which was real and worth fixing regardless) — it was **training data composition**. Mixing genuinely archaic-pronoun-dense text (Gutenberg, 100% density) with medieval-themed-but-pronoun-light text (chimbiwide, hand-authored — 79.5% density, and even that's mostly single-marker instances) diluted the specific "always use thee/thou/hath" signal across all eight prior configs, even though the thematic/tonal medieval shift always came through fine.
   - **This is genuinely a good, reportable RQ1/RQ3 finding either way it's framed:** dataset composition matters more than LoRA hyperparameters for lexically-specific persona control — a nuanced, defensible result for the paper regardless of which config becomes the "official" Condition B.
   - **Recommendation: `medieval_r8_gutonly` should be the reference Condition B adapter going forward** (baseline evaluation, PDM scoring, human eval) rather than the full-mix versions. Trade-off worth flagging: Gutenberg's archetype distribution skews toward noble/peasant/guard/clergy (merchant/innkeeper/herbalist are thin there) — but the sample outputs above show the archaic *voice* transferred fine to merchant and innkeeper prompts anyway, suggesting the register generalizes across archetypes even when archetype-specific examples are sparse in training.
+
+- [x] **Ran full Condition B evaluation** (`evaluation/run_condition_b.py`, new script) — `medieval_r8_gutonly` against the exact same 326 prompts used for the Condition A baseline (`evaluation/results/baseline_outputs.json`), so the comparison is apples-to-apples. Runs locally via transformers+peft (not Ollama — no merge/GGUF-export pipeline built yet, so latency here isn't comparable to A's Ollama latency; only the drift/PDM comparison is meaningful right now).
+  - **Result — real, full-scale improvement over baseline:**
+
+    | Metric | Condition A (no adapter) | Condition B (medieval LoRA, gutonly) |
+    |---|---:|---:|
+    | Mean drift score | 0.9833 | **0.8973** |
+    | Entries with any archaic marker | 13/326 (4.0%) | **64/326 (19.6%)** |
+
+  - This is the first genuine quantitative evidence for RQ1 (LoRA-adapted TinyLlama achieves better persona consistency than the zero-shot baseline) — modest in absolute terms (most responses still drift fully, B's mean drift is still close to 1.0), but real, reproducible, and measured across the full comparison set rather than a handful of cherry-picked prompts.
+  - Results saved: `evaluation/results/condition_b_outputs.json`, `condition_b_metrics.csv`.
+  - **Not yet done:** Condition C (GPT-4o few-shot — needs API key) and Condition D (full fine-tune) haven't been run, so this is only an A-vs-B comparison so far, not the full 4-condition table the spec's evaluation framework calls for.
 - [ ] Implement adapter blending function (`training/blend_adapters.py` — reference impl in `Specs.md` Appendix B)
 - [ ] Test blending at α = 0.2, 0.5, 0.8 (medieval × scholar)
 - [ ] Save all adapter checkpoints with W&B run IDs
