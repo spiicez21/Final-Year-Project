@@ -29,10 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pdm_scorer import extract_features, single_turn_drift
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-BASELINE_PATH = REPO_ROOT / "evaluation" / "results" / "baseline_outputs.json"
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
-OUTPUTS_PATH = RESULTS_DIR / "condition_b_outputs.json"
-METRICS_CSV = RESULTS_DIR / "condition_b_metrics.csv"
 
 BASE_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a medieval RPG world. Respond in an archaic, "
@@ -68,8 +65,12 @@ def generate(model, tokenizer, archetype: str, prompt: str) -> tuple:
     return response.strip(), latency_ms
 
 
-def run(adapter_path: str, limit: int = None):
-    baseline = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+def run(adapter_path: str, limit: int = None, baseline_name: str = "baseline", output_name: str = "condition_b"):
+    baseline_path = RESULTS_DIR / f"{baseline_name}_outputs.json"
+    outputs_path = RESULTS_DIR / f"{output_name}_outputs.json"
+    metrics_csv = RESULTS_DIR / f"{output_name}_metrics.csv"
+
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
     if limit:
         baseline = baseline[:limit]
 
@@ -101,22 +102,22 @@ def run(adapter_path: str, limit: int = None):
         print(f"[{i}/{len(baseline)}] {entry['id']} ({entry['archetype']}) {latency_ms:.0f}ms drift={drift}")
 
         if i % 20 == 0:
-            _save(results)
+            _save(results, outputs_path, metrics_csv)
 
-    _save(results)
-    _compare(results, baseline[: len(results)])
+    _save(results, outputs_path, metrics_csv)
+    _compare(results, baseline[: len(results)], outputs_path, metrics_csv)
 
 
-def _save(results):
+def _save(results, outputs_path, metrics_csv):
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUTS_PATH.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
-    with open(METRICS_CSV, "w", encoding="utf-8") as f:
+    outputs_path.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    with open(metrics_csv, "w", encoding="utf-8") as f:
         f.write("id,archetype,latency_ms,drift_score,response_len\n")
         for r in results:
             f.write(f"{r['id']},{r['archetype']},{r['latency_ms']},{r['drift_score']},{len(r['condition_b_response'])}\n")
 
 
-def _compare(results_b, baseline_a):
+def _compare(results_b, baseline_a, outputs_path, metrics_csv):
     if not results_b:
         print("no results")
         return
@@ -130,15 +131,17 @@ def _compare(results_b, baseline_a):
     print(f"drift < 1.0 (any archaic marker present) — A: {sum(1 for d in drift_a if d < 1.0)}/{len(drift_a)}"
           f"   B: {sum(1 for d in drift_b if d < 1.0)}/{len(drift_b)}")
     print(f"mean B latency: {sum(lat_b)/len(lat_b):.0f}ms (transformers+peft local, NOT comparable to A's Ollama latency)")
-    print(f"wrote {OUTPUTS_PATH} and {METRICS_CSV}")
+    print(f"wrote {outputs_path} and {metrics_csv}")
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--adapter", required=True)
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--baseline-name", default="baseline", help="baseline file stem to compare against, e.g. 'baseline_heldout'")
+    parser.add_argument("--output-name", default="condition_b", help="output filename stem")
     args = parser.parse_args()
-    run(args.adapter, args.limit)
+    run(args.adapter, args.limit, args.baseline_name, args.output_name)
 
 
 if __name__ == "__main__":
