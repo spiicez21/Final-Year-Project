@@ -99,6 +99,7 @@ def main():
     parser.add_argument("--max-samples", type=int, default=None, help="cap training examples (smoke tests)")
     parser.add_argument("--epochs", type=int, default=None, help="override training_args.yaml epoch count")
     parser.add_argument("--lora-r", type=int, default=None, help="override lora_config.yaml rank (for ablation)")
+    parser.add_argument("--lora-alpha", type=int, default=None, help="override lora_config.yaml alpha (scales adapter's effective pull)")
     parser.add_argument("--no-wandb", action="store_true")
     args = parser.parse_args()
 
@@ -106,10 +107,17 @@ def main():
     train_cfg = load_config("training_args.yaml")
     if args.lora_r:
         lora_cfg["r"] = args.lora_r
+    if args.lora_alpha:
+        lora_cfg["lora_alpha"] = args.lora_alpha
     if args.epochs:
         train_cfg["num_train_epochs"] = args.epochs
 
-    output_dir = ADAPTERS_DIR / f"{args.domain}_r{lora_cfg['r']}"
+    dir_suffix = f"r{lora_cfg['r']}"
+    if lora_cfg["lora_alpha"] != 16:
+        dir_suffix += f"_a{lora_cfg['lora_alpha']}"
+    if train_cfg["num_train_epochs"] != 3:
+        dir_suffix += f"_e{int(train_cfg['num_train_epochs'])}"
+    output_dir = ADAPTERS_DIR / f"{args.domain}_{dir_suffix}"
 
     print(f"loading base model: {BASE_MODEL} (4-bit QLoRA)")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
@@ -145,7 +153,7 @@ def main():
         save_steps=15,
         save_total_limit=3,
         report_to="none" if args.no_wandb else "wandb",
-        run_name=f"{args.domain}-r{lora_cfg['r']}-adapter",
+        run_name=f"{args.domain}-{dir_suffix}-adapter",
         dataset_text_field="text",
         max_length=512,
         packing=False,
@@ -159,8 +167,18 @@ def main():
         peft_config=peft_config,
     )
 
+    # True trainer resume (optimizer/scheduler state) requires torch>=2.6 —
+    # transformers refuses to torch.load optimizer.pt otherwise (CVE-2025-32434
+    # restriction). We have torch 2.5.1. Attempting resume here throws before
+    # any training happens (confirmed: crashed instantly trying to resume a
+    # stale checkpoint from a *different* run that collided on directory name
+    # — see Docs/TODO.md). Rather than upgrade torch (risk: could break the
+    # working bitsandbytes/peft/trl stack), we just don't resume: a crash means
+    # a fresh restart, not a silent crash-on-resume. Checkpoints still save
+    # every 15 steps for manual inspection/recovery if needed.
     resume_checkpoint = None
-    if output_dir.exists():
+    torch_version = tuple(int(p) for p in torch.__version__.split("+")[0].split(".")[:2])
+    if output_dir.exists() and torch_version >= (2, 6):
         checkpoints = sorted(
             output_dir.glob("checkpoint-*"),
             key=lambda p: int(p.name.split("-")[1]),
@@ -168,6 +186,9 @@ def main():
         if checkpoints:
             resume_checkpoint = str(checkpoints[-1])
             print(f"resuming from checkpoint: {resume_checkpoint}")
+    elif output_dir.exists() and any(output_dir.glob("checkpoint-*")):
+        print(f"note: {output_dir} has checkpoints but torch {torch.__version__} < 2.6 "
+              f"can't resume trainer state — starting fresh (old checkpoints untouched).")
 
     print("starting training...")
     trainer.train(resume_from_checkpoint=resume_checkpoint)

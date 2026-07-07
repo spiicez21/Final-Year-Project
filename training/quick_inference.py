@@ -30,11 +30,20 @@ TEST_PROMPTS = [
 ]
 
 
-def generate(model, tokenizer, archetype: str, prompt: str) -> str:
+DIRECTIVE_SUFFIX = (
+    " Use archaic words such as thee, thou, thy, hath, dost, doth, wilt, nay, art, "
+    "'tis, prithee, and forsooth wherever they fit naturally."
+)
+
+
+def generate(model, tokenizer, archetype: str, prompt: str, directive: bool = False) -> str:
+    system = (f"You are a {archetype} NPC in a medieval RPG world. "
+              f"Respond in an archaic, period-appropriate voice consistent with your role. "
+              f"Never break character.")
+    if directive:
+        system += DIRECTIVE_SUFFIX
     messages = [
-        {"role": "system", "content": f"You are a {archetype} NPC in a medieval RPG world. "
-                                       f"Respond in an archaic, period-appropriate voice consistent with your role. "
-                                       f"Never break character."},
+        {"role": "system", "content": system},
         {"role": "user", "content": prompt},
     ]
     text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
@@ -49,6 +58,8 @@ def generate(model, tokenizer, archetype: str, prompt: str) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--adapter", required=True)
+    parser.add_argument("--directive", action="store_true",
+                         help="add explicit archaic-vocabulary instruction to the system prompt")
     args = parser.parse_args()
 
     print(f"loading base model: {BASE_MODEL}")
@@ -63,9 +74,10 @@ def main():
     model = PeftModel.from_pretrained(base_model, args.adapter)
     model.eval()
 
-    print("\n--- Condition B (TinyLlama + medieval LoRA) sample outputs ---\n")
+    label = "directive prompt" if args.directive else "standard prompt"
+    print(f"\n--- Condition B (TinyLlama + medieval LoRA, {label}) sample outputs ---\n")
     for archetype, prompt in TEST_PROMPTS:
-        response = generate(model, tokenizer, archetype, prompt)
+        response = generate(model, tokenizer, archetype, prompt, directive=args.directive)
         features = extract_features(response)
         print(f"[{archetype}] {prompt}")
         print(f"  -> {response}")
