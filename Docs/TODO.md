@@ -119,6 +119,22 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
   - Smaller effect size than the contaminated number, but genuine — this is real evidence of generalization, not memorization, and this is the number to cite.
   - **Side finding, worth flagging honestly:** on the other 206 entries (intentionally non-archaic reference prose), Condition B's mean drift got *worse* than baseline (0.4456 → 0.6516 on that subset) — the adapter appears to over-insert archaic vocabulary even in contexts where the reference wanted plain natural prose. A real overfitting-to-register trade-off from training on the Gutenberg-only (100% archaic-dense) subset — worth discussing as a limitation, not hiding.
   - Results: `evaluation/results/baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json` (+ matching `_metrics.csv` files). The original contaminated `baseline_outputs.json`/`condition_b_outputs.json` are kept for reference but should not be cited as a valid A-vs-B comparison.
+
+- [x] **Completed the adapter blending sweep (spec's RQ2, α = 0.2/0.5/0.8) on the same held-out 171-entry set.** Blended `medieval_r8_gutonly` (archaic-dense, prone to over-insertion) with `medieval_r8_a32` (full-mix, more balanced) via `training/blend_adapters.py`, evaluated each blend the same way as the gutonly adapter.
+
+  | Config | Marker rate (real-reference subset, higher=better) | Over-insertion drift (empty-reference subset, lower=better) |
+  |---|---:|---:|
+  | A baseline | 4.7% | 0.0049 |
+  | **Blend α=0.2** | **19.9%** | **0.0631** |
+  | Blend α=0.5 | 16.4% | 0.1796 |
+  | Blend α=0.8 | 18.1% | 0.3447 |
+  | Pure gutonly (α=1.0) | 14.0% | 0.4126 |
+
+  - **Over-insertion scales cleanly with α** (more gutonly weight → more archaic-word bleed into contexts that didn't want it) — expected, monotonic.
+  - **Marker rate is non-monotonic** — α=0.2 beats every other tested config, including pure gutonly, on *both* axes simultaneously. This is a genuine sweet spot, not just "less gutonly is safer": a small nudge of concentrated archaic-pronoun signal blended into the more balanced full-mix adapter unlocks the target vocabulary more reliably than either pure adapter alone, without dragging in gutonly's over-insertion problem.
+  - Directly answers the spec's RQ2 ("is there a sweet spot for hybrid NPCs?") with real quantified data — a solid result for Contribution 2 (adapter blending).
+  - One background-task hiccup during this: the α=0.8 run got silently killed by a session handoff (not a real crash — `nvidia-smi`/process check showed nothing running, only 20/377 saved), relaunched cleanly from scratch.
+  - Results: `evaluation/results/condition_blend_a{2,5,8}_heldout_outputs.json` (+ matching `_metrics.csv`), blended adapters in `training/adapters/blend_medieval_r8_gutonly_medieval_r8_a32_a{0.2,0.5,0.8}/`.
 - [x] Implement adapter blending function (`training/blend_adapters.py`) — uses PEFT's built-in `LoraModel.add_weighted_adapter(combination_type="linear")` rather than hand-rolling the spec's simplified `alpha*A + (1-alpha)*B` tensor example directly, since PEFT's version correctly accounts for each source adapter's own alpha/rank scaling (LoRA's effective update is `(alpha/r) * B @ A` — naively averaging raw tensors from adapters with different alpha would silently misweight them). Requires matching rank between the two source adapters (`combination_type="linear"` doesn't support cross-rank blending — would need `"cat"` or `"svd"` for that).
   - Hit one real bug: `save_pretrained(..., selected_adapters=[...])` on a multi-adapter `PeftModel` still nests the saved adapter under `output_dir/{adapter_name}/` instead of flat — fixed by flattening the subfolder into `output_dir` directly after saving, matching the layout every other adapter in this repo uses.
   - **Blended `medieval_r8_gutonly` (archaic-dense, over-inserts) × `medieval_r8_a32` (full-mix, natural but weak archaic signal) at α=0.5.** Motivated directly by the trade-off found in the held-out evaluation above. `quick_inference.py` sanity check: **5/5 test prompts now show archaic markers** (up from gutonly's 3/5), including coherent varied content on the noble prompt ("The king hath sent for me, and I am come to thee, and I will tell thee all that is come to pass") rather than the degenerate repetition loops seen in pure-gutonly outputs on that same prompt.
