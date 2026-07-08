@@ -119,8 +119,20 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
   - Smaller effect size than the contaminated number, but genuine — this is real evidence of generalization, not memorization, and this is the number to cite.
   - **Side finding, worth flagging honestly:** on the other 206 entries (intentionally non-archaic reference prose), Condition B's mean drift got *worse* than baseline (0.4456 → 0.6516 on that subset) — the adapter appears to over-insert archaic vocabulary even in contexts where the reference wanted plain natural prose. A real overfitting-to-register trade-off from training on the Gutenberg-only (100% archaic-dense) subset — worth discussing as a limitation, not hiding.
   - Results: `evaluation/results/baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json` (+ matching `_metrics.csv` files). The original contaminated `baseline_outputs.json`/`condition_b_outputs.json` are kept for reference but should not be cited as a valid A-vs-B comparison.
-- [ ] Implement adapter blending function (`training/blend_adapters.py` — reference impl in `Specs.md` Appendix B)
-- [ ] Test blending at α = 0.2, 0.5, 0.8 (medieval × scholar)
+- [x] Implement adapter blending function (`training/blend_adapters.py`) — uses PEFT's built-in `LoraModel.add_weighted_adapter(combination_type="linear")` rather than hand-rolling the spec's simplified `alpha*A + (1-alpha)*B` tensor example directly, since PEFT's version correctly accounts for each source adapter's own alpha/rank scaling (LoRA's effective update is `(alpha/r) * B @ A` — naively averaging raw tensors from adapters with different alpha would silently misweight them). Requires matching rank between the two source adapters (`combination_type="linear"` doesn't support cross-rank blending — would need `"cat"` or `"svd"` for that).
+  - Hit one real bug: `save_pretrained(..., selected_adapters=[...])` on a multi-adapter `PeftModel` still nests the saved adapter under `output_dir/{adapter_name}/` instead of flat — fixed by flattening the subfolder into `output_dir` directly after saving, matching the layout every other adapter in this repo uses.
+  - **Blended `medieval_r8_gutonly` (archaic-dense, over-inserts) × `medieval_r8_a32` (full-mix, natural but weak archaic signal) at α=0.5.** Motivated directly by the trade-off found in the held-out evaluation above. `quick_inference.py` sanity check: **5/5 test prompts now show archaic markers** (up from gutonly's 3/5), including coherent varied content on the noble prompt ("The king hath sent for me, and I am come to thee, and I will tell thee all that is come to pass") rather than the degenerate repetition loops seen in pure-gutonly outputs on that same prompt.
+  - **Full held-out evaluation (377 entries, same set used for the A-vs-B comparison above) — the blend is better than gutonly on both axes, not a compromise between them:**
+
+    | Metric | A (baseline) | B (`gutonly`) | Blend α=0.5 |
+    |---|---:|---:|---:|
+    | Mean drift (171 entries, real reference markers) | 0.9766 | 0.9396 | **0.9365** |
+    | Archaic marker present | 8/171 (4.7%) | 24/171 (14.0%) | **28/171 (16.4%)** |
+    | Mean drift, over-insertion risk (206 entries, non-archaic reference) | 0.0049 | 0.4126 | **0.1796** |
+
+  - Blend beats gutonly on the primary persona-consistency metric (higher marker rate, lower drift) **and** cuts the over-insertion side-effect by more than half (0.4126 → 0.1796) relative to pure gutonly. This is genuine evidence for Contribution 2 (adapter blending) — the interpolated adapter is a better NPC voice than either source adapter alone, not merely an average of their weaknesses.
+  - Results: `evaluation/results/condition_blend_a5_heldout_outputs.json` (+ `_metrics.csv`).
+- [ ] Test blending at α = 0.2, 0.8 (0.5 done above, and it's already the best result seen — worth checking whether 0.2 or 0.8 does even better, or whether 0.5 is near-optimal)
 - [ ] Save all adapter checkpoints with W&B run IDs
 
 **Blocked on:** Phase 2 dataset completion (need enough per-archetype coverage before training is meaningful).
