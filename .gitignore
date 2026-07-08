@@ -1,5 +1,6 @@
 BlenderFiles
 DevFiles
+.cladue
 
 # Model weights / training artifacts
 training/adapters/
