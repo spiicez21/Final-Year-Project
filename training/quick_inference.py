@@ -62,20 +62,31 @@ def main():
                          help="add explicit archaic-vocabulary instruction to the system prompt")
     args = parser.parse_args()
 
-    print(f"loading base model: {BASE_MODEL}")
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True, bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True,
-    )
-    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
-    base_model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, quantization_config=bnb_config, device_map="auto", dtype=torch.bfloat16)
+    is_full_finetune = not (Path(args.adapter) / "adapter_config.json").exists()
 
-    print(f"loading adapter: {args.adapter}")
-    model = PeftModel.from_pretrained(base_model, args.adapter)
+    if is_full_finetune:
+        # Condition D checkpoint (train_full_finetune.py) — a complete
+        # standalone model, not a PEFT adapter. No base+adapter wrapping.
+        print(f"loading full fine-tuned model: {args.adapter}")
+        tokenizer = AutoTokenizer.from_pretrained(args.adapter)
+        model = AutoModelForCausalLM.from_pretrained(args.adapter, dtype=torch.bfloat16, device_map="auto")
+        condition_label = "Condition D, full fine-tune"
+    else:
+        print(f"loading base model: {BASE_MODEL}")
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+        base_model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, quantization_config=bnb_config, device_map="auto", dtype=torch.bfloat16)
+
+        print(f"loading adapter: {args.adapter}")
+        model = PeftModel.from_pretrained(base_model, args.adapter)
+        condition_label = "Condition B, medieval LoRA"
     model.eval()
 
     label = "directive prompt" if args.directive else "standard prompt"
-    print(f"\n--- Condition B (TinyLlama + medieval LoRA, {label}) sample outputs ---\n")
+    print(f"\n--- {condition_label} ({label}) sample outputs ---\n")
     for archetype, prompt in TEST_PROMPTS:
         response = generate(model, tokenizer, archetype, prompt, directive=args.directive)
         features = extract_features(response)
