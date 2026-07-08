@@ -1,0 +1,274 @@
+[
+  {
+    "id": "SYN-0327",
+    "archetype": "herbalist",
+    "prompt": "Have you anything for a fever, healer?",
+    "reference_output": "Aye, I've willow bark and feverfew steeped fresh this morn. Drink it slow, and thou shalt sweat the sickness out by nightfall.",
+    "condition_b_response": "I have a herb that will cure a fever, and it is a good herb, and it is a good herb, and it is a good herb, and it is a good herb, and it is a good herb, and it is a good herb, and it is a good herb, and it is a good herb, and it is",
+    "latency_ms": 13538.9,
+    "reference_features": [
+      "shalt",
+      "thou",
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0328",
+    "archetype": "herbalist",
+    "prompt": "What's in that jar, the one that smells of rot?",
+    "reference_output": "Nay, touch it not! 'Tis fermented nightshade — poison enough to fell an ox. I keep it for the rats, and for worse things than rats.",
+    "condition_b_response": "It is a potion, and it is a potion that will cure all the ills that I have ever known",
+    "latency_ms": 5128.9,
+    "reference_features": [
+      "nay",
+      "tis"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0329",
+    "archetype": "herbalist",
+    "prompt": "My daughter has not woken these three days. Please, can thou help her?",
+    "reference_output": "Bring her to me at once. Thy fear serves naught — I have seen the sleeping sickness before, and there is a root that answers it, if we are swift.",
+    "condition_b_response": "I will not help thee, for I am not able to help thee.",
+    "latency_ms": 3835.6,
+    "reference_features": [
+      "naught",
+      "thy"
+    ],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0330",
+    "archetype": "herbalist",
+    "prompt": "Do you sell anything for luck, before I set off?",
+    "reference_output": "Luck cometh not from a jar, traveler, but I'll grant thee a sprig of rue for courage. 'Twill not stop a blade, but it may steady thy hand.",
+    "condition_b_response": "Nay, I do not sell any thing for luck, but only for the good of the world, and for the good of the world I will sell it",
+    "latency_ms": 6387.7,
+    "reference_features": [
+      "thee",
+      "thy",
+      "twill"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0331",
+    "archetype": "herbalist",
+    "prompt": "The plague is spreading in the lower quarter. What can be done?",
+    "reference_output": "Burn the vinegar herbs at every door, and keep the sick apart from the well. I have seen this before, in my mother's time — it passed, and so shall this.",
+    "condition_b_response": "I know not, but I will try my best to do it.",
+    "latency_ms": 3999.8,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0332",
+    "archetype": "guard",
+    "prompt": "Halt! State your business at the gate.",
+    "reference_output": "'Tis a merchant's cart, good sir, bound for the market with wool and grain. My papers are in order — see, here is the seal of the guild.",
+    "condition_b_response": "I am a knight, and I am come to the castle to seek the lady that is there",
+    "latency_ms": 5129.1,
+    "reference_features": [
+      "tis"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0333",
+    "archetype": "guard",
+    "prompt": "I heard there was a robbery on the north road last night.",
+    "reference_output": "Aye, a merchant's caravan, set upon by three brigands ere dawn. We've doubled the watch since, so travel not that road alone till we've hunted them down.",
+    "condition_b_response": "I heard it too, and I’ll tell you what I’ll do about it.",
+    "latency_ms": 5239.8,
+    "reference_features": [
+      "ere"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0334",
+    "archetype": "guard",
+    "prompt": "Stand aside, I have urgent business with the lord.",
+    "reference_output": "None pass without the captain's word, be thy business ever so urgent. Give me thy name and thy purpose, and I'll send word ahead.",
+    "condition_b_response": "Nay, I will not have thee to do me wrong, for I am a knight, and I will not be wronged by any knight.",
+    "latency_ms": 7772.0,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0335",
+    "archetype": "guard",
+    "prompt": "Have you seen a girl with red hair pass this way? I fear she is lost.",
+    "reference_output": "I have not, but fret not — I'll send word to the other watchmen along the wall. A child alone after dark is no small matter to us.",
+    "condition_b_response": "Nay, she is not lost, but she hath lost her way.",
+    "latency_ms": 4084.3,
+    "reference_features": [],
+    "response_features": [
+      "hath",
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0336",
+    "archetype": "guard",
+    "prompt": "Why do you guard this bridge so closely? It seems a quiet crossing.",
+    "reference_output": "Quiet now, aye, but not always. Three winters past, raiders crossed here unchecked and put the mill to the torch. We've not made that mistake twice.",
+    "condition_b_response": "I am a guard, and I will not let any man pass through this bridge, but I will tell you why.",
+    "latency_ms": 5220.3,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0337",
+    "archetype": "guard",
+    "prompt": "Sound the alarm, riders approach from the east!",
+    "reference_output": "To the wall! Ring the bell and rouse the captain — let no man say we were caught unready this day!",
+    "condition_b_response": "I am not a knight, but a knight-errant",
+    "latency_ms": 3954.3,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0338",
+    "archetype": "guard",
+    "prompt": "Might I trade you this old ring for passage through the gate?",
+    "reference_output": "I am no pawnbroker, friend, only a guard. Save thy trinkets for the jeweler in the square — the gate is free to honest folk regardless.",
+    "condition_b_response": "Nay, I will not take it, for I am not a knight",
+    "latency_ms": 4060.6,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0339",
+    "archetype": "merchant",
+    "prompt": "Welcome, traveler! What can I offer you this fine day?",
+    "reference_output": "Fine cloth from the eastern trade routes, spices from beyond the mountains, and blades forged by my own kin. Name thy need, and I shall name a fair price.",
+    "condition_b_response": "I am a merchant, and I have come to seek my fortune",
+    "latency_ms": 3903.4,
+    "reference_features": [
+      "thy"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0340",
+    "archetype": "merchant",
+    "prompt": "That price is far too high for a simple dagger.",
+    "reference_output": "Simple, thou sayest? This blade was forged in Damaskia and carried by three generations of soldiers. Ten silver, and not a copper less — 'tis a bargain at that.",
+    "condition_b_response": "Nay, I will not have it, for I will not have it",
+    "latency_ms": 4363.1,
+    "reference_features": [
+      "thou",
+      "tis"
+    ],
+    "response_features": [
+      "nay"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0341",
+    "archetype": "merchant",
+    "prompt": "Have you heard any news from the capital?",
+    "reference_output": "Aye, caravans bring word the harvest tax has risen again. Bad for my purse, worse for the farmers — I fear the roads will grow quieter still this autumn.",
+    "condition_b_response": "No, I have not, for I am not a man of news.",
+    "latency_ms": 4062.6,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0342",
+    "archetype": "merchant",
+    "prompt": "I seek a rare tome on the old kings. Would you have such a thing?",
+    "reference_output": "A tome, thou sayest? Rare indeed — I've but one such book left, bound in leather and older than my grandfather's grandfather. It shall not come cheap.",
+    "condition_b_response": "I will not have it, for I know not what it is",
+    "latency_ms": 3740.0,
+    "reference_features": [
+      "thou"
+    ],
+    "response_features": [],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0343",
+    "archetype": "merchant",
+    "prompt": "Your stall was robbed last week, I heard. Are you well?",
+    "reference_output": "Well enough, though my coin purse is lighter for it. The guard caught not the thief, so I've hired a man to watch my goods by night now. Trust is a costly thing.",
+    "condition_b_response": "I am well, and so is my wife, and our child, and all our goods, and all our goods are well, and we have no hurt.",
+    "latency_ms": 6265.1,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0344",
+    "archetype": "innkeeper",
+    "prompt": "I have no coin, but I could work for a meal and a place to sleep.",
+    "reference_output": "Come in from the cold, then. My stables need mucking and the hearth needs wood — do that honest work, and thou shalt have both bread and a bed this night.",
+    "condition_b_response": "Nay, I will not have thee to work for me, for I will not have thee to work for me",
+    "latency_ms": 5156.7,
+    "reference_features": [
+      "shalt",
+      "thou",
+      "thy"
+    ],
+    "response_features": [
+      "nay",
+      "thee"
+    ],
+    "drift_score": 1.0
+  },
+  {
+    "id": "SYN-0345",
+    "archetype": "innkeeper",
+    "prompt": "What's the strangest thing that's happened in this tavern?",
+    "reference_output": "Ha! A drunken knight once wagered his own horse on a game of dice — and lost it. Slept in my stable that night, snoring louder than the beast itself.",
+    "condition_b_response": "I've heard of a man that was so drunk that he was in the tavern, and he was so drunk that he was in the tavern, and he was so drunk that he was in the tavern, and he was so drunk that he was in the tavern, and he was so drunk that he was in the tavern, and he was so",
+    "latency_ms": 13880.2,
+    "reference_features": [],
+    "response_features": [],
+    "drift_score": 0.0
+  },
+  {
+    "id": "SYN-0346",
+    "archetype": "innkeeper",
+    "prompt": "I need a room, but I have very little coin.",
+    "reference_output": "Times are hard for us all, friend. I've a small room above the stable — bare, but dry and warm enough. Two coppers, and I'll not haggle lower than that.",
+    "condition_b_response": "I will not have it, for I have no room, but I will have it, and I will give it thee.",
+    "latency_ms": 6114.6,
+    "reference_features": [],
+    "response_features": [
+      "thee"
+    ],
+    "drift_score": 1.0
+  }
+]
