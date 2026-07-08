@@ -37,15 +37,25 @@ SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a medieval RPG world. Respond i
 
 
 def load_model(adapter_path: str):
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True, bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True,
-    )
-    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
-    base_model = AutoModelForCausalLM.from_pretrained(
-        BASE_MODEL, quantization_config=bnb_config, device_map="auto", dtype=torch.bfloat16
-    )
-    model = PeftModel.from_pretrained(base_model, adapter_path)
+    is_full_finetune = not (Path(adapter_path) / "adapter_config.json").exists()
+
+    if is_full_finetune:
+        # Condition D checkpoint (train_full_finetune.py) — complete
+        # standalone model, not a PEFT adapter. No base+adapter wrapping,
+        # no quantization (needs enough VRAM to hold bf16 1.1B params
+        # unquantized — doesn't fit the local 2.15GB MX450, run on Colab).
+        tokenizer = AutoTokenizer.from_pretrained(adapter_path)
+        model = AutoModelForCausalLM.from_pretrained(adapter_path, dtype=torch.bfloat16, device_map="auto")
+    else:
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+        base_model = AutoModelForCausalLM.from_pretrained(
+            BASE_MODEL, quantization_config=bnb_config, device_map="auto", dtype=torch.bfloat16
+        )
+        model = PeftModel.from_pretrained(base_model, adapter_path)
     model.eval()
     return model, tokenizer
 
@@ -74,7 +84,9 @@ def run(adapter_path: str, limit: int = None, baseline_name: str = "baseline", o
     if limit:
         baseline = baseline[:limit]
 
-    print(f"loading base model + adapter: {adapter_path}")
+    is_full_finetune = not (Path(adapter_path) / "adapter_config.json").exists()
+    label = f"Condition D, full fine-tune ({adapter_path})" if is_full_finetune else f"Condition B, LoRA ({adapter_path})"
+    print(f"loading model: {adapter_path} ({'full fine-tune' if is_full_finetune else 'LoRA adapter'})")
     model, tokenizer = load_model(adapter_path)
 
     results = []
@@ -105,7 +117,7 @@ def run(adapter_path: str, limit: int = None, baseline_name: str = "baseline", o
             _save(results, outputs_path, metrics_csv)
 
     _save(results, outputs_path, metrics_csv)
-    _compare(results, baseline[: len(results)], outputs_path, metrics_csv)
+    _compare(results, baseline[: len(results)], outputs_path, metrics_csv, label)
 
 
 def _save(results, outputs_path, metrics_csv):
@@ -117,7 +129,7 @@ def _save(results, outputs_path, metrics_csv):
             f.write(f"{r['id']},{r['archetype']},{r['latency_ms']},{r['drift_score']},{len(r['condition_b_response'])}\n")
 
 
-def _compare(results_b, baseline_a, outputs_path, metrics_csv):
+def _compare(results_b, baseline_a, outputs_path, metrics_csv, label="condition under test"):
     if not results_b:
         print("no results")
         return
@@ -125,12 +137,12 @@ def _compare(results_b, baseline_a, outputs_path, metrics_csv):
     drift_a = [r["drift_score"] for r in baseline_a]
     lat_b = [r["latency_ms"] for r in results_b]
 
-    print("\n--- Condition A (no adapter) vs Condition B (medieval LoRA, gutonly) ---")
+    print(f"\n--- Condition A (no adapter) vs {label} ---")
     print(f"entries compared: {len(results_b)}")
-    print(f"mean drift — A: {sum(drift_a)/len(drift_a):.4f}   B: {sum(drift_b)/len(drift_b):.4f}")
+    print(f"mean drift — A: {sum(drift_a)/len(drift_a):.4f}   test: {sum(drift_b)/len(drift_b):.4f}")
     print(f"drift < 1.0 (any archaic marker present) — A: {sum(1 for d in drift_a if d < 1.0)}/{len(drift_a)}"
-          f"   B: {sum(1 for d in drift_b if d < 1.0)}/{len(drift_b)}")
-    print(f"mean B latency: {sum(lat_b)/len(lat_b):.0f}ms (transformers+peft local, NOT comparable to A's Ollama latency)")
+          f"   test: {sum(1 for d in drift_b if d < 1.0)}/{len(drift_b)}")
+    print(f"mean test-condition latency: {sum(lat_b)/len(lat_b):.0f}ms (transformers/peft local, NOT comparable to A's Ollama latency)")
     print(f"wrote {outputs_path} and {metrics_csv}")
 
 
