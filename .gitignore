@@ -22,3 +22,7 @@ env/
 .DS_Store
 Thumbs.db
 wandb/
+
+
+#godot gamefiles
+medivel-fpy 
