@@ -34,6 +34,7 @@ BASE_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 
 DATASET_PATHS = {
     "medieval": REPO_ROOT / "data" / "processed" / "medieval_npc_dataset.json",
+    "modern": REPO_ROOT / "data" / "processed" / "modern_npc_dataset.json",
     "healthcare": REPO_ROOT / "data" / "processed" / "healthcare_dataset.json",
     "education": REPO_ROOT / "data" / "processed" / "education_dataset.json",
 }
@@ -41,7 +42,15 @@ DATASET_PATHS = {
 SYSTEM_PROMPTS = {
     "medieval": "You are a {archetype} NPC in a medieval RPG world. Respond in an archaic, "
                 "period-appropriate voice consistent with your role. Never break character.",
+    "modern": "You are a {archetype} NPC in a modern open-world crime-city game. Respond in a "
+              "casual, streetwise voice consistent with your role. Never break character.",
 }
+
+# Modern-domain archetypes — parallel structure to the medieval set
+# (guard/merchant/noble/peasant/clergy/scholar/innkeeper/herbalist):
+# cop/dealer/boss/civilian/preacher/lawyer/bartender/mechanic. See
+# Docs/TODO.md for the full mapping rationale.
+MODERN_ARCHETYPES = ["cop", "dealer", "boss", "civilian", "preacher", "lawyer", "bartender", "mechanic"]
 
 
 def load_config(name: str) -> dict:
