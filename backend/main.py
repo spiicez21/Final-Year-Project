@@ -61,6 +61,17 @@ class ChatResponse(BaseModel):
     drift_score: float | None = None
 
 
+@app.on_event("startup")
+def _preload_default_domain():
+    # Loads the base model + medieval adapter into memory at server boot
+    # instead of lazily on the first /chat call. Without this, the FIRST
+    # player who talks to an NPC in-game eats the ~9.5s cold model-load on
+    # top of generation — a bad first impression for a live demo. Every
+    # call after this one is already fast (adapter_switch_ms ~0).
+    if manager.available_domains():
+        manager.ensure_adapter_loaded(manager.available_domains()[0])
+
+
 @app.get("/domains")
 def list_domains():
     return {"available": manager.available_domains(), "loaded": manager.loaded_domains()}

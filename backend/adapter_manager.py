@@ -79,7 +79,7 @@ class AdapterManager:
             self.model.set_adapter(domain)
             self._active_adapter = domain
 
-    def generate(self, domain: str, archetype: str, message: str, max_new_tokens: int = 80) -> dict:
+    def generate(self, domain: str, archetype: str, message: str, max_new_tokens: int = 40) -> dict:
         start = time.perf_counter()
         self.switch_to(domain)
         switch_ms = round((time.perf_counter() - start) * 1000, 1)
@@ -91,8 +91,18 @@ class AdapterManager:
 
         gen_start = time.perf_counter()
         with torch.no_grad():
-            output = self.model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False,
-                                          pad_token_id=self.tokenizer.eos_token_id)
+            # max_new_tokens dropped 80->40: in-game NPC lines should be short
+            # barks, not paragraphs, and it's the single biggest lever on
+            # wall-clock latency short of switching inference engines (see
+            # Docs/TODO.md optimization plan). no_repeat_ngram_size stops the
+            # greedy-decode repetition loops seen in live testing ("...the
+            # king is dead, and the queen is dead...") without the cost of
+            # sampling — still fully deterministic.
+            output = self.model.generate(
+                **inputs, max_new_tokens=max_new_tokens, do_sample=False,
+                no_repeat_ngram_size=3, repetition_penalty=1.3,
+                pad_token_id=self.tokenizer.eos_token_id,
+            )
         gen_ms = round((time.perf_counter() - gen_start) * 1000, 1)
 
         response = self.tokenizer.decode(output[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True).strip()
