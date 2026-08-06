@@ -1,25 +1,29 @@
 """
-Convert chimbiwide/NPC-Dialogue_v2 (HuggingFace) into the project's medieval
-NPC dialogue schema (see DevFiles/Specs.md section 6).
+Convert chimbiwide/NPC-Dialogue_v2 (HuggingFace) into the project's NPC
+dialogue schema (see DevFiles/Specs.md section 6). Supports two domains:
 
-Pipeline: download -> filter (medieval-plausible entries only) -> register
-rewrite (rule-based archaic voice) -> merge.
+  --domain medieval (default): filter to medieval-plausible entries, then
+  rewrite into archaic voice via register_rewrite() — a deterministic
+  lexical/grammatical rewriter, not an LLM call. It is intentionally modest:
+  contraction expansion, you/your -> thee/thy/thou with irregular-verb
+  fixups, small vocab swaps. Won't produce Shakespeare-quality prose, just
+  "good enough to not read as a phone-and-wifi contemporary chatlog," tagged
+  auto-rewritten for later review. Specs.md flags this source as medium IP
+  risk — do not use rewritten entries beyond local training/eval without a
+  further scrub pass.
 
-register_rewrite() is a deterministic lexical/grammatical rewriter, not an
-LLM call — no API key, no cost, fully reproducible. It is intentionally
-modest: contraction expansion, you/your -> thee/thy/thou with a handful of
-irregular-verb fixups, and a small modern-vocabulary swap list. It will not
-produce Shakespeare-quality archaic prose; it produces "good enough to not
-read as a phone-and-wifi contemporary chatlog" prose, tagged as
-auto-rewritten so it can be reviewed/upgraded later. Source content is
-otherwise unmodified (character voice, plot beats), and Specs.md flags this
-source as medium IP risk — do not use rewritten entries for anything beyond
-local training/eval without a further scrub pass.
+  --domain modern: chimbiwide's raw dialogue is already casual/contemporary
+  in register (that's *why* it needed the archaic rewrite above) — so modern
+  mode skips register_rewrite entirely and uses the text as-is, just with a
+  different archetype remap (fantasy roleplay bios -> crime-city archetypes)
+  and a fantasy-leakage filter (drop entries too magic/kingdom-flavored to
+  read as a modern setting) instead of the medieval one.
+
+Pipeline: download -> filter -> (rewrite if medieval) -> merge.
 
 Usage:
-    python chimbiwide_converter.py --limit 300                # filter + rewrite, print report
-    python chimbiwide_converter.py --limit 300 --merge         # also merge into the dataset
-    python chimbiwide_converter.py --limit 300 --merge --max-entries 150
+    python chimbiwide_converter.py --domain medieval --limit 300 --merge
+    python chimbiwide_converter.py --domain modern --limit 300 --merge
 """
 
 import argparse
@@ -27,11 +31,16 @@ import json
 import re
 from pathlib import Path
 
-OUT_PATH = Path(__file__).resolve().parents[1] / "processed" / "medieval_npc_dataset.json"
+PROCESSED_DIR = Path(__file__).resolve().parents[1] / "processed"
 CACHE_DIR = Path(__file__).resolve().parents[1] / "raw" / "huggingface" / "chimbiwide"
 
-# Background-blurb keyword -> our archetype set. Order matters (first match wins).
-ARCHETYPE_REMAP = {
+OUT_PATHS = {
+    "medieval": PROCESSED_DIR / "medieval_npc_dataset.json",
+    "modern": PROCESSED_DIR / "modern_npc_dataset.json",
+}
+
+# Background-blurb keyword -> archetype, per domain. Order matters (first match wins).
+ARCHETYPE_REMAP_MEDIEVAL = {
     "bounty hunter": "guard", "knight": "guard", "soldier": "guard", "guard": "guard",
     "assassin": "guard", "mercenary": "guard",
     "smuggler": "merchant", "shopkeeper": "merchant", "trader": "merchant", "merchant": "merchant",
@@ -43,10 +52,34 @@ ARCHETYPE_REMAP = {
     "villager": "peasant", "farmer": "peasant", "thief": "peasant",
 }
 
-# Terms that mark a line as out-of-period / unusable without heavy rewrite.
+# Same fantasy-roleplay bios, remapped onto the modern crime-city archetype
+# set (see Docs/TODO.md for the medieval->modern archetype mapping table).
+ARCHETYPE_REMAP_MODERN = {
+    "bounty hunter": "cop", "knight": "cop", "soldier": "cop", "guard": "cop", "mercenary": "cop",
+    "smuggler": "dealer", "shopkeeper": "dealer", "trader": "dealer", "merchant": "dealer",
+    "assassin": "boss", "king": "boss", "queen": "boss", "lord": "boss", "lady": "boss", "noble": "boss",
+    "wizard": "lawyer", "sage": "lawyer", "professor": "lawyer", "scholar": "lawyer",
+    "tavern": "bartender", "innkeeper": "bartender", "bartender": "bartender",
+    "healer": "mechanic", "alchemist": "mechanic", "herbalist": "mechanic",
+    "priest": "preacher", "monk": "preacher", "clergy": "preacher",
+    "villager": "civilian", "farmer": "civilian", "thief": "civilian",
+}
+
+ARCHETYPE_REMAPS = {"medieval": ARCHETYPE_REMAP_MEDIEVAL, "modern": ARCHETYPE_REMAP_MODERN}
+DEFAULT_ARCHETYPES = {"medieval": "peasant", "modern": "civilian"}
+
+# Terms that mark a line as out-of-period for the MEDIEVAL domain — unusable
+# without heavy rewrite. Not applied to the modern domain (this vocabulary
+# is exactly what modern dialogue should contain).
 MODERN_LEAKAGE = [
     "phone", "computer", "internet", "email", "wifi", "gun",
     "okay", "gonna", "wanna", "rupees", "police",
+]
+
+# Terms that mark a line as too fantasy-flavored for the MODERN domain.
+FANTASY_LEAKAGE = [
+    "dragon", "wizard", "spell", "magic", "kingdom", "castle",
+    "elf", "orc", "sorcery", "enchant", "potion", "sword",
 ]
 
 
@@ -88,17 +121,18 @@ def parse_row(row: dict) -> dict:
     return {"name": name, "background": background, "pairs": pairs}
 
 
-def is_medieval_plausible(text: str) -> bool:
+def is_domain_plausible(text: str, domain: str) -> bool:
     lowered = text.lower()
-    return not any(re.search(rf"\b{term}\b", lowered) for term in MODERN_LEAKAGE)
+    leakage = MODERN_LEAKAGE if domain == "medieval" else FANTASY_LEAKAGE
+    return not any(re.search(rf"\b{term}\b", lowered) for term in leakage)
 
 
-def remap_archetype(background: str) -> str:
+def remap_archetype(background: str, domain: str) -> str:
     lowered = background.lower()
-    for keyword, archetype in ARCHETYPE_REMAP.items():
+    for keyword, archetype in ARCHETYPE_REMAPS[domain].items():
         if keyword in lowered:
             return archetype
-    return "peasant"
+    return DEFAULT_ARCHETYPES[domain]
 
 
 # Order matters: contractions first (so "you're" doesn't get half-matched
@@ -169,19 +203,41 @@ def register_rewrite(text: str) -> str:
     return text
 
 
-DIALECT_PATTERNS = {
+# Medieval list kept exactly as originally shipped (superset of
+# evaluation/pdm_scorer.py's DIALECT_PATTERNS_MEDIEVAL — thine/wast/thyself
+# included here) — not touched, so already-built medieval entries' recorded
+# dialect_features stay reproducible.
+DIALECT_PATTERNS_MEDIEVAL = {
     "thee": r"\bthee\b", "thou": r"\bthou\b", "thy": r"\bthy\b", "thine": r"\bthine\b",
     "dost": r"\bdost\b", "hath": r"\bhath\b", "hast": r"\bhast\b", "wast": r"\bwast\b",
     "doth": r"\bdoth\b", "wilt": r"\bwilt\b", "nay": r"\bnay\b", "art": r"\bart\b",
     "tis": r"'tis\b", "thyself": r"\bthyself\b",
 }
 
+# Mirrors evaluation/pdm_scorer.py's DIALECT_PATTERNS_MODERN — keep in sync
+# if either changes, so recorded dialect_features match what eval scores.
+DIALECT_PATTERNS_MODERN = {
+    "gonna": r"\bgonna\b", "wanna": r"\bwanna\b", "ain't": r"\bain'?t\b",
+    "gotta": r"\bgotta\b", "lemme": r"\blemme\b", "gimme": r"\bgimme\b",
+    "dunno": r"\bdunno\b", "nah": r"\bnah\b", "yo": r"\byo\b",
+    "bro": r"\bbro\b", "homie": r"\bhomie\b", "finna": r"\bfinna\b",
+    "kinda": r"\bkinda\b", "sorta": r"\bsorta\b",
+}
 
-def extract_features(text: str) -> list:
-    return [feat for feat, pattern in DIALECT_PATTERNS.items() if re.search(pattern, text, re.IGNORECASE)]
+DIALECT_PATTERNS_BY_DOMAIN = {"medieval": DIALECT_PATTERNS_MEDIEVAL, "modern": DIALECT_PATTERNS_MODERN}
+
+# Archetypes considered "high formality" / "elevated vocabulary", per domain
+# — mirrors the medieval->modern archetype mapping (noble -> boss).
+HIGH_FORMALITY = {"medieval": ("noble", "clergy", "scholar"), "modern": ("boss", "lawyer", "preacher")}
+ELEVATED_VOCAB_ARCHETYPE = {"medieval": "noble", "modern": "boss"}
 
 
-def convert(limit: int = 300):
+def extract_features(text: str, domain: str) -> list:
+    patterns = DIALECT_PATTERNS_BY_DOMAIN[domain]
+    return [feat for feat, pattern in patterns.items() if re.search(pattern, text, re.IGNORECASE)]
+
+
+def convert(limit: int, domain: str):
     rows = load_source(limit)
     kept, dropped, no_pairs = [], 0, 0
     archetype_dist = {}
@@ -193,27 +249,34 @@ def convert(limit: int = 300):
             continue
 
         full_text = parsed["background"] + " " + " ".join(p["input"] + " " + p["output"] for p in parsed["pairs"])
-        if not is_medieval_plausible(full_text):
+        if not is_domain_plausible(full_text, domain):
             dropped += 1
             continue
 
-        archetype = remap_archetype(parsed["background"])
+        archetype = remap_archetype(parsed["background"], domain)
         archetype_dist[archetype] = archetype_dist.get(archetype, 0) + 1
         kept.append({**parsed, "archetype": archetype})
 
-    print(f"chimbiwide: {len(kept)} medieval-plausible / {dropped} dropped (modern leakage) / {no_pairs} no usable turns")
-    print(f"archetype distribution (pre-rewrite): {archetype_dist}")
+    leakage_label = "modern leakage" if domain == "medieval" else "fantasy leakage"
+    print(f"chimbiwide: {len(kept)} {domain}-plausible / {dropped} dropped ({leakage_label}) / {no_pairs} no usable turns")
+    print(f"archetype distribution: {archetype_dist}")
     return kept
 
 
-def build_entries(kept_rows: list, next_id: int) -> list:
+def build_entries(kept_rows: list, next_id: int, domain: str) -> list:
     """One entry per row — the first dialogue pair only, to avoid
     oversampling a single character/scene across many near-duplicate turns."""
     entries = []
     for row in kept_rows:
         first_pair = row["pairs"][0]
-        input_text = register_rewrite(first_pair["input"])
-        output_text = register_rewrite(first_pair["output"])
+        if domain == "medieval":
+            input_text = register_rewrite(first_pair["input"])
+            output_text = register_rewrite(first_pair["output"])
+        else:
+            # Raw chimbiwide dialogue is already casual/contemporary — no
+            # rewrite needed for the modern domain.
+            input_text = first_pair["input"].strip()
+            output_text = first_pair["output"].strip()
         archetype = row["archetype"]
 
         entries.append({
@@ -224,13 +287,13 @@ def build_entries(kept_rows: list, next_id: int) -> list:
                 "archetype": archetype,
                 "name": row["name"],
                 "disposition": "neutral",
-                "social_class": "soldier" if archetype == "guard" else archetype,
+                "social_class": "soldier" if (domain == "medieval" and archetype == "guard") else archetype,
             },
-            "context": {"location": "unspecified", "time_of_day": "unspecified", "world_state": "medieval"},
+            "context": {"location": "unspecified", "time_of_day": "unspecified", "world_state": domain},
             "linguistic_markers": {
-                "formality": "high" if archetype in ("noble", "clergy", "scholar") else "low",
-                "dialect_features": extract_features(output_text),
-                "vocabulary_tier": "elevated" if archetype == "noble" else "mixed",
+                "formality": "high" if archetype in HIGH_FORMALITY[domain] else "low",
+                "dialect_features": extract_features(output_text, domain),
+                "vocabulary_tier": "elevated" if archetype == ELEVATED_VOCAB_ARCHETYPE[domain] else "mixed",
             },
             "metadata": {
                 "intent": "social",
@@ -238,34 +301,39 @@ def build_entries(kept_rows: list, next_id: int) -> list:
                 "stress_test_type": None,
                 "source": "chimbiwide",
                 "quality_score": 5,
-                "tags": ["chimbiwide", archetype, "register_rewritten", "auto_extracted"],
-                "conversion_note": "Rule-based archaic rewrite (no LLM) — grammar/register imperfect, review before publication use.",
+                "tags": ["chimbiwide", archetype] + (["register_rewritten", "auto_extracted"] if domain == "medieval" else ["raw_extracted"]),
+                "conversion_note": ("Rule-based archaic rewrite (no LLM) — grammar/register imperfect, review before publication use."
+                                     if domain == "medieval" else
+                                     "Raw chimbiwide dialogue, no rewrite — archetype remapped from fantasy bio to modern crime-city role."),
             },
         })
         next_id += 1
     return entries
 
 
-def merge_into_dataset(entries: list):
-    data = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+def merge_into_dataset(entries: list, domain: str):
+    out_path = OUT_PATHS[domain]
+    data = json.loads(out_path.read_text(encoding="utf-8"))
     data["entries"].extend(entries)
     data["metadata"]["total_pairs"] = len(data["entries"])
     data["metadata"]["sources"]["chimbiwide"] = {
         "pairs_extracted": len(entries),
-        "method": "HF chimbiwide/NPC-Dialogue_v2, medieval-plausibility filter + rule-based register rewrite (no LLM)",
+        "method": f"HF chimbiwide/NPC-Dialogue_v2, {domain}-plausibility filter"
+                  + (" + rule-based register rewrite (no LLM)" if domain == "medieval" else " (raw text, no rewrite)"),
     }
-    OUT_PATH.write_text(json.dumps(data, indent=4, ensure_ascii=False), encoding="utf-8")
-    print(f"merged {len(entries)} entries -> {OUT_PATH}, total now {len(data['entries'])}")
+    out_path.write_text(json.dumps(data, indent=4, ensure_ascii=False), encoding="utf-8")
+    print(f"merged {len(entries)} entries -> {out_path}, total now {len(data['entries'])}")
 
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--domain", choices=["medieval", "modern"], default="medieval")
     parser.add_argument("--limit", type=int, default=300)
-    parser.add_argument("--merge", action="store_true", help="rewrite + merge into medieval_npc_dataset.json")
+    parser.add_argument("--merge", action="store_true", help="convert + merge into the domain's dataset file")
     parser.add_argument("--max-entries", type=int, default=None, help="cap merged entries")
     args = parser.parse_args()
 
-    kept = convert(args.limit)
+    kept = convert(args.limit, args.domain)
     if not args.merge:
         print("(pass --merge to write these into the dataset)")
         return
@@ -273,10 +341,11 @@ def main():
     if args.max_entries and len(kept) > args.max_entries:
         kept = kept[: args.max_entries]
 
-    data = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+    out_path = OUT_PATHS[args.domain]
+    data = json.loads(out_path.read_text(encoding="utf-8"))
     next_id = len(data["entries"]) + 1
-    entries = build_entries(kept, next_id)
-    merge_into_dataset(entries)
+    entries = build_entries(kept, next_id, args.domain)
+    merge_into_dataset(entries, args.domain)
 
 
 if __name__ == "__main__":

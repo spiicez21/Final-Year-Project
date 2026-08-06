@@ -212,6 +212,52 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
   - **Verified live end-to-end**, not just built: ran both `uvicorn` (backend) and `next dev` (frontend, added to `.claude/launch.json`) together, sent real messages through the browser. First message: cold model+adapter load (`switch_ms: 9573`), real generation, PDM drift `1.000` correctly flagging the known repetition-loop degeneracy (`"...the king's son is dead, and that the queen's son is dead..."`) as fully drifted with zero archaic markers. Second message, same archetype: `switch_ms: 0` — confirms the UI is actually exercising the no-reload adapter-switch path, not just displaying static numbers.
 - [ ] Auth/rate-limiting/deployment config (not needed for a local research demo, skip unless actually deploying)
 
+## Domain pivot — medieval to modern open-world crime-city setting
+
+**Decision, 2026-08-06:** primary domain pivots from medieval RPG to an original modern open-world crime-city setting (GTA-*inspired*, not derived from any Rockstar IP — no scraped game assets/scripts, avoids the real copyright risk that literal GTA sourcing would carry for a published paper). Discussed the tradeoff explicitly before committing: the PDM lexicon, the full 1003-entry dataset, and every trained adapter/eval result are medieval-specific and don't carry over — this is close to a Phase 2–4 restart, not a reskin. What *does* carry over untouched: the framework/systems contribution (`AdapterManager`, `blend_adapters.py`, training pipeline, backend architecture) and the Godot game engineering (movement, NPC placement, animation system) — all domain-agnostic already.
+
+- [x] **Archetype mapping** (medieval → modern), added to `training/train_adapter.py` as `MODERN_ARCHETYPES`:
+
+  | Medieval | Modern | Rationale |
+  |---|---|---|
+  | guard | cop | law enforcement |
+  | merchant | dealer | sells goods |
+  | noble | boss | top social status, crime boss |
+  | peasant | civilian | baseline "common" archetype |
+  | clergy | preacher | moral-authority register |
+  | scholar | lawyer | formal/educated register |
+  | innkeeper | bartender | direct parallel |
+  | herbalist | mechanic | skilled trade/craft |
+
+- [x] **New PDM lexicon for the modern domain** — `evaluation/pdm_scorer.py` refactored to be domain-aware (`DIALECT_PATTERNS_MEDIEVAL`, `DIALECT_PATTERNS_MODERN`, `DIALECT_PATTERNS_BY_DOMAIN`), fully backward-compatible: `DIALECT_PATTERNS` still aliases medieval, `extract_features()`/`single_turn_drift()`/`compute_pdm()` all take an optional `patterns` arg defaulting to the old global — every existing caller (`run_baseline.py`, `run_condition_b.py`, `run_stress_test.py`, `backend/main.py`) needed zero changes.
+  - Modern lexicon (14 markers, same count as medieval for parity): `gonna, wanna, ain't, gotta, lemme, gimme, dunno, nah, yo, bro, homie, finna, kinda, sorta`. Deliberately kept to **function-word/register markers** (informal contraction density), not crime-topic content words (gun, heist, boss) — topic words aren't dialect markers, same principle that kept the medieval list to thee/thou instead of tavern/coin.
+- [x] **`data/scripts/chimbiwide_converter.py` generalized** to `--domain {medieval,modern}`. Key insight: chimbiwide's raw dialogue is *already* casual/contemporary in register — that's literally why it needed the archaic `register_rewrite()` pass for the medieval domain. For modern, the rewrite step is just skipped entirely and the raw text is used as-is, with a different archetype remap (fantasy roleplay bios → crime-city archetypes) and a `FANTASY_LEAKAGE` filter (drops entries too dragon/kingdom/magic-flavored) instead of the medieval `MODERN_LEAKAGE` filter. Net effect: modern-domain dataset building from this source is *less* work than medieval was, not more.
+  - Smoke-tested for syntax/logic (`py_compile` clean) but **not run against the real HF dataset yet** — local Python env currently has no packages installed at all (see Known issues below), blocking a live run.
+- [x] `data/processed/modern_npc_dataset.json` skeleton created (schema v1.0, matches medieval's structure, `entries: []`, 8 modern archetypes listed in metadata).
+- [x] `training/train_adapter.py` — added `"modern"` to `DATASET_PATHS` and its system prompt to `SYSTEM_PROMPTS` (`"You are a {archetype} NPC in a modern open-world crime-city game..."`). Training script itself needed no other changes — domain was already a first-class parameter.
+- [ ] **Next dataset source: Cornell Movie-Dialogs Corpus** (`cornell-movie-dialog/cornell_movie_dialog` on HF) — large, heavy on crime/action movie dialogue, exactly the register this domain wants. License note: the canonical HF mirror shows "no known license"; this is the standard, widely-cited corpus for dialogue-style NLP research (from the 2011 Cornell ACL paper), commonly used in academic work under research-use precedent — different risk tier than scraping a commercial game's proprietary script files. Cite the original paper in the dataset section either way. Extractor script (`data/scripts/cornell_corpus_extractor.py`) not yet built.
+- [ ] Hand-authored gap-filling batches (same method as the 227 medieval SYN- entries) once the archetype balance from chimbiwide+Cornell is known.
+- [ ] Retrain: `medieval_r8_gutonly`-equivalent for modern domain, once dataset exists.
+- [ ] Re-run full eval (A/B/D/blend/stress-test) against modern domain — scripts need zero logic changes, just point at the new dataset/dialect list.
+- [ ] Reskin Godot village → crime-city setting (new modular assets, new character models) — separate task, game-engine side already domain-agnostic (`npc.gd`'s `archetype` field just needs new values).
+- Medieval work (dataset, adapters, eval results, TODO history above) is **kept, not deleted** — it's a complete, defensible secondary result. Worth considering framing the paper as "framework validated across two very different domains (medieval fantasy, modern crime-city)" for a generalizability claim, matching Specs.md's original intent for healthcare/education as secondary domains. Decide this framing later, not blocking.
+
+## Godot game — inference speed optimization plan
+
+Backend inference on the MX450 measured at 2–9s per response (live-tested in the FastAPI section above) — too slow for an interactive game demo where a player expects an NPC to respond in under a second or two.
+
+**Implemented now (cheap, no new dependencies):**
+- [x] `backend/main.py` — model+adapter now **preloaded at FastAPI startup** (`@app.on_event("startup")`) instead of lazily on the first `/chat` call. Removes the ~9.5s cold-load hit from whichever player interaction happens to be first.
+- [x] `backend/adapter_manager.py` — `max_new_tokens` cut from 80 to 40. In-game NPC lines should be short barks, not paragraphs — this is a legitimate design fit, not just a speed hack, and it's the single biggest lever on wall-clock latency short of switching inference engines.
+- [x] Added `no_repeat_ngram_size=3` and `repetition_penalty=1.3` to generation — targets the known repetition-loop degeneracy (`"...the king is dead, and the queen is dead..."`) seen repeatedly in live testing. Still fully deterministic (greedy decode, no sampling cost added).
+
+**Not implemented yet — the actual big lever:**
+- [ ] **Migrate the game-serving path from raw transformers+bitsandbytes to llama.cpp/GGUF via Ollama.** This is what `backend/inference.py` was meant to be per Specs.md's original architecture (an "Ollama wrapper") — never built because the FastAPI backend used the transformers+PEFT path directly for adapter-switching flexibility during evaluation. bitsandbytes 4-bit is optimized for *training memory reduction*, not inference speed; llama.cpp's quantized CPU/GPU inference is built specifically for fast serving and is typically an order of magnitude faster for this model size.
+  - Steps: (1) merge a trained LoRA adapter into the base weights once via PEFT's `merge_and_unload()` (offline, not per-request), (2) export to GGUF (llama.cpp conversion script or `llama-cpp-python`), (3) serve via Ollama — reusing the exact serving pattern `run_baseline.py` already uses for Condition A, just pointed at the merged/fine-tuned model instead of stock TinyLlama.
+  - Tradeoff: loses the live `set_adapter()` hot-swap between personas (each persona becomes its own merged GGUF model, loaded separately) — acceptable for a game where only one NPC is being talked to at a time anyway; Ollama's own model-swap between two small merged models is still fast.
+  - This is the right next step once the modern-domain adapter exists and needs to actually run in the Godot demo, not before.
+- [ ] Godot-side perceived-speed UX: show a "..." typing indicator while `HTTPRequest` is in flight (async by nature already) — doesn't reduce real latency but removes the "did it hang?" dead air, cheap and worth doing regardless of backend speed.
+
 ## Phase 5 — Paper + Submission (Weeks 15–18)
 
 - [ ] Write Results section first
@@ -230,4 +276,5 @@ Total count target met. Remaining per-archetype imbalance (merchant/scholar/innk
 - Local GPU is an NVIDIA MX450 with **2.15GB VRAM** — CUDA confirmed working (torch 2.5.1+cu121), but this is tight even for 4-bit QLoRA on TinyLlama 1.1B. Budget for cloud/Colab GPU time for anything beyond small-scale local iteration.
 - `ollama serve` is unreliable under sustained load on this hardware — intermittent `500` errors and `WinError 10013` connection failures during the 326-entry baseline run (~13% of first-pass calls failed). `evaluation/run_baseline.py` now uses a persistent session, retry-with-backoff (3 retries, 3/6/9s), a 0.5s inter-request delay, and saves to disk after every entry (not batched) so a crash loses at most one call. `--resume` skips ids already written. Expect the same flakiness during actual adapter training — plan checkpointing accordingly.
 - `chimbiwide_converter.py` needs the `datasets` package (`pip install datasets`) — not in a committed requirements file yet since `requirements.txt` doesn't exist at repo root.
+- **2026-08-06: the Python 3.10 install's `Lib/site-packages` is completely empty** — torch, transformers, peft, trl, bitsandbytes, datasets, fastapi, uvicorn, pydantic, everything previously installed this session is gone, and `pip` itself isn't available on that interpreter anymore (`python -m pip` → `No module named pip`). Blocks running *any* training/eval/backend script locally until reinstalled. Root cause not investigated (not a code issue — likely a reinstall/cleanup of the Python 3.10 install between sessions). Fix: `python -m ensurepip` then reinstall from a requirements file (still doesn't exist at repo root — worth finally creating one from everything referenced across `training/`, `evaluation/`, `backend/`, `data/scripts/`).
 - README.md content predates `Specs.md` v1.0 (different RQs/domains/contributions) — reconciled 2026-07-02, see [README.md](../README.md).
