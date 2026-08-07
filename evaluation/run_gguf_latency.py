@@ -28,6 +28,13 @@ GGUF_MODELS = {
         "filename": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
         "chat_format": "zephyr",
     },
+    # Local file — merged medieval_r8_gutonly LoRA -> GGUF Q4_K_M via
+    # training/merge_lora.py + training/quantize_gguf.py. This is the actual
+    # fine-tuned adapter on the GGUF serving path, not stock TinyLlama.
+    "medieval_gutonly": {
+        "local_path": "medieval_r8_gutonly-Q4_K_M.gguf",
+        "chat_format": "zephyr",
+    },
 }
 
 MODELS_DIR = Path(__file__).resolve().parents[1] / "training" / "gguf_models"
@@ -46,6 +53,11 @@ SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a medieval RPG world. Respond i
 
 def download_model(key: str) -> Path:
     spec = GGUF_MODELS[key]
+    if "local_path" in spec:
+        path = MODELS_DIR / spec["local_path"]
+        if not path.exists():
+            raise FileNotFoundError(f"{path} not found — run merge_lora.py + quantize_gguf.py first")
+        return path
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     path = hf_hub_download(repo_id=spec["repo_id"], filename=spec["filename"], local_dir=str(MODELS_DIR))
     return Path(path)
@@ -59,13 +71,14 @@ def main():
 
     from llama_cpp import Llama
 
-    print(f"downloading/locating GGUF: {GGUF_MODELS[args.model]['repo_id']}")
+    spec = GGUF_MODELS[args.model]
+    print(f"downloading/locating GGUF: {spec.get('repo_id', spec.get('local_path'))}")
     model_path = download_model(args.model)
     print(f"model on disk: {model_path} ({model_path.stat().st_size / 1e6:.1f} MB)")
 
     print("loading model (llama.cpp, CPU)...")
     load_start = time.perf_counter()
-    llm = Llama(model_path=str(model_path), n_ctx=2048, verbose=False,
+    llm = Llama(model_path=str(model_path), n_ctx=2048, verbose=False, n_gpu_layers=-1,
                 chat_format=GGUF_MODELS[args.model]["chat_format"])
     load_ms = (time.perf_counter() - load_start) * 1000
     print(f"model load: {load_ms:.1f}ms")
