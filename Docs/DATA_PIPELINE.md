@@ -81,20 +81,21 @@ Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, sch
 - **`persona_features[]`** — the PDM v2 reference feature set for each entry (domain lexicon, register markers, formality, syntactic profile, stance). PDM v2 is calibrated against real generations, but the dataset carries the reference features.
 - **Visibility set** — the archetypes permitted to know each knowledge item referenced in the entry. KBD (README C1) resolves violations as a **set intersection**; flat visibility tags, **not** a hierarchical tree, **not** Neo4j, **not** propagation delays or decay.
 
-### Source datasets — cleared for use
+### Source datasets — cleared and downloaded
 
-The 600 pairs are re-voiced from these (all license-cleared for a dataset intended for public release):
+All licences below were **verified from each source directly** on 2026-08-07 (not taken from the brief — see the SGD lesson under [rejected](#source-datasets--rejected-licence-diligence)). Raw sources live in **gitignored** `data/raw/modern/`.
 
-| Dataset | Licence | Use |
-|---------|---------|-----|
-| Schema-Guided Dialogue (SGD) | Apache 2.0 | Service/transaction scenarios → shopkeeper, pharmacist, service worker |
-| Taskmaster | CC BY 4.0 | Task-oriented scaffolding across domains |
-| MultiWOZ 2.2 | Open | Multi-domain service dialogue structure |
-| SODA | CC BY 4.0 | 1.19M social dialogues — social worker, bartender, casual registers |
-| PersonaChat | Open | Persona-grounded turn structure |
-| Synthetic-Persona-Chat | Open | Persona-grounded turn structure |
+| Dataset | Verified licence | How pulled | On disk | Use |
+|---------|------------------|-----------|---------|-----|
+| Taskmaster (TM-1/2/3/4) | CC BY 4.0 | `git clone --depth 1` (GitHub raw JSON) | `data/raw/modern/taskmaster/` (~1.1 GB) | Task-oriented scaffolding; covers shopkeeper / service-worker / transaction scenarios |
+| MultiWOZ 2.2 | MIT | `git clone --depth 1` (GitHub raw JSON) | `data/raw/modern/multiwoz/` (~378 MB) | Multi-domain service dialogue structure (restaurant/hotel/taxi/train/hospital/police) |
+| SODA | CC BY 4.0 | `huggingface_hub.snapshot_download` (parquet) | `data/raw/modern/soda/` (~856 MB) | 1.19M social dialogues — social worker, bartender, casual registers |
+| Synthetic-Persona-Chat | CC BY 4.0 | `huggingface_hub.snapshot_download` (parquet) | `data/raw/modern/synthetic-persona-chat/` (~38 MB) | Persona-grounded turn structure (covers the role the brief assigned to PersonaChat) |
 
-**Loading note (important):** pull **SGD, Taskmaster, and MultiWOZ as raw JSON from their GitHub repositories**, *not* via HuggingFace `load_dataset`. HF deprecated script-based dataset loading and these three have no reliable Parquet conversion — this is the **same failure mode that killed the `microsoft/crd3` attempt** (see [Not yet built](#not-yet-built)). Do not retry them through `load_dataset`.
+**Loading notes:**
+- **Taskmaster + MultiWOZ**: pulled as **raw JSON from GitHub**, *not* via `load_dataset` — HF deprecated script-based loading and these have no reliable Parquet conversion (the **same failure mode that killed `microsoft/crd3`**, see [Not yet built](#not-yet-built)). Do not retry them through `load_dataset`.
+- **SODA + Synthetic-Persona-Chat**: pulled via `huggingface_hub.snapshot_download(repo_type="dataset")` (they ship real Parquet, so this works where `crd3`/SGD-style script loading does not). This avoids needing the full `datasets` library.
+- **Environment:** only Python 3.14 exists on this machine (the `spicez`/3.10 paths in older notes are from a different box). Fetching uses a gitignored `.venv` with `huggingface_hub` + **`truststore`** (`truststore.inject_into_ssl()`) — Python's own CA bundle fails SSL verification here (SSL-inspection network); `truststore` routes verification through the Windows cert store, the same store `git`/`curl` succeed with.
 
 ### Source datasets — rejected (licence diligence)
 
@@ -102,6 +103,8 @@ Recorded so they are not retried, and worth a paragraph in the paper's dataset s
 
 | Dataset | Reason rejected |
 |---------|-----------------|
+| **Schema-Guided Dialogue (SGD)** | Brief assumed *Apache 2.0*; the canonical `google-research-datasets/dstc8-schema-guided-dialogue` repo's `LICENSE.txt` is actually **CC BY-SA 4.0 (share-alike)** — the same contamination property that rejected DailyDialog. **Dropped** (user decision, 2026-08-07). Its roles (shopkeeper, pharmacist, service worker) are covered by Taskmaster + MultiWOZ + SODA. The clone was deleted. |
+| **PersonaChat** | HF mirrors (`bavard/personachat_truecased`, `AlekseyKorshuk/persona-chat`) declare **no licence** — same red flag as Cornell. **Not downloaded.** `google/Synthetic-Persona-Chat` (CC BY 4.0, cleared above) covers the identical "persona-grounded turn structure" role. Revisit only if a clearly-licensed PersonaChat source is found. |
 | **DailyDialog** | CC BY-NC-SA 4.0. **Share-alike** would contaminate the released dataset's licence, and **NC** conflicts with public release. |
 | **Cornell Movie-Dialogs Corpus** | **No formal open licence.** Unsafe for a dataset intended for public release on paper submission. *(Supersedes the earlier TODO note that proposed Cornell as the next modern source under "research-use precedent" — the current decision rejects it outright.)* |
 
@@ -190,13 +193,15 @@ Type breakdown (matches `Specs.md` exactly): 15 `identity_challenge` ("are you a
 
 ## Not yet built
 
-- **Modern-city extractor(s)** for SGD / Taskmaster / MultiWOZ / SODA / PersonaChat / Synthetic-Persona-Chat → `modern_npc_dataset.json`, with per-entry `provenance`, `persona_features[]`, and visibility-set annotation. Load SGD/Taskmaster/MultiWOZ as **raw JSON from GitHub**, not via `load_dataset` (see loading note above).
+- **Modern-city extractor(s)** for the four cleared sources (Taskmaster, MultiWOZ, SODA, Synthetic-Persona-Chat) → `modern_npc_dataset.json`, with per-entry `provenance`, `persona_features[]`, and visibility-set annotation. Taskmaster/MultiWOZ are raw JSON (GitHub); SODA/Synthetic-Persona-Chat are Parquet (`data/raw/modern/`). No script yet.
 - **Planted-forbidden-facts extension** to `stress_test_corpus.json` — 15–20 probes whose correct response is a refusal or expression of ignorance, required for KBD to have signal.
 
 ### Dead ends / rejected sources (do not retry)
 
 - `microsoft/crd3` filter pass — dead end. HF dropped script-based dataset loading and CRD3 has no Parquet conversion. (Full reasoning in `Docs/TODO.md`.)
+- **SGD** — rejected on licence grounds (CC BY-SA 4.0 share-alike, *not* the Apache 2.0 the brief assumed). Clone deleted. See [rejected sources](#source-datasets--rejected-licence-diligence) above.
+- **PersonaChat** — HF mirrors declare no licence; not downloaded. Covered by Synthetic-Persona-Chat. See [rejected sources](#source-datasets--rejected-licence-diligence) above.
 - **Cornell Movie-Dialogs** — rejected on licence grounds (no formal open licence). See [rejected sources](#source-datasets--rejected-licence-diligence) above.
 - **DailyDialog** — rejected on licence grounds (CC BY-NC-SA 4.0: NC + share-alike). See [rejected sources](#source-datasets--rejected-licence-diligence) above.
 
-> Same failure mode across CRD3, SGD, Taskmaster, and MultiWOZ via HuggingFace: `load_dataset` no longer supports script-based loading and none have reliable Parquet conversions. For the three cleared ones, fetch raw JSON from GitHub instead. CRD3 stays dead (licence-neutral but modern spoken register, poor fit).
+> **`load_dataset` caveat:** for CRD3 (and SGD's script-based format) HF no longer supports script loading and no Parquet exists — that path is dead. Taskmaster/MultiWOZ are therefore taken as raw GitHub JSON. SODA and Synthetic-Persona-Chat *do* ship Parquet, so `huggingface_hub.snapshot_download` works for them directly.
