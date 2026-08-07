@@ -1,280 +1,150 @@
 # Project TODO
 
-Tracks the roadmap in [`DevFiles/Specs.md`](../DevFiles/Specs.md) section 9 against actual repo state. Update this file as tasks land — don't let it drift.
+Tracks the **11 build-week schedule** (see `PROJECT_UPDATE_BRIEF` §6, mirrored below) against actual repo state. Update this file as tasks land — don't let it drift.
 
-*Last synced: 2026-07-02*
+*Last rewritten: 2026-08-07, against the August 2026 scope decisions.*
+
+## Key dates
+
+| Date | Event |
+|------|-------|
+| **6 Sep 2026** | Modern-city dataset freeze — no additions after this date |
+| **23 Oct 2026** | **Results freeze** — no new experiments after this date, writing only |
+| **mid-Nov 2026** | Submission deadline (IEEE CoG) |
+
+**Scope note:** healthcare and education domains, and the human-evaluation study, are **cut** (see README). Phases for them have been deleted from this file. The project reports **automatic metrics only**; the absence of a human study is a stated limitation.
 
 ---
 
-## Phase 1 — Foundation (Weeks 1–3)
+## Work already banked (carries forward)
 
-- [x] Set up Python environment: PyTorch, HuggingFace Transformers, PEFT, TRL (torch 2.5.1+cu121, transformers 5.12.1, peft 0.19.1, trl 1.7.0, accelerate 1.14.0 — see root `requirements.txt`)
-- [x] Install TinyLlama via Ollama — confirm it runs locally (`ollama pull tinyllama`, 637MB, verified via 326-call baseline run)
-- [x] Run baseline evaluation — record all outputs and latency (Condition A, 326/326 entries, `evaluation/results/baseline_outputs.json` + `baseline_metrics.csv`; mean latency 3486ms, mean drift 0.9833 — see `Docs/DATA_PIPELINE.md` note below on the run)
-- [x] Define and implement PDM formula (`evaluation/pdm_scorer.py`, ported from `Specs.md` Appendix A, validated against the spec's worked example — 0.9 drift on a persona-collapse conversation)
-- [x] Set up Weights & Biases project for experiment tracking — logged in as `spicez21` (`spicez21-kongu-engineering-college` org), verified via `wandb.Api()`. No project created yet — pass `report_to="wandb"` + `project="npc-ai-framework"` in `TrainingArguments` when adapter training starts; W&B auto-creates the project on first run.
-- [x] Create Git repo with `.gitignore` (`BlenderFiles`, `DevFiles` currently ignored — revisit once `training/adapters/` exists, per spec: `adapters/`, `__pycache__/`, `*.bin`)
+Complete and reusable — most is domain-agnostic and survives the modern-city pivot. Full blow-by-blow history is in git and prior revisions of this file.
 
-## Phase 2 — Dataset (Weeks 4–6)
+**Framework / systems (domain-agnostic — carries over untouched):**
+- [x] `training/train_adapter.py` — QLoRA pipeline (transformers + peft + trl SFTTrainer). Real fixes banked: bf16-end-to-end training (fp16+bf16 GradScaler crash), step-checkpointing after a thermal-TDR crash, and a **completion-only-loss bug** (loss was computed over the whole templated sequence, not just the assistant response — fixed by emitting `prompt`/`completion` columns).
+- [x] `training/blend_adapters.py` — adapter interpolation via PEFT `add_weighted_adapter(combination_type="linear")` (correctly accounts for each adapter's alpha/rank scaling).
+- [x] `backend/adapter_manager.py` — `AdapterManager` loads adapters onto one resident base and hot-swaps via `set_adapter()`. **Verified live:** second call with a different archetype reported `adapter_switch_ms: 0` — real proof of the no-reload claim.
+- [x] `backend/main.py` — FastAPI `POST /chat`, `GET /domains`, `GET /archetypes`, `GET /health`. Model preloaded at startup.
+- [x] `frontend/` — Next.js demo (domain/archetype dropdowns, live chat, live PDM bar, per-message latency). Verified end-to-end in-browser.
 
-- [x] First gap-fill batch, hand-authored in-session (no API cost): 27 entries — guard +7, herbalist +5, merchant +5, innkeeper +5, scholar +5 (`SYN-0327`..`SYN-0353`, `source: synthetic_claude`).
-- [x] Second gap-fill batch, hand-authored in-session: 21 entries — merchant +6, scholar +5, innkeeper +5, herbalist +5 (`SYN-0804`..`SYN-0824`). Checked CRD3 as an alternative first — dead end, HF dropped script-based dataset loading and CRD3 has no Parquet conversion.
-- [x] Third gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0825`..`SYN-0844`).
-- [x] Fourth gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0845`..`SYN-0864`).
-- [x] Fifth gap-fill batch, hand-authored in-session: 20 entries — merchant +5, scholar +5, innkeeper +5, herbalist +5 (`SYN-0865`..`SYN-0884`).
-- [x] Sixth gap-fill batch, hand-authored in-session: 20 entries — merchant +7, scholar +7, innkeeper +6, herbalist skipped this round (gap nearly closed at 25) (`SYN-0885`..`SYN-0904`).
-- [x] Seventh gap-fill batch, hand-authored in-session: 19 entries — merchant +6, scholar +6, innkeeper +4, herbalist +3 (`SYN-0905`..`SYN-0923`).
-- [x] Eighth gap-fill batch, hand-authored in-session: 17 entries — merchant +5, scholar +5, innkeeper +5, herbalist +2 (`SYN-0924`..`SYN-0940`).
-- [x] Ninth gap-fill batch, hand-authored in-session: 17 entries — merchant +5, scholar +5, innkeeper +5, herbalist +2 (`SYN-0941`..`SYN-0957`).
-- [x] Tenth gap-fill batch, hand-authored in-session: 17 entries — merchant +5, scholar +5, innkeeper +4, herbalist +3 (`SYN-0958`..`SYN-0974`).
-- [x] Eleventh gap-fill batch, hand-authored in-session: 19 entries — merchant +6, scholar +4, innkeeper +4, herbalist +3, guard +2 (`SYN-0975`..`SYN-0993`).
-- [x] Twelfth gap-fill batch, hand-authored in-session: 10 entries — merchant +4, scholar +3, innkeeper +3 (`SYN-0994`..`SYN-1003`). **1,000-entry milestone crossed — 1003 total, 227 hand-authored across twelve batches.**
-- [x] Run Gutenberg extractor on Shakespeare (Hamlet, Macbeth, Julius Caesar) — 126 pairs
-- [x] Run Gutenberg extractor on Chaucer (Canterbury Tales) — 200 pairs
-- [x] Run Gutenberg extractor on Malory (*Le Morte Darthur*, Rhys ed., Gutenberg #46853) — 300 pairs, quality≥5. Required a new extraction mode: this edition has **no quotation marks at all**, dialogue is only marked by an inline `<clause>, said <name>` tag (Early Modern English convention). Added `parse_tagged_dialogue()` + `TAGGED_SOURCES` to `gutenberg_extractor.py`. Known limitation: only the first `said X` tag per clause is stripped, so a few multi-speaker clauses leave a stray embedded tag in the output text — not worth over-engineering, flagged for the eventual `dataset_validator.py` pass.
-- [x] Build chimbiwide conversion pipeline: download + medieval-plausibility filter working (255/300 rows pass)
-- [x] Implement `register_rewrite()` in `chimbiwide_converter.py` — rule-based archaic rewriter (contractions, you/your/yours → thee/thy/thine/thou, irregular thou-verb + inverted-question fixups, sentence-capitalization, small vocab swap list). No LLM/API call, deterministic. 150 entries merged (`CHM-0354`..`CHM-0503`, `source: chimbiwide`, `quality_score: 5`, tagged `register_rewritten` for later review — grammar is "good enough," not Shakespeare-quality).
-- [x] Filter `microsoft/crd3` for fantasy dialogue entries — **dead end, not pursued.** HF's `datasets` library (5.0.0) no longer supports script-based dataset loading at all (`RuntimeError: Dataset scripts are no longer supported`), and CRD3 has no official Parquet conversion (the dataset viewer explicitly refuses to auto-convert it). Would require downgrading `datasets` or hand-fetching raw GitHub dumps. Even then: real actual-play D&D transcripts are modern spoken English (same heavy-rewrite burden as chimbiwide) and dominated by adventurer PCs, not merchant/innkeeper NPCs — poor effort-to-payoff for our specific gaps. Skipped in favor of hand-authored batches.
-- [x] GPT-4o augmentation pass targeting underrepresented archetypes — **superseded, not pursued.** `gpt4o_augmentor.py` gap-report tooling works (`--dry-run`), but the actual generation was replaced by hand-authored batches (same schema-conformant output, zero API cost, twelve batches covering the identical archetype gaps). Script kept in the repo for future use if `OPENAI_API_KEY` becomes available.
-- [x] Write `dataset_validator.py` (schema conformance, duplicate detection, archetype balance report). Ran clean: 0 schema errors, 1003/1003 valid, no duplicate ids or duplicate input/output pairs. 19 warnings, all the already-known Malory stray-tag artifact (~6% of the 300 Malory entries) — nothing new surfaced. `--strict` flag exits 1 on errors for future CI use.
-- [x] Reach 1,000 total entries — **1003/1000, done.** Archetype balance is not perfect (see table) but the spec's raw count target is met.
-- [x] Build 50-entry stress test corpus (`data/processed/stress_test_corpus.json`) — held out, NOT for training. 15 identity_challenge, 15 out_of_world_reference, 12 modern_language, 8 extended_pressure (10-11 turns each, one per archetype). All 8 archetypes covered. Schema differs from the main dataset: `{id, archetype, stress_test_type, turns: [...]}` — no pre-written NPC output, since these are player-side scripts meant to be run against whichever condition (A/B/C/D) is under test per `Specs.md` section 8's protocol (record the turn number where PDM > 0.7 and archaic markers vanish).
+**Medieval control dataset + results (now the control condition, frozen):**
+- [x] 1,003-pair medieval set, validated (1003/1003 schema-conformant, 0 duplicate ids). Sources: Gutenberg (Shakespeare/Chaucer/Malory, 626), chimbiwide rule-based rewrite (150), hand-authored (227).
+- [x] 50-entry stress-test corpus, held out.
+- [x] **Key medieval finding (reportable RQ3 result):** training-data *composition* matters more than LoRA rank/alpha/epochs for lexically-specific persona control. Eight configs on the full mix produced near-zero archaic markers; training only on the 626 dialect-dense Gutenberg entries (`medieval_r8_gutonly`) fixed it. Held-out (uncontaminated) A-vs-B: marker rate 4.7% → 14.0%, mean drift 0.9766 → 0.9396.
+- [x] **Blending sweep (RQ2 precursor):** α=0.2 beat pure gutonly on both marker rate and over-insertion — a genuine sweet spot.
+- [x] **Full fine-tune reference:** best raw persona (46.8% marker rate) but worst over-insertion (0.8932) and 11.86 GB on disk vs. 2.3 MB LoRA — a clean systems tradeoff.
 
-### Archetype gap (current 1003 entries vs. spec target — remaining imbalance, not a blocker for Phase 3)
+> These medieval numbers are the **control**. The old PDM baseline mean drift of **0.9833 is saturated and reports nothing useful** — do **not** carry it forward as a headline result (see PDM v2 note in Week 5).
 
-| Archetype | Target | Current | Gap |
-|-----------|-------:|--------:|----:|
-| Merchant | 150 | 87 | 63 |
-| Scholar | 150 | 100 | 50 |
-| Innkeeper | 100 | 63 | 37 |
-| Herbalist | 50 | 38 | 12 |
-| Guard | 200 | 189 | 11 |
-| Noble | 150 | 182 | 0 (over) |
-| Peasant | 150 | 221 | 0 (over) |
-| Clergy | 50 | 123 | 0 (over) |
+---
 
-Total count target met. Remaining per-archetype imbalance (merchant/scholar/innkeeper still under target, noble/peasant/clergy over) is a training-data-quality concern for Phase 3, not a blocker — LoRA training can proceed on the current distribution, and further balancing can happen in parallel if archetype-specific persona drift looks weak in evaluation.
+## The 11 build weeks
 
-**Deliverable:** `medieval_npc_dataset_v1.json` with 1,000+ entries — **not yet met** (844/1000).
+| Weeks | Focus | Exit condition |
+|-------|-------|----------------|
+| 1 (Aug 10–16) | llama.cpp/GGUF inference path. Re-measure TinyLlama latency. Qwen3-0.6B setup. | Latency < 500 ms |
+| 2 (Aug 17–23) | Train one adapter (guard, 189 pairs). End-to-end generation. | Adapter generates in-character text |
+| 3–4 (Aug 24–Sep 6) | Modern dataset, 600 pairs. Annotate visibility sets in the same pass. | **Frozen Sep 6** |
+| 5 (Sep 7–13) | PDM v2 against real generations. | Baseline drift shows variance |
+| 6 (Sep 14–20) | KBD implementation + planted forbidden facts. | KBD catches ≥1 real violation |
+| 7–8 (Sep 21–Oct 4) | Train 8 modern adapters × 2 base models. | 16 adapters exist |
+| 9–10 (Oct 5–18) | **α-sweep.** KBD + PDM across α for 3 adapter pairs. | This is the paper — protect these weeks |
+| 11 (Oct 19–23) | Flat-RAG baseline at matched token budget. Latency/VRAM benchmarks. Figures. | Freeze |
 
-## Phase 3 — Training (Weeks 7–10)
+**Slip absorbs into weeks 3–8. Never out of 9–10.**
 
-- [x] Set up `training/` pipeline: `train_adapter.py` (QLoRA via `transformers`+`peft`+`trl` SFTTrainer), `configs/lora_config.yaml`, `configs/training_args.yaml`. Base model: `TinyLlama/TinyLlama-1.1B-Chat-v1.0` (same variant as the Ollama baseline, for a fair Condition A vs B comparison). 4-bit QLoRA (nf4, double quant) — the 2.15GB MX450 can't fit fp16 full-model training.
-  - **Real bug hit and fixed:** fp16 training crashed (`_amp_foreach_non_finite_check_and_unscale_cuda not implemented for BFloat16`) because TinyLlama-Chat's checkpoint has some layers natively in bf16, and mixing fp16-scaled gradients with bf16 params breaks torch's GradScaler. Fixed by training in bf16 end-to-end instead (no loss scaler needed) — MX450 reports `torch.cuda.is_bf16_supported() == True` (software-emulated, Turing has no native bf16 tensor cores, but it works).
-  - Smoke-tested at 5 and 50 samples before committing to a full run — 50-sample timing (~55s/step, cold) badly overestimated the real full-dataset speed (~17s/step warm) — don't trust small-sample timing extrapolations on this hardware.
-- [x] Train medieval adapter (r=8, α=16, 3 epochs) — **done, working config found: `medieval_r8_gutonly`** (see the dialect-density investigation lower in this file for the full 8-run debugging story — rank/alpha/epochs/loss-masking-bug were all real things worth fixing, but the actual fix was training only on the 626 dialect-dense Gutenberg entries instead of the full 1003-entry mix). This adapter produces real PDM-detected archaic markers (thee/thou/hath) and is the recommended reference for evaluation going forward. Earlier full-mix runs (`medieval_r8`, `_r16`, `_r8_a32`, `_r8_e8`, `_r32`) remain useful as a documented data-composition ablation, not as the adapter to evaluate against baseline.
-  - First full-mix attempt: 1003 samples, 189 steps, 108.8 min (GPU thermal-throttled mid-run, 63°C). Loss 3.36 → 1.58-1.83, mean token accuracy 0.42 → 0.69. W&B run `medieval-r8-adapter` (project defaulted to `huggingface`, not `npc-ai-framework` — fix `project=` in `SFTConfig` for future runs, cosmetic only).
-- [ ] Train healthcare adapter
-- [ ] Train education adapter
-- [ ] Run LoRA rank ablation (r = 4, 8, 16, 32) on medieval adapter — **motivated by a real finding, not just checkbox-following**: r=8 sanity check (`training/quick_inference.py`) showed loss converging fine (3.36→1.6) and content shifting medieval-thematic, but **zero archaic dialect markers** (no thee/thou/hath) in 5 test generations, confirmed with both sampled and greedy decoding (ruled out sampling noise). Training data has plenty of signal (797/1003 entries, 79.5%, have real dialect_features) — so r=8's capacity, not the data, is the suspected bottleneck. r=16 running now.
-  - r=8: done, see Phase 3 entry above.
-  - r=16: **first attempt crashed** at step 56/189 (~1hr in) — no Python traceback, process just died (exit code 4). Per-step time had degraded badly beforehand (17s → 106s/step over that hour), strongly suggesting GPU thermal throttling escalated into a Windows WDDM driver TDR reset. `nvidia-smi` confirmed the GPU was healthy afterward (idle, 48°C, 0 processes) — a transient crash, not hardware failure. Lost the full hour since `save_strategy: epoch` hadn't hit its first checkpoint (step 63) yet. **Fix applied:** `train_adapter.py` now hardcodes `save_strategy="steps"`, `save_steps=15` (~4-5min between saves) plus auto-resume-from-latest-checkpoint on restart, regardless of `training_args.yaml`'s `save_strategy` field (kept for spec-alignment reference only). **Retry succeeded**, 106min, no crash.
-  - **r=16 result — same null finding as r=8.** Loss/accuracy curves nearly identical to r=8 (3.37→1.82 vs 3.36→1.81, token accuracy 0.68 both). `quick_inference.py` sanity check: still zero `thee/thou/hath/dost` markers across 5 test generations. One output ("Aye, aye, a sword for a knight") is genuinely medieval-flavored but "aye" isn't in `pdm_scorer.py`'s `DIALECT_PATTERNS` list — a real gap in the scorer's vocabulary, worth widening (add aye, ye, morrow, milord, etc.) before trusting PDM=0 readings at face value. Doubling rank (8→16) did not meaningfully change either the loss curve or the archaic-marker outcome — this is genuine evidence that **rank is likely not the bottleneck**, contrary to the working hypothesis. Candidate real bottlenecks: (a) `DIALECT_PATTERNS` is too narrow and undercounts real archaic style already present, (b) 3 epochs / this LR may be capped regardless of rank, (c) TinyLlama-Chat's RLHF-aligned "helpful assistant" prior may need a stronger system-prompt intervention (explicit "use words like thee, thou, hath") rather than relying purely on implicit stylistic transfer from fine-tuning data alone. r=32 not yet run — likely to repeat the same null pattern based on this trend, so pausing the rank sweep here pending a decision on which alternative to chase.
-  - **Cheap follow-up test (no retraining, `quick_inference.py --directive`):** added an explicit system-prompt instruction directly naming the target words ("use archaic words such as thee, thou, thy, hath, dost, doth, wilt, nay, art, 'tis, prithee, forsooth"), tested on the existing r=16 adapter. Result: **worse, not better** — one output (merchant) degenerated into 27x repeated "aye" (a greedy-decoding repetition-loop failure mode), and none of the explicitly-named words appeared even once across all 5 prompts. This rules out "the model just needs to be told" as an easy fix.
-  - **Net conclusion so far:** rank (8→16) and directive prompting are both ruled out as quick fixes for near-zero archaic-marker production. This matters for the paper's core claim (RQ1/Contribution 4: "comparable persona consistency to GPT-4o" is the primary claim) — a null Condition B isn't a footnote, it's the central result failing, so decided to fix it before writing anything up rather than reframe as a limitation prematurely.
-  - **alpha=32 (r=8): also null.** Trained clean, 90min (survived two thermal stalls this time thanks to the step-checkpoint fix, didn't crash). Loss slightly better than r=8/r=16 (3.15→1.72 vs ~3.36→1.8) — alpha=32 does help the loss curve marginally. But `quick_inference.py` sanity check: still **zero** thee/thou/hath/etc markers across all 5 prompts, and one output (innkeeper) degenerated into a 27x repeated "a room" loop under greedy decoding — the same repetition-loop failure mode seen earlier at r=16/directive-prompt ("aye" x27). Two different configs now show this greedy-decoding degeneracy, suggesting it's a property of the small model/dataset combination, not a one-off.
-  - **Three full training runs (r=8, r=16, r=8_a32), three null results on archaic-marker production.** Loss curves all converge to roughly the same ~1.6-1.8 plateau regardless of rank or alpha — strong evidence the bottleneck isn't LoRA capacity or scaling at all. Likely real cause: archaic pronouns are rare tokens even in a dataset where most entries contain them (a handful of occurrences among many tokens per example) — cross-entropy loss is dominated by common words, so it can drop a lot without meaningfully raising the odds of those specific rare tokens.
-  - **8 epochs (r=8) running** to test the rare-token-reinforcement hypothesis directly. Hit two real bugs launching this one, both fixed before the run that's now in progress:
-    1. **Directory-naming collision:** output dir only encoded rank+alpha (`medieval_r8`), not epoch count — a naive 8-epoch run at r=8 would've reused the *original 3-epoch r=8 run's directory*, and the auto-resume-from-checkpoint logic would've tried to resume from that unrelated run's final checkpoint. Fixed: dir suffix now includes epoch count when overridden (`medieval_r8_e8`).
-    2. **Resume-from-checkpoint is fundamentally broken on this machine's torch (2.5.1):** transformers refuses to `torch.load` optimizer/scheduler state below torch 2.6 (CVE-2025-32434 restriction) — confirmed by the collision above instantly crashing on `trainer.train(resume_from_checkpoint=...)` before any training happened. This means the crash-resilience checkpointing added after the r=16 crash was **saving fine but could never actually resume** — a future crash would've crashed again immediately on the resume attempt. Fixed: `train_adapter.py` now checks torch version and skips resume entirely below 2.6 (falls back to a fresh start, with a printed note) instead of attempting a resume that's guaranteed to fail. Not upgrading torch itself — real risk of destabilizing the working bitsandbytes/peft/trl stack for an already-working pipeline.
-    - Verified the original `medieval_r8` adapter's `adapter_model.safetensors` was untouched (unchanged mtime) after the collision — no data lost, the crash happened before any weights were touched.
-  - **8-epoch run stopped manually at step 120/504 (~1.9 epochs), not completed.** After the naming/resume fixes, the run itself went clean for the first ~90 steps, then degraded far worse than any previous run: by step 120 (3h42m elapsed) `nvidia-smi` showed the GPU **power-throttled to a 5W cap** (normal MX450 TDP ~25-30W), 66-67°C, stuck at ~110-117s/step (vs ~17s/step baseline) — tqdm's remaining-time estimate was 11h46m. This is a sustained-load thermal/power ceiling this laptop GPU hits on runs longer than ~1.5-2hrs; the three prior ~90-110min runs had brief stalls but recovered, this one didn't. Manually killed (PID 56084) rather than wait it out.
-  - **Tested checkpoint-120 anyway (~1.9 epochs in) — same null result as all three prior full runs.** Zero archaic dialect markers, and another degenerate repetition loop ("aye" x27, merchant prompt — third occurrence of this failure mode across different configs). This is now **four independent confirmations** (r=8/3ep, r=16/3ep, r=8_a32/3ep, r=8/~1.9ep-partial) of the same outcome: loss converges fine, thematic content shifts medieval, archaic lexical markers never appear.
-  - **Decision: paused further local training experiments, moved to Colab.** This hardware (2.15GB MX450) cannot sustain the multi-hour runs needed to properly test the epoch-count hypothesis, on top of the crash/throttle history already logged above.
-- [x] Built `training/colab_train.ipynb` — clones the repo, installs pinned deps, mounts Drive, W&B login, runs the queued experiments. Ran on Colab T4 successfully — r8_e8 (63min) and r32 (24min) both completed, way faster than local, no thermal issues.
-  - **Both null on archaic markers** (same as local runs) — this triggered the deeper investigation below.
-- [x] **Found and fixed a real training bug: completion-only loss was never enabled.** Checked TRL's `SFTTrainer` source directly — `completion_only_loss` only auto-enables when the dataset has `"prompt"`/`"completion"` columns; ours had a flat pre-templated `"text"` field (built via our own `tokenizer.apply_chat_template(..., tokenize=False)` call), so **every one of the first 6 training runs computed loss over the entire sequence** — the templated system prompt and the player's question included, not just the assistant's response. The system prompt is long, constant, and trivially memorizable; this diluted whatever gradient signal existed for the assistant's archaic vocabulary specifically. TinyLlama-Chat's own `chat_template.jinja` has no `{% generation %}` tags, so the alternative fix (`assistant_masks` via `return_assistant_tokens_mask`) wasn't available — restructured `build_dataset()` to emit `prompt`/`completion` columns instead (TRL auto-detects this format). Verified the exact tokenized concatenation matches the original single-string format byte-for-byte (just properly split now). Also fixed a directory-naming gap that let a local smoke test overwrite the original `medieval_r8` baseline's weights (harmless — that run's outputs were already fully documented above, nothing lost).
-  - **Reran r8_e8 and r32 on Colab with the fix.** Loss curve looks completely different now (3.6→2.9, not 3.4→1.6) and token accuracy dropped to ~0.40 (from ~0.69) — **this is expected and correct**, not a regression: it's now measuring only the harder completion tokens instead of being inflated by trivially-easy system-prompt-repetition predictions. Confirms the bug was real and the fix changed what's actually being learned.
-  - **Still zero PDM dialect markers even with the bug fixed.** But the qualitative outputs are noticeably better — coherent, in-character, thematically rich ("I've been here a decade, and I've never had a customer who didn't want something made of steel" / "the legend says it can be tamed by the right words and the right mind"), and both innkeeper outputs now open with **"Aye"** (real archaic flavor) before degenerating into the same repetition-loop bug seen before. "Aye" isn't in `pdm_scorer.py`'s `DIALECT_PATTERNS` list (documented scorer-narrowness limitation from earlier, kept as-is for research integrity).
-  - **Working theory:** training pushes the model toward a *medieval narrator register* (kings, legends, rebellions, dragons) rather than the *archaic-pronoun register* PDM specifically measures (thee/thou/hath/dost/etc). Plausible cause: the 1003-example dataset mixes genuinely pronoun-heavy sources (626 Gutenberg entries — real thee/thou/hath from Shakespeare/Chaucer/Malory) with pronoun-light-but-medieval-themed sources (150 chimbiwide entries, many hand-authored entries) — "sound thematically medieval" is a much stronger and easier-to-learn signal across the whole mix than "always use archaic pronouns specifically."
-  - **Parked lever, now implemented and queued:** added `--id-prefix` to `train_adapter.py`'s `build_dataset()` — filters training entries by id prefix (e.g. `GUT-`). Verified locally: `--id-prefix GUT-` correctly yields exactly the 626 Gutenberg entries (all 100% dialect-dense, vs 79.5% across the full mix). Output dir auto-suffixes `_gutonly` to avoid colliding with prior runs. `training/colab_train.ipynb` updated with a new section 6 running this experiment (`--domain medieval --id-prefix GUT-`, default r=8/alpha=16/3-epoch, no other changes) plus a `git pull` cell in case the Colab session/clone is being reused rather than started fresh.
-  - **RESULT: this fixed it.** Colab hit a free-tier GPU quota limit, so ran locally instead (626 samples is ~62% of the full run, GPU had cooled fully — completed in 3h07m without crashing, slow but stable). `quick_inference.py` on `medieval_r8_gutonly`: **3 of 5 outputs now have real, PDM-detected dialect markers** — merchant "I will give it **thee** for a pound of gold" (`{thee}`), scholar "The dragon **hath** a great heart, and a great heart **hath** he" (`{hath}`), innkeeper "I will give it **thee**, and **thou** shalt have it for the night" (`{thou, thee}`). No repetition-loop degeneracy in any of these three. Loss ended higher than the full-mix runs (3.64 vs ~2.9) and accuracy lower (~0.33 vs ~0.40) — expected, not a regression: Early Modern English is inherently higher-perplexity than modern English, and this is a harder, purer distribution, not a worse-fit one.
-  - **Root cause confirmed:** it wasn't rank, alpha, epochs, or even the loss-masking bug (which was real and worth fixing regardless) — it was **training data composition**. Mixing genuinely archaic-pronoun-dense text (Gutenberg, 100% density) with medieval-themed-but-pronoun-light text (chimbiwide, hand-authored — 79.5% density, and even that's mostly single-marker instances) diluted the specific "always use thee/thou/hath" signal across all eight prior configs, even though the thematic/tonal medieval shift always came through fine.
-  - **This is genuinely a good, reportable RQ1/RQ3 finding either way it's framed:** dataset composition matters more than LoRA hyperparameters for lexically-specific persona control — a nuanced, defensible result for the paper regardless of which config becomes the "official" Condition B.
-  - **Recommendation: `medieval_r8_gutonly` should be the reference Condition B adapter going forward** (baseline evaluation, PDM scoring, human eval) rather than the full-mix versions. Trade-off worth flagging: Gutenberg's archetype distribution skews toward noble/peasant/guard/clergy (merchant/innkeeper/herbalist are thin there) — but the sample outputs above show the archaic *voice* transferred fine to merchant and innkeeper prompts anyway, suggesting the register generalizes across archetypes even when archetype-specific examples are sparse in training.
+---
 
-- [x] **Ran full Condition B evaluation** (`evaluation/run_condition_b.py`, new script) — `medieval_r8_gutonly` against the exact same 326 prompts used for the Condition A baseline (`evaluation/results/baseline_outputs.json`), so the comparison is apples-to-apples. Runs locally via transformers+peft (not Ollama — no merge/GGUF-export pipeline built yet, so latency here isn't comparable to A's Ollama latency; only the drift/PDM comparison is meaningful right now).
-  - **Result — real, full-scale improvement over baseline:**
+### Week 1 (Aug 10–16) — Inference path + Qwen3 setup · exit: latency < 500 ms
 
-    | Metric | Condition A (no adapter) | Condition B (medieval LoRA, gutonly) |
-    |---|---:|---:|
-    | Mean drift score | 0.9833 | **0.8973** |
-    | Entries with any archaic marker | 13/326 (4.0%) | **64/326 (19.6%)** |
+- [ ] Merge a trained LoRA adapter into base weights once (`merge_and_unload()`, offline), export to **GGUF Q4_K_M** (llama.cpp / `llama-cpp-python`), serve via llama.cpp/Ollama. This is the `backend/inference.py` the spec always intended.
+- [ ] **Re-measure TinyLlama latency** on the GGUF path. The 3486 ms figure is an unoptimized-path artifact — do not cite it as a model-size result until re-measured.
+- [ ] Stand up **Qwen3-0.6B-Base** and **Qwen3-0.6B-Instruct**. ChatML template. **Set `enable_thinking=False`** (dual-mode thinking otherwise leaks reasoning traces, inflates latency, pollutes metric scoring).
+- [ ] Ensure dataset formatting + any tokenizer-dependent metric code handles **both** Llama-chat and ChatML templates.
 
-  - This is the first genuine quantitative evidence for RQ1 (LoRA-adapted TinyLlama achieves better persona consistency than the zero-shot baseline) — modest in absolute terms (most responses still drift fully, B's mean drift is still close to 1.0), but real, reproducible, and measured across the full comparison set rather than a handful of cherry-picked prompts.
-  - Results saved: `evaluation/results/condition_b_outputs.json`, `condition_b_metrics.csv`.
-  - **Not yet done:** Condition C (GPT-4o few-shot — needs API key) and Condition D (full fine-tune) haven't been run, so this is only an A-vs-B comparison so far, not the full 4-condition table the spec's evaluation framework calls for.
+### Week 2 (Aug 17–23) — One adapter, end-to-end · exit: in-character generation
 
-- [x] **Caught and fixed a train/test contamination bug in the above comparison — the 326-prompt numbers above are invalid, don't cite them.** The Condition A baseline (`baseline_outputs.json`) was captured early in the session using the dataset's *first* 326 entries — all `GUT-*` ids (Hamlet/Macbeth/Caesar/Canterbury). `medieval_r8_gutonly` was later trained on **all 626** `GUT-*` entries — a strict superset. Checked directly: **326/326 baseline eval prompts were in the adapter's training set.** The reported "improvement" partly or mostly reflects memorization, not generalization.
-  - **Fix:** built a genuinely held-out eval set from the 377 `SYN-*`/`CHM-*` entries (never seen by `medieval_r8_gutonly`'s training). Extended `run_baseline.py` with `--id-prefix`/`--exclude-prefix`/`--output-name` and `run_condition_b.py` with `--baseline-name`/`--output-name` to support arbitrary eval subsets without clobbering existing results.
-  - Ran Condition A and B on this held-out set (`baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json`, 377 entries each).
-  - **Second data-quality wrinkle found while computing this:** 206/377 held-out entries have *empty* `reference_features` (many hand-authored/chimbiwide entries were deliberately written in natural, non-forced-archaic prose). For those, `single_turn_drift` trivially scores 0 whenever the model output also happens to have zero archaic markers — which zero-shot baseline always does — inflating Condition A's apparent quality on that subset for reasons that have nothing to do with persona consistency. Restricted the real comparison to the **171 entries with genuine reference markers**.
-  - **Final, valid, uncontaminated result:**
+- [ ] Train one adapter (guard, 189 pairs) end-to-end on the current pipeline against at least one base model. Confirm in-character generation through the GGUF serving path.
+- [ ] LoRA config for the new runs: `r=16`, `alpha=32`, target `q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj`.
 
-    | Metric (171 held-out entries, real reference markers) | Condition A | Condition B (`medieval_r8_gutonly`) |
-    |---|---:|---:|
-    | Mean drift | 0.9766 | **0.9396** |
-    | Any archaic marker present | 8/171 (4.7%) | **24/171 (14.0%)** |
+### Weeks 3–4 (Aug 24 – Sep 6) — Modern dataset, 600 pairs · **exit: frozen Sep 6**
 
-  - Smaller effect size than the contaminated number, but genuine — this is real evidence of generalization, not memorization, and this is the number to cite.
-  - **Side finding, worth flagging honestly:** on the other 206 entries (intentionally non-archaic reference prose), Condition B's mean drift got *worse* than baseline (0.4456 → 0.6516 on that subset) — the adapter appears to over-insert archaic vocabulary even in contexts where the reference wanted plain natural prose. A real overfitting-to-register trade-off from training on the Gutenberg-only (100% archaic-dense) subset — worth discussing as a limitation, not hiding.
-  - Results: `evaluation/results/baseline_heldout_outputs.json`, `condition_b_heldout_outputs.json` (+ matching `_metrics.csv` files). The original contaminated `baseline_outputs.json`/`condition_b_outputs.json` are kept for reference but should not be cited as a valid A-vs-B comparison.
+- [ ] Build the modern-city set: **600 pairs (75 × 8 roles)**, persona re-voiced from cleared sources (SGD, Taskmaster, MultiWOZ, SODA, PersonaChat, Synthetic-Persona-Chat). Record `provenance` per entry. See [`DATA_PIPELINE.md`](DATA_PIPELINE.md).
+  - Load SGD/Taskmaster/MultiWOZ as **raw JSON from GitHub**, not via `load_dataset`.
+  - **Do not use Cornell Movie-Dialogs** (no open licence) or **DailyDialog** (NC + share-alike). Both rejected — see `DATA_PIPELINE.md`.
+- [ ] Use the 1:1 role mapping: guard→police officer, merchant→shopkeeper, scholar→professor, innkeeper→bartender, clergy→social worker, herbalist→pharmacist, noble→executive, peasant→service worker.
+- [ ] **Annotate visibility sets in the same pass** — flat visibility tags per knowledge item (set intersection, not a tree/graph). Also populate `persona_features[]` per entry.
+- [ ] Extend `stress_test_corpus.json` with **15–20 planted forbidden facts** (probes whose correct answer is a refusal / expression of ignorance) — required for KBD to have signal.
+- [ ] **Freeze the dataset on 6 Sep 2026.**
 
-- [x] **Completed the adapter blending sweep (spec's RQ2, α = 0.2/0.5/0.8) on the same held-out 171-entry set.** Blended `medieval_r8_gutonly` (archaic-dense, prone to over-insertion) with `medieval_r8_a32` (full-mix, more balanced) via `training/blend_adapters.py`, evaluated each blend the same way as the gutonly adapter.
+### Week 5 (Sep 7–13) — PDM v2 · exit: baseline drift shows variance
 
-  | Config | Marker rate (real-reference subset, higher=better) | Over-insertion drift (empty-reference subset, lower=better) |
-  |---|---:|---:|
-  | A baseline | 4.7% | 0.0049 |
-  | **Blend α=0.2** | **19.9%** | **0.0631** |
-  | Blend α=0.5 | 16.4% | 0.1796 |
-  | Blend α=0.8 | 18.1% | 0.3447 |
-  | Pure gutonly (α=1.0) | 14.0% | 0.4126 |
+- [ ] Rebuild PDM around **domain-agnostic feature families**: domain lexicon, register markers, formality score, syntactic profile, stance. (The old PDM used Early Modern English markers and produces no signal on modern dialogue.)
+- [ ] **Calibrate against real generations from a trained adapter**, not against the dataset. The 0.9833 figure is what happens when a metric is calibrated without model output.
+- [ ] **Acceptance:** baseline drift must show **variance across turns**. A flat near-1.0 score means the metric is still broken.
+- [ ] Do **not** write PDM v2 before an adapter exists to calibrate against (repeats the 0.9833 mistake).
 
-  - **Over-insertion scales cleanly with α** (more gutonly weight → more archaic-word bleed into contexts that didn't want it) — expected, monotonic.
-  - **Marker rate is non-monotonic** — α=0.2 beats every other tested config, including pure gutonly, on *both* axes simultaneously. This is a genuine sweet spot, not just "less gutonly is safer": a small nudge of concentrated archaic-pronoun signal blended into the more balanced full-mix adapter unlocks the target vocabulary more reliably than either pure adapter alone, without dragging in gutonly's over-insertion problem.
-  - Directly answers the spec's RQ2 ("is there a sweet spot for hybrid NPCs?") with real quantified data — a solid result for Contribution 2 (adapter blending).
-  - One background-task hiccup during this: the α=0.8 run got silently killed by a session handoff (not a real crash — `nvidia-smi`/process check showed nothing running, only 20/377 saved), relaunched cleanly from scratch.
-  - Results: `evaluation/results/condition_blend_a{2,5,8}_heldout_outputs.json` (+ matching `_metrics.csv`), blended adapters in `training/adapters/blend_medieval_r8_gutonly_medieval_r8_a32_a{0.2,0.5,0.8}/`.
+### Week 6 (Sep 14–20) — KBD · exit: catches ≥1 real violation
 
-- [x] **Built `training/train_full_finetune.py` for Condition D (full fine-tune, no LoRA)** — completes the comparison matrix without needing the blocked OpenAI key (only Condition C needs that). Reuses `build_dataset()`/the completion-only-loss fix from `train_adapter.py` for comparability. Defaults to `--id-prefix GUT-` to match `medieval_r8_gutonly` (the working config) — otherwise B vs D wouldn't be a fair comparison. Uses 8-bit Adam (`adamw_bnb_8bit`) + gradient checkpointing + smaller per-device batch (2 vs LoRA's 4, same effective batch via more accumulation) to fit the full 1.1B-parameter optimizer state on a T4's 16GB — **cannot run on the local MX450 at all** (2.15GB VRAM, full fine-tune needs ~8-12GB minimum even with these memory-saving settings).
-  - Verified structurally (imports, dataset-builder reuse, valid `adamw_bnb_8bit` optimizer name) — not run yet, needs Colab.
-  - **Fixed a real bug found while wiring this up:** `quick_inference.py` assumed every checkpoint was a PEFT adapter (`PeftModel.from_pretrained`), which fails on a full fine-tune checkpoint (a complete standalone model, no `adapter_config.json`). Added auto-detection — checks for `adapter_config.json` and loads accordingly (full bf16 model directly vs. base+adapter wrapping).
-  - Added section 7 to `training/colab_train.ipynb` to run it.
-  - **RESULT — ran on Colab, and it's the best result of the whole investigation.** 26.8 min training (3 epochs, 626 GUT- entries). Loss dropped to 0.60 final (vs LoRA's ~1.5-1.8 plateau — full fine-tune touches all 1.1B params, not just q_proj/v_proj at rank 8-32, so it has far more room to actually absorb the archaic style). `quick_inference.py`: **4 of 5 outputs have real archaic markers**, richer and more coherent than any LoRA config, no repetition-loop degeneracy — e.g. innkeeper: *"Nay, I shall not so: here is a worshipful knight Sir Lamorak de Galis that for me he shall be lord of this country, for he hath done here great deeds of arms"* (`{hath, nay}`, and "Sir Lamorak de Galis" is a real Arthurian knight name — genuinely Malory-flavored).
-  - **The real, stark tradeoff for Contribution 4:** model on disk is **11.86 GB** vs. **2.3MB** for the LoRA adapter — over 5000x larger, ~24x past the spec's <500MB per-domain-adapter budget. Full fine-tune wins decisively on persona quality; LoRA wins by orders of magnitude on deployability. This is exactly the clean systems tradeoff the paper's systems contribution needs.
-  - Generalized `evaluation/run_condition_b.py` and `training/quick_inference.py` (again) to auto-detect full-fine-tune checkpoints vs PEFT adapters (checks for `adapter_config.json`) — same fix pattern as before, now both scripts handle either condition transparently. `_compare()`'s printed label is now dynamic instead of hardcoded "Condition B".
-  - Added Colab notebook section 8 to run the full 171-entry held-out evaluation for Condition D immediately after training (avoids re-downloading the 11.8GB model from Drive) — `evaluation/results/baseline_heldout_outputs.json` is already committed to the repo, so `git pull` covers it.
-  - **Full quantitative comparison, computed after the user downloaded and added the Colab output manually** (`evaluation/results/condition_d_heldout_outputs.json`/`_metrics.csv`, 377 entries, verified complete):
+- [ ] Implement KBD: `KBD = (references to out-of-visibility knowledge items) / (total factual references in response)`.
+- [ ] Flat visibility-tagged knowledge items; visibility resolution is a **set intersection**. Not a tree, not Neo4j, no propagation/decay.
+- [ ] Measure **primarily against the stress corpus + planted forbidden facts**, not normal dialogue (normal dialogue → near-zero violations, no signal).
+- [ ] **Exit:** KBD catches ≥1 real out-of-visibility violation.
 
-    | Config | Marker rate (171 real-reference entries) | Mean drift (same) | Over-insertion drift (206 empty-reference entries) |
-    |---|---:|---:|---:|
-    | A baseline | 4.7% | 0.9766 | 0.0049 |
-    | B gutonly LoRA | 14.0% | 0.9396 | 0.4126 |
-    | Blend α=0.2 | 19.9% | 0.9195 | 0.0631 |
-    | **D full fine-tune** | **46.8%** | **0.8029** | **0.8932** |
+### Weeks 7–8 (Sep 21 – Oct 4) — Train 16 adapters · exit: 16 adapters exist
 
-  - **The complete story for Contribution 4:** full fine-tune crushes every LoRA config on raw persona strength (46.8% marker rate vs. 19.9% best-of-LoRA, and the best mean drift by far) — but it's also by far the *worst* on over-insertion (0.8932 — the model bleeds archaic language into nearly every context regardless of whether the reference wanted plain prose, worse than even pure gutonly LoRA's 0.4126). It didn't learn *when* to be archaic, it just became archaic unconditionally. Combined with the 5000x storage cost (11.86GB vs 2.3MB), this is a clean, complete, quantified systems tradeoff: full fine-tune wins on raw strength, LoRA (particularly the α=0.2 blend) wins decisively on contextual control and deployability.
-  - This gives the paper a genuinely well-rounded RQ1/RQ2/Contribution-4 result set: not "LoRA is strictly worse," but "LoRA trades some raw strength for precision and a 5000x size reduction" — a real, defensible engineering tradeoff finding.
+- [ ] Train **8 modern archetype adapters × 2 base models** (TinyLlama-1.1B, Qwen3-0.6B) = 16 adapters.
+- [ ] Train both **Qwen3-0.6B-Base and Qwen3-0.6B-Instruct** for ≥1 archetype; report the Base-vs-Instruct difference as an **ablation** (the Instruct "helpful assistant" prior competes with the NPC persona — itself a drift mechanism).
 
-- [x] **Ran the persona stress test protocol (Specs.md section 8, RQ3) — the 50-conversation `stress_test_corpus.json` built in Phase 2, actually used for the first time.** Built `evaluation/run_stress_test.py`: runs each conversation's turns sequentially with real conversation history (not isolated single-turn calls), two backends (Ollama `/api/chat` for baseline, transformers for adapters/full-finetune), per-archetype reference dialect-feature sets built from the training data (filtered to only words `pdm_scorer.py` can actually detect — the same fix pattern as the earlier over-insertion analysis). Persona break defined per spec: single-turn drift > 0.7 AND zero archaic features present, first such turn recorded.
-  - **Hit the same Ollama resilience bug as the very first baseline run** (`WinError 10013`, socket exhaustion under sustained load) — the script's first version lacked the session-reuse/backoff/incremental-save fixes `run_baseline.py` already had, crashed with zero results saved after ~15 min. Fixed the same way (persistent session, 3/6/9s backoff, resume-by-default via per-entry disk flush) before rerunning.
-  - **Results — real, meaningful persona resilience from the adapter:**
+### Weeks 9–10 (Oct 5–18) — **α-sweep (the paper)** · protect these weeks
 
-    | Condition | Broke at some turn | Never broke | Mean break turn (of those that broke) |
-    |---|---:|---:|---:|
-    | A baseline | 50/50 (100%) | 0/50 (0%) | 1.00 |
-    | B gutonly LoRA | 37/50 (74%) | **13/50 (26%)** | 1.08 |
+- [ ] For **3 adapter pairs**, sweep α ∈ {0, 0.25, 0.5, 0.75, 1.0}. Measure **KBD and PDM v2** against **both parent visibility sets**.
+- [ ] Answer RQ2: does the epistemic boundary **interpolate** (each parent's facts with reduced confidence) or **collapse to the union** (a leak)?
+- [ ] This is the headline result. **No slip into these weeks.**
 
-  - By stress-test type, LoRA vs baseline: `identity_challenge` 11/15 vs 15/15 broke, `modern_language` 7/12 vs 12/12, `out_of_world_reference` 11/15 vs 15/15, `extended_pressure` 8/8 vs 8/8 (still breaks every time — 10+ turns of escalating pressure is the hardest case, even the adapter can't sustain that long).
-  - Condition D (full fine-tune) not run yet — the 11.86GB model lives on Colab/Drive only, can't load locally (exceeds the 2GB VRAM even unquantized). Added Colab notebook section 9 (`run_stress_test.py --condition full`) to run it — flagged an interpretive caveat in the notebook worth remembering when reading D's results: persona break requires *zero* archaic markers in a turn, and D over-inserts archaic vocabulary almost everywhere (0.8932 over-insertion drift from the single-turn eval) — so D may show a *low* break rate not because it's genuinely persona-stable, but because it never stops sounding archaic even when a broken/modern response would be the honest signal. Worth eyeballing actual transcripts, not just the summary numbers, once this runs.
-  - **First attempt failed**: run in a fresh Colab runtime (different session than the one that trained the model), so the 11.86GB checkpoint wasn't in that session's local storage — `AutoModelForCausalLM.from_pretrained` fell back to treating the local path as a HF Hub repo id and errored (`Repo id must be in the form 'repo_name' or 'namespace/repo_name'`). Fix needed: `!cp -r "{DRIVE_ADAPTERS_DIR}/medieval_full_finetune_gutonly" training/adapters/` before the eval cell, if run in a new session. **Parked — not a priority right now, revisit later.**
-  - Results: `evaluation/results/stress_test_baseline_outputs.json`, `stress_test_adapter_outputs.json` (full per-turn transcripts, not just summary stats).
-- [x] Implement adapter blending function (`training/blend_adapters.py`) — uses PEFT's built-in `LoraModel.add_weighted_adapter(combination_type="linear")` rather than hand-rolling the spec's simplified `alpha*A + (1-alpha)*B` tensor example directly, since PEFT's version correctly accounts for each source adapter's own alpha/rank scaling (LoRA's effective update is `(alpha/r) * B @ A` — naively averaging raw tensors from adapters with different alpha would silently misweight them). Requires matching rank between the two source adapters (`combination_type="linear"` doesn't support cross-rank blending — would need `"cat"` or `"svd"` for that).
-  - Hit one real bug: `save_pretrained(..., selected_adapters=[...])` on a multi-adapter `PeftModel` still nests the saved adapter under `output_dir/{adapter_name}/` instead of flat — fixed by flattening the subfolder into `output_dir` directly after saving, matching the layout every other adapter in this repo uses.
-  - **Blended `medieval_r8_gutonly` (archaic-dense, over-inserts) × `medieval_r8_a32` (full-mix, natural but weak archaic signal) at α=0.5.** Motivated directly by the trade-off found in the held-out evaluation above. `quick_inference.py` sanity check: **5/5 test prompts now show archaic markers** (up from gutonly's 3/5), including coherent varied content on the noble prompt ("The king hath sent for me, and I am come to thee, and I will tell thee all that is come to pass") rather than the degenerate repetition loops seen in pure-gutonly outputs on that same prompt.
-  - **Full held-out evaluation (377 entries, same set used for the A-vs-B comparison above) — the blend is better than gutonly on both axes, not a compromise between them:**
+### Week 11 (Oct 19–23) — Baselines, benchmarks, figures · exit: freeze
 
-    | Metric | A (baseline) | B (`gutonly`) | Blend α=0.5 |
-    |---|---:|---:|---:|
-    | Mean drift (171 entries, real reference markers) | 0.9766 | 0.9396 | **0.9365** |
-    | Archaic marker present | 8/171 (4.7%) | 24/171 (14.0%) | **28/171 (16.4%)** |
-    | Mean drift, over-insertion risk (206 entries, non-archaic reference) | 0.0049 | 0.4126 | **0.1796** |
+- [ ] **Flat-RAG baseline at matched token budget** (Condition C) — essential; without it a reviewer attributes gains to shorter prompts, not visibility structure.
+- [ ] Latency / peak-RAM / adapter-storage benchmarks across conditions and both base models.
+- [ ] Figures: architecture diagram, PDM v2 curve, α-sweep KBD/PDM heatmap.
+- [ ] **Results freeze 23 Oct.**
 
-  - Blend beats gutonly on the primary persona-consistency metric (higher marker rate, lower drift) **and** cuts the over-insertion side-effect by more than half (0.4126 → 0.1796) relative to pure gutonly. This is genuine evidence for Contribution 2 (adapter blending) — the interpolated adapter is a better NPC voice than either source adapter alone, not merely an average of their weaknesses.
-  - Results: `evaluation/results/condition_blend_a5_heldout_outputs.json` (+ `_metrics.csv`).
-- [ ] Test blending at α = 0.2, 0.8 (0.5 done above, and it's already the best result seen — worth checking whether 0.2 or 0.8 does even better, or whether 0.5 is near-optimal)
-- [ ] Save all adapter checkpoints with W&B run IDs
+---
 
-**Blocked on:** Phase 2 dataset completion (need enough per-archetype coverage before training is meaningful).
+## Evaluation conditions (reference)
 
-## Phase 4 — Evaluation (Weeks 11–14)
+| Condition | Description |
+|-----------|-------------|
+| A | Base model, no adapter (floor) |
+| B | Base + persona adapter (primary claim) |
+| C | Base + **flat-RAG at matched token budget** |
+| D | GPT-4o few-shot (upper-bound reference) |
 
-- [ ] Run all 4 conditions on full evaluation set (PDM, BERTScore, latency, RAM)
-- [ ] Run stress test corpus through all conditions
-- [ ] Conduct human evaluation (recruit 20–30 participants, run Google Form)
-- [ ] Calculate Cohen's Kappa
-- [ ] Build results tables (automated + human)
-- [ ] Profile adapter load/switch latency specifically
+Metrics: KBD, PDM v2, BERTScore F1, adapter-routing accuracy, latency, peak RAM, adapter storage. For any rubric requiring a >95% figure, use **adapter routing accuracy** or **schema conformance** — never a PDM/KBD threshold pass-rate.
 
-### Backend scaffolding (Specs.md section 4/11 system architecture)
+> The extensive **full-fine-tune** results already banked (previously "Condition D") no longer map to a lettered condition — D is now GPT-4o. Keep the full-fine-tune numbers as the systems/deployability tradeoff evidence for Contribution 4, but report them as an explicit ablation, not as Condition D.
 
-- [x] Built `backend/adapter_manager.py` — `AdapterManager` class wraps the base TinyLlama model once (4-bit QLoRA, same pattern as `run_condition_b.py`/`run_stress_test.py`), then loads LoRA adapters onto it via `PeftModel.load_adapter(path, adapter_name=domain)` and switches the active one via `.set_adapter(domain)`. This is the literal implementation of the spec's "dynamic adapter loading... no full model reload" claim — verified `PeftModel.load_adapter`/`set_adapter` signatures directly via `inspect.signature` before writing it.
-  - Only handles LoRA adapters (Condition B), not the Condition D full fine-tune checkpoint — a full fine-tune is a complete standalone 11.86GB model, doesn't fit the "swap the delta" architecture at all. Real part of the deployability story already documented above.
-  - Only `medieval` domain registered in `ADAPTER_PATHS` (points at `medieval_r8_gutonly`) — healthcare/education adapters don't exist yet, dict is structured to extend cleanly once they do.
-- [x] Built `backend/main.py` — thin FastAPI wrapper: `POST /chat` (domain/archetype/message in, generated response + features + optional PDM drift score out), `GET /domains`, `GET /health`. Reuses `evaluation/pdm_scorer.py` directly for feature extraction/drift scoring so the API surface matches the same metric used throughout evaluation.
-- [x] **Verified live, not just import-checked.** Ran via `uvicorn main:app --reload` (added `.claude/launch.json` backend config), hit real endpoints:
-  - First `/chat` call (peasant): `adapter_switch_ms: 9813.3` (one-time base model + adapter load), `generation_ms: 7316.3`.
-  - Second `/chat` call, different archetype, same domain (guard): **`adapter_switch_ms: 0`** — confirms no reload, same resident model instance, only the active LoRA delta changed. This is the actual proof the architecture claim holds, not just that the code runs.
-  - Noted: MX450 inference is slow (~2-7s/response, CPU-bound quantized decode) and greedy decoding still shows the known repetition-loop degeneracy on some prompts (documented earlier in Phase 3) — expected, not a backend bug.
-- [ ] `backend/inference.py` (spec lists this separately from `adapter_manager.py` — currently generation logic lives inline in `AdapterManager.generate()`; split out only if it starts mixing concerns, e.g. if an Ollama/llama.cpp backend gets added alongside the transformers one)
-- [x] Added `GET /archetypes` to `backend/main.py` — aggregates per-archetype reference dialect vocabulary from the training data (same logic as `run_stress_test.py`'s `build_archetype_references()`), so `/chat` auto-scores live PDM drift against the chosen archetype without the caller needing to supply reference features itself.
-- [x] Built frontend demo (`frontend/`, Next.js 16 Pages Router per Specs.md file tree) — `pages/index.jsx`, `components/NPCChat.jsx`, `components/AdapterSelector.jsx`, `components/PDMDisplay.jsx`, `lib/api.js`. Domain/archetype dropdowns, live chat, live PDM drift bar + detected-features display per response, adapter-switch/generation latency shown per message. Blend-alpha slider is present per spec but disabled — live blending isn't wired into the backend (blending is an offline step in `training/blend_adapters.py` that produces a saved checkpoint, not a per-request op), and only one domain is trained anyway.
-  - **Verified live end-to-end**, not just built: ran both `uvicorn` (backend) and `next dev` (frontend, added to `.claude/launch.json`) together, sent real messages through the browser. First message: cold model+adapter load (`switch_ms: 9573`), real generation, PDM drift `1.000` correctly flagging the known repetition-loop degeneracy (`"...the king's son is dead, and that the queen's son is dead..."`) as fully drifted with zero archaic markers. Second message, same archetype: `switch_ms: 0` — confirms the UI is actually exercising the no-reload adapter-switch path, not just displaying static numbers.
-- [ ] Auth/rate-limiting/deployment config (not needed for a local research demo, skip unless actually deploying)
+---
 
-## Domain pivot — medieval to modern open-world crime-city setting
+## Paper (writing-only after 23 Oct)
 
-**Decision, 2026-08-06:** primary domain pivots from medieval RPG to an original modern open-world crime-city setting (GTA-*inspired*, not derived from any Rockstar IP — no scraped game assets/scripts, avoids the real copyright risk that literal GTA sourcing would carry for a published paper). Discussed the tradeoff explicitly before committing: the PDM lexicon, the full 1003-entry dataset, and every trained adapter/eval result are medieval-specific and don't carry over — this is close to a Phase 2–4 restart, not a reskin. What *does* carry over untouched: the framework/systems contribution (`AdapterManager`, `blend_adapters.py`, training pipeline, backend architecture) and the Godot game engineering (movement, NPC placement, animation system) — all domain-agnostic already.
+- [ ] Results section first, then Method, then Related Work (from [`RELATED_WORK.md`](RELATED_WORK.md)), then Intro + Abstract last.
+- [ ] Retrieve and assess **IEEE arnumber 11419836** before the draft (currently inaccessible — see `RELATED_WORK.md`).
+- [ ] Submit to IEEE CoG; upload ArXiv preprint the same week.
 
-- [x] **Archetype mapping** (medieval → modern), added to `training/train_adapter.py` as `MODERN_ARCHETYPES`:
+---
 
-  | Medieval | Modern | Rationale |
-  |---|---|---|
-  | guard | cop | law enforcement |
-  | merchant | dealer | sells goods |
-  | noble | boss | top social status, crime boss |
-  | peasant | civilian | baseline "common" archetype |
-  | clergy | preacher | moral-authority register |
-  | scholar | lawyer | formal/educated register |
-  | innkeeper | bartender | direct parallel |
-  | herbalist | mechanic | skilled trade/craft |
+## Reconciliation notes (conflicts flagged, not silently overwritten)
 
-- [x] **New PDM lexicon for the modern domain** — `evaluation/pdm_scorer.py` refactored to be domain-aware (`DIALECT_PATTERNS_MEDIEVAL`, `DIALECT_PATTERNS_MODERN`, `DIALECT_PATTERNS_BY_DOMAIN`), fully backward-compatible: `DIALECT_PATTERNS` still aliases medieval, `extract_features()`/`single_turn_drift()`/`compute_pdm()` all take an optional `patterns` arg defaulting to the old global — every existing caller (`run_baseline.py`, `run_condition_b.py`, `run_stress_test.py`, `backend/main.py`) needed zero changes.
-  - Modern lexicon (14 markers, same count as medieval for parity): `gonna, wanna, ain't, gotta, lemme, gimme, dunno, nah, yo, bro, homie, finna, kinda, sorta`. Deliberately kept to **function-word/register markers** (informal contraction density), not crime-topic content words (gun, heist, boss) — topic words aren't dialect markers, same principle that kept the medieval list to thee/thou instead of tavern/coin.
-- [x] **`data/scripts/chimbiwide_converter.py` generalized** to `--domain {medieval,modern}`. Key insight: chimbiwide's raw dialogue is *already* casual/contemporary in register — that's literally why it needed the archaic `register_rewrite()` pass for the medieval domain. For modern, the rewrite step is just skipped entirely and the raw text is used as-is, with a different archetype remap (fantasy roleplay bios → crime-city archetypes) and a `FANTASY_LEAKAGE` filter (drops entries too dragon/kingdom/magic-flavored) instead of the medieval `MODERN_LEAKAGE` filter. Net effect: modern-domain dataset building from this source is *less* work than medieval was, not more.
-  - Smoke-tested for syntax/logic (`py_compile` clean) but **not run against the real HF dataset yet** — local Python env currently has no packages installed at all (see Known issues below), blocking a live run.
-- [x] `data/processed/modern_npc_dataset.json` skeleton created (schema v1.0, matches medieval's structure, `entries: []`, 8 modern archetypes listed in metadata).
-- [x] `training/train_adapter.py` — added `"modern"` to `DATASET_PATHS` and its system prompt to `SYSTEM_PROMPTS` (`"You are a {archetype} NPC in a modern open-world crime-city game..."`). Training script itself needed no other changes — domain was already a first-class parameter.
-- [ ] **Next dataset source: Cornell Movie-Dialogs Corpus** (`cornell-movie-dialog/cornell_movie_dialog` on HF) — large, heavy on crime/action movie dialogue, exactly the register this domain wants. License note: the canonical HF mirror shows "no known license"; this is the standard, widely-cited corpus for dialogue-style NLP research (from the 2011 Cornell ACL paper), commonly used in academic work under research-use precedent — different risk tier than scraping a commercial game's proprietary script files. Cite the original paper in the dataset section either way. Extractor script (`data/scripts/cornell_corpus_extractor.py`) not yet built.
-- [ ] Hand-authored gap-filling batches (same method as the 227 medieval SYN- entries) once the archetype balance from chimbiwide+Cornell is known.
-- [ ] Retrain: `medieval_r8_gutonly`-equivalent for modern domain, once dataset exists.
-- [ ] Re-run full eval (A/B/D/blend/stress-test) against modern domain — scripts need zero logic changes, just point at the new dataset/dialect list.
-- [ ] Reskin Godot village → crime-city setting (new modular assets, new character models) — separate task, game-engine side already domain-agnostic (`npc.gd`'s `archetype` field just needs new values).
-- Medieval work (dataset, adapters, eval results, TODO history above) is **kept, not deleted** — it's a complete, defensible secondary result. Worth considering framing the paper as "framework validated across two very different domains (medieval fantasy, modern crime-city)" for a generalizability claim, matching Specs.md's original intent for healthcare/education as secondary domains. Decide this framing later, not blocking.
-
-## Godot game — inference speed optimization plan
-
-Backend inference on the MX450 measured at 2–9s per response (live-tested in the FastAPI section above) — too slow for an interactive game demo where a player expects an NPC to respond in under a second or two.
-
-**Implemented now (cheap, no new dependencies):**
-- [x] `backend/main.py` — model+adapter now **preloaded at FastAPI startup** (`@app.on_event("startup")`) instead of lazily on the first `/chat` call. Removes the ~9.5s cold-load hit from whichever player interaction happens to be first.
-- [x] `backend/adapter_manager.py` — `max_new_tokens` cut from 80 to 40. In-game NPC lines should be short barks, not paragraphs — this is a legitimate design fit, not just a speed hack, and it's the single biggest lever on wall-clock latency short of switching inference engines.
-- [x] Added `no_repeat_ngram_size=3` and `repetition_penalty=1.3` to generation — targets the known repetition-loop degeneracy (`"...the king is dead, and the queen is dead..."`) seen repeatedly in live testing. Still fully deterministic (greedy decode, no sampling cost added).
-
-**Not implemented yet — the actual big lever:**
-- [ ] **Migrate the game-serving path from raw transformers+bitsandbytes to llama.cpp/GGUF via Ollama.** This is what `backend/inference.py` was meant to be per Specs.md's original architecture (an "Ollama wrapper") — never built because the FastAPI backend used the transformers+PEFT path directly for adapter-switching flexibility during evaluation. bitsandbytes 4-bit is optimized for *training memory reduction*, not inference speed; llama.cpp's quantized CPU/GPU inference is built specifically for fast serving and is typically an order of magnitude faster for this model size.
-  - Steps: (1) merge a trained LoRA adapter into the base weights once via PEFT's `merge_and_unload()` (offline, not per-request), (2) export to GGUF (llama.cpp conversion script or `llama-cpp-python`), (3) serve via Ollama — reusing the exact serving pattern `run_baseline.py` already uses for Condition A, just pointed at the merged/fine-tuned model instead of stock TinyLlama.
-  - Tradeoff: loses the live `set_adapter()` hot-swap between personas (each persona becomes its own merged GGUF model, loaded separately) — acceptable for a game where only one NPC is being talked to at a time anyway; Ollama's own model-swap between two small merged models is still fast.
-  - This is the right next step once the modern-domain adapter exists and needs to actually run in the Godot demo, not before.
-- [ ] Godot-side perceived-speed UX: show a "..." typing indicator while `HTTPRequest` is in flight (async by nature already) — doesn't reduce real latency but removes the "did it hang?" dead air, cheap and worth doing regardless of backend speed.
-
-## Phase 5 — Paper + Submission (Weeks 15–18)
-
-- [ ] Write Results section first
-- [ ] Write Method section
-- [ ] Write Related Work section
-- [ ] Write Introduction and Abstract last
-- [ ] Prepare figures: architecture diagram, PDM curve, blending heatmap
-- [ ] Submit to IEEE CoG (check current deadline at ieee-cog.org)
-- [ ] Upload ArXiv preprint same week as CoG submission
+- **Crime-city → modern-city.** The 2026-08-06 pivot targeted a GTA-inspired *crime-city* setting with a street-slang PDM lexicon. The August 2026 decision is a **general modern city** with a different 1:1 mapping (see `DATA_PIPELINE.md`). Code still encoding the crime-city direction — `MODERN_ARCHETYPES` in `training/train_adapter.py`, the modern branch of `data/scripts/chimbiwide_converter.py`, `DIALECT_PATTERNS_MODERN` in `evaluation/pdm_scorer.py` — **predates and conflicts with** the current decision and needs reconciling before the modern adapters are trained. Not changed in this doc pass (code, not docs).
+- **Cornell Movie-Dialogs** was previously listed as the next modern source; it is now **rejected** (no open licence). The DATA_PIPELINE task list reflects the rejection.
+- **PDM lexicon in code is still domain-specific.** PDM v2 (domain-agnostic feature families) is new work for Week 5; the existing `pdm_scorer.py` is not it.
 
 ---
 
 ## Known issues / environment notes
 
-- System Python 3.13 install is broken (`0x80070003` launch error on this machine). All scripts run via the Python 3.10 install at `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe`. Fix or reinstall 3.13 before relying on the `python3`/`python` shell aliases.
-- Local GPU is an NVIDIA MX450 with **2.15GB VRAM** — CUDA confirmed working (torch 2.5.1+cu121), but this is tight even for 4-bit QLoRA on TinyLlama 1.1B. Budget for cloud/Colab GPU time for anything beyond small-scale local iteration.
-- `ollama serve` is unreliable under sustained load on this hardware — intermittent `500` errors and `WinError 10013` connection failures during the 326-entry baseline run (~13% of first-pass calls failed). `evaluation/run_baseline.py` now uses a persistent session, retry-with-backoff (3 retries, 3/6/9s), a 0.5s inter-request delay, and saves to disk after every entry (not batched) so a crash loses at most one call. `--resume` skips ids already written. Expect the same flakiness during actual adapter training — plan checkpointing accordingly.
-- `chimbiwide_converter.py` needs the `datasets` package (`pip install datasets`) — not in a committed requirements file yet since `requirements.txt` doesn't exist at repo root.
-- **2026-08-06: the Python 3.10 install's `Lib/site-packages` is completely empty** — torch, transformers, peft, trl, bitsandbytes, datasets, fastapi, uvicorn, pydantic, everything previously installed this session is gone, and `pip` itself isn't available on that interpreter anymore (`python -m pip` → `No module named pip`). Blocks running *any* training/eval/backend script locally until reinstalled. Root cause not investigated (not a code issue — likely a reinstall/cleanup of the Python 3.10 install between sessions). Fix: `python -m ensurepip` then reinstall from a requirements file (still doesn't exist at repo root — worth finally creating one from everything referenced across `training/`, `evaluation/`, `backend/`, `data/scripts/`).
-- README.md content predates `Specs.md` v1.0 (different RQs/domains/contributions) — reconciled 2026-07-02, see [README.md](../README.md).
+- System Python 3.13 is broken on this machine (`0x80070003`). Scripts run via the Python 3.10 install. `Lib/site-packages` was found **empty** on 2026-08-06 — reinstall from `requirements.txt` before running anything locally.
+- Local GPU: NVIDIA MX450, **2.15 GB VRAM** — tight even for 4-bit QLoRA on TinyLlama 1.1B, and cannot sustain multi-hour runs (thermal/power throttling to a 5 W cap observed). **Budget Colab/cloud GPU** for real training. Full fine-tune (~8–12 GB optimizer state) cannot run locally at all.
+- **Resume-from-checkpoint is broken below torch 2.6** (CVE-2025-32434 blocks `torch.load` of optimizer state). `train_adapter.py` skips resume below 2.6 and restarts fresh. Not upgrading torch (risks destabilizing the working bitsandbytes/peft/trl stack).
+- `ollama serve` is unreliable under sustained load (`WinError 10013`, socket exhaustion). Eval/serving scripts use a persistent session, retry-with-backoff, and per-entry incremental save (`--resume` skips written ids). Expect the same flakiness on the GGUF serving path.

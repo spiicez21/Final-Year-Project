@@ -28,9 +28,35 @@ data/
 
 Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe` (system 3.13 is broken on this machine — see [TODO.md](TODO.md)).
 
-## Current dataset state
+## Two datasets: medieval (control) + modern city (experimental)
 
-**1,003 entries** in `data/processed/medieval_npc_dataset.json` — 1,000-entry spec target met (2026-07-04):
+The project uses a **dual-era** design (README Contribution C3):
+
+- **Medieval — control condition.** The existing 1,003-pair set below. Complete and frozen.
+- **Modern city — experimental condition.** A **600-pair** set (75 × 8 roles), mapped **1:1 by role** onto the medieval archetypes, **persona re-voiced** from cleared source corpora. **Dataset freeze: 6 September 2026.** See [Modern-city dataset](#modern-city-dataset-600-pairs) below.
+
+**1:1 role mapping (medieval → modern):**
+
+| Medieval | Modern |
+|----------|--------|
+| guard | police officer |
+| merchant | shopkeeper |
+| scholar | professor |
+| innkeeper | bartender |
+| clergy | social worker |
+| herbalist | pharmacist |
+| noble | executive |
+| peasant | service worker |
+
+> **Note — supersedes the earlier "crime-city" pivot.** An earlier working direction (recorded in `Docs/TODO.md`, 2026-08-06) mapped the modern domain onto a GTA-inspired *crime-city* setting (guard→cop, merchant→dealer, noble→boss, …) with a street-slang PDM lexicon (`gonna/homie/finna/…`). The current decision is a **general modern city**, not a crime setting, with the mapping above. Code that still encodes the crime-city mapping (`MODERN_ARCHETYPES` in `training/train_adapter.py`, the modern branch of `chimbiwide_converter.py`, `DIALECT_PATTERNS_MODERN` in `pdm_scorer.py`) predates this decision and needs reconciling — see the note in `Docs/TODO.md`.
+
+### Rationale for the 600-pair target
+
+Andreasen & Esterle (arXiv:2511.10277) found that LoRA fine-tuning on a curated **~115-pair** set outperformed a **~564-pair** synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a **defensible methodological choice, not a compromise** — this is worth a sentence in the paper's dataset section.
+
+## Medieval dataset state (control)
+
+**1,003 entries** in `data/processed/medieval_npc_dataset.json` — 1,000-entry target met (2026-07-04):
 
 | Source | Pairs | Method |
 |--------|------:|--------|
@@ -42,9 +68,42 @@ Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Pro
 | chimbiwide/NPC-Dialogue_v2 | 150 | HF filter + rule-based archaic rewrite (no LLM) |
 | Hand-authored (Claude, in-session, no API cost) | 227 | Direct schema-conformant writing across 12 batches, targeted at worst archetype gaps |
 
-Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. Merchant/scholar/innkeeper/herbalist are still under the per-archetype target table in `Specs.md` (noble/peasant/clergy are over target) — the 1,000-count milestone is met, but true archetype balance would need several more hundred entries skewed toward those four. Revisit if Phase 4 evaluation shows weak persona consistency for those archetypes specifically.
+Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. Merchant/scholar/innkeeper/herbalist are still under the per-archetype target table in `Specs.md` (noble/peasant/clergy are over target) — the 1,000-count milestone is met. As the **control** condition this set is now frozen; per-archetype rebalancing is no longer a priority.
 
-Archetype distribution: peasant 221, guard 187, noble 182, clergy 123, scholar 45, merchant 28, innkeeper 12, herbalist 5. Merchant/scholar/innkeeper/herbalist are now the only real gaps relative to the target table in `Specs.md` — none of the sources mined so far (Shakespeare, Chaucer, Malory, chimbiwide) produce many of those characters. Closing them needs targeted hand-authored entries or CRD3.
+## Modern-city dataset (600 pairs)
+
+**Target: 600 pairs (75 × 8 roles)** in `data/processed/modern_npc_dataset.json` (skeleton exists: schema v1.0, `entries: []`). **Freeze: 6 September 2026 — no additions after that date.**
+
+**Persona re-voicing, not copying.** Source corpora (below) supply only **scenario scaffolding** — the situation, intent, and turn structure — which is then **rewritten in the target archetype's voice**. The raw source text is never copied verbatim into a released entry. Provenance (source corpus + original id) is recorded per entry in the schema `provenance` field.
+
+**Annotate in the same pass:**
+
+- **`persona_features[]`** — the PDM v2 reference feature set for each entry (domain lexicon, register markers, formality, syntactic profile, stance). PDM v2 is calibrated against real generations, but the dataset carries the reference features.
+- **Visibility set** — the archetypes permitted to know each knowledge item referenced in the entry. KBD (README C1) resolves violations as a **set intersection**; flat visibility tags, **not** a hierarchical tree, **not** Neo4j, **not** propagation delays or decay.
+
+### Source datasets — cleared for use
+
+The 600 pairs are re-voiced from these (all license-cleared for a dataset intended for public release):
+
+| Dataset | Licence | Use |
+|---------|---------|-----|
+| Schema-Guided Dialogue (SGD) | Apache 2.0 | Service/transaction scenarios → shopkeeper, pharmacist, service worker |
+| Taskmaster | CC BY 4.0 | Task-oriented scaffolding across domains |
+| MultiWOZ 2.2 | Open | Multi-domain service dialogue structure |
+| SODA | CC BY 4.0 | 1.19M social dialogues — social worker, bartender, casual registers |
+| PersonaChat | Open | Persona-grounded turn structure |
+| Synthetic-Persona-Chat | Open | Persona-grounded turn structure |
+
+**Loading note (important):** pull **SGD, Taskmaster, and MultiWOZ as raw JSON from their GitHub repositories**, *not* via HuggingFace `load_dataset`. HF deprecated script-based dataset loading and these three have no reliable Parquet conversion — this is the **same failure mode that killed the `microsoft/crd3` attempt** (see [Not yet built](#not-yet-built)). Do not retry them through `load_dataset`.
+
+### Source datasets — rejected (licence diligence)
+
+Recorded so they are not retried, and worth a paragraph in the paper's dataset section:
+
+| Dataset | Reason rejected |
+|---------|-----------------|
+| **DailyDialog** | CC BY-NC-SA 4.0. **Share-alike** would contaminate the released dataset's licence, and **NC** conflicts with public release. |
+| **Cornell Movie-Dialogs Corpus** | **No formal open licence.** Unsafe for a dataset intended for public release on paper submission. *(Supersedes the earlier TODO note that proposed Cornell as the next modern source under "research-use precedent" — the current decision rejects it outright.)* |
 
 ## `gutenberg_extractor.py`
 
@@ -131,4 +190,13 @@ Type breakdown (matches `Specs.md` exactly): 15 `identity_challenge` ("are you a
 
 ## Not yet built
 
-- `microsoft/crd3` filter pass — dead end, not pursued. See `Docs/TODO.md` Phase 2 for the full reasoning (HF dropped script-based dataset loading, no Parquet conversion exists for CRD3).
+- **Modern-city extractor(s)** for SGD / Taskmaster / MultiWOZ / SODA / PersonaChat / Synthetic-Persona-Chat → `modern_npc_dataset.json`, with per-entry `provenance`, `persona_features[]`, and visibility-set annotation. Load SGD/Taskmaster/MultiWOZ as **raw JSON from GitHub**, not via `load_dataset` (see loading note above).
+- **Planted-forbidden-facts extension** to `stress_test_corpus.json` — 15–20 probes whose correct response is a refusal or expression of ignorance, required for KBD to have signal.
+
+### Dead ends / rejected sources (do not retry)
+
+- `microsoft/crd3` filter pass — dead end. HF dropped script-based dataset loading and CRD3 has no Parquet conversion. (Full reasoning in `Docs/TODO.md`.)
+- **Cornell Movie-Dialogs** — rejected on licence grounds (no formal open licence). See [rejected sources](#source-datasets--rejected-licence-diligence) above.
+- **DailyDialog** — rejected on licence grounds (CC BY-NC-SA 4.0: NC + share-alike). See [rejected sources](#source-datasets--rejected-licence-diligence) above.
+
+> Same failure mode across CRD3, SGD, Taskmaster, and MultiWOZ via HuggingFace: `load_dataset` no longer supports script-based loading and none have reliable Parquet conversions. For the three cleared ones, fetch raw JSON from GitHub instead. CRD3 stays dead (licence-neutral but modern spoken register, poor fit).
