@@ -134,11 +134,11 @@ Metrics: KBD, PDM v2, BERTScore F1, adapter-routing accuracy, latency, peak RAM,
 
 ---
 
-## Reconciliation notes (conflicts flagged, not silently overwritten)
+## Reconciliation notes (conflicts flagged, then fixed)
 
-- **Crime-city → modern-city.** The 2026-08-06 pivot targeted a GTA-inspired *crime-city* setting with a street-slang PDM lexicon. The August 2026 decision is a **general modern city** with a different 1:1 mapping (see `DATA_PIPELINE.md`). Code still encoding the crime-city direction — `MODERN_ARCHETYPES` in `training/train_adapter.py`, the modern branch of `data/scripts/chimbiwide_converter.py`, `DIALECT_PATTERNS_MODERN` in `evaluation/pdm_scorer.py` — **predates and conflicts with** the current decision and needs reconciling before the modern adapters are trained. Not changed in this doc pass (code, not docs).
+- **Crime-city → modern-city — reconciled 2026-08-07.** `training/train_adapter.py`'s `MODERN_ARCHETYPES` now reads `police officer/shopkeeper/professor/bartender/social worker/pharmacist/executive/service worker` (was cop/dealer/boss/...), its modern `SYSTEM_PROMPTS` entry dropped the crime-city framing, and the unused `healthcare`/`education` dataset-path stubs were removed (cut per README). `data/scripts/chimbiwide_converter.py`'s `--domain modern` branch was reverted entirely — chimbiwide isn't part of the modern pipeline anymore (Taskmaster/MultiWOZ/SODA/Synthetic-Persona-Chat only), so the file is back to medieval-only, matching what `DATA_PIPELINE.md` documents. `evaluation/pdm_scorer.py`'s `DIALECT_PATTERNS_MODERN` (crime slang) was removed rather than left as a wrong stand-in for PDM v2. `modern_npc_dataset.json`'s metadata now carries the correct 8-role list and an explicit "extractor not built yet" note instead of a stale crime-city archetype list.
 - **Cornell Movie-Dialogs** was previously listed as the next modern source; it is now **rejected** (no open licence). The DATA_PIPELINE task list reflects the rejection.
-- **PDM lexicon in code is still domain-specific.** PDM v2 (domain-agnostic feature families) is new work for Week 5; the existing `pdm_scorer.py` is not it.
+- **PDM lexicon in code is still medieval-only.** PDM v2 (domain-agnostic feature families, calibrated on real generations) is new work for Week 5 — not built, and `pdm_scorer.py`'s docstring now says so explicitly instead of carrying a wrong modern lexicon.
 
 ---
 

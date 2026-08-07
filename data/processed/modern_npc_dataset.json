@@ -1,11 +1,14 @@
 {
     "metadata": {
-        "description": "Modern open-world crime-city NPC dialogue pairs — original setting, not derived from any copyrighted game (see Docs/TODO.md pivot note)",
-        "license": "Mixed — see per-source license below",
+        "description": "Modern-city NPC dialogue pairs — experimental condition, 1:1 role-mapped onto the medieval control set (see Docs/DATA_PIPELINE.md). Persona re-voiced from cleared source corpora, not copied verbatim.",
+        "license": "Mixed — see Docs/DATA_PIPELINE.md for per-source license",
         "schema_version": "1.0",
         "total_pairs": 0,
         "min_quality_threshold": 5,
-        "archetypes": ["cop", "dealer", "boss", "civilian", "preacher", "lawyer", "bartender", "mechanic"],
+        "target_pairs": 600,
+        "freeze_date": "2026-09-06",
+        "archetypes": ["police officer", "shopkeeper", "professor", "bartender", "social worker", "pharmacist", "executive", "service worker"],
+        "note": "Skeleton only — extractor for Taskmaster/MultiWOZ/SODA/Synthetic-Persona-Chat not yet built (Docs/DATA_PIPELINE.md, 'Not yet built' section). Schema will need provenance, persona_features[], and visibility-set fields per entry once built.",
         "sources": {}
     },
     "entries": []

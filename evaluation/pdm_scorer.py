@@ -1,16 +1,19 @@
 """
 Persona Drift Metric (PDM) — reference implementation from
-DevFiles/Specs.md Appendix A.
+DevFiles/Specs.md Appendix A. This is PDM v1: a single archaic-English
+dialect-marker lexicon, medieval-only.
 
 PDM(C) = 1 - (1/N) * Sum sim(dialect_features(t_i), reference_feature_set)
 
 0.0 = no drift (perfect persona consistency), 1.0 = complete drift/collapse.
 
-Domain-aware: each domain has its own dialect-marker lexicon (medieval =
-archaic Early Modern English function words, modern = informal/urban
-register contractions). The formula is identical across domains — only the
-word list changes, same as swapping thee/thou for gonna/ain't is a lexicon
-swap, not a metric redesign.
+PDM v2 (Docs/TODO.md Week 5) replaces the lexicon-matching approach for the
+modern domain with domain-agnostic feature families (lexicon + register
+markers + formality score + syntactic profile + stance), calibrated against
+real generations from a trained adapter rather than against dataset text —
+not a word-list swap. Not built yet. A prior lexicon-swap attempt
+(DIALECT_PATTERNS_MODERN, crime-city slang) predated that decision and has
+been removed rather than left as a wrong stand-in for PDM v2.
 """
 
 import re
@@ -23,22 +26,8 @@ DIALECT_PATTERNS_MEDIEVAL = {
     "wherefore": r"\bwherefore\b", "forsooth": r"\bforsooth\b",
 }
 
-# Informal/urban-register function words — the modern-setting parallel to
-# thee/thou. These track REGISTER (formal vs. informal contraction/particle
-# use), not crime-topic vocabulary (gun, heist, boss) — topic words aren't
-# dialect markers, same reasoning that kept the medieval list to function
-# words instead of content nouns like "coin"/"tavern".
-DIALECT_PATTERNS_MODERN = {
-    "gonna": r"\bgonna\b", "wanna": r"\bwanna\b", "ain't": r"\bain'?t\b",
-    "gotta": r"\bgotta\b", "lemme": r"\blemme\b", "gimme": r"\bgimme\b",
-    "dunno": r"\bdunno\b", "nah": r"\bnah\b", "yo": r"\byo\b",
-    "bro": r"\bbro\b", "homie": r"\bhomie\b", "finna": r"\bfinna\b",
-    "kinda": r"\bkinda\b", "sorta": r"\bsorta\b",
-}
-
 DIALECT_PATTERNS_BY_DOMAIN = {
     "medieval": DIALECT_PATTERNS_MEDIEVAL,
-    "modern": DIALECT_PATTERNS_MODERN,
 }
 
 # Default/back-compat alias — existing call sites (run_baseline.py,
