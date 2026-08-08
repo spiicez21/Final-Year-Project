@@ -29,28 +29,52 @@ GGUF_MODELS = {
         "repo_id": "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF",
         "filename": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
         "chat_format": "zephyr",
+        "domain": "medieval",
     },
     # Local file — merged medieval_r8_gutonly LoRA -> GGUF Q4_K_M via
-    # training/merge_lora.py + training/quantize_gguf.py. This is the actual
-    # fine-tuned adapter on the GGUF serving path, not stock TinyLlama.
+    # training/merge_lora.py + training/quantize_gguf.py. Archived adapter
+    # (Docs/TODO.md, 2026-08-08 modern-only decision) — kept working here as
+    # a pipeline-mechanism reference, not an active-scope result.
     "medieval_gutonly": {
         "local_path": "medieval_r8_gutonly-Q4_K_M.gguf",
         "chat_format": "zephyr",
+        "domain": "medieval",
+    },
+    # Week 2 (Docs/TODO.md): modern-city police-officer adapter, trained on
+    # the 59-entry hand-authored pilot set, same merge->convert->quantize path.
+    "modern_police": {
+        "local_path": "modern_r16_a32_policeofficer-Q4_K_M.gguf",
+        "chat_format": "zephyr",
+        "domain": "modern",
     },
 }
 
 MODELS_DIR = Path(__file__).resolve().parents[1] / "training" / "gguf_models"
 
-TEST_PROMPTS = [
-    ("guard", "Halt! State thy business here."),
-    ("merchant", "What wares do you have for sale, good sir?"),
-    ("innkeeper", "Might I have a room for the night?"),
-    ("scholar", "Tell me of the old kingdom's history."),
-    ("noble", "Bring me news from the capital at once."),
-]
-
-SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a medieval RPG world. Respond in an archaic, "
-                   "period-appropriate voice consistent with your role. Never break character.")
+PROMPT_SETS = {
+    "medieval": {
+        "system_template": "You are a {archetype} NPC in a medieval RPG world. Respond in an archaic, "
+                            "period-appropriate voice consistent with your role. Never break character.",
+        "prompts": [
+            ("guard", "Halt! State thy business here."),
+            ("merchant", "What wares do you have for sale, good sir?"),
+            ("innkeeper", "Might I have a room for the night?"),
+            ("scholar", "Tell me of the old kingdom's history."),
+            ("noble", "Bring me news from the capital at once."),
+        ],
+    },
+    "modern": {
+        "system_template": "You are a {archetype} NPC in a modern city. Respond in a natural, contemporary "
+                            "voice consistent with your role. Never break character.",
+        "prompts": [
+            ("police officer", "Excuse me, can you tell me how to get to the train station?"),
+            ("police officer", "Someone just stole my bike, can you help?"),
+            ("police officer", "Is it okay to park here for a few minutes?"),
+            ("police officer", "Why do you need to see my ID?"),
+            ("police officer", "Thanks for your help earlier, officer."),
+        ],
+    },
+}
 
 
 def download_model(key: str) -> Path:
@@ -112,9 +136,10 @@ def main():
     load_ms = (time.perf_counter() - load_start) * 1000
     print(f"model load: {load_ms:.1f}ms")
 
+    prompt_set = PROMPT_SETS[spec["domain"]]
     latencies = []
-    for archetype, prompt in TEST_PROMPTS:
-        system = SYSTEM_TEMPLATE.format(archetype=archetype)
+    for archetype, prompt in prompt_set["prompts"]:
+        system = prompt_set["system_template"].format(archetype=archetype)
         messages = [{"role": "system", "content": system}, {"role": "user", "content": prompt}]
 
         start = time.perf_counter()

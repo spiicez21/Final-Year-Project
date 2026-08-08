@@ -9,8 +9,23 @@ Usage:
 
 import argparse
 import ctypes
+import os
+import sys
 from pathlib import Path
 
+
+def _add_torch_cuda_dlls_to_path():
+    # llama-cpp-python here is the CUDA build (installed from abetlen's
+    # cu121 wheel index for the GGUF latency work) — its llama.dll needs
+    # cudart64_12.dll/cublas64_12.dll on PATH even for CPU-only use like
+    # quantization. No standalone CUDA toolkit on this machine, so reuse
+    # torch's own cu121 wheel's bundled copies instead. See Docs/TODO.md.
+    torch_lib = Path(sys.prefix) / "Lib" / "site-packages" / "torch" / "lib"
+    if torch_lib.exists():
+        os.environ["PATH"] = str(torch_lib) + os.pathsep + os.environ.get("PATH", "")
+
+
+_add_torch_cuda_dlls_to_path()
 import llama_cpp
 
 
