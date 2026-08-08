@@ -28,35 +28,19 @@ data/
 
 Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe` (system 3.13 is broken on this machine — see [TODO.md](TODO.md)).
 
-## Two datasets: medieval (control) + modern city (experimental)
+## The dataset: modern city (600 pairs)
 
-The project uses a **dual-era** design (README Contribution C3):
+The project is **modern-city only** as of 2026-08-08 (see `Docs/TODO.md` reconciliation notes for the full history — an earlier dual-era design with a medieval control condition, and before that a crime-city direction, both superseded). A **600-pair** set (75 × 8 roles), **persona re-voiced** from cleared source corpora. **Dataset freeze: 6 September 2026.** See [Modern-city dataset](#modern-city-dataset-600-pairs) below.
 
-- **Medieval — control condition.** The existing 1,003-pair set below. Complete and frozen.
-- **Modern city — experimental condition.** A **600-pair** set (75 × 8 roles), mapped **1:1 by role** onto the medieval archetypes, **persona re-voiced** from cleared source corpora. **Dataset freeze: 6 September 2026.** See [Modern-city dataset](#modern-city-dataset-600-pairs) below.
-
-**1:1 role mapping (medieval → modern):**
-
-| Medieval | Modern |
-|----------|--------|
-| guard | police officer |
-| merchant | shopkeeper |
-| scholar | professor |
-| innkeeper | bartender |
-| clergy | social worker |
-| herbalist | pharmacist |
-| noble | executive |
-| peasant | service worker |
-
-> **Note — supersedes the earlier "crime-city" pivot.** An earlier working direction (recorded in `Docs/TODO.md`, 2026-08-06) mapped the modern domain onto a GTA-inspired *crime-city* setting (guard→cop, merchant→dealer, noble→boss, …) with a street-slang PDM lexicon (`gonna/homie/finna/…`). The current decision is a **general modern city**, not a crime setting, with the mapping above. Code that still encodes the crime-city mapping (`MODERN_ARCHETYPES` in `training/train_adapter.py`, the modern branch of `chimbiwide_converter.py`, `DIALECT_PATTERNS_MODERN` in `pdm_scorer.py`) predates this decision and needs reconciling — see the note in `Docs/TODO.md`.
+Eight archetypes: police officer, shopkeeper, professor, bartender, social worker, pharmacist, executive, service worker.
 
 ### Rationale for the 600-pair target
 
 Andreasen & Esterle (arXiv:2511.10277) found that LoRA fine-tuning on a curated **~115-pair** set outperformed a **~564-pair** synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a **defensible methodological choice, not a compromise** — this is worth a sentence in the paper's dataset section.
 
-## Medieval dataset state (control)
+## Archived: medieval-fantasy dataset (out of scope, kept on disk)
 
-**1,003 entries** in `data/processed/medieval_npc_dataset.json` — 1,000-entry target met (2026-07-04):
+**1,003 entries** in `data/processed/medieval_npc_dataset.json` — 1,000-entry target met (2026-07-04). Not deleted, not part of the active project as of the 2026-08-08 modern-only decision; kept as reference (methodology evidence, systems/deployability tradeoff numbers for Contribution 4 — see `Docs/TODO.md`).
 
 | Source | Pairs | Method |
 |--------|------:|--------|
@@ -68,7 +52,7 @@ Andreasen & Esterle (arXiv:2511.10277) found that LoRA fine-tuning on a curated 
 | chimbiwide/NPC-Dialogue_v2 | 150 | HF filter + rule-based archaic rewrite (no LLM) |
 | Hand-authored (Claude, in-session, no API cost) | 227 | Direct schema-conformant writing across 12 batches, targeted at worst archetype gaps |
 
-Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. Merchant/scholar/innkeeper/herbalist are still under the per-archetype target table in `Specs.md` (noble/peasant/clergy are over target) — the 1,000-count milestone is met. As the **control** condition this set is now frozen; per-archetype rebalancing is no longer a priority.
+Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, scholar 100, merchant 87, innkeeper 63, herbalist 38. `gutenberg_extractor.py`, `chimbiwide_converter.py` (medieval-only), `dataset_validator.py` below still operate on this set if ever needed again — none of that tooling was removed.
 
 ## Modern-city dataset (600 pairs)
 

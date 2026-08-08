@@ -14,6 +14,8 @@ Tracks the **11 build-week schedule** (see `PROJECT_UPDATE_BRIEF` §6, mirrored 
 
 **Scope note:** healthcare and education domains, and the human-evaluation study, are **cut** (see README). Phases for them have been deleted from this file. The project reports **automatic metrics only**; the absence of a human study is a stated limitation.
 
+**Scope note, 2026-08-08 — medieval cut too, project is modern-city only now.** The dual-era (modern + medieval control) design from 2026-08-07 lasted one day. The medieval dataset/adapters/eval results below are kept on disk, **not deleted**, but are no longer part of the active plan — no medieval-vs-modern comparison, no "control condition" framing anywhere going forward. A Week 2 guard-adapter training run using the medieval dataset was **killed mid-run** (step 3/36) when this decision landed — see Week 2 below for the real scheduling consequence this creates.
+
 ---
 
 ## Work already banked (carries forward)
@@ -27,14 +29,14 @@ Complete and reusable — most is domain-agnostic and survives the modern-city p
 - [x] `backend/main.py` — FastAPI `POST /chat`, `GET /domains`, `GET /archetypes`, `GET /health`. Model preloaded at startup.
 - [x] `frontend/` — Next.js demo (domain/archetype dropdowns, live chat, live PDM bar, per-message latency). Verified end-to-end in-browser.
 
-**Medieval control dataset + results (now the control condition, frozen):**
+**Medieval-fantasy dataset + results (archived 2026-08-08 — out of scope, kept for reference, not deleted):**
 - [x] 1,003-pair medieval set, validated (1003/1003 schema-conformant, 0 duplicate ids). Sources: Gutenberg (Shakespeare/Chaucer/Malory, 626), chimbiwide rule-based rewrite (150), hand-authored (227).
 - [x] 50-entry stress-test corpus, held out.
-- [x] **Key medieval finding (reportable RQ3 result):** training-data *composition* matters more than LoRA rank/alpha/epochs for lexically-specific persona control. Eight configs on the full mix produced near-zero archaic markers; training only on the 626 dialect-dense Gutenberg entries (`medieval_r8_gutonly`) fixed it. Held-out (uncontaminated) A-vs-B: marker rate 4.7% → 14.0%, mean drift 0.9766 → 0.9396.
-- [x] **Blending sweep (RQ2 precursor):** α=0.2 beat pure gutonly on both marker rate and over-insertion — a genuine sweet spot.
-- [x] **Full fine-tune reference:** best raw persona (46.8% marker rate) but worst over-insertion (0.8932) and 11.86 GB on disk vs. 2.3 MB LoRA — a clean systems tradeoff.
+- [x] **Key medieval finding (methodology evidence, not a current-scope result):** training-data *composition* matters more than LoRA rank/alpha/epochs for lexically-specific persona control. Eight configs on the full mix produced near-zero archaic markers; training only on the 626 dialect-dense Gutenberg entries (`medieval_r8_gutonly`) fixed it. Held-out (uncontaminated) A-vs-B: marker rate 4.7% → 14.0%, mean drift 0.9766 → 0.9396. Worth keeping in mind for the modern-city training runs (Weeks 7–8) — the same composition effect may recur.
+- [x] **Blending sweep:** α=0.2 beat pure gutonly on both marker rate and over-insertion on the medieval set — a genuine sweet spot there. Not assumed to transfer to the modern α-sweep (Weeks 9–10); that sweep is run fresh on modern adapters.
+- [x] **Full fine-tune reference:** best raw persona (46.8% marker rate) but worst over-insertion (0.8932) and 11.86 GB on disk vs. 2.3 MB LoRA — a clean systems tradeoff, general enough to still cite for Contribution 4 even though the domain it was measured on is now out of scope.
 
-> These medieval numbers are the **control**. The old PDM baseline mean drift of **0.9833 is saturated and reports nothing useful** — do **not** carry it forward as a headline result (see PDM v2 note in Week 5).
+> These medieval numbers are **archived, not a current result** — do not report them as project findings without noting they predate the modern-only scope decision. The old PDM baseline mean drift of **0.9833 is saturated and reports nothing useful** regardless of domain — do **not** carry it forward (see PDM v2 note in Week 5).
 
 ---
 
@@ -75,15 +77,20 @@ Complete and reusable — most is domain-agnostic and survives the modern-city p
 
 ### Week 2 (Aug 17–23) — One adapter, end-to-end · exit: in-character generation
 
-- [ ] Train one adapter (guard, 189 pairs) end-to-end on the current pipeline against at least one base model. Confirm in-character generation through the GGUF serving path.
-- [ ] LoRA config for the new runs: `r=16`, `alpha=32`, target `q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj`.
+- [x] **LoRA config updated for the new runs** — `training/configs/lora_config.yaml` now `r=16`, `alpha=32`, target `q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj` (was `r=8`, `q_proj, v_proj` only). Applies to all runs going forward; the archived medieval adapters above were trained under the old config and aren't affected retroactively.
+- [x] **Added `--archetype` filtering to `train_adapter.py`** (`build_dataset()` now takes an `archetype` param, filters `persona.archetype == X`) — needed either way, for training single-archetype adapters instead of whole-domain ones.
+- [x] **Started training a guard adapter (189 medieval entries) as the Week 2 pipeline-validation run — killed mid-run (step 3/36) when the modern-only decision landed 2026-08-08.** This wasn't wasted: it proved the new r=16/7-module config + `--archetype` filter work mechanically (model loaded, dataset built to exactly 189 entries, training started, wandb run `medieval-r16_a32_guard-adapter` logged) before being stopped on purpose, not because of a bug.
+- [ ] **Real blocker exposed by the modern-only decision: Week 2 has no data to train on.** The plan sequences dataset-building in Weeks 3–4 (Aug 24–Sep 6), *after* Week 2 — that ordering only worked when Week 2 could borrow the already-existing medieval set to validate the pipeline. With medieval out of scope, Week 2's exit condition ("adapter generates in-character text") has nothing to train on until Weeks 3–4 land. Options, not yet decided:
+  - (a) Hand-author a small pilot batch now (~20–30 entries, one modern archetype, e.g. police officer) purely to unblock pipeline validation — real dataset work still happens on schedule in Weeks 3–4.
+  - (b) Let Week 2 slip into Weeks 3–4 and validate the training pipeline as soon as the first real modern entries exist, accepting the schedule's own "slip absorbs into weeks 3–8" clause.
+  - Needs a decision before Week 2 can actually close out.
 
 ### Weeks 3–4 (Aug 24 – Sep 6) — Modern dataset, 600 pairs · **exit: frozen Sep 6**
 
-- [ ] Build the modern-city set: **600 pairs (75 × 8 roles)**, persona re-voiced from cleared sources (SGD, Taskmaster, MultiWOZ, SODA, PersonaChat, Synthetic-Persona-Chat). Record `provenance` per entry. See [`DATA_PIPELINE.md`](DATA_PIPELINE.md).
-  - Load SGD/Taskmaster/MultiWOZ as **raw JSON from GitHub**, not via `load_dataset`.
-  - **Do not use Cornell Movie-Dialogs** (no open licence) or **DailyDialog** (NC + share-alike). Both rejected — see `DATA_PIPELINE.md`.
-- [ ] Use the 1:1 role mapping: guard→police officer, merchant→shopkeeper, scholar→professor, innkeeper→bartender, clergy→social worker, herbalist→pharmacist, noble→executive, peasant→service worker.
+- [ ] Build the modern-city set: **600 pairs (75 × 8 roles)**, persona re-voiced from cleared sources (Taskmaster, MultiWOZ, SODA, Synthetic-Persona-Chat). Record `provenance` per entry. See [`DATA_PIPELINE.md`](DATA_PIPELINE.md).
+  - Load Taskmaster/MultiWOZ as **raw JSON from GitHub**, not via `load_dataset`.
+  - **Rejected, do not retry:** SGD (CC BY-SA 4.0 share-alike, not the Apache 2.0 assumed originally), PersonaChat (no formal licence on the HF mirrors), Cornell Movie-Dialogs (no open licence), DailyDialog (NC + share-alike). Full reasoning in `DATA_PIPELINE.md`.
+- [ ] Eight archetypes, standalone (no longer framed as a mapping from anything): police officer, shopkeeper, professor, bartender, social worker, pharmacist, executive, service worker.
 - [ ] **Annotate visibility sets in the same pass** — flat visibility tags per knowledge item (set intersection, not a tree/graph). Also populate `persona_features[]` per entry.
 - [ ] Extend `stress_test_corpus.json` with **15–20 planted forbidden facts** (probes whose correct answer is a refusal / expression of ignorance) — required for KBD to have signal.
 - [ ] **Freeze the dataset on 6 Sep 2026.**
@@ -147,6 +154,7 @@ Metrics: KBD, PDM v2, BERTScore F1, adapter-routing accuracy, latency, peak RAM,
 
 ## Reconciliation notes (conflicts flagged, then fixed)
 
+- **Dual-era (medieval control + modern experimental) → modern-only — 2026-08-08.** The dual-era design in this file's 2026-08-07 rewrite is superseded one day later by a user decision to drop medieval entirely and run this as a single-domain modern-city project. Medieval dataset/adapters/eval results are kept on disk, not deleted, but are archived/out-of-scope — see the "Work already banked" section above and the killed Week 2 run. README.md, this file, and `Docs/DATA_PIPELINE.md` were all updated (the latter's section header and medieval-dataset framing changed; its modern-city sourcing tables — Taskmaster/MultiWOZ/SODA/Synthetic-Persona-Chat, rejected sources — did not need to change). No code changes were needed beyond what the 2026-08-07 reconciliation already did — `train_adapter.py`'s `DATASET_PATHS`/`MODERN_ARCHETYPES` were already modern-city-only in naming, just no longer described as "mapped from medieval."
 - **Crime-city → modern-city — reconciled 2026-08-07.** `training/train_adapter.py`'s `MODERN_ARCHETYPES` now reads `police officer/shopkeeper/professor/bartender/social worker/pharmacist/executive/service worker` (was cop/dealer/boss/...), its modern `SYSTEM_PROMPTS` entry dropped the crime-city framing, and the unused `healthcare`/`education` dataset-path stubs were removed (cut per README). `data/scripts/chimbiwide_converter.py`'s `--domain modern` branch was reverted entirely — chimbiwide isn't part of the modern pipeline anymore (Taskmaster/MultiWOZ/SODA/Synthetic-Persona-Chat only), so the file is back to medieval-only, matching what `DATA_PIPELINE.md` documents. `evaluation/pdm_scorer.py`'s `DIALECT_PATTERNS_MODERN` (crime slang) was removed rather than left as a wrong stand-in for PDM v2. `modern_npc_dataset.json`'s metadata now carries the correct 8-role list and an explicit "extractor not built yet" note instead of a stale crime-city archetype list.
 - **Cornell Movie-Dialogs** was previously listed as the next modern source; it is now **rejected** (no open licence). The DATA_PIPELINE task list reflects the rejection.
 - **PDM lexicon in code is still medieval-only.** PDM v2 (domain-agnostic feature families, calibrated on real generations) is new work for Week 5 — not built, and `pdm_scorer.py`'s docstring now says so explicitly instead of carrying a wrong modern lexicon.

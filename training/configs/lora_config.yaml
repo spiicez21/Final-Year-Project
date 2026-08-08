@@ -1,8 +1,11 @@
-# LoRA hyperparameters — DevFiles/Specs.md section 5 starting config.
-# r=8 is the recommended baseline; Phase 3 rank ablation sweeps r = 4, 8, 16, 32.
-r: 8
-lora_alpha: 16
-target_modules: ["q_proj", "v_proj"]
+# LoRA hyperparameters. Updated 2026-08-07 (Docs/TODO.md Week 2) — r=16,
+# alpha=32, target all 7 attention+MLP projection modules, wider than the
+# r=8/q_proj+v_proj config used for the medieval control adapters
+# (medieval_r8_gutonly etc, which stay as recorded/frozen results — this
+# change only affects new runs going forward, e.g. the Week 2 guard adapter).
+r: 16
+lora_alpha: 32
+target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
 lora_dropout: 0.05
 bias: "none"
 task_type: "CAUSAL_LM"

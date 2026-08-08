@@ -10,7 +10,7 @@
 
 NPC dialogue systems fall into two failure modes: large cloud-hosted models (GPT-4o, Claude) give good quality but are too slow, expensive, and offline-incompatible for consumer game hardware; scripted dialogue trees are fast and cheap but brittle — any input outside the script collapses the persona immediately.
 
-This project builds a framework around **small (sub-2B) base language models** with per-archetype **LoRA persona adapters** swapped at runtime with no full model reload. Two base models are benchmarked side by side — **TinyLlama-1.1B** and **Qwen3-0.6B** — to support a generalizability claim and to add a parameter-count axis to the drift metrics (see [Base Models](#base-models)). A **modern city** setting is the primary research domain; a **medieval** setting is retained as a control condition.
+This project builds a framework around **small (sub-2B) base language models** with per-archetype **LoRA persona adapters** swapped at runtime with no full model reload. Two base models are benchmarked side by side — **TinyLlama-1.1B** and **Qwen3-0.6B** — to support a generalizability claim and to add a parameter-count axis to the drift metrics (see [Base Models](#base-models)). The research domain is a **modern city** setting.
 
 The core research object is *persona drift* and, specifically, *epistemic* persona drift — whether an NPC leaks knowledge outside what its character is permitted to know. The framework measures this per-turn, judge-free, on the same consumer hardware that serves the game.
 
@@ -24,7 +24,7 @@ Full specification, schema, and roadmap: `DevFiles/Specs.md`. Task tracking: [`D
 |---|--------------|------|
 | **C1** | **Knowledge Boundary Drift (KBD)** — a judge-free, per-turn metric for *epistemic* persona violation. Each world-state knowledge item and each adapter carries a **visibility set**; KBD measures the fraction of factual references in a response that fall outside the active adapter's visibility set. Automatic, cheap enough to run per-turn at inference, and attributable to a specific knowledge source. | Novel metric |
 | **C2** | **Persona interpolation and the α-sweep** — LoRA weight merging (`W_blend = α·W_A + (1-α)·W_B`) is *not* claimed as a technique (it is standard). The novel claim is the research question: when two persona adapters are interpolated, does the **epistemic boundary** interpolate, or collapse to the union of both parents' knowledge? Measured via KBD + PDM v2 across α ∈ {0, 0.25, 0.5, 0.75, 1.0}. | Novel analysis |
-| **C3** | **Dual-era modern/medieval NPC dialogue dataset** — a modern-city set (experimental) mapped 1:1 by role onto the existing 1,003-pair medieval set (control), with visibility sets and `persona_features[]` annotated per entry. | Dataset |
+| **C3** | **Modern-city NPC dialogue dataset** — a 600-pair set (75 × 8 roles), persona re-voiced from cleared source corpora, with visibility sets and `persona_features[]` annotated per entry. | Dataset |
 
 ## Research Questions
 
@@ -32,19 +32,16 @@ Full specification, schema, and roadmap: `DevFiles/Specs.md`. Task tracking: [`D
 |----|----------|
 | RQ1 | Can epistemic persona violation be measured **per-turn, judge-free, and attributed to a specific knowledge source** (KBD), rather than via an opinion score from a judge model? |
 | RQ2 | When two persona adapters are interpolated at ratio α, does the **epistemic boundary interpolate** (each parent's facts known with reduced confidence) or **collapse to the union** (both parents' facts fully known — a leak)? |
-| RQ3 | Does a **domain-agnostic** drift metric (PDM v2) reveal multi-turn persona degradation across *both* a modern-city and a medieval setting, where a lexicon-specific metric produces no signal on modern dialogue? |
+| RQ3 | Does a **domain-agnostic** drift metric (PDM v2) reveal multi-turn persona degradation in modern-city NPC dialogue, where a lexicon-specific metric produces no signal? |
 | RQ4 | Can a two-base-model (TinyLlama-1.1B, Qwen3-0.6B) LoRA framework serve persona-stable NPC dialogue under real-time latency (<500ms) on consumer hardware via llama.cpp/GGUF, and how does base model and parameter count affect drift? |
 
 ---
 
-## Domains
+## Domain
 
-| Domain | Role | Notes |
-|--------|------|-------|
-| **Modern city** *(primary — experimental)* | Police officer, shopkeeper, professor, bartender, social worker, pharmacist, executive, service worker | All novel contributions (KBD, α-sweep, PDM v2) are designed and validated here. 600-pair target. |
-| **Medieval** *(control)* | Guard, merchant, scholar, innkeeper, clergy, herbalist, noble, peasant | The existing 1,003-pair medieval set becomes the control condition, mapped 1:1 by role onto the modern set. |
+**Modern city** — police officer, shopkeeper, professor, bartender, social worker, pharmacist, executive, service worker. All novel contributions (KBD, α-sweep, PDM v2) are designed and validated here. 600-pair target.
 
-Role mapping (1:1, medieval → modern): guard → police officer, merchant → shopkeeper, scholar → professor, innkeeper → bartender, clergy → social worker, herbalist → pharmacist, noble → executive, peasant → service worker.
+> **Scope note (2026-08-08):** an earlier design ran modern-city alongside a medieval-fantasy set as a control condition (dataset, adapters, and eval results already exist for it — see `Docs/TODO.md`). The project is now **modern-city only**; the medieval work is kept on disk but out of scope, not deleted.
 
 Healthcare and education domains from the original proposal are **cut**.
 
@@ -130,9 +127,7 @@ Four comparison conditions measured per metric:
 
 Schema — archetype, disposition, social class, context, `persona_features[]` (PDM v2 reference set), visibility set, intent, and per-entry `provenance`. Full schema: `Specs.md`.
 
-**Control (medieval): 1,003 pairs** in [`data/processed/medieval_npc_dataset.json`](data/processed/medieval_npc_dataset.json), from hand-authored, Gutenberg-extracted (Shakespeare, Chaucer, Malory), and rule-based-rewritten (`chimbiwide/NPC-Dialogue_v2`) sources. Validated: 1003/1003 pass schema conformance, 0 duplicate ids.
-
-**Experimental (modern city): 600-pair target** (75 × 8 roles) in `data/processed/modern_npc_dataset.json`. The 600 pairs are **persona re-voiced** from cleared source corpora (SGD, Taskmaster, MultiWOZ, SODA, PersonaChat, Synthetic-Persona-Chat) — scenario scaffolding rewritten in the target archetype's voice, provenance recorded per entry. **Dataset freeze: 6 September 2026.**
+**Modern city: 600-pair target** (75 × 8 roles) in `data/processed/modern_npc_dataset.json`. The 600 pairs are **persona re-voiced** from cleared source corpora (Taskmaster, MultiWOZ, SODA, Synthetic-Persona-Chat) — scenario scaffolding rewritten in the target archetype's voice, provenance recorded per entry. **Dataset freeze: 6 September 2026.**
 
 > **Why 600, not thousands:** Andreasen & Esterle (arXiv:2511.10277) found LoRA fine-tuning on a curated ~115-pair set outperformed a ~564-pair synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a defensible methodological choice, not a compromise.
 
@@ -162,7 +157,7 @@ Note: "persona drift" is an established named phenomenon with existing quantitat
 
 - [x] Proposal + specification finalized (`DevFiles/Specs.md`)
 - [x] Literature review + related-work differentiation ([`Docs/RELATED_WORK.md`](Docs/RELATED_WORK.md))
-- [x] Data pipeline scaffolded; medieval control set at 1,003 pairs (validated)
+- [x] Data pipeline scaffolded; earlier medieval-fantasy set (1,003 pairs, validated) kept on disk, out of scope as of the 2026-08-08 modern-only decision
 - [x] Framework/systems scaffolding: `AdapterManager` (runtime adapter swap), `blend_adapters.py`, training pipeline, FastAPI backend, Next.js demo — all domain-agnostic
 - [ ] llama.cpp/GGUF inference path; re-measure TinyLlama latency; Qwen3-0.6B setup
 - [ ] Modern-city dataset (600 pairs) + visibility-set annotation — **freeze 6 Sep 2026**

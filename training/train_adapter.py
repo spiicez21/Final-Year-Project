@@ -57,7 +57,7 @@ def load_config(name: str) -> dict:
     return yaml.safe_load((CONFIGS_DIR / name).read_text(encoding="utf-8"))
 
 
-def build_dataset(domain: str, tokenizer, max_samples: int = None, id_prefix: str = None) -> Dataset:
+def build_dataset(domain: str, tokenizer, max_samples: int = None, id_prefix: str = None, archetype: str = None) -> Dataset:
     """Builds a prompt/completion dataset, NOT a flat 'text' field.
 
     `id_prefix`: keep only entries whose id starts with this (e.g. "GUT-").
@@ -96,6 +96,8 @@ def build_dataset(domain: str, tokenizer, max_samples: int = None, id_prefix: st
     entries = data["entries"]
     if id_prefix:
         entries = [e for e in entries if e["id"].startswith(id_prefix)]
+    if archetype:
+        entries = [e for e in entries if e.get("persona", {}).get("archetype") == archetype]
     if max_samples:
         entries = entries[:max_samples]
 
@@ -144,6 +146,7 @@ def main():
     parser.add_argument("--lora-r", type=int, default=None, help="override lora_config.yaml rank (for ablation)")
     parser.add_argument("--lora-alpha", type=int, default=None, help="override lora_config.yaml alpha (scales adapter's effective pull)")
     parser.add_argument("--id-prefix", default=None, help="train only on entries whose id starts with this, e.g. GUT- (dialect-density experiment)")
+    parser.add_argument("--archetype", default=None, help="train only on this archetype, e.g. guard (Week 2: single-archetype adapter)")
     parser.add_argument("--no-wandb", action="store_true")
     args = parser.parse_args()
 
@@ -170,6 +173,8 @@ def main():
         dir_suffix += f"_smoketest{args.max_samples}"
     if args.id_prefix:
         dir_suffix += f"_{args.id_prefix.rstrip('-').lower()}only"
+    if args.archetype:
+        dir_suffix += f"_{args.archetype.replace(' ', '')}"
     output_dir = ADAPTERS_DIR / f"{args.domain}_{dir_suffix}"
 
     print(f"loading base model: {BASE_MODEL} (4-bit QLoRA)")
@@ -177,7 +182,7 @@ def main():
     model = load_quantized_model()
 
     print(f"building dataset for domain '{args.domain}'" + (f" (max {args.max_samples} samples)" if args.max_samples else ""))
-    dataset = build_dataset(args.domain, tokenizer, args.max_samples, args.id_prefix)
+    dataset = build_dataset(args.domain, tokenizer, args.max_samples, args.id_prefix, args.archetype)
     print(f"dataset size: {len(dataset)}")
 
     peft_config = LoraConfig(
