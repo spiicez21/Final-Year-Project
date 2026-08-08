@@ -13,7 +13,9 @@ Usage:
 """
 
 import argparse
+import os
 import statistics
+import sys
 import time
 from pathlib import Path
 
@@ -63,12 +65,31 @@ def download_model(key: str) -> Path:
     return Path(path)
 
 
+def _add_torch_cuda_dlls_to_path():
+    # The installed llama-cpp-python wheel is the CUDA build (pulled from
+    # abetlen's cu121 wheel index) — its llama.dll dynamically links against
+    # cudart64_12.dll/cublas64_12.dll even when n_gpu_layers=0 at runtime, so
+    # it fails to import at all without them on PATH. No standalone CUDA
+    # toolkit is installed on this machine (only the driver) — reuse the copies
+    # torch's own cu121 wheel already ships instead of a multi-GB toolkit install.
+    torch_lib = Path(__file__).resolve().parents[1] / "Lib" / "site-packages" / "torch" / "lib"
+    candidates = [
+        torch_lib,
+        Path(sys.prefix) / "Lib" / "site-packages" / "torch" / "lib",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            os.environ["PATH"] = str(candidate) + os.pathsep + os.environ.get("PATH", "")
+            return
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", choices=list(GGUF_MODELS.keys()), default="tinyllama")
     parser.add_argument("--max-tokens", type=int, default=40)
     args = parser.parse_args()
 
+    _add_torch_cuda_dlls_to_path()
     from llama_cpp import Llama
 
     spec = GGUF_MODELS[args.model]
@@ -76,9 +97,17 @@ def main():
     model_path = download_model(args.model)
     print(f"model on disk: {model_path} ({model_path.stat().st_size / 1e6:.1f} MB)")
 
-    print("loading model (llama.cpp, CPU)...")
+    # GPU offload (n_gpu_layers=-1) was tried and confirmed active (verbose
+    # log showed 23/23 layers on CUDA0) but gave no speedup on this GPU — the
+    # MX450 is power-capped to ~5W (see Docs/TODO.md known issues), so it's
+    # not meaningfully faster than CPU for a model this small. CPU-only with
+    # explicit thread/batch tuning (n_threads=os.cpu_count(), n_batch=512)
+    # measured ~12% faster than default settings and avoids CPU<->GPU sync
+    # overhead entirely, so that's the config used here, not GPU offload.
+    print("loading model (llama.cpp, CPU, tuned threads/batch)...")
     load_start = time.perf_counter()
-    llm = Llama(model_path=str(model_path), n_ctx=2048, verbose=False, n_gpu_layers=-1,
+    llm = Llama(model_path=str(model_path), n_ctx=2048, verbose=False, n_gpu_layers=0,
+                n_threads=os.cpu_count(), n_batch=512,
                 chat_format=GGUF_MODELS[args.model]["chat_format"])
     load_ms = (time.perf_counter() - load_start) * 1000
     print(f"model load: {load_ms:.1f}ms")
