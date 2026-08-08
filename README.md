@@ -127,7 +127,7 @@ Four comparison conditions measured per metric:
 
 Schema — archetype, disposition, social class, context, `persona_features[]` (PDM v2 reference set), visibility set, intent, and per-entry `provenance`. Full schema: `Specs.md`.
 
-**Modern city: 600-pair target** (75 × 8 roles) in `data/processed/modern_npc_dataset.json`. The 600 pairs are **persona re-voiced** from cleared source corpora (Taskmaster, MultiWOZ, SODA, Synthetic-Persona-Chat) — scenario scaffolding rewritten in the target archetype's voice, provenance recorded per entry. **Dataset freeze: 6 September 2026.**
+**Modern city: 659 pairs** (target of 75 × 8 roles reached, 2026-08-08) in `data/processed/modern_npc_dataset.json` — 600 extracted from SODA (speaker-role matched, CC BY 4.0) plus a 59-entry hand-authored police-officer pilot from Week 2. Provenance recorded per entry. `persona_features[]`/visibility-set annotation not started yet (depends on PDM v2/KBD, Weeks 5–6). **Dataset freeze: 6 September 2026** — full sourcing detail in [`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
 
 > **Why 600, not thousands:** Andreasen & Esterle (arXiv:2511.10277) found LoRA fine-tuning on a curated ~115-pair set outperformed a ~564-pair synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a defensible methodological choice, not a compromise.
 

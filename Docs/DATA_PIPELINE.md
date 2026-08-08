@@ -7,23 +7,30 @@ Documents `data/` — how it's structured, what each script does, and how to run
 ```
 data/
 ├── raw/
-│   ├── gutenberg/           # Plain-text public domain sources
+│   ├── gutenberg/           # Plain-text public domain sources (medieval, archived)
 │   │   ├── hamlet.txt       # Gutenberg #1524
 │   │   ├── macbeth.txt      # Gutenberg #1533
 │   │   ├── caesar.txt       # Gutenberg #1785
 │   │   ├── canterbury.txt   # Gutenberg #2383 (Purves ed.)
 │   │   └── malory.txt       # Gutenberg #46853, Le Morte Darthur (Rhys ed.)
+│   ├── modern/               # gitignored, large — see "Modern-city dataset" below
+│   │   ├── taskmaster/        # git clone, google-research-datasets/Taskmaster (1.1GB)
+│   │   ├── multiwoz/          # git clone, budzianowski/multiwoz (378MB)
+│   │   ├── soda/               # HF snapshot_download, allenai/soda (817MB)
+│   │   └── synthetic-persona-chat/  # HF snapshot_download, google/Synthetic-Persona-Chat (37MB)
 │   └── huggingface/         # HF `datasets` cache (gitignored-worthy, large)
 │
 ├── processed/
-│   ├── medieval_npc_dataset.json   # Main training dataset, schema v1.0
+│   ├── medieval_npc_dataset.json   # Archived control dataset, schema v1.0
+│   ├── modern_npc_dataset.json     # Active dataset, schema v1.0
 │   └── stress_test_corpus.json     # 50 held-out persona-breaking conversations (NOT for training)
 │
 └── scripts/
-    ├── gutenberg_extractor.py      # Play + poem + tagged-dialogue extraction
-    ├── chimbiwide_converter.py     # HF chimbiwide/NPC-Dialogue_v2 filter + rewrite
+    ├── gutenberg_extractor.py      # Play + poem + tagged-dialogue extraction (medieval, archived)
+    ├── chimbiwide_converter.py     # HF chimbiwide/NPC-Dialogue_v2 filter + rewrite (medieval-only)
+    ├── soda_extractor.py           # allenai/soda speaker-role extraction — the active modern-city source
     ├── gpt4o_augmentor.py          # Gap-fill synthesis for underrepresented archetypes (superseded by hand-authored batches)
-    └── dataset_validator.py        # Schema conformance, duplicate detection, archetype balance report
+    └── dataset_validator.py        # Schema conformance, duplicate detection, archetype balance report (medieval-only currently)
 ```
 
 Python interpreter used for all of the above: `C:\Users\spicez\AppData\Local\Programs\Python\Python310\python.exe` (system 3.13 is broken on this machine — see [TODO.md](TODO.md)).
@@ -56,9 +63,20 @@ Final archetype distribution: peasant 221, guard 189, noble 182, clergy 123, sch
 
 ## Modern-city dataset (600 pairs)
 
-**Target: 600 pairs (75 × 8 roles)** in `data/processed/modern_npc_dataset.json` (skeleton exists: schema v1.0, `entries: []`). **Freeze: 6 September 2026 — no additions after that date.**
+**Target: 600 pairs (75 × 8 roles)** in `data/processed/modern_npc_dataset.json`. **Freeze: 6 September 2026 — no additions after that date.**
 
-**Persona re-voicing, not copying.** Source corpora (below) supply only **scenario scaffolding** — the situation, intent, and turn structure — which is then **rewritten in the target archetype's voice**. The raw source text is never copied verbatim into a released entry. Provenance (source corpus + original id) is recorded per entry in the schema `provenance` field.
+**State as of 2026-08-08: 659 entries, target already reached.**
+
+| Source | Entries | Method |
+|--------|--------:|--------|
+| Hand-authored pilot (Week 2, `POL-*`) | 59 | Original content, police officer only — see `Docs/TODO.md` |
+| SODA (`SOD-*`) | 600 | `data/scripts/soda_extractor.py`, 75 per archetype — see below |
+
+Archetype distribution: `police officer 134` (59 pilot + 75 SODA), all other 7 archetypes at 75 each. Not trimmed to exactly 600 — the police overage is real training data, not a defect.
+
+Taskmaster and MultiWOZ are downloaded but **not yet extracted from** — SODA alone reached the numeric target on its own (see `soda_extractor.py` below), so pulling additional variety from them is an optional quality enhancement, not a blocker. Revisit once PDM v2/KBD (Weeks 5–6) can actually evaluate whether the current set needs more register diversity.
+
+**Persona re-voicing, not copying** was the original plan (source corpora supply scenario scaffolding, rewritten in the target archetype's voice). In practice, SODA's raw dialogue is already natural contemporary register for a role whose *name* already matches the target archetype (e.g. a speaker literally named "Police Officer") — so `soda_extractor.py` does direct extraction + relabeling, not a rewrite pass, and says so honestly in each entry's `conversion_note` rather than overclaiming. Provenance (source corpus + original row index) is recorded per entry in the schema `provenance` field.
 
 **Annotate in the same pass:**
 
@@ -72,14 +90,14 @@ All licences below were **verified from each source directly** on 2026-08-07 (no
 | Dataset | Verified licence | How pulled | On disk | Use |
 |---------|------------------|-----------|---------|-----|
 | Taskmaster (TM-1/2/3/4) | CC BY 4.0 | `git clone --depth 1` (GitHub raw JSON) | `data/raw/modern/taskmaster/` (~1.1 GB) | Task-oriented scaffolding; covers shopkeeper / service-worker / transaction scenarios |
-| MultiWOZ 2.2 | MIT | `git clone --depth 1` (GitHub raw JSON) | `data/raw/modern/multiwoz/` (~378 MB) | Multi-domain service dialogue structure (restaurant/hotel/taxi/train/hospital/police) |
-| SODA | CC BY 4.0 | `huggingface_hub.snapshot_download` (parquet) | `data/raw/modern/soda/` (~856 MB) | 1.19M social dialogues — social worker, bartender, casual registers |
+| MultiWOZ 2.2 | MIT | `git clone --depth 1` (GitHub raw JSON) | `data/raw/modern/multiwoz/` (378 MB) | Multi-domain service dialogue structure. **Correction, 2026-08-08:** actual downloaded service distribution is `restaurant 4728, hotel 4182, train 3931, attraction 3485, taxi 1872, hospital 108, bus 6` — **no `police` domain at all** despite this row's original claim (verified by loading all 21 `dialogues_*.json` files directly, not assumed). Not used for police officer; see the SODA row instead. |
+| SODA | CC BY 4.0 | `huggingface_hub.snapshot_download` (parquet) | `data/raw/modern/soda/` (817 MB) | 1.19M social dialogues. **The actual source used for all 8 archetypes** (`data/scripts/soda_extractor.py`) — its `speakers` field carries real in-narrative role names (e.g. "Police Officer", "CEO"), searched directly rather than relying on domain tags. Verified real per-archetype match counts before extracting: `executive 50252, professor 18425, shopkeeper 16510, service worker 11681, social worker 9920, police officer 8606, bartender 1758, pharmacist 99`. |
 | Synthetic-Persona-Chat | CC BY 4.0 | `huggingface_hub.snapshot_download` (parquet) | `data/raw/modern/synthetic-persona-chat/` (~38 MB) | Persona-grounded turn structure (covers the role the brief assigned to PersonaChat) |
 
 **Loading notes:**
 - **Taskmaster + MultiWOZ**: pulled as **raw JSON from GitHub**, *not* via `load_dataset` — HF deprecated script-based loading and these have no reliable Parquet conversion (the **same failure mode that killed `microsoft/crd3`**, see [Not yet built](#not-yet-built)). Do not retry them through `load_dataset`.
 - **SODA + Synthetic-Persona-Chat**: pulled via `huggingface_hub.snapshot_download(repo_type="dataset")` (they ship real Parquet, so this works where `crd3`/SGD-style script loading does not). This avoids needing the full `datasets` library.
-- **Environment:** only Python 3.14 exists on this machine (the `spicez`/3.10 paths in older notes are from a different box). Fetching uses a gitignored `.venv` with `huggingface_hub` + **`truststore`** (`truststore.inject_into_ssl()`) — Python's own CA bundle fails SSL verification here (SSL-inspection network); `truststore` routes verification through the Windows cert store, the same store `git`/`curl` succeed with.
+- **Environment note, superseded 2026-08-08:** the paragraph above (only Python 3.14, `truststore` needed for SSL) described a *different* machine than the one used for the rest of this project — that machine's `data/raw/modern/` never made it here since the folder is gitignored. All 4 sources were re-downloaded from scratch on **this** machine (the `spicez`/Python 3.10 box every other doc references) using the same `huggingface_hub`/`git clone` commands, no `truststore` workaround needed here — plain SSL verification worked fine on this network.
 
 ### Source datasets — rejected (licence diligence)
 
@@ -121,7 +139,26 @@ Idempotent — skips any play already present in the dataset's `metadata.sources
 
 If you extend `POEM_SOURCES` or `TAGGED_SOURCES` to a new text, sanity-check a sample of the first ~10-15 extracted pairs before trusting the count — both prior sources produced silently-wrong output on the first attempt.
 
-## `chimbiwide_converter.py`
+## `soda_extractor.py` (active — the current modern-city source)
+
+```
+python data/scripts/soda_extractor.py --per-archetype 75              # report only
+python data/scripts/soda_extractor.py --per-archetype 75 --merge      # also merge into modern_npc_dataset.json
+```
+
+Source: `allenai/soda` on HuggingFace (CC BY 4.0), `train.parquet` (~1.19M dialogues, 817MB). Each row's `speakers` array names the actual characters in that narrative-derived dialogue (e.g. `["Veda", "Priest"]`) — `ARCHETYPE_PATTERNS` is a regex per archetype (role vocabulary: "police officer", "cop", "policeman", "policewoman" for police officer, etc.) matched directly against those names, not against a domain tag. For each row, the first turn spoken by a matching-named speaker (that also has a preceding turn from someone else) becomes the `(input, output)` pair — one pair per dialogue, to avoid oversampling one narrative.
+
+Verified real match counts before building anything (`grep`-style regex scan over just the `speakers` column, fast): `executive 50252, professor 18425, shopkeeper 16510, service worker 11681, social worker 9920, police officer 8606, bartender 1758, pharmacist 99` — comfortably enough headroom for 75 per archetype even on the thinnest one.
+
+**Two real bugs caught on manual spot-check** (not assumed correct from the count alone):
+1. Bare `officer` in the police-officer pattern matched non-police roles like "Ski Patrol Officer" and "Loan Officer". Narrowed to `police officer|cop|policeman|policewoman`.
+2. SODA embeds inline third-person stage directions in dialogue text, e.g. `"(He looks at the prescription.)"`. Added `_clean()` — strips `(...)` spans and collapses whitespace — applied before the word-count quality filter (`MIN_WORDS=3, MAX_WORDS=60`), same bounds `gutenberg_extractor.py` uses.
+
+Not a rewrite pass like `chimbiwide_converter.py`'s `register_rewrite()` — SODA's raw text is already in the right contemporary register when the speaker's own name already matches the target role, so this is extraction + relabeling. Each entry's `metadata.conversion_note` says this explicitly, and `metadata.provenance` records the source row's `original_index` for traceability.
+
+Last run (`--per-archetype 75 --merge`): 600/600 entries merged (`SOD-0001`..`SOD-0600`), 1 negligible duplicate pair (identical generic greeting from two different narratives — not deduplicated further, harmless).
+
+## `chimbiwide_converter.py` (archived — medieval only, not part of the modern pipeline)
 
 ```
 python data/scripts/chimbiwide_converter.py --limit 300                       # filter + rewrite, report only
@@ -177,7 +214,9 @@ Type breakdown (matches `Specs.md` exactly): 15 `identity_challenge` ("are you a
 
 ## Not yet built
 
-- **Modern-city extractor(s)** for the four cleared sources (Taskmaster, MultiWOZ, SODA, Synthetic-Persona-Chat) → `modern_npc_dataset.json`, with per-entry `provenance`, `persona_features[]`, and visibility-set annotation. Taskmaster/MultiWOZ are raw JSON (GitHub); SODA/Synthetic-Persona-Chat are Parquet (`data/raw/modern/`). No script yet.
+- **`persona_features[]` and visibility-set annotation** on the 659 existing modern entries — not started. `persona_features[]` needs PDM v2's feature families first (Week 5); visibility sets need KBD's schema decided (Week 6). Populating these early would repeat the "calibrated before an adapter/metric exists" mistake already flagged for PDM v2 itself.
+- **Taskmaster and MultiWOZ extraction** — downloaded, not yet used. Optional at this point since SODA alone reached the 600-pair target; worth doing for register diversity once Weeks 5–6 can actually measure whether the current set is thin anywhere.
+- **A modern-city equivalent of `stress_test_corpus.json`** — the existing 50-entry corpus is medieval-archetype-only (`archetype` field uses guard/merchant/etc, not the modern 8). Needed before the modern adapters can be stress-tested the same way the medieval ones were.
 - **Planted-forbidden-facts extension** to `stress_test_corpus.json` — 15–20 probes whose correct response is a refusal or expression of ignorance, required for KBD to have signal.
 
 ### Dead ends / rejected sources (do not retry)
