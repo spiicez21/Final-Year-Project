@@ -23,6 +23,7 @@ description — SODA is the real source for police officer coverage instead.
 Usage:
     python data/scripts/soda_extractor.py --per-archetype 75          # report only
     python data/scripts/soda_extractor.py --per-archetype 75 --merge  # also merge
+    python data/scripts/soda_extractor.py --archetype "police officer" --per-archetype 300 --merge  # top up one archetype
 """
 
 import argparse
@@ -69,22 +70,41 @@ def _quality_ok(text: str) -> bool:
     return MIN_WORDS <= n <= MAX_WORDS
 
 
-def extract(per_archetype: int):
+def _existing_outputs_by_archetype() -> dict:
+    """Outputs already merged into the dataset, per archetype — used so a
+    top-up run (e.g. --archetype 'police officer' --per-archetype 300) adds
+    genuinely new pairs instead of re-finding and re-merging the same first
+    N matches the previous run already collected (the scan order is
+    deterministic file order, so a naive rerun would just rediscover the
+    same rows)."""
+    if not OUT_PATH.exists():
+        return {}
+    data = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+    existing = {}
+    for e in data["entries"]:
+        existing.setdefault(e["persona"]["archetype"], set()).add(e["output"])
+    return existing
+
+
+def extract(per_archetype: int, only_archetype: str = None):
     import pandas as pd
 
     print(f"loading {RAW_PATH} (speakers + dialogue + original_index columns)...")
     df = pd.read_parquet(RAW_PATH, engine="pyarrow", columns=["speakers", "dialogue", "original_index"])
     print(f"loaded {len(df)} rows")
 
-    patterns = {a: re.compile(p, re.IGNORECASE) for a, p in ARCHETYPE_PATTERNS.items()}
-    kept = {a: [] for a in ARCHETYPE_PATTERNS}
-    seen_outputs = {a: set() for a in ARCHETYPE_PATTERNS}
+    archetype_patterns = ARCHETYPE_PATTERNS if only_archetype is None else {only_archetype: ARCHETYPE_PATTERNS[only_archetype]}
+    patterns = {a: re.compile(p, re.IGNORECASE) for a, p in archetype_patterns.items()}
+    kept = {a: [] for a in archetype_patterns}
+    existing = _existing_outputs_by_archetype()
+    seen_outputs = {a: set(existing.get(a, set())) for a in archetype_patterns}
+    already_have = {a: len(seen_outputs[a]) for a in archetype_patterns}
 
     for speakers, dialogue, orig_idx in zip(df["speakers"], df["dialogue"], df["original_index"]):
         if len(speakers) < 2 or len(dialogue) < 2:
             continue
         for archetype, pattern in patterns.items():
-            if len(kept[archetype]) >= per_archetype:
+            if already_have[archetype] + len(kept[archetype]) >= per_archetype:
                 continue
             # find the first turn spoken by a name matching this archetype's
             # role vocabulary, that also has a preceding turn from someone else
@@ -106,7 +126,8 @@ def extract(per_archetype: int):
                     break  # one pair per dialogue per archetype, avoid oversampling one narrative
 
     for archetype, rows in kept.items():
-        print(f"{archetype:16s} {len(rows):4d} / {per_archetype} target")
+        print(f"{archetype:16s} +{len(rows):4d} new (already had {already_have[archetype]}) -> "
+              f"{already_have[archetype] + len(rows)} / {per_archetype} target")
     return kept
 
 
@@ -163,10 +184,12 @@ def merge_into_dataset(entries: list):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--per-archetype", type=int, default=75)
+    parser.add_argument("--archetype", default=None, choices=list(ARCHETYPE_PATTERNS.keys()),
+                         help="top up a single archetype instead of all 8 (dedupes against what's already merged)")
     parser.add_argument("--merge", action="store_true")
     args = parser.parse_args()
 
-    kept = extract(args.per_archetype)
+    kept = extract(args.per_archetype, args.archetype)
     if not args.merge:
         print("(pass --merge to write these into the dataset)")
         return
