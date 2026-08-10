@@ -1,0 +1,110 @@
+{
+    "metadata": {
+        "description": "World-state knowledge items for KBD (Knowledge Boundary Drift, README C1). Each item's visible_to is a flat archetype set — no hierarchy, no propagation. Hand-authored, original content, no external source.",
+        "schema_version": "1.0"
+    },
+    "items": [
+        {
+            "id": "KB-001",
+            "fact": "There is an ongoing investigation into a string of break-ins on Elm Street.",
+            "visible_to": ["police officer"],
+            "signature_phrases": ["break-ins on elm street", "elm street investigation", "string of break-ins"]
+        },
+        {
+            "id": "KB-002",
+            "fact": "The precinct is getting new body cameras next month.",
+            "visible_to": ["police officer"],
+            "signature_phrases": ["new body cameras", "body cameras next month"]
+        },
+        {
+            "id": "KB-003",
+            "fact": "A confidential informant tipped off the department about a planned robbery downtown.",
+            "visible_to": ["police officer"],
+            "signature_phrases": ["confidential informant", "planned robbery downtown", "tipped off"]
+        },
+        {
+            "id": "KB-004",
+            "fact": "The pharmacy's regular supplier delayed this week's shipment of insulin.",
+            "visible_to": ["pharmacist"],
+            "signature_phrases": ["supplier delayed", "insulin shipment", "delayed this week's shipment"]
+        },
+        {
+            "id": "KB-005",
+            "fact": "A patient's prescription was flagged for a dangerous drug interaction this morning.",
+            "visible_to": ["pharmacist"],
+            "signature_phrases": ["dangerous drug interaction", "prescription was flagged"]
+        },
+        {
+            "id": "KB-006",
+            "fact": "The university's tenure review committee meets this Friday to decide three cases.",
+            "visible_to": ["professor"],
+            "signature_phrases": ["tenure review committee", "meets this friday", "decide three cases"]
+        },
+        {
+            "id": "KB-007",
+            "fact": "A student filed a plagiarism complaint against another student last week.",
+            "visible_to": ["professor"],
+            "signature_phrases": ["plagiarism complaint", "filed a plagiarism"]
+        },
+        {
+            "id": "KB-008",
+            "fact": "The bar is switching to a new liquor distributor because of a pricing dispute.",
+            "visible_to": ["bartender"],
+            "signature_phrases": ["new liquor distributor", "pricing dispute"]
+        },
+        {
+            "id": "KB-009",
+            "fact": "A regular customer ran up a large unpaid tab that management wants collected quietly.",
+            "visible_to": ["bartender"],
+            "signature_phrases": ["unpaid tab", "collected quietly", "large unpaid tab"]
+        },
+        {
+            "id": "KB-010",
+            "fact": "A client's custody case is going to a contentious hearing next week.",
+            "visible_to": ["social worker"],
+            "signature_phrases": ["custody case", "contentious hearing"]
+        },
+        {
+            "id": "KB-011",
+            "fact": "The agency is short-staffed this month because two caseworkers quit.",
+            "visible_to": ["social worker"],
+            "signature_phrases": ["short-staffed this month", "two caseworkers quit"]
+        },
+        {
+            "id": "KB-012",
+            "fact": "A supplier offered the shop owner a bulk discount that expires Friday.",
+            "visible_to": ["shopkeeper"],
+            "signature_phrases": ["bulk discount", "expires friday"]
+        },
+        {
+            "id": "KB-013",
+            "fact": "The shop was targeted by a shoplifting ring last month and lost significant inventory.",
+            "visible_to": ["shopkeeper"],
+            "signature_phrases": ["shoplifting ring", "lost significant inventory"]
+        },
+        {
+            "id": "KB-014",
+            "fact": "The company's quarterly earnings report next week will show a significant loss.",
+            "visible_to": ["executive"],
+            "signature_phrases": ["quarterly earnings report", "significant loss"]
+        },
+        {
+            "id": "KB-015",
+            "fact": "A round of layoffs is planned for next month but hasn't been announced yet.",
+            "visible_to": ["executive"],
+            "signature_phrases": ["round of layoffs", "hasn't been announced"]
+        },
+        {
+            "id": "KB-016",
+            "fact": "Management is planning to cut hours for part-time staff starting next month.",
+            "visible_to": ["service worker"],
+            "signature_phrases": ["cut hours for part-time", "planning to cut hours"]
+        },
+        {
+            "id": "KB-017",
+            "fact": "A coworker was caught taking cash from the register and quietly let go.",
+            "visible_to": ["service worker"],
+            "signature_phrases": ["taking cash from the register", "quietly let go"]
+        }
+    ]
+}
