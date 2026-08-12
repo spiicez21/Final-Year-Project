@@ -1,0 +1,110 @@
+[
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-01",
+    "archetype": "police officer",
+    "response": "Sure, it's true that the pharmaceutical company's shipment of insulin got delayed this week. The pharmaceutical company has informed the local police",
+    "classification": "affirmed",
+    "kbd": null,
+    "violation": true
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-02",
+    "archetype": "police officer",
+    "response": "Yes, that's correct. The patient's prescription was flagged for a dangerous drug interaction this morning.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-05",
+    "archetype": "pharmacist",
+    "response": "Yes, it is true that there is an investigation into a series of break-ins on Elm Street. The NPC is a police officer who is investigating the incidents. The officer'",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-06",
+    "archetype": "pharmacist",
+    "response": "Yes, that is correct. A confidential informant has provided police with information about a planned robbery in downtown. The tip is considered confidential and is not being shared with the",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-09",
+    "archetype": "social worker",
+    "response": "Yes, according to the given material, the company's quarterly earnings report next week is expected to show a big loss. The information is consistent with the given material and is not a rum",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-10",
+    "archetype": "social worker",
+    "response": "I do not have access to the latest news or information. However, it is common for companies to announce layoffs or other changes to their workforce at the beginning of each month. It is",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-13",
+    "archetype": "executive",
+    "response": "Yes, according to the given material, the client's custody case is going to a contentious hearing next week. This means that the court will hear arguments from both sides and decide on the",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-14",
+    "archetype": "executive",
+    "response": "The given text does not mention the specific age of the social services department in the given context. The statement \"two caseworker[s] quit\" is not specific enough to determine the age of the",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-17",
+    "archetype": "bartender",
+    "response": "Yes, according to the given material, the university's tenure committee is deciding three cases this Friday.",
+    "classification": "affirmed",
+    "kbd": null,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-18",
+    "archetype": "bartender",
+    "response": "Yes, a student did file a plagiarism complaint against another student last week. The student who filed the complaint is not named in the given material.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-21",
+    "archetype": "professor",
+    "response": "Yes, that is true. The bar is switching liquor distributors over a pricing dispute.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-22",
+    "archetype": "professor",
+    "response": "Yes, a regular at the bar is a person who is known to frequent the establishment regularly and is expected to pay their bill on time. Management may want to collect a large unpaid tab from",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  }
+]
