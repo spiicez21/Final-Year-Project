@@ -42,5 +42,7 @@ PDM v2's differentiator against all of these: domain-agnostic feature families (
 
 ## Open action items
 
-- [ ] Retrieve and assess **IEEE arnumber 11419836** (row 9) before the paper draft.
+- [x] **8 of 9 source PDFs retrieved and archived locally** (2026-08-15) under `Base Papers/`: `RW01_andreasen_esterle_2511.10277.pdf`, `RW02_wang_2509.24229.pdf`, `RW03_buakhaw_deflanderization_2510.13586.pdf`, `RW05_mcgrath_lorandi_belz_inlg2025_demos.pdf`, `RW06_nuriyev_2511.01720.pdf`, `RW07_kim_mart_2412.11189.pdf`, `ai-06-00093-v2.pdf` (row 4, Liu/Xie/Jiang), `A-Quest-for-Information-Tereza-Todova.pdf` (row 8, Tódová thesis).
+- [ ] **Row 9, IEEE arnumber 11419836, still not retrieved.** Both direct `curl` (with a browser user-agent) and the browser-automation tooling failed — the IEEE Xplore stamp/download endpoint is JS-gated and returned an empty response either way. Not a transient failure specific to this session; genuinely needs manual retrieval (e.g. via institutional library access) before the paper draft. Row 9 in the differentiation table above stays a placeholder until then.
 - [ ] Confirm exact venue/volume strings for each citation when the bibliography is built.
+- [ ] Now that the other 8 PDFs are local, worth a pass re-verifying the differentiation-table summaries (rows 1–8) against the actual paper text rather than abstracts/prior notes — not done in this pass, flagged for before the draft.

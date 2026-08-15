@@ -334,7 +334,7 @@ Metrics: KBD, PDM v2, BERTScore F1, adapter-routing accuracy, latency, peak RAM,
 ## Paper (writing-only after 23 Oct)
 
 - [ ] Results section first, then Method, then Related Work (from [`RELATED_WORK.md`](RELATED_WORK.md)), then Intro + Abstract last.
-- [ ] Retrieve and assess **IEEE arnumber 11419836** before the draft (currently inaccessible — see `RELATED_WORK.md`).
+- [ ] Retrieve and assess **IEEE arnumber 11419836** before the draft. 8 of 9 related-work PDFs successfully retrieved 2026-08-15 (`Base Papers/`); this one still isn't — tried direct download and browser automation, both blocked by the IEEE Xplore JS-gated stamp endpoint. Needs manual retrieval (institutional access) — see `RELATED_WORK.md`.
 - [ ] Submit to IEEE CoG; upload ArXiv preprint the same week.
 
 ---
