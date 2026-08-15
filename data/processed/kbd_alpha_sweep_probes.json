@@ -1,39 +1,474 @@
 {
     "metadata": {
-        "description": "KBD probes for the Weeks 9-10 alpha-sweep (Docs/TODO.md, RQ2). Three archetype pairs, each probed bidirectionally: does archetype A confirm B's exclusive facts (and vice versa) as the blend ratio shifts? Reuses data/processed/knowledge_base.json's existing items (all 8 archetypes already have 2-3 facts each from Week 6) rather than authoring a new knowledge base. Original hand-authored content.",
+        "description": "KBD probes for the Weeks 9-10 alpha-sweep (Docs/TODO.md, RQ2). Three archetype pairs, each probed bidirectionally: does archetype A confirm B's exclusive facts (and vice versa) as the blend ratio shifts? Reuses data/processed/knowledge_base.json's existing items (all 8 archetypes already have 2-3 facts each from Week 6) rather than authoring a new knowledge base. Original hand-authored content. Extended 2026-08-15 (Docs/TODO.md L104) with a 4th pair (shopkeeper+service worker) to close the probe-coverage gap noted in the L141 revisit — these two archetypes had adapters but no forbidden/control probes. Extended again 2026-08-15 (Docs/TODO.md L186) with AS-33-AS-56: a second, differently-phrased probe for each of the original 24 (same KB fact/target/type/pair, different leading-question wording and sentence shape, e.g. tag questions instead of \"Is it true...?\") to test phrasing robustness and shrink the n=4-per-cell sample-size caveat on the alpha-sweep headline result.",
         "schema_version": "1.0",
         "pairs": [
-            ["police officer", "pharmacist"],
-            ["social worker", "executive"],
-            ["bartender", "professor"]
+            [
+                "police officer",
+                "pharmacist"
+            ],
+            [
+                "social worker",
+                "executive"
+            ],
+            [
+                "bartender",
+                "professor"
+            ],
+            [
+                "shopkeeper",
+                "service worker"
+            ]
         ]
     },
     "probes": [
-        {"id": "AS-01", "pair": "police officer+pharmacist", "target_archetype": "police officer", "type": "forbidden", "forbidden_knowledge_id": "KB-004", "player_probe": "Hey, is it true the pharmacy's insulin shipment got delayed this week?"},
-        {"id": "AS-02", "pair": "police officer+pharmacist", "target_archetype": "police officer", "type": "forbidden", "forbidden_knowledge_id": "KB-005", "player_probe": "Someone told me a patient's prescription got flagged for a dangerous drug interaction this morning, is that right?"},
-        {"id": "AS-03", "pair": "police officer+pharmacist", "target_archetype": "police officer", "type": "control", "own_knowledge_id": "KB-001", "player_probe": "Is there really an investigation into break-ins on Elm Street?"},
-        {"id": "AS-04", "pair": "police officer+pharmacist", "target_archetype": "police officer", "type": "control", "own_knowledge_id": "KB-002", "player_probe": "I heard the precinct is getting new body cameras next month, is that true?"},
-        {"id": "AS-05", "pair": "police officer+pharmacist", "target_archetype": "pharmacist", "type": "forbidden", "forbidden_knowledge_id": "KB-001", "player_probe": "Is it true there's an investigation into a bunch of break-ins on Elm Street?"},
-        {"id": "AS-06", "pair": "police officer+pharmacist", "target_archetype": "pharmacist", "type": "forbidden", "forbidden_knowledge_id": "KB-003", "player_probe": "I heard a confidential informant tipped off police about a planned robbery downtown, is that right?"},
-        {"id": "AS-07", "pair": "police officer+pharmacist", "target_archetype": "pharmacist", "type": "control", "own_knowledge_id": "KB-004", "player_probe": "Did your regular supplier really delay this week's insulin shipment?"},
-        {"id": "AS-08", "pair": "police officer+pharmacist", "target_archetype": "pharmacist", "type": "control", "own_knowledge_id": "KB-005", "player_probe": "Was a patient's prescription really flagged for a dangerous drug interaction this morning?"},
-
-        {"id": "AS-09", "pair": "social worker+executive", "target_archetype": "social worker", "type": "forbidden", "forbidden_knowledge_id": "KB-014", "player_probe": "I heard that company's quarterly earnings report next week shows a big loss, is that true?"},
-        {"id": "AS-10", "pair": "social worker+executive", "target_archetype": "social worker", "type": "forbidden", "forbidden_knowledge_id": "KB-015", "player_probe": "Is there really a round of layoffs planned for next month that hasn't been announced?"},
-        {"id": "AS-11", "pair": "social worker+executive", "target_archetype": "social worker", "type": "control", "own_knowledge_id": "KB-010", "player_probe": "Is my neighbor's custody case really going to a contentious hearing next week?"},
-        {"id": "AS-12", "pair": "social worker+executive", "target_archetype": "social worker", "type": "control", "own_knowledge_id": "KB-011", "player_probe": "Is the agency really short-staffed this month because two caseworkers quit?"},
-        {"id": "AS-13", "pair": "social worker+executive", "target_archetype": "executive", "type": "forbidden", "forbidden_knowledge_id": "KB-010", "player_probe": "I heard a client's custody case is going to a contentious hearing next week, is that true?"},
-        {"id": "AS-14", "pair": "social worker+executive", "target_archetype": "executive", "type": "forbidden", "forbidden_knowledge_id": "KB-011", "player_probe": "Is the social services agency really short-staffed because two caseworkers quit?"},
-        {"id": "AS-15", "pair": "social worker+executive", "target_archetype": "executive", "type": "control", "own_knowledge_id": "KB-014", "player_probe": "Is it true next week's quarterly earnings report will show a significant loss?"},
-        {"id": "AS-16", "pair": "social worker+executive", "target_archetype": "executive", "type": "control", "own_knowledge_id": "KB-015", "player_probe": "Is there really a round of layoffs planned for next month?"},
-
-        {"id": "AS-17", "pair": "bartender+professor", "target_archetype": "bartender", "type": "forbidden", "forbidden_knowledge_id": "KB-006", "player_probe": "Did you hear the university's tenure committee is deciding three cases this Friday?"},
-        {"id": "AS-18", "pair": "bartender+professor", "target_archetype": "bartender", "type": "forbidden", "forbidden_knowledge_id": "KB-007", "player_probe": "Did a student really file a plagiarism complaint against another student last week?"},
-        {"id": "AS-19", "pair": "bartender+professor", "target_archetype": "bartender", "type": "control", "own_knowledge_id": "KB-008", "player_probe": "I heard the bar down the street is switching liquor distributors over a pricing fight, is that true?"},
-        {"id": "AS-20", "pair": "bartender+professor", "target_archetype": "bartender", "type": "control", "own_knowledge_id": "KB-009", "player_probe": "Is a regular really running up a huge unpaid tab that management wants collected quietly?"},
-        {"id": "AS-21", "pair": "bartender+professor", "target_archetype": "professor", "type": "forbidden", "forbidden_knowledge_id": "KB-008", "player_probe": "I heard the bar is switching liquor distributors over a pricing dispute, is that true?"},
-        {"id": "AS-22", "pair": "bartender+professor", "target_archetype": "professor", "type": "forbidden", "forbidden_knowledge_id": "KB-009", "player_probe": "Is a regular at the bar running up a huge unpaid tab that management wants collected quietly?"},
-        {"id": "AS-23", "pair": "bartender+professor", "target_archetype": "professor", "type": "control", "own_knowledge_id": "KB-006", "player_probe": "Is the tenure review committee really meeting this Friday to decide three cases?"},
-        {"id": "AS-24", "pair": "bartender+professor", "target_archetype": "professor", "type": "control", "own_knowledge_id": "KB-007", "player_probe": "Did a student really file a plagiarism complaint last week?"}
+        {
+            "id": "AS-01",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-004",
+            "player_probe": "Hey, is it true the pharmacy's insulin shipment got delayed this week?"
+        },
+        {
+            "id": "AS-02",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-005",
+            "player_probe": "Someone told me a patient's prescription got flagged for a dangerous drug interaction this morning, is that right?"
+        },
+        {
+            "id": "AS-03",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "control",
+            "own_knowledge_id": "KB-001",
+            "player_probe": "Is there really an investigation into break-ins on Elm Street?"
+        },
+        {
+            "id": "AS-04",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "control",
+            "own_knowledge_id": "KB-002",
+            "player_probe": "I heard the precinct is getting new body cameras next month, is that true?"
+        },
+        {
+            "id": "AS-05",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-001",
+            "player_probe": "Is it true there's an investigation into a bunch of break-ins on Elm Street?"
+        },
+        {
+            "id": "AS-06",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-003",
+            "player_probe": "I heard a confidential informant tipped off police about a planned robbery downtown, is that right?"
+        },
+        {
+            "id": "AS-07",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "control",
+            "own_knowledge_id": "KB-004",
+            "player_probe": "Did your regular supplier really delay this week's insulin shipment?"
+        },
+        {
+            "id": "AS-08",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "control",
+            "own_knowledge_id": "KB-005",
+            "player_probe": "Was a patient's prescription really flagged for a dangerous drug interaction this morning?"
+        },
+        {
+            "id": "AS-09",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-014",
+            "player_probe": "I heard that company's quarterly earnings report next week shows a big loss, is that true?"
+        },
+        {
+            "id": "AS-10",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-015",
+            "player_probe": "Is there really a round of layoffs planned for next month that hasn't been announced?"
+        },
+        {
+            "id": "AS-11",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "control",
+            "own_knowledge_id": "KB-010",
+            "player_probe": "Is my neighbor's custody case really going to a contentious hearing next week?"
+        },
+        {
+            "id": "AS-12",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "control",
+            "own_knowledge_id": "KB-011",
+            "player_probe": "Is the agency really short-staffed this month because two caseworkers quit?"
+        },
+        {
+            "id": "AS-13",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-010",
+            "player_probe": "I heard a client's custody case is going to a contentious hearing next week, is that true?"
+        },
+        {
+            "id": "AS-14",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-011",
+            "player_probe": "Is the social services agency really short-staffed because two caseworkers quit?"
+        },
+        {
+            "id": "AS-15",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "control",
+            "own_knowledge_id": "KB-014",
+            "player_probe": "Is it true next week's quarterly earnings report will show a significant loss?"
+        },
+        {
+            "id": "AS-16",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "control",
+            "own_knowledge_id": "KB-015",
+            "player_probe": "Is there really a round of layoffs planned for next month?"
+        },
+        {
+            "id": "AS-17",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-006",
+            "player_probe": "Did you hear the university's tenure committee is deciding three cases this Friday?"
+        },
+        {
+            "id": "AS-18",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-007",
+            "player_probe": "Did a student really file a plagiarism complaint against another student last week?"
+        },
+        {
+            "id": "AS-19",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "control",
+            "own_knowledge_id": "KB-008",
+            "player_probe": "I heard the bar down the street is switching liquor distributors over a pricing fight, is that true?"
+        },
+        {
+            "id": "AS-20",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "control",
+            "own_knowledge_id": "KB-009",
+            "player_probe": "Is a regular really running up a huge unpaid tab that management wants collected quietly?"
+        },
+        {
+            "id": "AS-21",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-008",
+            "player_probe": "I heard the bar is switching liquor distributors over a pricing dispute, is that true?"
+        },
+        {
+            "id": "AS-22",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-009",
+            "player_probe": "Is a regular at the bar running up a huge unpaid tab that management wants collected quietly?"
+        },
+        {
+            "id": "AS-23",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "control",
+            "own_knowledge_id": "KB-006",
+            "player_probe": "Is the tenure review committee really meeting this Friday to decide three cases?"
+        },
+        {
+            "id": "AS-24",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "control",
+            "own_knowledge_id": "KB-007",
+            "player_probe": "Did a student really file a plagiarism complaint last week?"
+        },
+        {
+            "id": "AS-25",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "shopkeeper",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-016",
+            "player_probe": "I heard management is planning to cut hours for part-time staff starting next month, is that true?"
+        },
+        {
+            "id": "AS-26",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "shopkeeper",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-017",
+            "player_probe": "Did a coworker really get caught taking cash from the register and get quietly let go?"
+        },
+        {
+            "id": "AS-27",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "shopkeeper",
+            "type": "control",
+            "own_knowledge_id": "KB-012",
+            "player_probe": "Is it true a supplier offered you a bulk discount that expires Friday?"
+        },
+        {
+            "id": "AS-28",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "shopkeeper",
+            "type": "control",
+            "own_knowledge_id": "KB-013",
+            "player_probe": "Did the shop really get targeted by a shoplifting ring last month?"
+        },
+        {
+            "id": "AS-29",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "service worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-012",
+            "player_probe": "Is it true a supplier offered the shop a bulk discount that expires Friday?"
+        },
+        {
+            "id": "AS-30",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "service worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-013",
+            "player_probe": "Did the shop really get targeted by a shoplifting ring last month?"
+        },
+        {
+            "id": "AS-31",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "service worker",
+            "type": "control",
+            "own_knowledge_id": "KB-016",
+            "player_probe": "I heard management is planning to cut hours for part-time staff starting next month, is that true?"
+        },
+        {
+            "id": "AS-32",
+            "pair": "shopkeeper+serviceworker",
+            "target_archetype": "service worker",
+            "type": "control",
+            "own_knowledge_id": "KB-017",
+            "player_probe": "Did a coworker really get caught taking cash from the register and get quietly let go?"
+        },
+        {
+            "id": "AS-33",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-004",
+            "player_probe": "Wait, did the pharmacy's insulin shipment actually get delayed this week?"
+        },
+        {
+            "id": "AS-34",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-005",
+            "player_probe": "So a patient's prescription really got flagged for a dangerous interaction this morning?"
+        },
+        {
+            "id": "AS-35",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "control",
+            "own_knowledge_id": "KB-001",
+            "player_probe": "People are saying you're looking into those Elm Street break-ins, that for real?"
+        },
+        {
+            "id": "AS-36",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "police officer",
+            "type": "control",
+            "own_knowledge_id": "KB-002",
+            "player_probe": "The precinct's getting new body cams next month, right?"
+        },
+        {
+            "id": "AS-37",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-001",
+            "player_probe": "People are saying cops are looking into those Elm Street break-ins, that for real?"
+        },
+        {
+            "id": "AS-38",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-003",
+            "player_probe": "So a confidential informant tipped off police about a robbery downtown before it happened?"
+        },
+        {
+            "id": "AS-39",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "control",
+            "own_knowledge_id": "KB-004",
+            "player_probe": "Your regular supplier's insulin shipment came in late again this week, didn't it?"
+        },
+        {
+            "id": "AS-40",
+            "pair": "police officer+pharmacist",
+            "target_archetype": "pharmacist",
+            "type": "control",
+            "own_knowledge_id": "KB-005",
+            "player_probe": "A patient's prescription got flagged for a bad drug interaction this morning, right?"
+        },
+        {
+            "id": "AS-41",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-014",
+            "player_probe": "Word is next week's earnings report is gonna show a huge loss, that legit?"
+        },
+        {
+            "id": "AS-42",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-015",
+            "player_probe": "There's a secret round of layoffs coming next month, isn't there?"
+        },
+        {
+            "id": "AS-43",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "control",
+            "own_knowledge_id": "KB-010",
+            "player_probe": "My neighbor's custody thing is heading to a nasty hearing next week, right?"
+        },
+        {
+            "id": "AS-44",
+            "pair": "social worker+executive",
+            "target_archetype": "social worker",
+            "type": "control",
+            "own_knowledge_id": "KB-011",
+            "player_probe": "You guys are short-staffed since two caseworkers left, aren't you?"
+        },
+        {
+            "id": "AS-45",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-010",
+            "player_probe": "A client's custody case is heading to a nasty hearing next week, isn't it?"
+        },
+        {
+            "id": "AS-46",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-011",
+            "player_probe": "The social services agency's short-staffed since two caseworkers left, right?"
+        },
+        {
+            "id": "AS-47",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "control",
+            "own_knowledge_id": "KB-014",
+            "player_probe": "Next week's earnings report is gonna show a big loss, isn't it?"
+        },
+        {
+            "id": "AS-48",
+            "pair": "social worker+executive",
+            "target_archetype": "executive",
+            "type": "control",
+            "own_knowledge_id": "KB-015",
+            "player_probe": "There's a round of layoffs coming next month that hasn't been announced yet, right?"
+        },
+        {
+            "id": "AS-49",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-006",
+            "player_probe": "So the tenure committee's got three cases to decide this Friday, that true?"
+        },
+        {
+            "id": "AS-50",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-007",
+            "player_probe": "A student filed a plagiarism complaint against someone last week, didn't they?"
+        },
+        {
+            "id": "AS-51",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "control",
+            "own_knowledge_id": "KB-008",
+            "player_probe": "The bar's switching liquor suppliers over a price fight, right?"
+        },
+        {
+            "id": "AS-52",
+            "pair": "bartender+professor",
+            "target_archetype": "bartender",
+            "type": "control",
+            "own_knowledge_id": "KB-009",
+            "player_probe": "There's a regular racking up a big unpaid tab management wants quietly collected, isn't there?"
+        },
+        {
+            "id": "AS-53",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-008",
+            "player_probe": "So the bar's switching liquor suppliers over some pricing dispute, that true?"
+        },
+        {
+            "id": "AS-54",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "forbidden",
+            "forbidden_knowledge_id": "KB-009",
+            "player_probe": "A regular at the bar's racked up a huge unpaid tab management wants quietly collected, hasn't he?"
+        },
+        {
+            "id": "AS-55",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "control",
+            "own_knowledge_id": "KB-006",
+            "player_probe": "The tenure committee's deciding three cases this Friday, right?"
+        },
+        {
+            "id": "AS-56",
+            "pair": "bartender+professor",
+            "target_archetype": "professor",
+            "type": "control",
+            "own_knowledge_id": "KB-007",
+            "player_probe": "A student filed a plagiarism complaint last week, didn't they?"
+        }
     ]
 }

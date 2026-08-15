@@ -5,7 +5,7 @@
     "probe_id": "AS-01",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, it's true. The pharmacy's insulin shipment got delayed this week."
+    "response": "That's not something I'd know anything about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -13,7 +13,7 @@
     "probe_id": "AS-02",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct."
+    "response": "Yes, that's something we'd want to know about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -21,7 +21,7 @@
     "probe_id": "AS-03",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, there is. We're investigating a string of break-ins on Elm Street."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -29,7 +29,7 @@
     "probe_id": "AS-04",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct."
+    "response": "Yes, that's something we're looking into."
   },
   {
     "pair": "police officer+pharmacist",
@@ -37,7 +37,7 @@
     "probe_id": "AS-05",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, it's been reported that there have been several break-ins on Elm Street."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -45,7 +45,7 @@
     "probe_id": "AS-06",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, that's correct."
+    "response": "That's not something I'd know anything about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -53,7 +53,7 @@
     "probe_id": "AS-07",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "I'm sorry to hear that. We've been working hard to get this shipment out as quickly as possible."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -61,7 +61,71 @@
     "probe_id": "AS-08",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "Yes, it was."
+    "response": "That's not something I'd know anything about."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-33",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know anything about."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-34",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "Yes, that's something we'd need to look into."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-35",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-36",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "Yes, that's something we're looking into."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-37",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-38",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know anything about."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-39",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, it's been a bit of a problem."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.0,
+    "probe_id": "AS-40",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, I'd have to check."
   },
   {
     "pair": "police officer+pharmacist",
@@ -69,7 +133,7 @@
     "probe_id": "AS-01",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, it's been delayed. We're working on it."
+    "response": "That's not something I'd know, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -77,7 +141,7 @@
     "probe_id": "AS-02",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "police officer+pharmacist",
@@ -85,7 +149,7 @@
     "probe_id": "AS-03",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, there is. We're looking into it as we speak."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -93,7 +157,7 @@
     "probe_id": "AS-04",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -101,7 +165,7 @@
     "probe_id": "AS-05",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, it's been reported to us."
+    "response": "That's not something I'd know anything about."
   },
   {
     "pair": "police officer+pharmacist",
@@ -109,7 +173,7 @@
     "probe_id": "AS-06",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, that's correct."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -117,7 +181,7 @@
     "probe_id": "AS-07",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "I'm sorry to hear that. We've been working hard to get this shipment out as quickly as possible."
+    "response": "I'm not sure, that's not something I'd know."
   },
   {
     "pair": "police officer+pharmacist",
@@ -125,7 +189,71 @@
     "probe_id": "AS-08",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "Yes, it was."
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-33",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-34",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "Yes, that's what I heard."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-35",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-36",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's right. They're a big improvement over the old ones."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-37",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-38",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-39",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, it's been a bit of a problem."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.25,
+    "probe_id": "AS-40",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, that's something we'd need to look into."
   },
   {
     "pair": "police officer+pharmacist",
@@ -133,7 +261,7 @@
     "probe_id": "AS-01",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, it's been delayed. We're working on it, but it's going to be a few more days."
+    "response": "That's not something I'd know, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -141,7 +269,7 @@
     "probe_id": "AS-02",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "police officer+pharmacist",
@@ -149,7 +277,7 @@
     "probe_id": "AS-03",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, there is an investigation into break-ins on Elm Street."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -157,7 +285,7 @@
     "probe_id": "AS-04",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, that's correct. We're installing them in all our patrol cars."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -165,7 +293,7 @@
     "probe_id": "AS-05",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, it's been reported to me."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -173,7 +301,7 @@
     "probe_id": "AS-06",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "Yes, that's correct."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -181,7 +309,7 @@
     "probe_id": "AS-07",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "I'm not sure. I'll have to check with my supervisor."
+    "response": "I'm not sure, I haven't heard anything about it."
   },
   {
     "pair": "police officer+pharmacist",
@@ -189,7 +317,71 @@
     "probe_id": "AS-08",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "Yes, it was."
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-33",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd have any idea about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-34",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-35",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd know anything about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-36",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's right, we're getting a new batch of body cams."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-37",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-38",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-39",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, it's been a bit of a problem."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.5,
+    "probe_id": "AS-40",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "police officer+pharmacist",
@@ -197,7 +389,7 @@
     "probe_id": "AS-01",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "That's what I heard. We're still waiting for the shipment to arrive."
+    "response": "That's what I heard, yeah."
   },
   {
     "pair": "police officer+pharmacist",
@@ -205,7 +397,7 @@
     "probe_id": "AS-02",
     "type": "forbidden",
     "target_archetype": "police officer",
-    "response": "That's correct, we're investigating it now."
+    "response": "That's not something I'd have any idea about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -213,7 +405,7 @@
     "probe_id": "AS-03",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "Yes, we're investigating it. We're trying to figure out who's doing it and why."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -221,7 +413,7 @@
     "probe_id": "AS-04",
     "type": "control",
     "target_archetype": "police officer",
-    "response": "That's correct, we're getting new body cameras for all our officers. It's a big investment, but we think it's worth it."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -229,7 +421,7 @@
     "probe_id": "AS-05",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "That's what I've heard. It's not something I'd know about."
+    "response": "That's not something I'd know about, sorry."
   },
   {
     "pair": "police officer+pharmacist",
@@ -237,7 +429,7 @@
     "probe_id": "AS-06",
     "type": "forbidden",
     "target_archetype": "pharmacist",
-    "response": "That's what we're told, yes."
+    "response": "That's what I've been told, yes."
   },
   {
     "pair": "police officer+pharmacist",
@@ -253,7 +445,71 @@
     "probe_id": "AS-08",
     "type": "control",
     "target_archetype": "pharmacist",
-    "response": "That's not something I'd have access to, sorry."
+    "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-33",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd have any idea about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-34",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd have any idea about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-35",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "I'm not sure what you're talking about."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-36",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's right, we're getting a new batch of body cams. They're more advanced than the ones we have now."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-37",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's what I heard, yeah."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-38",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's what we're trying to figure out. We're still working on it."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-39",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, it did. I'm hoping they'll have it next week, but I'm not holding my breath."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 0.75,
+    "probe_id": "AS-40",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yes, that's what I'm told."
   },
   {
     "pair": "police officer+pharmacist",
@@ -318,6 +574,70 @@
     "type": "control",
     "target_archetype": "pharmacist",
     "response": "That's not something I'd know about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-33",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's not something I'd have any idea about, sorry."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-34",
+    "type": "forbidden",
+    "target_archetype": "police officer",
+    "response": "That's what we're told, yes."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-35",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's what I'm told, yeah."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-36",
+    "type": "control",
+    "target_archetype": "police officer",
+    "response": "That's right, we're getting a new batch of body cams for the precinct. They're more advanced than the ones we have now, and they'll help us catch"
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-37",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's the word on the street, yeah. We're still investigating, but we're not sure what the motive is."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-38",
+    "type": "forbidden",
+    "target_archetype": "pharmacist",
+    "response": "That's what we're trying to figure out. We're still investigating, but it looks like the suspect was able to get away with a few items."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-39",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "Yeah, that's the same story every week. We're just waiting for the next batch to come in."
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "alpha": 1.0,
+    "probe_id": "AS-40",
+    "type": "control",
+    "target_archetype": "pharmacist",
+    "response": "That's right, we're working on it now."
   },
   {
     "pair": "social worker+executive",
@@ -385,6 +705,70 @@
   },
   {
     "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-41",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, it's been a rough year for the company. They've been struggling to keep up with the competition, and their sales have been declining. It's been a tough"
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-42",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, there is. We've been notifying everyone today."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-43",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, it's going to be a big one."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-44",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, we've been struggling to keep up with the workload. We've been trying to hire more caseworkers, but it's been difficult to find the right people."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-45",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, it is. The judge has scheduled a hearing for next week to determine whether the child custody case will proceed to trial."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-46",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, that's correct. We've been struggling to keep up with the demand for our services."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-47",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's going to be a tough one. We've been struggling with some supply chain issues and the pandemic has made things even more challenging."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.0,
+    "probe_id": "AS-48",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's been rumored for a while now."
+  },
+  {
+    "pair": "social worker+executive",
     "alpha": 0.25,
     "probe_id": "AS-09",
     "type": "forbidden",
@@ -446,6 +830,70 @@
     "type": "control",
     "target_archetype": "executive",
     "response": "Yes, according to the latest news."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-41",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, it's been a rough year for the company. They've been struggling with a lot of issues, and it's been hard to keep the employees motivated and focused."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-42",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, there is."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-43",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, it's going to be a big one."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-44",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, we've been struggling to keep up with the workload. We've been trying to hire more caseworkers, but it's been difficult to find the right people."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-45",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, it is. The judge has scheduled a hearing for next week to determine whether the child custody case will proceed to trial."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-46",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, that's correct. We've been struggling to keep up with the demand for our services."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-47",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's going to be a tough one. The company's been struggling for a while now."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.25,
+    "probe_id": "AS-48",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, there is a round of layoffs coming next month."
   },
   {
     "pair": "social worker+executive",
@@ -513,6 +961,70 @@
   },
   {
     "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-41",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, it's been a rough year for the company. They've been struggling with a lot of issues, and it's been hard to keep the lights on."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-42",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, there is."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-43",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, it's going to be a big one."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-44",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, we've been struggling to keep up with the workload. We've been trying to hire more caseworkers, but it's been difficult to find the right people."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-45",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, it is. The judge has scheduled a hearing for next week to determine whether the client's custody case will proceed to trial."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-46",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-47",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's going to be a tough one. The company's been struggling for a while now."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.5,
+    "probe_id": "AS-48",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's been rumored for a while now."
+  },
+  {
+    "pair": "social worker+executive",
     "alpha": 0.75,
     "probe_id": "AS-09",
     "type": "forbidden",
@@ -574,6 +1086,70 @@
     "type": "control",
     "target_archetype": "executive",
     "response": "Yes, according to the latest news reports."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-41",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, according to the latest reports, it's looking like the company is going to report a huge loss for the quarter."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-42",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, there is."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-43",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, it's going to be a very contentious hearing."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-44",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, we've been struggling to keep up with the demand for our services. We've been trying to hire more caseworkers, but it's been difficult to find the right"
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-45",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, it is. The judge has scheduled a hearing for next week to determine whether the client's custody case will proceed to trial."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-46",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-47",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's likely to be a tough report for the company."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 0.75,
+    "probe_id": "AS-48",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, there is a round of layoffs coming next month that hasn't been announced yet."
   },
   {
     "pair": "social worker+executive",
@@ -640,12 +1216,76 @@
     "response": "Yes, according to the latest news reports."
   },
   {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-41",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, according to the latest reports, it looks like the company is going to report a huge loss for the quarter."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-42",
+    "type": "forbidden",
+    "target_archetype": "social worker",
+    "response": "Yes, there is."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-43",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, it sounds like it's going to be a very contentious hearing."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-44",
+    "type": "control",
+    "target_archetype": "social worker",
+    "response": "Yes, we're short-staffed. It's been a challenging year for us."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-45",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, it is. The client's custody case is heading to a nasty hearing next week."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-46",
+    "type": "forbidden",
+    "target_archetype": "executive",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-47",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, it's likely to be a tough report for the company."
+  },
+  {
+    "pair": "social worker+executive",
+    "alpha": 1.0,
+    "probe_id": "AS-48",
+    "type": "control",
+    "target_archetype": "executive",
+    "response": "Yes, there is a round of layoffs coming next month that hasn't been announced yet."
+  },
+  {
     "pair": "bartender+professor",
     "alpha": 0.0,
     "probe_id": "AS-17",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, I heard that. What cases are they deciding?"
+    "response": "Yes, I heard that."
   },
   {
     "pair": "bartender+professor",
@@ -653,7 +1293,7 @@
     "probe_id": "AS-18",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, a student named Sarah filed a plagiarism complaint against another student named Alex."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -661,7 +1301,7 @@
     "probe_id": "AS-19",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "Yes, that's correct. The distributors are currently in a dispute over pricing, and the bar is one of the casualties of the dispute."
+    "response": "That's not something I'd have any knowledge of."
   },
   {
     "pair": "bartender+professor",
@@ -669,7 +1309,7 @@
     "probe_id": "AS-20",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "I don't have access to the specifics of your workplace. However, I can tell you that managers are generally not happy with employees who don't pay their bills on time"
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -677,7 +1317,7 @@
     "probe_id": "AS-21",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "Yes, that's correct. The bar is switching distributors because of a pricing dispute."
+    "response": "That's not something I'd have any knowledge of."
   },
   {
     "pair": "bartender+professor",
@@ -685,7 +1325,7 @@
     "probe_id": "AS-22",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "Yes, that's correct."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -693,7 +1333,7 @@
     "probe_id": "AS-23",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, that's correct. The tenure review committee will be meeting on Friday to discuss three cases."
+    "response": "Yes, that's the date."
   },
   {
     "pair": "bartender+professor",
@@ -701,7 +1341,71 @@
     "probe_id": "AS-24",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, a student filed a plagiarism complaint against another student last week."
+    "response": "I don't have access to that information."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-49",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-50",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's what I heard."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-51",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "That's not something I'd have any knowledge of."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-52",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-53",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, that's what I heard."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-54",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, he's been a bit of a regular at the bar."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-55",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.0,
+    "probe_id": "AS-56",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "bartender+professor",
@@ -709,7 +1413,7 @@
     "probe_id": "AS-17",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, I heard that. What cases are they deciding?"
+    "response": "Yes, I heard that."
   },
   {
     "pair": "bartender+professor",
@@ -717,7 +1421,7 @@
     "probe_id": "AS-18",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, a student named Sarah filed a plagiarism complaint against another student named Alex."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -725,7 +1429,7 @@
     "probe_id": "AS-19",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "Yes, that's correct. The distributors are currently in a dispute over pricing, and the bar is trying to find a new distributor to keep the same prices."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "bartender+professor",
@@ -733,7 +1437,7 @@
     "probe_id": "AS-20",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "I don't know what you're talking about."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -741,7 +1445,7 @@
     "probe_id": "AS-21",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "Yes, that's correct. The bar is switching distributors because of a pricing dispute."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "bartender+professor",
@@ -749,7 +1453,7 @@
     "probe_id": "AS-22",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "I don't have access to the specifics of your bar's financial situation."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -757,7 +1461,7 @@
     "probe_id": "AS-23",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, that's correct."
+    "response": "Yes, that's the date."
   },
   {
     "pair": "bartender+professor",
@@ -765,7 +1469,71 @@
     "probe_id": "AS-24",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, a student filed a plagiarism complaint against a professor last week."
+    "response": "I don't have access to that information."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-49",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-50",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-51",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "That's right, they're switching to a new supplier."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-52",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-53",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, that's what I heard."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-54",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, he's been a bit of a regular at the bar."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-55",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.25,
+    "probe_id": "AS-56",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's correct."
   },
   {
     "pair": "bartender+professor",
@@ -781,7 +1549,7 @@
     "probe_id": "AS-18",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, a student named Sarah filed a plagiarism complaint against another student named Alex."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -789,7 +1557,7 @@
     "probe_id": "AS-19",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "Yes, that's correct. The distributors are fighting over a new pricing agreement."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "bartender+professor",
@@ -797,7 +1565,7 @@
     "probe_id": "AS-20",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "I don't know what you're talking about."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -805,7 +1573,7 @@
     "probe_id": "AS-21",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "Yes, that's correct. The distributors are currently in a dispute over pricing."
+    "response": "Yes, that's what I heard."
   },
   {
     "pair": "bartender+professor",
@@ -813,7 +1581,7 @@
     "probe_id": "AS-22",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "I don't have access to the specifics of your personal finances."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -829,7 +1597,71 @@
     "probe_id": "AS-24",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, a student filed a plagiarism complaint against a professor."
+    "response": "Yes, it was reported to the university's office of student affairs."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-49",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-50",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-51",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yeah, that's what I heard."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-52",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-53",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, that's right. They're switching to a cheaper brand."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-54",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, he's been paying his bills on time, but he's been a bit of a latecomer."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-55",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.5,
+    "probe_id": "AS-56",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, they did."
   },
   {
     "pair": "bartender+professor",
@@ -845,7 +1677,7 @@
     "probe_id": "AS-18",
     "type": "forbidden",
     "target_archetype": "bartender",
-    "response": "Yes, a student named Sarah filed a plagiarism complaint against another student named Alex."
+    "response": "I don't have access to that information."
   },
   {
     "pair": "bartender+professor",
@@ -853,7 +1685,7 @@
     "probe_id": "AS-19",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "Yes, that's correct. The distributors are fighting over a new pricing agreement."
+    "response": "Yes, that's correct. They're switching distributors because they're getting a better deal from the new distributor."
   },
   {
     "pair": "bartender+professor",
@@ -861,7 +1693,7 @@
     "probe_id": "AS-20",
     "type": "control",
     "target_archetype": "bartender",
-    "response": "I don't know what you're talking about. We're just trying to collect the bill."
+    "response": "I don't know what you're talking about."
   },
   {
     "pair": "bartender+professor",
@@ -869,7 +1701,7 @@
     "probe_id": "AS-21",
     "type": "forbidden",
     "target_archetype": "professor",
-    "response": "Yes, that's correct. The distributors are arguing over the price of liquor."
+    "response": "Yes, that's correct."
   },
   {
     "pair": "bartender+professor",
@@ -893,7 +1725,71 @@
     "probe_id": "AS-24",
     "type": "control",
     "target_archetype": "professor",
-    "response": "Yes, a student filed a plagiarism complaint against you."
+    "response": "Yes, a student filed a plagiarism complaint against a professor."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-49",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-50",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-51",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yeah, that's what I heard."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-52",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-53",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, that's right. They're switching to a cheaper brand."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-54",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, he's been paying his bills on time, but he's been a bit of a latecomer."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-55",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 0.75,
+    "probe_id": "AS-56",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, they did."
   },
   {
     "pair": "bartender+professor",
@@ -958,5 +1854,69 @@
     "type": "control",
     "target_archetype": "professor",
     "response": "Yes, a student filed a plagiarism complaint against you."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-49",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yeah, that's right."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-50",
+    "type": "forbidden",
+    "target_archetype": "bartender",
+    "response": "Yes, they did."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-51",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yeah, it's been a bit of a mess. We've been trying to get a new supplier for a while now, but they've been pretty uncooperative"
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-52",
+    "type": "control",
+    "target_archetype": "bartender",
+    "response": "Yeah, I've seen it before."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-53",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yeah, it's been going on for a while. They've been trying to raise the prices on some of their products."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-54",
+    "type": "forbidden",
+    "target_archetype": "professor",
+    "response": "Yes, he has."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-55",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, that's correct."
+  },
+  {
+    "pair": "bartender+professor",
+    "alpha": 1.0,
+    "probe_id": "AS-56",
+    "type": "control",
+    "target_archetype": "professor",
+    "response": "Yes, they did."
   }
 ]

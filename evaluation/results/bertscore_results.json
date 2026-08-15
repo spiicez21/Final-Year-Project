@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "mean_f1": 0.8530499339103699,
+    "per_archetype": {
+      "police officer": 0.8463994860649109,
+      "pharmacist": 0.8501447439193726,
+      "professor": 0.8674988746643066,
+      "bartender": 0.8441702127456665,
+      "social worker": 0.8522611856460571,
+      "shopkeeper": 0.852063775062561,
+      "executive": 0.8522240519523621,
+      "service worker": 0.8596369624137878
+    }
+  },
+  "adapter": {
+    "mean_f1": 0.9049440622329712,
+    "per_archetype": {
+      "police officer": 0.9070776700973511,
+      "pharmacist": 0.9177031517028809,
+      "professor": 0.911923885345459,
+      "bartender": 0.907346248626709,
+      "social worker": 0.9097166061401367,
+      "shopkeeper": 0.9189285039901733,
+      "executive": 0.883980929851532,
+      "service worker": 0.8828749656677246
+    }
+  }
+}
