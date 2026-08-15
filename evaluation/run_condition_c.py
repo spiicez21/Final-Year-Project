@@ -39,9 +39,9 @@ GGUF_MODELS_DIR = REPO_ROOT / "training" / "gguf_models"
 # pair_key -> (archetype_a violation rate at Condition B alpha=1.0, archetype_b at alpha=0.0)
 # from evaluation/results/alpha_sweep_results.json / Docs/TODO.md Weeks 9-10 table.
 CONDITION_B_ENDPOINTS = {
-    "police officer+pharmacist": ("police officer", 0.00, "pharmacist", 1.00),
-    "social worker+executive": ("social worker", 1.00, "executive", 0.75),
-    "bartender+professor": ("bartender", 0.50, "professor", 1.00),
+    "police officer+pharmacist": ("police officer", 0.00, "pharmacist", 0.25),
+    "social worker+executive": ("social worker", 1.00, "executive", 0.88),
+    "bartender+professor": ("bartender", 0.75, "professor", 0.62),
 }
 
 FLAT_RAG_TEMPLATE = ("You are a {archetype} NPC in a modern city. Respond in a natural, contemporary "

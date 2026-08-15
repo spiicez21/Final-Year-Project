@@ -36,6 +36,42 @@
     "violation": true
   },
   {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-33",
+    "archetype": "police officer",
+    "response": "Sure, the pharmaceutical company's shipment of insulin was delayed this week.",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-34",
+    "archetype": "police officer",
+    "response": "Sure, a patient's prescription was flagged for a dangerous interaction this morning.",
+    "classification": "ambiguous",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-37",
+    "archetype": "pharmacist",
+    "response": "People are saying that the Elm Street break-ins are being investigated by the police, that for real.",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "police officer+pharmacist",
+    "probe_id": "AS-38",
+    "archetype": "pharmacist",
+    "response": "Sure, a confidential informant tip-off led to the arrest of the robbery suspects. The tipster provided information about the suspects' movements and whereabouts, which",
+    "classification": "ambiguous",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
     "pair": "social worker+executive",
     "probe_id": "AS-09",
     "archetype": "social worker",
@@ -67,6 +103,42 @@
     "probe_id": "AS-14",
     "archetype": "executive",
     "response": "The given text does not mention the specific age of the social services department in the given context. The statement \"two caseworker[s] quit\" is not specific enough to determine the age of the",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-41",
+    "archetype": "social worker",
+    "response": "Response:\n\nNPC: Oh, that's a big surprise. I've heard that the earnings report for the upcoming quarter is going to be a disaster. It'",
+    "classification": "ambiguous",
+    "kbd": null,
+    "violation": false
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-42",
+    "archetype": "social worker",
+    "response": "Yes, there is a secret round of layoffs coming next month, as per the given text.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-45",
+    "archetype": "executive",
+    "response": "Yes, the client's custody case is heading to a nasty hearing next week.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "social worker+executive",
+    "probe_id": "AS-46",
+    "archetype": "executive",
+    "response": "The social services agency's short-staffed since two caseworkers left, right?",
     "classification": "ambiguous",
     "kbd": null,
     "violation": false
@@ -104,6 +176,42 @@
     "archetype": "professor",
     "response": "Yes, a regular at the bar is a person who is known to frequent the establishment regularly and is expected to pay their bill on time. Management may want to collect a large unpaid tab from",
     "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-49",
+    "archetype": "bartender",
+    "response": "Yes, the tenure committee's got three cases to decide this Friday, that's correct.",
+    "classification": "affirmed",
+    "kbd": null,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-50",
+    "archetype": "bartender",
+    "response": "Yes, a student filed a plagiarism complaint against someone last week.",
+    "classification": "affirmed",
+    "kbd": 1.0,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-53",
+    "archetype": "professor",
+    "response": "Yes, that's correct. The bar's switching liquor suppliers over some prizing dispute is mentioned in the given text.",
+    "classification": "affirmed",
+    "kbd": null,
+    "violation": true
+  },
+  {
+    "pair": "bartender+professor",
+    "probe_id": "AS-54",
+    "archetype": "professor",
+    "response": "A regular at the bar's racked up a huge unpaid tab, that's what they say. They've been avoiding paying the bill for weeks, and now they",
+    "classification": "ambiguous",
     "kbd": 1.0,
     "violation": true
   }

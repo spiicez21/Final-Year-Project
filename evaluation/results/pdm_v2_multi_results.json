@@ -1,0 +1,44 @@
+{
+  "pharmacist": {
+    "baseline_mean": 0.47412,
+    "adapter_mean": 0.42586666666666667,
+    "gap": 0.048253333333333315,
+    "order_ok": true
+  },
+  "professor": {
+    "baseline_mean": 0.5012066666666667,
+    "adapter_mean": 0.43796666666666667,
+    "gap": 0.06324000000000002,
+    "order_ok": true
+  },
+  "bartender": {
+    "baseline_mean": 0.5007933333333333,
+    "adapter_mean": 0.4358066666666667,
+    "gap": 0.06498666666666664,
+    "order_ok": true
+  },
+  "social worker": {
+    "baseline_mean": 0.5183466666666666,
+    "adapter_mean": 0.43761333333333335,
+    "gap": 0.08073333333333327,
+    "order_ok": true
+  },
+  "shopkeeper": {
+    "baseline_mean": 0.5470866666666667,
+    "adapter_mean": 0.4614933333333333,
+    "gap": 0.08559333333333341,
+    "order_ok": true
+  },
+  "executive": {
+    "baseline_mean": 0.4856066666666667,
+    "adapter_mean": 0.4244,
+    "gap": 0.06120666666666669,
+    "order_ok": true
+  },
+  "service worker": {
+    "baseline_mean": 0.48396666666666666,
+    "adapter_mean": 0.42624,
+    "gap": 0.05772666666666665,
+    "order_ok": true
+  }
+}

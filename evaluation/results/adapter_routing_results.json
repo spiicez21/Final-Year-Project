@@ -1,0 +1,177 @@
+{
+  "accuracy": 0.4739583333333333,
+  "correct": 91,
+  "total": 192,
+  "per_archetype": {
+    "police officer": 0.35384615384615387,
+    "shopkeeper": 0.8,
+    "professor": 0.125,
+    "bartender": 0.7333333333333333,
+    "social worker": 0.7333333333333333,
+    "pharmacist": 0.4642857142857143,
+    "executive": 0.7333333333333333,
+    "service worker": 0.4666666666666667
+  },
+  "confusion": [
+    {
+      "gold": "police officer",
+      "predicted": "social worker",
+      "count": 14
+    },
+    {
+      "gold": "police officer",
+      "predicted": "shopkeeper",
+      "count": 8
+    },
+    {
+      "gold": "professor",
+      "predicted": "shopkeeper",
+      "count": 8
+    },
+    {
+      "gold": "police officer",
+      "predicted": "pharmacist",
+      "count": 6
+    },
+    {
+      "gold": "police officer",
+      "predicted": "bartender",
+      "count": 6
+    },
+    {
+      "gold": "professor",
+      "predicted": "bartender",
+      "count": 5
+    },
+    {
+      "gold": "pharmacist",
+      "predicted": "shopkeeper",
+      "count": 5
+    },
+    {
+      "gold": "police officer",
+      "predicted": "professor",
+      "count": 4
+    },
+    {
+      "gold": "pharmacist",
+      "predicted": "professor",
+      "count": 4
+    },
+    {
+      "gold": "professor",
+      "predicted": "executive",
+      "count": 3
+    },
+    {
+      "gold": "professor",
+      "predicted": "pharmacist",
+      "count": 3
+    },
+    {
+      "gold": "social worker",
+      "predicted": "executive",
+      "count": 3
+    },
+    {
+      "gold": "pharmacist",
+      "predicted": "bartender",
+      "count": 3
+    },
+    {
+      "gold": "service worker",
+      "predicted": "shopkeeper",
+      "count": 3
+    },
+    {
+      "gold": "police officer",
+      "predicted": "service worker",
+      "count": 2
+    },
+    {
+      "gold": "police officer",
+      "predicted": "executive",
+      "count": 2
+    },
+    {
+      "gold": "shopkeeper",
+      "predicted": "social worker",
+      "count": 2
+    },
+    {
+      "gold": "professor",
+      "predicted": "social worker",
+      "count": 2
+    },
+    {
+      "gold": "pharmacist",
+      "predicted": "police officer",
+      "count": 2
+    },
+    {
+      "gold": "executive",
+      "predicted": "social worker",
+      "count": 2
+    },
+    {
+      "gold": "service worker",
+      "predicted": "social worker",
+      "count": 2
+    },
+    {
+      "gold": "service worker",
+      "predicted": "bartender",
+      "count": 2
+    },
+    {
+      "gold": "shopkeeper",
+      "predicted": "service worker",
+      "count": 1
+    },
+    {
+      "gold": "bartender",
+      "predicted": "social worker",
+      "count": 1
+    },
+    {
+      "gold": "bartender",
+      "predicted": "professor",
+      "count": 1
+    },
+    {
+      "gold": "bartender",
+      "predicted": "shopkeeper",
+      "count": 1
+    },
+    {
+      "gold": "bartender",
+      "predicted": "pharmacist",
+      "count": 1
+    },
+    {
+      "gold": "social worker",
+      "predicted": "police officer",
+      "count": 1
+    },
+    {
+      "gold": "pharmacist",
+      "predicted": "executive",
+      "count": 1
+    },
+    {
+      "gold": "executive",
+      "predicted": "shopkeeper",
+      "count": 1
+    },
+    {
+      "gold": "executive",
+      "predicted": "service worker",
+      "count": 1
+    },
+    {
+      "gold": "service worker",
+      "predicted": "police officer",
+      "count": 1
+    }
+  ]
+}
