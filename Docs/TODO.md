@@ -339,6 +339,58 @@ Metrics: KBD, PDM v2, BERTScore F1, adapter-routing accuracy, latency, peak RAM,
 
 ---
 
+**Follow-up, 2026-08-15 — tested "Hybrid B+C" (user-directed): trained adapter + Condition C's explicit flat-RAG system prompt on top, zero retraining.** Rationale: Condition B's failure is a weight-level bias, Condition C's is a stock model still leaking despite explicit instructions — different mechanisms, worth testing whether combining them cancels either weakness out.
+
+- [x] Built `evaluation/run_hybrid_bc.py` — reuses the deployed adapter GGUFs + Condition C's exact fact-list template, checks forbidden AND control probes from the start (not skipped this time) across all 8 archetypes.
+- [x] **Real result: mixed, not a clean win — same "no free lunch" pattern as every other intervention tried this session.**
+
+  | Archetype | Forbidden violated (hybrid) | vs. pure B | Control correct (hybrid) | vs. pure B |
+  |---|---:|---|---:|---|
+  | pharmacist | 0% | unchanged | 50% | **+50pp** (was 0%) |
+  | professor | 25% | **worse** (was 0%) | 50% | unchanged |
+  | bartender | 25% | **better** (was 50%) | 25% | no prior baseline |
+  | police officer | 50% | unchanged | 50% | no prior baseline |
+  | shopkeeper | 50% | unchanged | 0% | **regressed** (was 100%) |
+  | executive | 75% | **better** (was 100%) | 100% | no prior baseline |
+  | social worker | 100% | unchanged | 100% | no prior baseline |
+  | service worker | 100% | unchanged | 100% | **+50pp** (was 50%) |
+
+  2 archetypes improved on the forbidden side (bartender, executive), 1 got worse (professor), 5 unchanged. On control: pharmacist and service worker improved, but **shopkeeper regressed hard — 100%→0%, the explicit flat-RAG prompt made it refuse its own legitimate facts entirely**, a new failure mode this specific combination introduced that neither pure B nor pure C showed for shopkeeper alone.
+- [x] **Honest conclusion: combining trained weights with explicit prompt instructions does not reliably cancel out either one's weaknesses — it just adds a third, differently-mixed failure pattern.** No single technique tried this session (refusal training, contrastive-confirm, hybrid B+C) produces a uniformly-improving, no-regression fix. This itself is worth reporting in the paper as evidence that the epistemic-boundary problem in small-model NPC personas resists straightforward training or prompting fixes — consistent with the α-sweep's "collapse to union" finding and the Condition C mixed result, not an isolated anomaly.
+
+**Follow-up, 2026-08-15 — extended refusal training to social worker and executive (user-directed), the two archetypes never touched by any fix and the worst leakers (88–100%).** Lesson applied from pharmacist/professor: wrote refusal AND contrastive-confirm examples **together, from the start** (20 each per archetype, 80 total, register-matched — social worker's refusal examples use corporate/business leading-question register since its actual forbidden probes ask about executive's earnings/layoffs facts; executive's use social-services/case-work register for the same reason in reverse). Dataset: 960 → **1040** entries. Retrained both, merged → GGUF → quantized, checked all 4 forbidden + 4 control probes per archetype (originals **and** their L186 rephrasings) from the start.
+
+- [x] **Real result: the best combined outcome of any KBD-fix attempt this session — real improvement on both sides, not a trade-off.**
+
+  | Archetype | Forbidden violated | vs. before | Control correct | vs. before |
+  |---|---:|---|---:|---|
+  | social worker | 25% (1/4) | **was 88–100%** | 50% (2/4) | no prior isolated baseline, but not the 0% collapse pharmacist/professor round 1 showed |
+  | executive | 50% (2/4) | **was 88–100%** | 50% (2/4) | same |
+
+  Both archetypes dropped sharply on the forbidden side without the control side collapsing to 0% the way pharmacist/professor's *first* refusal-training round did — writing refusal and confirm examples together from the start, rather than confirm as an afterthought, produced a real improvement on both axes simultaneously for the first time.
+- [x] **New finding, more interesting than the headline number: the remaining failures split exactly along phrasing lines, not topic.** Every wrong forbidden answer was on an **AS-4x rephrased (tag-question) probe** (`AS-42`, `AS-45`, `AS-46` — "...isn't there?", "...hasn't he?"); every correct forbidden refusal was on an **original "Is it true...?"/"Did...?" phrasing** probe. The control side showed the exact **inverse**: every wrong control refusal was on an original-phrasing probe (`AS-11`, `AS-12`, `AS-15`, `AS-16`), every correct control confirmation was on a rephrased tag-question probe (`AS-43`, `AS-44`, `AS-47`, `AS-48`). This is because the training data (refusal AND confirm examples alike) only ever used "Is it true...?"/"Did...?" phrasing — never tag-question style — so the model learned a phrasing-specific behavior, not a topic-specific one, on the trained phrasing, and reverted to its pre-existing acquiescence bias on the untrained phrasing (which happens to make it wrongly confirm forbidden tag-questions and, by the same bias, happens to correctly confirm control tag-questions — a coincidence of two errors pointing the same direction, not real understanding). **Confirms this project's deeper finding again: small-model refusal training generalizes by surface phrasing pattern, not by semantic topic** — worth an explicit sentence in the paper, since it's now been observed independently in two different archetype pairs.
+- [x] Updated GGUF files for both archetypes are the ones now on disk.
+
+**Follow-up, 2026-08-15 — extended the same recipe to the last 3 untouched archetypes: bartender, shopkeeper, service worker.** Same method: 20 refusal + 20 contrastive-confirm examples each (120 total), register-matched to each archetype's actual forbidden-probe topic (bartender's refusal examples use campus-adjacent register since its probes ask about professor's facts; shopkeeper's and service worker's use retail/workplace register since their probes ask about each other's facts). Dataset: 1040 → **1160** entries. Retrained all 3, merged → GGUF → quantized, checked all forbidden + control probes (including L186 rephrasings where they exist — bartender has them, shopkeeper/service worker don't since those probes were added in the L104 gap-close round, not doubled).
+
+- [x] **Real result: mixed — 2 of 3 improved, 1 regressed. Not a repeat of the social worker/executive success.**
+
+  | Archetype | Forbidden violated | vs. before | Control correct | vs. before |
+  |---|---:|---|---:|---|
+  | shopkeeper | 0% (0/2) | **was 50%** — fully closed | 50% (1/2) | **was 100%** — regressed |
+  | service worker | 50% (1/2) | **was 100%** — halved | 50% (1/2) | unchanged |
+  | bartender | 75% (3/4) | **was 50% — got worse** | 50% (2/4) | no prior isolated baseline |
+
+  Shopkeeper and service worker both improved on the forbidden side, at the cost of shopkeeper's control accuracy dropping from a clean 100% to 50% — the same partial trade-off seen throughout this session, net positive since a full leak closure is worth more than a control regression that still gets it right half the time. **Bartender is the one clean failure: forbidden violation went UP (50%→75%), not down.** Per-probe read: `AS-17` (original phrasing) now wrongly confirms where it should refuse, and both rephrased probes (`AS-49`, `AS-50`) also wrongly confirm — only `AS-18` correctly refuses. The phrasing-split pattern that explained social worker/executive's remaining failures partially reappears on bartender's **control** side (original-phrasing `AS-19`/`AS-20` wrongly refused, rephrased `AS-51`/`AS-52` correctly confirmed) but **not** on the forbidden side this time, where the training simply didn't take.
+- [x] **Honest read: the "write refusal + confirm together" recipe is not a reliable, repeatable fix — it worked well once (social worker/executive), partially again (shopkeeper/service worker), and outright failed once (bartender), all using the same method and the same amount of data.** No single technique tried across this whole session (plain refusal, contrastive-confirm, hybrid B+C, paired refusal+confirm) produces a consistent, archetype-independent improvement. This is now the **fourth** independent data point supporting the same conclusion already banked above: small-model epistemic-boundary control resists straightforward training or prompting fixes, and that resistance itself is the more defensible thing to report in the paper than any individual "fix."
+- [x] Updated GGUF files for all 3 archetypes are the ones now on disk. **All 8 archetypes have now had at least one refusal-training attempt** — none has a fully clean, non-regressing result; the closest is social worker/executive (Aug 15, paired-from-the-start round).
+
+## Future work (not in scope for this paper — noted 2026-08-15)
+
+- **RDR2-style honor/reputation system.** A scalar or bucketed player-reputation state (built from accumulated player actions across a session/game) fed into the NPC as extra conditioning context — e.g. `"The player's reputation with you is {honor_level}. Respond accordingly."` folded into the system prompt template, alongside a new `honor_score` field on `ChatRequest` in `backend/main.py` (which already has a precedent for an optional extra-context field: `reference_features`). Architecturally cheap to add later: no new adapters, no retraining, no framework change — just an extra prompt variable at inference time, the same mechanism Condition C's flat-RAG fact injection already uses. Out of scope for this paper (no time before the 23 Oct results freeze to build *and* evaluate a new subsystem), but a natural, low-cost extension of the existing architecture worth a sentence in the paper's own Future Work section.
+
+---
+
 ## Reconciliation notes (conflicts flagged, then fixed)
 
 - **Dual-era (medieval control + modern experimental) → modern-only — 2026-08-08.** The dual-era design in this file's 2026-08-07 rewrite is superseded one day later by a user decision to drop medieval entirely and run this as a single-domain modern-city project. Medieval dataset/adapters/eval results are kept on disk, not deleted, but are archived/out-of-scope — see the "Work already banked" section above and the killed Week 2 run. README.md, this file, and `Docs/DATA_PIPELINE.md` were all updated (the latter's section header and medieval-dataset framing changed; its modern-city sourcing tables — Taskmaster/MultiWOZ/SODA/Synthetic-Persona-Chat, rejected sources — did not need to change). No code changes were needed beyond what the 2026-08-07 reconciliation already did — `train_adapter.py`'s `DATASET_PATHS`/`MODERN_ARCHETYPES` were already modern-city-only in naming, just no longer described as "mapped from medieval."

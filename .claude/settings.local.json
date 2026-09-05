@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvidia-smi)",
+      "Bash(\"C:\\\\Users\\\\spicez\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python310\\\\python.exe\" evaluation/run_gguf_latency.py --model tinyllama)"
+    ]
+  }
+}
