@@ -1,8 +1,22 @@
+# Python 3.12 required. 3.13/3.14 have no wheels for parts of this stack
+# (bitsandbytes in particular); 3.10-3.12 are the supported range.
+
 # Core training/fine-tuning stack.
-# torch installed from https://download.pytorch.org/whl/cu121 (CUDA build) —
-# `pip install -r requirements.txt` alone will pull the CPU wheel instead;
-# install torch separately from the cu121 index first if you need GPU support.
-torch==2.5.1
+#
+# torch MUST be installed separately, BEFORE this file, from the PyTorch index —
+# `pip install -r requirements.txt` alone pulls the CPU wheel from PyPI instead.
+# Pick the index by GPU architecture:
+#
+#   RTX 50-series / Blackwell (sm_120), e.g. RTX 5060:
+#     pip install torch --index-url https://download.pytorch.org/whl/cu128
+#   Older cards (sm_75-sm_89), e.g. MX450, RTX 30/40-series:
+#     pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+#
+# The cu121 wheels contain no sm_120 kernels, so on Blackwell they silently fall
+# back to CPU — torch>=2.7 from the cu128 index is required there, which is why
+# the pin below is no longer 2.5.1. Verify after install:
+#   python -c "import torch; print(torch.cuda.get_device_capability(0))"
+torch==2.11.0
 transformers==5.12.1
 peft==0.19.1
 trl==1.7.0
@@ -13,6 +27,9 @@ pyyaml
 # Data pipeline
 datasets==5.0.0
 requests==2.33.1
+numpy==2.5.2
+tqdm==4.70.0
+huggingface_hub==1.30.0
 
 # Experiment tracking (run `wandb login` with your API key before training)
 wandb==0.28.0
@@ -21,3 +38,17 @@ wandb==0.28.0
 fastapi==0.121.2
 uvicorn[standard]==0.38.0
 pydantic==2.11.10
+
+# evaluation/ — GGUF inference, metrics, figures.
+#
+# llama-cpp-python has no compiler fallback here: building from source needs
+# MSVC/nmake, which is absent on the project machines. Install from the prebuilt
+# wheel index instead of PyPI:
+#   pip install llama-cpp-python --only-binary :all: \
+#     --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+# (swap /cpu for the matching CUDA variant if you want GPU offload — note the
+# /cu121 build will not cover sm_120 Blackwell cards.)
+llama-cpp-python==0.3.35
+bert-score==0.3.13
+matplotlib==3.11.1
+psutil==7.2.2
