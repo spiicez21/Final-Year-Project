@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bdvofpnw4iokq"]
+
+[ext_resource type="PackedScene" uid="uid://cgrpb6wire5c3" path="res://Assets/Floor.glb" id="1_floor"]
+[ext_resource type="PackedScene" uid="uid://b04icmqe3k3eu" path="res://Assets/Door_Wall.glb" id="2_door"]
+[ext_resource type="PackedScene" uid="uid://c46nkyfudvx" path="res://Assets/Wall_2m.glb" id="3_w2"]
+[ext_resource type="PackedScene" uid="uid://c6hj4j5vvbxcy" path="res://Assets/Wall_4m.glb" id="4_w4"]
+
+[node name="StoreRoom" type="Node3D" unique_id=501909202]
+
+[node name="Floor" parent="." unique_id=202803748 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Floor2" parent="." unique_id=1518034359 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Floor3" parent="." unique_id=1746749031 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
+
+[node name="Floor4" parent="." unique_id=10107027 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="Floor5" parent="." unique_id=495149485 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="Floor6" parent="." unique_id=1080853235 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
+
+[node name="Wall4" parent="." unique_id=1836139959 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, 0)
+
+[node name="Wall42" parent="." unique_id=2130059138 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, 0)
+
+[node name="DoorWall" parent="." unique_id=2076778268 instance=ExtResource("2_door")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 12)
+
+[node name="Wall2" parent="." unique_id=1001015254 instance=ExtResource("3_w2")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 0, 12)
+
+[node name="Wall43" parent="." unique_id=1005707190 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, 12)

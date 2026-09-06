@@ -1,0 +1,25 @@
+[gd_resource type="Sky" format=3 uid="uid://cx1oba30xoqe4"]
+
+[ext_resource type="Shader" uid="uid://dr4dp6jisgofy" path="res://Resources/Environment/volumetric_clouds.gdshader" id="1_clouds"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sky"]
+shader = ExtResource("1_clouds")
+shader_parameter/sky_top_color = Color(0.24, 0.44, 0.84, 1)
+shader_parameter/sky_horizon_color = Color(0.76, 0.85, 0.94, 1)
+shader_parameter/ground_color = Color(0.17, 0.16, 0.15, 1)
+shader_parameter/horizon_falloff = 3.4
+shader_parameter/sun_disc_size = 0.022
+shader_parameter/sun_glow = 120.0
+shader_parameter/cloud_color = Color(1, 0.99, 0.96, 1)
+shader_parameter/cloud_dark = Color(0.44, 0.48, 0.58, 1)
+shader_parameter/coverage = 0.5
+shader_parameter/cloud_scale = 1.6
+shader_parameter/wind_speed = 0.012
+shader_parameter/shade_offset = 0.28
+shader_parameter/silver = 1.2
+shader_parameter/upper_deck = 0.45
+
+[resource]
+sky_material = SubResource("ShaderMaterial_sky")
+process_mode = 2
+radiance_size = 2

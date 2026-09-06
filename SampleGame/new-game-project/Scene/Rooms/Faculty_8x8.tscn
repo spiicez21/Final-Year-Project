@@ -1,0 +1,130 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cgrpb6wire5c3" path="res://Assets/Floor.glb" id="1_floor"]
+[ext_resource type="PackedScene" uid="uid://b04icmqe3k3eu" path="res://Assets/Door_Wall.glb" id="2_door"]
+[ext_resource type="PackedScene" uid="uid://c46nkyfudvx" path="res://Assets/Wall_2m.glb" id="3_w2"]
+[ext_resource type="PackedScene" uid="uid://c6hj4j5vvbxcy" path="res://Assets/Wall_4m.glb" id="4_w4"]
+[ext_resource type="PackedScene" uid="uid://b88wvq7av8osy" path="res://Assets/Window_Wall.glb" id="5_win"]
+[ext_resource type="PackedScene" path="res://Scene/Props/FacultyFurniture_8x8.tscn" id="6_furn"]
+
+[ext_resource type="PackedScene" path="res://Assets/ceiling_tile.glb" id="r_ceiling_tile"]
+[sub_resource type="BoxShape3D" id="sh_floor"]
+size = Vector3(8, 0.2, 8)
+
+[sub_resource type="BoxShape3D" id="sh_wx4"]
+size = Vector3(4, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="sh_wx2"]
+size = Vector3(2, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="sh_wz4"]
+size = Vector3(0.2, 3, 4)
+
+[sub_resource type="BoxShape3D" id="sh_wz2"]
+size = Vector3(0.2, 3, 2)
+
+[node name="Faculty_8x8" type="Node3D" unique_id=1503533946]
+
+[node name="Floors" type="Node3D" parent="." unique_id=1248049949]
+
+[node name="Floor01" parent="Floors" unique_id=2112102449 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Floor02" parent="Floors" unique_id=709007729 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Floor03" parent="Floors" unique_id=681682755 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="Floor04" parent="Floors" unique_id=1789274298 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="Walls" type="Node3D" parent="." unique_id=569563991]
+
+[node name="WallS01" parent="Walls" unique_id=944317487 instance=ExtResource("5_win")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, 0)
+
+[node name="WallS02" parent="Walls" unique_id=1294863223 instance=ExtResource("5_win")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, 0)
+
+[node name="WallN01" parent="Walls" unique_id=876308982 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, 8)
+
+[node name="WallN02" parent="Walls" unique_id=376831413 instance=ExtResource("3_w2")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 5, 0, 8)
+
+[node name="WallN03" parent="Walls" unique_id=710802426 instance=ExtResource("2_door")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 7, 0, 8)
+
+[node name="WallW01" parent="Walls" unique_id=554242815 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="WallW02" parent="Walls" unique_id=232835930 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="WallE01" parent="Walls" unique_id=1732045120 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="WallE02" parent="Walls" unique_id=1301374336 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+
+[node name="Furniture" parent="." unique_id=1129571022 instance=ExtResource("6_furn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1928222091]
+
+[node name="CFloor" type="CollisionShape3D" parent="Collision" unique_id=180323962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+shape = SubResource("sh_floor")
+
+[node name="CWallS01" type="CollisionShape3D" parent="Collision" unique_id=1556001976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+shape = SubResource("sh_wx4")
+
+[node name="CWallS02" type="CollisionShape3D" parent="Collision" unique_id=627786105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+shape = SubResource("sh_wx4")
+
+[node name="CWallN01" type="CollisionShape3D" parent="Collision" unique_id=1647002410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 8)
+shape = SubResource("sh_wx4")
+
+[node name="CWallN02" type="CollisionShape3D" parent="Collision" unique_id=148467514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 8)
+shape = SubResource("sh_wx2")
+
+[node name="CWallN03" type="CollisionShape3D" parent="Collision" unique_id=1543703834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 8)
+shape = SubResource("sh_wx2")
+
+[node name="CWallW01" type="CollisionShape3D" parent="Collision" unique_id=1194902545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+shape = SubResource("sh_wz4")
+
+[node name="CWallW02" type="CollisionShape3D" parent="Collision" unique_id=1219907256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+shape = SubResource("sh_wz4")
+
+[node name="CWallE01" type="CollisionShape3D" parent="Collision" unique_id=1602915626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 2)
+shape = SubResource("sh_wz4")
+
+[node name="CWallE02" type="CollisionShape3D" parent="Collision" unique_id=753877525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 6)
+shape = SubResource("sh_wz4")
+
+; --- GEN CEILING BEGIN ---
+[node name="Ceiling" type="Node3D" parent="." unique_id=2007548810]
+
+[node name="CeilTile001" parent="Ceiling" unique_id=359238328 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 2)
+
+[node name="CeilTile002" parent="Ceiling" unique_id=1658673502 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 6)
+
+[node name="CeilTile003" parent="Ceiling" unique_id=1431982291 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 2)
+
+[node name="CeilTile004" parent="Ceiling" unique_id=1715416624 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 6)
+; --- GEN CEILING END ---

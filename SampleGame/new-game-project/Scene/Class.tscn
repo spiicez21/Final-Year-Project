@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://detljd0vwdnjc"]
+
+[ext_resource type="PackedScene" uid="uid://cgrpb6wire5c3" path="res://Assets/Floor.glb" id="1_floor"]
+[ext_resource type="PackedScene" uid="uid://b04icmqe3k3eu" path="res://Assets/Door_Wall.glb" id="2_doorwall"]
+[ext_resource type="PackedScene" uid="uid://b88wvq7av8osy" path="res://Assets/Window_Wall.glb" id="3_windowwall"]
+[ext_resource type="PackedScene" uid="uid://c6hj4j5vvbxcy" path="res://Assets/Wall_4m.glb" id="4_wall4m"]
+[ext_resource type="PackedScene" uid="uid://c46nkyfudvx" path="res://Assets/Wall_2m.glb" id="5_wall2m"]
+[ext_resource type="PackedScene" uid="uid://bw0f6l6xbhaq8" path="res://Scene/Props/ClassroomFurniture_20x16.tscn" id="9_furn"]
+
+[node name="Class" type="Node3D" unique_id=200000001]
+
+[node name="Floor" parent="." unique_id=200000002 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (2)" parent="." unique_id=200000003 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (3)" parent="." unique_id=200000004 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (4)" parent="." unique_id=200000005 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (5)" parent="." unique_id=200000006 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (6)" parent="." unique_id=200000007 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (7)" parent="." unique_id=200000008 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (8)" parent="." unique_id=200000009 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (9)" parent="." unique_id=200000010 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (10)" parent="." unique_id=200000011 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (11)" parent="." unique_id=200000012 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (12)" parent="." unique_id=200000013 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (13)" parent="." unique_id=200000014 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (14)" parent="." unique_id=200000015 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (15)" parent="." unique_id=200000016 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (16)" parent="." unique_id=200000017 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (17)" parent="." unique_id=200000018 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (18)" parent="." unique_id=200000019 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -2)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (19)" parent="." unique_id=200000020 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -6)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Floor (20)" parent="." unique_id=200000021 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -10)
+metadata/asset_placer_res_id = "uid://cgrpb6wire5c3"
+
+[node name="Door_Wall" parent="." unique_id=200000022 instance=ExtResource("2_doorwall")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 4)
+metadata/asset_placer_res_id = "uid://b04icmqe3k3eu"
+
+[node name="Window_Wall" parent="." unique_id=200000023 instance=ExtResource("3_windowwall")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 4, 0, 4)
+metadata/asset_placer_res_id = "uid://b88wvq7av8osy"
+
+[node name="Window_Wall (2)" parent="." unique_id=200000024 instance=ExtResource("3_windowwall")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0, 4)
+metadata/asset_placer_res_id = "uid://b88wvq7av8osy"
+
+[node name="Window_Wall (3)" parent="." unique_id=200000025 instance=ExtResource("3_windowwall")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 12, 0, 4)
+metadata/asset_placer_res_id = "uid://b88wvq7av8osy"
+
+[node name="Wall_4m" parent="." unique_id=200000026 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 16, 0, 4)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_2m" parent="." unique_id=200000027 instance=ExtResource("5_wall2m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 19, 0, 4)
+metadata/asset_placer_res_id = "uid://c46nkyfudvx"
+
+[node name="Wall_4m (4)" parent="." unique_id=200000029 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, -12)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (5)" parent="." unique_id=200000030 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, -12)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (6)" parent="." unique_id=200000031 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 10, 0, -12)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (7)" parent="." unique_id=200000032 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, 0, -12)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (8)" parent="." unique_id=200000033 instance=ExtResource("4_wall4m")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 18, 0, -12)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (9)" parent="." unique_id=200000034 instance=ExtResource("4_wall4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (10)" parent="." unique_id=200000035 instance=ExtResource("4_wall4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (11)" parent="." unique_id=200000036 instance=ExtResource("4_wall4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Wall_4m (12)" parent="." unique_id=200000037 instance=ExtResource("4_wall4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+metadata/asset_placer_res_id = "uid://c6hj4j5vvbxcy"
+
+[node name="Furniture" parent="." unique_id=1487883783 instance=ExtResource("9_furn")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 20.177843, 0.13012457, 4.0742054)

@@ -1,0 +1,156 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cgrpb6wire5c3" path="res://Assets/Floor.glb" id="1_floor"]
+[ext_resource type="PackedScene" uid="uid://b04icmqe3k3eu" path="res://Assets/Door_Wall.glb" id="2_door"]
+[ext_resource type="PackedScene" uid="uid://c46nkyfudvx" path="res://Assets/Wall_2m.glb" id="3_w2"]
+[ext_resource type="PackedScene" uid="uid://c6hj4j5vvbxcy" path="res://Assets/Wall_4m.glb" id="4_w4"]
+[ext_resource type="PackedScene" uid="uid://b88wvq7av8osy" path="res://Assets/Window_Wall.glb" id="5_win"]
+[ext_resource type="PackedScene" path="res://Scene/Props/ClassroomFurniture_12x8.tscn" id="6_furn"]
+
+[ext_resource type="PackedScene" path="res://Assets/ceiling_tile.glb" id="r_ceiling_tile"]
+[sub_resource type="BoxShape3D" id="sh_floor"]
+size = Vector3(12, 0.2, 8)
+
+[sub_resource type="BoxShape3D" id="sh_wx4"]
+size = Vector3(4, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="sh_wx2"]
+size = Vector3(2, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="sh_wz4"]
+size = Vector3(0.2, 3, 4)
+
+[sub_resource type="BoxShape3D" id="sh_wz2"]
+size = Vector3(0.2, 3, 2)
+
+[node name="Classroom_12x8" type="Node3D" unique_id=1886697072]
+
+[node name="Floors" type="Node3D" parent="." unique_id=1176471936]
+
+[node name="Floor01" parent="Floors" unique_id=1666341349 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Floor02" parent="Floors" unique_id=1087446741 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="Floor03" parent="Floors" unique_id=482588740 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="Floor04" parent="Floors" unique_id=11312071 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="Floor05" parent="Floors" unique_id=267646191 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="Floor06" parent="Floors" unique_id=1371288775 instance=ExtResource("1_floor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
+
+[node name="Walls" type="Node3D" parent="." unique_id=395591439]
+
+[node name="WallS01" parent="Walls" unique_id=895410622 instance=ExtResource("5_win")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, 0)
+
+[node name="WallS02" parent="Walls" unique_id=1609717295 instance=ExtResource("5_win")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, 0)
+
+[node name="WallS03" parent="Walls" unique_id=1495151413 instance=ExtResource("5_win")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 10, 0, 0)
+
+[node name="WallN01" parent="Walls" unique_id=1498868237 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, 8)
+
+[node name="WallN02" parent="Walls" unique_id=989070241 instance=ExtResource("4_w4")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6, 0, 8)
+
+[node name="WallN03" parent="Walls" unique_id=1215936962 instance=ExtResource("3_w2")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 9, 0, 8)
+
+[node name="WallN04" parent="Walls" unique_id=43574836 instance=ExtResource("2_door")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 11, 0, 8)
+
+[node name="WallW01" parent="Walls" unique_id=951090628 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="WallW02" parent="Walls" unique_id=1597122409 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="WallE01" parent="Walls" unique_id=2034559539 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+
+[node name="WallE02" parent="Walls" unique_id=860710364 instance=ExtResource("4_w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="Furniture" parent="." unique_id=162746678 instance=ExtResource("6_furn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1639036399]
+
+[node name="CFloor" type="CollisionShape3D" parent="Collision" unique_id=878323797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+shape = SubResource("sh_floor")
+
+[node name="CWallS01" type="CollisionShape3D" parent="Collision" unique_id=1170634340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+shape = SubResource("sh_wx4")
+
+[node name="CWallS02" type="CollisionShape3D" parent="Collision" unique_id=1998253777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+shape = SubResource("sh_wx4")
+
+[node name="CWallS03" type="CollisionShape3D" parent="Collision" unique_id=468654500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0)
+shape = SubResource("sh_wx4")
+
+[node name="CWallN01" type="CollisionShape3D" parent="Collision" unique_id=1752854431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 8)
+shape = SubResource("sh_wx4")
+
+[node name="CWallN02" type="CollisionShape3D" parent="Collision" unique_id=1229950334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 8)
+shape = SubResource("sh_wx4")
+
+[node name="CWallN03" type="CollisionShape3D" parent="Collision" unique_id=1847280248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 8)
+shape = SubResource("sh_wx2")
+
+[node name="CWallN04" type="CollisionShape3D" parent="Collision" unique_id=1394705636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, 8)
+shape = SubResource("sh_wx2")
+
+[node name="CWallW01" type="CollisionShape3D" parent="Collision" unique_id=1596397525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+shape = SubResource("sh_wz4")
+
+[node name="CWallW02" type="CollisionShape3D" parent="Collision" unique_id=129375874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+shape = SubResource("sh_wz4")
+
+[node name="CWallE01" type="CollisionShape3D" parent="Collision" unique_id=836393057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.5, 2)
+shape = SubResource("sh_wz4")
+
+[node name="CWallE02" type="CollisionShape3D" parent="Collision" unique_id=1464806010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.5, 6)
+shape = SubResource("sh_wz4")
+
+; --- GEN CEILING BEGIN ---
+[node name="Ceiling" type="Node3D" parent="." unique_id=1889955781]
+
+[node name="CeilTile001" parent="Ceiling" unique_id=607774647 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 2)
+
+[node name="CeilTile002" parent="Ceiling" unique_id=830054513 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 6)
+
+[node name="CeilTile003" parent="Ceiling" unique_id=1532513070 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 2)
+
+[node name="CeilTile004" parent="Ceiling" unique_id=4167804 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 6)
+
+[node name="CeilTile005" parent="Ceiling" unique_id=1914226814 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 2)
+
+[node name="CeilTile006" parent="Ceiling" unique_id=418786477 instance=ExtResource("r_ceiling_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 6)
+; --- GEN CEILING END ---

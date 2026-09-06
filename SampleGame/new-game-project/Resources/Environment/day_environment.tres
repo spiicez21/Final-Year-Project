@@ -1,0 +1,37 @@
+[gd_resource type="Environment" format=3 uid="uid://0wqyhw40f5y8"]
+
+[ext_resource type="Sky" uid="uid://cx1oba30xoqe4" path="res://Resources/Environment/day_sky.tres" id="1_sky"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.66, 0.7, 0.78, 1)
+ambient_light_sky_contribution = 0.7
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_white = 6.0
+ssao_enabled = true
+ssao_intensity = 1.4
+ssao_light_affect = 0.3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.5
+glow_bloom = 0.06
+glow_blend_mode = 2
+glow_hdr_threshold = 1.05
+fog_enabled = true
+fog_light_color = Color(0.73, 0.83, 0.93, 1)
+fog_sun_scatter = 0.15
+fog_density = 0.0006
+fog_aerial_perspective = 0.25
+fog_sky_affect = 0.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.006
+volumetric_fog_gi_inject = 0.0
+volumetric_fog_anisotropy = 0.4
+volumetric_fog_ambient_inject = 0.4
+volumetric_fog_sky_affect = 0.25
+adjustment_enabled = true
+adjustment_contrast = 1.08
+adjustment_saturation = 1.18
