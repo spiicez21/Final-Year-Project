@@ -1,0 +1,4 @@
+# Exported game builds (CampusNPC.exe + .pck, ~209MB per export).
+# Large, binary, and fully reproducible from new-game-project/ via
+# new-game-project/tools/build.bat — so they are built, not committed.
+build/

@@ -1,0 +1,516 @@
+[gd_scene format=3]
+
+[node name="InteriorLights" type="Node3D"]
+
+[node name="Lamp_StoreRoom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.62, 8)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Toilet" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.62, 8)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 2.62, 8)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Toilet_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 2.62, 8)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_StoreRoom_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 2.62, 28)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 9.3
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Stairwell" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2.62, 28)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 9.3
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Stairwell_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 2.62, 28)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 9.3
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_StoreRoom_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 2.62, 28)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 9.3
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 12.7
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 12.7
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Stairwell_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 12.7
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Faculty_6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 2.62, 76)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Stairwell_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.62, 96)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Stairwell_4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 2.62, 96)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2.4
+light_specular = 0.2
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 16
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 1.1
+light_bake_mode = 1
+
+[node name="Lamp_Corridor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 26)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 38)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 50)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 62)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 74)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_8" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.62, 38)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_9" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_10" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_11" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_12" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_13" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_14" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+
+[node name="Lamp_Corridor_15" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 2.62, 86)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 2
+light_specular = 0.2
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_shadow = 11.0
+distance_fade_length = 6.0
+omni_range = 11.4
+omni_attenuation = 1.4
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1

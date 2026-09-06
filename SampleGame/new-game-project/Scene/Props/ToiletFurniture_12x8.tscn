@@ -1,0 +1,158 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Assets/handwash_sink.glb" id="1_sink"]
+[ext_resource type="PackedScene" path="res://Assets/dustbin_pair.glb" id="2_bin"]
+[ext_resource type="PackedScene" path="res://Assets/exit_sign.glb" id="3_exit"]
+[ext_resource type="PackedScene" uid="uid://4yuvs3kis081" path="res://Assets/tube_light_ceiling.glb" id="4_tube"]
+
+[sub_resource type="StandardMaterial3D" id="m_stall"]
+albedo_color = Color(0.62, 0.66, 0.68, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="m_mirror"]
+albedo_color = Color(0.72, 0.78, 0.82, 1)
+roughness = 0.08
+metallic = 0.85
+
+[sub_resource type="BoxMesh" id="mesh_divider"]
+material = SubResource("m_stall")
+size = Vector3(0.06, 2, 1.5)
+
+[sub_resource type="BoxMesh" id="mesh_mirror"]
+material = SubResource("m_mirror")
+size = Vector3(4.0, 1.0, 0.04)
+
+[sub_resource type="BoxShape3D" id="sh_divider"]
+size = Vector3(0.06, 2, 1.5)
+
+[sub_resource type="BoxShape3D" id="sh_trough"]
+size = Vector3(1.8, 1.2, 0.5)
+
+[sub_resource type="BoxShape3D" id="sh_bin"]
+size = Vector3(0.8, 0.62, 0.4)
+
+[node name="ToiletFurniture" type="Node3D" unique_id=1840922433]
+
+[node name="Cubicles" type="Node3D" parent="." unique_id=1815518636]
+
+[node name="Divider01" type="MeshInstance3D" parent="Cubicles" unique_id=1041712446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Divider02" type="MeshInstance3D" parent="Cubicles" unique_id=1750944052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Divider03" type="MeshInstance3D" parent="Cubicles" unique_id=1213909968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Divider04" type="MeshInstance3D" parent="Cubicles" unique_id=1789914514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Divider05" type="MeshInstance3D" parent="Cubicles" unique_id=2135522259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Divider06" type="MeshInstance3D" parent="Cubicles" unique_id=1355656873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 1, 0.75)
+mesh = SubResource("mesh_divider")
+
+[node name="Wash" type="Node3D" parent="." unique_id=1749811487]
+
+[node name="Trough01" parent="Wash" unique_id=497464104 instance=ExtResource("1_sink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0.3)
+
+[node name="Trough02" parent="Wash" unique_id=315736215 instance=ExtResource("1_sink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.3)
+
+[node name="Mirror" type="MeshInstance3D" parent="Wash" unique_id=228761484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.75, 0.12)
+mesh = SubResource("mesh_mirror")
+
+[node name="Props" type="Node3D" parent="." unique_id=941507564]
+
+[node name="Dustbins" parent="Props" unique_id=1520682007 instance=ExtResource("2_bin")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 11.4, 0, 2.4)
+
+[node name="ExitSign" parent="Props" unique_id=1001451698 instance=ExtResource("3_exit")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 10.5, 2.55, 7.8)
+
+[node name="Lighting" type="Node3D" parent="." unique_id=2052222119]
+
+[node name="Batten01" parent="Lighting" unique_id=402966844 instance=ExtResource("4_tube")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.9, 3.4)
+
+[node name="Lamp01" type="OmniLight3D" parent="Lighting" unique_id=133136567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.7, 3.4)
+light_color = Color(0.94, 0.97, 1, 1)
+light_energy = 1.4
+light_volumetric_fog_energy = 1.0
+light_specular = 0.3
+light_bake_mode = 1
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 14.0
+distance_fade_shadow = 9.0
+distance_fade_length = 5.0
+omni_range = 7.0
+omni_attenuation = 1.4
+
+[node name="Batten02" parent="Lighting" unique_id=1726909170 instance=ExtResource("4_tube")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.9, 3.4)
+
+[node name="Lamp02" type="OmniLight3D" parent="Lighting" unique_id=235091168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.7, 3.4)
+light_color = Color(0.94, 0.97, 1, 1)
+light_energy = 1.4
+light_volumetric_fog_energy = 1.0
+light_specular = 0.3
+light_bake_mode = 1
+shadow_bias = 0.04
+shadow_normal_bias = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 14.0
+distance_fade_shadow = 9.0
+distance_fade_length = 5.0
+omni_range = 7.0
+omni_attenuation = 1.4
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1855205312]
+
+[node name="CDivider01" type="CollisionShape3D" parent="Collision" unique_id=1245534639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CDivider02" type="CollisionShape3D" parent="Collision" unique_id=904918328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CDivider03" type="CollisionShape3D" parent="Collision" unique_id=2030336454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CDivider04" type="CollisionShape3D" parent="Collision" unique_id=1687958046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CDivider05" type="CollisionShape3D" parent="Collision" unique_id=1774627059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CDivider06" type="CollisionShape3D" parent="Collision" unique_id=1642856470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 1, 0.75)
+shape = SubResource("sh_divider")
+
+[node name="CTrough01" type="CollisionShape3D" parent="Collision" unique_id=385571304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 0.3)
+shape = SubResource("sh_trough")
+
+[node name="CTrough02" type="CollisionShape3D" parent="Collision" unique_id=2109354604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.6, 0.3)
+shape = SubResource("sh_trough")
+
+[node name="CDustbins" type="CollisionShape3D" parent="Collision" unique_id=1101467034]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 11.4, 0.31, 2.4)
+shape = SubResource("sh_bin")

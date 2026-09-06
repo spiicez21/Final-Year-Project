@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Shader" path="res://Systems/PostFX/godrays.gdshader" id="1_shader"]
+[ext_resource type="Script" path="res://Systems/PostFX/godrays.gd" id="2_script"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rays"]
+render_priority = 120
+shader = ExtResource("1_shader")
+shader_parameter/sun_pos = Vector2(0.5, 0.5)
+shader_parameter/ray_density = 0.62
+shader_parameter/decay = 0.965
+shader_parameter/weight = 0.35
+shader_parameter/exposure = 0.22
+shader_parameter/tint = Color(1, 0.88, 0.68, 1)
+shader_parameter/visibility = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_full"]
+size = Vector2(2, 2)
+
+[node name="GodRays" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_full")
+material_override = SubResource("ShaderMaterial_rays")
+cast_shadow = 0
+gi_mode = 0
+extra_cull_margin = 16384.0
+script = ExtResource("2_script")
+sun_path = NodePath("../DayNightCycle/Sun")

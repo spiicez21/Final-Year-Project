@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dmain0000001"]
+
+[ext_resource type="PackedScene" path="res://Scene/GFLevel.tscn" id="1_gf"]
+[ext_resource type="PackedScene" uid="uid://cun0lgi1ax80o" path="res://Scene/1FLevel.tscn" id="1_1f"]
+[ext_resource type="PackedScene" uid="uid://bc2uv3660an1o" path="res://Scene/2FLevel.tscn" id="1_2f"]
+[ext_resource type="PackedScene" path="res://Systems/Character/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://Systems/DayNight/DayNightCycle.tscn" id="3_daynight"]
+[ext_resource type="Script" uid="uid://cp31uu3rra7j4" path="res://Systems/DayNight/time_display.gd" id="4_timehud"]
+[ext_resource type="PackedScene" path="res://Systems/Lighting/InteriorLights.tscn" id="5_lights"]
+[ext_resource type="PackedScene" path="res://Systems/PostFX/GodRays.tscn" id="6_godrays"]
+[ext_resource type="Script" path="res://Systems/Camera/floor_culler.gd" id="7_culler"]
+[ext_resource type="Script" path="res://Systems/HUD/minimap.gd" id="8_minimap"]
+[ext_resource type="Script" path="res://Systems/Camera/wall_fade.gd" id="9_wallfade"]
+[ext_resource type="Script" path="res://Systems/NPC/npc_director.gd" id="10_npc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(160, 0.4, 152)
+
+[node name="Main" type="Node3D" unique_id=132924090]
+
+[node name="Floor1" parent="." unique_id=1286948238 instance=ExtResource("1_gf")]
+
+[node name="Floor2" parent="." unique_id=1286948239 instance=ExtResource("1_1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Floor3" parent="." unique_id=1286948240 instance=ExtResource("1_2f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="Lights1" parent="." unique_id=227694730 instance=ExtResource("5_lights")]
+
+[node name="Lights2" parent="." unique_id=1486556672 instance=ExtResource("5_lights")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Lights3" parent="." unique_id=1584949911 instance=ExtResource("5_lights")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="DayNightCycle" parent="." unique_id=917050013 groups=["day_night"] instance=ExtResource("3_daynight")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 52)
+
+[node name="GroundCollision" type="StaticBody3D" parent="." unique_id=2085525575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -0.3, 52)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundCollision" unique_id=235876355]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="Player" parent="." unique_id=268545648 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 1, -6)
+
+[node name="FloorCuller" type="Node" parent="." unique_id=1579905731]
+script = ExtResource("7_culler")
+player_path = NodePath("../Player")
+levels = [NodePath("../Floor1"), NodePath("../Floor2"), NodePath("../Floor3")]
+light_rigs = [NodePath("../Lights1"), NodePath("../Lights2"), NodePath("../Lights3")]
+floor_height = 3.0
+hide_own_ceiling = true
+
+[node name="WallFade" type="Node" parent="." unique_id=1579905732]
+script = ExtResource("9_wallfade")
+player_path = NodePath("../Player")
+rig_path = NodePath("../Player/CameraPivot")
+levels = [NodePath("../Floor1"), NodePath("../Floor2"), NodePath("../Floor3")]
+fade_to = 0.82
+radius = 2.2
+
+[node name="GodRays" parent="." unique_id=1579905730 instance=ExtResource("6_godrays")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2089717125]
+
+[node name="TimeLabel" type="Label" parent="HUD" unique_id=1206034387]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 260.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 4
+script = ExtResource("4_timehud")
+cycle_path = NodePath("../../DayNightCycle")
+
+[node name="Minimap" type="Control" parent="HUD" unique_id=1206034388]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 212.0
+grow_horizontal = 0
+script = ExtResource("8_minimap")
+player_path = NodePath("../../Player")
+culler_path = NodePath("../../FloorCuller")
+rig_path = NodePath("../../Player/CameraPivot")
+scale_px = 2.6
+
+[node name="NpcDirector" type="Node3D" parent="."]
+script = ExtResource("10_npc")
+player_path = NodePath("../Player")
+server_url = "http://127.0.0.1:8000"

@@ -1,0 +1,27 @@
+; Godot 4.7 project file for the NPC interaction demo.
+;
+; Deliberately minimal: no custom InputMap actions, no imported assets. Key
+; handling is done with raw Input.is_key_pressed() in Player.gd/Main.gd, and
+; every visual is built from Godot primitives at runtime. That keeps the
+; project free of binary .import artifacts and of the InputEvent serialisation
+; blob that makes hand-edited project.godot files fragile across versions.
+
+config_version=5
+
+[application]
+
+config/name="NPC AI Demo"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/description="Walkable demo client for the domain-adaptive LoRA NPC framework."
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

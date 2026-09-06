@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Systems/DayNight/day_night_cycle.gd" id="1_script"]
+[ext_resource type="Environment" path="res://Resources/Environment/day_environment.tres" id="2_env"]
+
+[node name="DayNightCycle" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+light_color = Color(1, 0.97, 0.92, 1)
+light_energy = 1.5
+light_angular_distance = 0.55
+light_volumetric_fog_energy = 2.2
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 1.4
+shadow_blur = 1.0
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.06
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.42
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.9
+directional_shadow_max_distance = 220.0
+directional_shadow_pancake_size = 40.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_env")

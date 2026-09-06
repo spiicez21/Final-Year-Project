@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Systems/Character/sprite_character.gd" id="1_script"]
+[ext_resource type="SpriteFrames" path="res://Resources/Characters/hero_frames.tres" id="2_frames"]
+[ext_resource type="Script" path="res://Systems/Character/third_person_camera.gd" id="3_camera"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributes_hd2d"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 11.0
+dof_blur_far_transition = 5.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 0.6
+dof_blur_near_transition = 0.5
+dof_blur_amount = 0.05
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_script")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle_s"
+autoplay = "idle_s"
+pixel_size = 0.00963
+billboard = 2
+shaded = true
+double_sided = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.35
+texture_filter = 3
+offset = Vector2(0, 97.5)
+cast_shadow = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("3_camera")
+target_path = NodePath("..")
+pivot_height = 1.1
+distance = 18.0
+min_distance = 10.0
+max_distance = 30.0
+shoulder_offset = 0.0
+orthogonal = true
+ortho_size = 10.0
+fixed_pitch = -28.0
+lock_pitch = true
+
+[node name="Yaw" type="Node3D" parent="CameraPivot"]
+
+[node name="Pitch" type="Node3D" parent="CameraPivot/Yaw"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot/Yaw/Pitch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+spring_length = 18.0
+margin = 0.35
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/Yaw/Pitch/SpringArm3D"]
+current = true
+projection = 1
+size = 10.0
+attributes = SubResource("CameraAttributes_hd2d")
+fov = 62.0
+near = 0.05
+far = 400.0
