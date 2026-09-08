@@ -16,27 +16,74 @@ class_name NpcDirector
 @export var player_path: NodePath = ^"../Player"
 @export var server_url: String = "http://127.0.0.1:8000"
 
-## Ground-floor placements, all inside the corridor band.
+## Higher than the server's default of 40, which regularly clipped replies
+## mid-clause. The server trims any leftover partial sentence, so the cost of
+## the extra headroom is latency, not rambling — expect a few hundred ms more
+## per turn than the evaluation configuration.
+const REPLY_TOKENS := 64
+
+## The scenario every NPC is framed with. Sent to the server as `situation`.
+const EVENT := "the Computer Science department open day"
+
+## Everyone's answer to "what is happening here" — the event, not their job.
+##
+## Without this demonstration each adapter answered from its own training
+## topic instead of from the scene: asked "what is happening here" at the open
+## day, the police officer replied "we have received reports of a group of
+## people breaking into the computer science department". Shared rather than
+## per-NPC because every guest is standing at the same event and would
+## describe it the same way.
+const EVENT_LINE := "It's the department open day — stalls down the corridor and a lot of students asking questions."
+
+## Ground-floor placements and personas.
 ##
 ## Room blocks on this floor occupy z=0..8 and z=16..24 (see
 ## tools/layout_plan.json), so z=8..16 is the circulation corridor and z=12 is
-## its centre line. The entrance hall spans x=32..48 and opens onto the same
-## band, so this row runs from the hall eastward past the classrooms towards
-## the HOD suite — the route a player walks on entering.
+## its centre line. `y` is only a starting height — each NPC is dropped onto
+## whatever floor is actually beneath it (see _snap_to_floor).
 ##
-## `y` is only a starting height: each NPC is dropped onto whatever floor is
-## actually beneath it (see _snap_to_floor), so these need no vertical
-## precision.
+## `occupation`, `intro` and `job_line` are what give an NPC a personality
+## rather than a job title. The server seeds each conversation with them as
+## already-answered turns, so "who are you", "what are you doing here" and
+## "what is your job like" are answered by continuing a demonstrated pattern
+## rather than by obeying an instruction the 1.1B model would ignore.
+##
+## `intro` and `job_line` must be natural first-person sentences: they are put
+## verbatim into the NPC's mouth as answers it has already given.
+##
+## `background` is history rather than script — it goes into the system prompt,
+## not into a demonstration, so it colours answers ("I came back after four
+## years in industry") without being recited verbatim.
 const SPAWNS := [
-	{"archetype": "police officer", "name": "Officer Reyes", "role": "campus security",
+	{"archetype": "police officer", "name": "Officer Reyes", "role": "campus liaison",
+		"occupation": "the campus liaison officer with the city police",
+		"intro": "I was invited along to the open day to talk to students about staying safe on campus.",
+		"job_line": "Mostly I'm walking the campus and talking to people. The rest is lost property, bike thefts, and making sure students get home safely at night.",
+		"background": "I've been the campus liaison for six years, after eight on regular patrol in the north of the city. I know most of the porters by name and I still get lost in the science block.",
 		"pos": Vector3(40.0, 1.0, 12.0), "tint": Color(0.62, 0.72, 1.00)},
 	{"archetype": "professor", "name": "Prof. Adeyemi", "role": "faculty",
+		"occupation": "a lecturer in the Computer Science department",
+		"intro": "I came along for the open day, meeting students and talking about the modules I teach.",
+		"job_line": "I teach CS2011 Algorithms and CS3040 Compilers, supervise six final-year projects, and spend whatever's left on my own research.",
+		"background": "I did my doctorate in this department and came back to teach after four years in industry. I care more about students finishing than about publication counts.",
 		"pos": Vector3(47.0, 1.0, 12.0), "tint": Color(0.86, 0.72, 1.00)},
 	{"archetype": "executive", "name": "Halvorsen", "role": "head of department",
+		"occupation": "the head of the Computer Science department",
+		"intro": "I'm hosting the open day, so I'm here to meet students and answer questions about the department.",
+		"job_line": "I run the department, so timetables, hiring, budgets and a great many meetings. I still teach one module because I'd miss it otherwise.",
+		"background": "I've been head for three years and taught here for eleven before that. I took the job thinking I could fix the timetable, and I was wrong about that.",
 		"pos": Vector3(53.0, 1.0, 12.0), "tint": Color(0.90, 0.90, 0.95)},
 	{"archetype": "social worker", "name": "Ms. Okafor", "role": "student counsellor",
+		"occupation": "a student counsellor in the college welfare office",
+		"intro": "I'm at the open day so students know the counselling service exists and how to reach us.",
+		"job_line": "I see students one to one, mostly about stress, money worries and homesickness, and I point them towards the right support.",
+		"background": "I trained as a social worker in the city before moving into student welfare nine years ago. Most of the job is listening to people who assume nobody wants to hear it.",
 		"pos": Vector3(59.0, 1.0, 12.0), "tint": Color(0.70, 0.94, 1.00)},
 	{"archetype": "shopkeeper", "name": "Nadia", "role": "campus store",
+		"occupation": "the person who runs the campus store",
+		"intro": "I've got a stall at the open day, so I'm chatting to students between customers.",
+		"job_line": "I open at seven, keep the shelves stocked, and serve a few hundred students a day between lectures.",
+		"background": "I took the campus shop over from my aunt and I've run it ever since. I know what most of the regulars want before they reach the till.",
 		"pos": Vector3(65.0, 1.0, 12.0), "tint": Color(1.00, 0.88, 0.55)},
 ]
 
@@ -97,8 +144,7 @@ func _spawn_npcs() -> void:
 		# so the world still looks right.
 		if not served.is_empty() and not served.has(entry["archetype"]):
 			continue
-		var npc := NpcActor.create(entry["archetype"], entry["name"], entry["role"],
-			entry["tint"], entry["pos"])
+		var npc := NpcActor.create(entry)
 		add_child(npc)
 		_npcs.append(npc)
 		_snap_to_floor(npc)
@@ -193,8 +239,40 @@ func _on_message_submitted(text: String) -> void:
 	_hud.show_pending(text)
 
 	var npc := _active
-	var reply: Dictionary = await _client.chat(npc.archetype, text)
+	var reply: Dictionary = await _client.chat(
+		npc.archetype, text, _persona_for(npc), npc.history)
 	_deliver(npc, text, reply)
+
+
+## The framing sent with every line: who this NPC is, and what they are doing
+## at the event. Without it the server falls back to the evaluation prompt,
+## which has no name, no job and no idea it is in a college.
+## The other guests, so an NPC can hand a question on to the right person
+## instead of inventing an answer or dead-ending the player. Built from the
+## live NPC list rather than hardcoded, so it stays correct when the server
+## serves only some archetypes and only some NPCs actually spawn.
+func _others_at_event(self_npc: NpcActor) -> String:
+	var names: Array[String] = []
+	for npc in _npcs:
+		if npc != self_npc:
+			names.append("%s (%s)" % [npc.display_name, npc.role_label_text])
+	return ", ".join(names)
+
+
+func _persona_for(npc: NpcActor) -> Dictionary:
+	return {
+		"name": npc.display_name,
+		"occupation": npc.occupation,
+		"intro": npc.intro,
+		"job_line": npc.job_line,
+		"background": npc.background,
+		"situation": EVENT,
+		"event_line": EVENT_LINE,
+		"facts": CampusFacts.for_npc(npc.display_name),
+		"fact_demos": CampusFacts.demos_for(npc.display_name),
+		"others": _others_at_event(npc),
+		"max_tokens": REPLY_TOKENS,
+	}
 
 
 func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
@@ -210,7 +288,9 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 		_hud.show_error(message, str(reply["error"]))
 		return
 
-	_hud.show_reply(message, str(reply.get("response", "")))
+	var text := str(reply.get("response", ""))
+	npc.remember(message, text)
+	_hud.show_reply(message, text)
 	_hud.update_metrics(reply)
 
 

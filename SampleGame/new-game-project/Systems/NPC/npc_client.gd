@@ -74,9 +74,17 @@ func fetch_archetypes() -> Array:
 ## Always resolves to a Dictionary. On success it is the server's ChatResponse;
 ## on failure it is {"error": <human readable>}, which the caller shows in the
 ## dialogue box rather than crashing the game.
-func chat(archetype: String, message: String) -> Dictionary:
+## `persona` carries name/occupation/intro/situation; omit it and the server
+## falls back to the evaluation prompt (see gguf_server.py). `history` is a
+## list of {"role", "content"} dicts of prior turns.
+func chat(archetype: String, message: String, persona: Dictionary = {},
+		history: Array = []) -> Dictionary:
 	var http := _make_request(REQUEST_TIMEOUT)
-	var payload := JSON.stringify({"archetype": archetype, "message": message})
+	var body := {"archetype": archetype, "message": message}
+	body.merge(persona)
+	if not history.is_empty():
+		body["history"] = history
+	var payload := JSON.stringify(body)
 	var err := http.request(
 		base_url + "/chat",
 		["Content-Type: application/json"],

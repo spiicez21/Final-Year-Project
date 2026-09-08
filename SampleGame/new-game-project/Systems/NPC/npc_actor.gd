@@ -22,18 +22,49 @@ var display_name: String = ""
 var role_label_text: String = ""
 var tint: Color = Color.WHITE
 
+## Sent to the server so the NPC can answer as a person rather than a job
+## title. See SPAWNS in npc_director.gd.
+var occupation: String = ""
+var intro: String = ""
+var job_line: String = ""
+var background: String = ""
+
+## Rolling conversation memory, as {"role", "content"} dicts, so follow-up
+## questions ("and how long have you done that?") land. Per-NPC and
+## per-session: walking away and coming back continues the same conversation,
+## which is what makes them feel like they remember you.
+var history: Array = []
+
+## The client keeps more than the server replays (currently 8). The server
+## decides which turns matter — it keeps the opening exchange plus the most
+## recent ones — so sending it a deeper history gives it something to choose
+## from. Still bounded, so a very long conversation cannot grow the request
+## without limit.
+const MAX_HISTORY := 16
+
 var _prompt: Label3D
 
 
-static func create(p_archetype: String, p_name: String, p_role: String,
-		p_tint: Color, p_position: Vector3) -> NpcActor:
+static func create(entry: Dictionary) -> NpcActor:
 	var npc := NpcActor.new()
-	npc.archetype = p_archetype
-	npc.display_name = p_name
-	npc.role_label_text = p_role
-	npc.tint = p_tint
-	npc.position = p_position
+	npc.archetype = entry["archetype"]
+	npc.display_name = entry["name"]
+	npc.role_label_text = entry["role"]
+	npc.occupation = entry.get("occupation", "")
+	npc.intro = entry.get("intro", "")
+	npc.job_line = entry.get("job_line", "")
+	npc.background = entry.get("background", "")
+	npc.tint = entry["tint"]
+	npc.position = entry["pos"]
 	return npc
+
+
+## Appends one exchange, oldest-first, trimmed to MAX_HISTORY entries.
+func remember(player_line: String, reply: String) -> void:
+	history.append({"role": "user", "content": player_line})
+	history.append({"role": "assistant", "content": reply})
+	if history.size() > MAX_HISTORY:
+		history = history.slice(history.size() - MAX_HISTORY)
 
 
 func _ready() -> void:

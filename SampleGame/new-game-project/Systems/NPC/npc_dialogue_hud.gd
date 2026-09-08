@@ -108,7 +108,7 @@ func _build_dialogue() -> void:
 	_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 	_panel.offset_left = 72.0
 	_panel.offset_right = -72.0
-	_panel.offset_top = -190.0
+	_panel.offset_top = -238.0
 	_panel.offset_bottom = -24.0
 	_panel.add_theme_stylebox_override("panel", _panel_style())
 	add_child(_panel)
@@ -125,6 +125,10 @@ func _build_dialogue() -> void:
 	_body.bbcode_enabled = true
 	_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_body.add_theme_font_size_override("normal_font_size", 14)
+	# Replies can run past the box. Follow the tail rather than silently
+	# hiding it above the fold — the earlier build clipped the end of every
+	# long answer behind the input field.
+	_body.scroll_following = true
 	box.add_child(_body)
 
 	_input = LineEdit.new()
