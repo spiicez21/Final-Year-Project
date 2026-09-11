@@ -193,11 +193,64 @@ What this buys, in practice:
 ### What memory does *not* do
 
 Context is used **implicitly**, as above. Asking the NPC to **recite** the
-conversation back fails — all four phrasings tested ("Remind me what I said I
-wanted to work on?", "What was my project idea again?", …) got a refusal or a
-non-answer. That is a capability limit of a 1.1B model, not a missing history:
-the turns are demonstrably in the prompt, since the same model uses them to
-answer the next question. Do not demo the NPCs by asking them to recall.
+conversation back mostly fails: 11 of 40 held-out recall questions answered
+across five NPCs. That is a capability limit of a 1.1B model, not a missing
+history: the turns are demonstrably in the prompt, since the same model uses
+them to answer the next question.
+
+### What each NPC remembers about *you* — across sessions
+
+The transcript is gone when the game closes. So alongside it, each NPC keeps a
+few **facts about the player**: name, year, subject, final-year project,
+interests, how they said they felt, where they are from. These are saved to
+`user://npc_memory.json` and survive a restart.
+
+- **Learned from what you say, by rules, not by the model.**
+  `backend/player_memory.py` pulls facts out of your own words with patterns
+  ("I'm Priya", "my name is priya", "project on robotics"). It is cheap,
+  deterministic and unit-tested (`backend/test_player_memory.py`). If a
+  pattern misses something, the NPC just doesn't remember it. That is a safer
+  failure than remembering something you never said. Questions *about* the
+  NPC ("are you interested in AI?") teach it nothing about you.
+- **Per NPC.** Tell Adeyemi your name and Halvorsen still has to ask. An NPC
+  knowing something it was never told would be a leak, the same failure KBD
+  measures for world facts.
+- **Visible.** The metrics panel has a **REMEMBERS YOU** section, and anything
+  learned from your latest line is marked `new`.
+- **Resettable, for testing.** Type these into the chat box instead of dialogue:
+  `/memory` (what this NPC knows), `/forget` (this NPC forgets you),
+  `/forget all`. Or launch with `CampusNPC.exe -- --forget`. The JSON file can
+  also be edited by hand to set up a test from a known state.
+
+**Measured** (`evaluation/run_player_memory.py`: 5 NPCs × 8 held-out recall
+questions, written before any results were seen):
+
+| Scenario | Transcript only | + player memory |
+|---|---|---|
+| Same visit (intro still in the transcript) | 11/40 | 13/40 |
+| **Returning player** (new session) | **0/40** | **18/40** |
+| NPC never told: knows your name anyway | — | 0/8 |
+
+Within one visit, memory adds almost nothing. The payoff is persistence: a
+returning player goes from never recalled to recalled about half the time.
+Recall depends heavily on the adapter. The police officer recalls a returning
+player 7/8 times, while the executive (trained hardest to refuse) manages 0/8.
+Some hits also embellish ("a project called 'Robotics for Everyone'"). Memory
+never showed up in answers to unrelated questions, and no memory-conditioned
+reply leaked a knowledge-base fact.
+
+One finding shaped the design. *Where* the memory goes in the prompt mattered
+more than *what* it says. Stated in the system prompt alone, it scored 11/40
+on the tuning questions, *below* no memory at all (13/40). Demonstrated before
+the transcript, 14/40. The same demonstration placed immediately before your
+question scored 21/40. The server therefore puts it last.
+
+Check it end to end, across a real restart (model server running):
+
+```
+set MEMORY_PHASE=teach  & godot --path . --script res://tools/npc_memory_check.gd
+set MEMORY_PHASE=recall & godot --path . --script res://tools/npc_memory_check.gd
+```
 
 ## How the personas are built — and why it is done this way
 
@@ -342,6 +395,7 @@ Movement is WASD (or arrows), **Shift** to sprint, **Space** to jump.
 | `PDM v2 drift` | Domain-agnostic persona drift (RQ3). Lower = more in-character. |
 | `KBD` | Knowledge Boundary Drift (C1) — the fraction of factual references falling outside this NPC's visibility set. |
 | `leaked facts` | `knowledge_base.json` ids this NPC should not have known. |
+| `REMEMBERS YOU` | What this NPC has learned about you (see *Memory*). `new` marks facts from your last line. |
 
 ### What the persona layer costs in latency
 
@@ -381,6 +435,8 @@ switching persona swaps a whole model handle. It is not the framework's
 | `npc_actor.gd` | One NPC: billboard sprite, name plates, interaction trigger, persona fields, positional voice playback, and that NPC's conversation memory. |
 | `npc_client.gd` | HTTP client for `/archetypes`, `/chat` and `/speak`. |
 | `npc_dialogue_hud.gd` | Dialogue box and metrics panel. |
+| `player_memory_store.gd` | Per-NPC facts about the player, saved to `user://npc_memory.json`. |
+| `../../tools/npc_memory_check.gd` | Two-phase check that memory is learned, kept per NPC, and survives a restart. |
 | `../../tools/npc_smoke_test.gd` | Headless check that the game and server still agree on the wire format. |
 | `../../tools/npc_persona_check.gd` | Holds a real multi-turn conversation with one NPC and prints every reply. Use it after editing a persona. |
 

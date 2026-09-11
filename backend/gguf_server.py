@@ -56,6 +56,7 @@ from pdm_v2 import build_archetype_lexicons, build_reference_features, single_tu
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tts import VoicePool, style_for
+import player_memory
 
 DATASET_PATH = REPO_ROOT / "data" / "processed" / "modern_npc_dataset.json"
 GGUF_MODELS_DIR = REPO_ROOT / "training" / "gguf_models"
@@ -96,7 +97,7 @@ SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a modern city. Respond in a nat
 # mechanism.
 PERSONA_TEMPLATE = (
     "You are {name}, a {archetype} — {occupation}. You are at {situation}.{background}{others}"
-    "{facts} "
+    "{facts}{memory} "
     "Reply in one or two short spoken sentences. Never break character."
 )
 
@@ -114,6 +115,12 @@ OTHERS_CLAUSE = " Also here today: {others}."
 # system message is still "reply in one or two sentences", which is the part
 # the model most needs to keep hold of.
 FACTS_CLAUSE = "\nThings you know:\n{facts}\n"
+
+# What this NPC has learned about the player (see player_memory.py). Kept
+# apart from FACTS_CLAUSE so the two can be ablated separately, and phrased
+# about "the student you are talking to" so the model does not attribute the
+# player's interests to itself.
+MEMORY_CLAUSE = "\nWhat you remember about the student you are talking to: {memory}\n"
 
 ## Why the persona is taught by example rather than by instruction.
 ##
@@ -258,8 +265,13 @@ def _select_history(history: list) -> list:
     return history[:2] + history[-(MAX_HISTORY_TURNS - 2):]
 
 
-def _build_messages(req: "ChatRequest") -> list:
-    """Eval-identical prompt by default; in-character prompt with a persona."""
+def _build_messages(req: "ChatRequest", memory: dict | None = None) -> list:
+    """Eval-identical prompt by default; in-character prompt with a persona.
+
+    `memory` is the player memory with this message's facts already merged in,
+    so an introduction is usable in the reply to that same introduction.
+    """
+    memory = memory or {}
     if not req.name:
         messages = [{"role": "system",
                      "content": SYSTEM_TEMPLATE.format(archetype=req.archetype)}]
@@ -279,6 +291,7 @@ def _build_messages(req: "ChatRequest") -> list:
         # inventing an answer or dead-ending the player.
         others=OTHERS_CLAUSE.format(others=req.others.strip()) if req.others else "",
         facts=FACTS_CLAUSE.format(facts=req.facts.strip()) if req.facts else "",
+        memory=MEMORY_CLAUSE.format(memory=player_memory.render(memory)) if memory else "",
     )
     messages = [{"role": "system", "content": system}]
     messages += _priming_turns(
@@ -297,6 +310,12 @@ def _build_messages(req: "ChatRequest") -> list:
     for turn in _select_history(req.history):
         if turn.role in ("user", "assistant"):
             messages.append({"role": turn.role, "content": turn.content})
+    # Memory is demonstrated *after* the history, immediately before the
+    # question. Placement mattered more than content in the ablation
+    # (evaluation/run_player_memory.py, dev probes, 5 NPCs): stating the memory in the
+    # system prompt alone 11/40, demo before the history 14/40, the same demo
+    # here 21/40. On a 1.1B model the most recent turns win.
+    messages += player_memory.demonstration(memory)
     messages.append({"role": "user", "content": req.message})
     return messages
 
@@ -410,6 +429,10 @@ class ChatRequest(BaseModel):
     # the same shape unlocks the rest.
     fact_demos: list[ChatTurn] = []
     history: list[ChatTurn] = []
+    # What this NPC already knows about the player, as player_memory slots.
+    # Owned by the game (one per NPC, persisted there) so the server stays
+    # stateless and each NPC only knows what it was told.
+    player_memory: dict = {}
 
 
 class ChatResponse(BaseModel):
@@ -420,6 +443,8 @@ class ChatResponse(BaseModel):
     drift_score: float | None = None  # PDM v2, lower = more in-persona
     kbd: float | None = None          # C1: factual refs outside the visibility set
     leaked_fact_ids: list[str] = []  # knowledge_base.json ids, not fact text
+    memory_updates: dict = {}         # what this message taught (empty = nothing)
+    player_memory: dict = {}          # request memory with the updates merged in
 
 
 @app.on_event("startup")
@@ -527,7 +552,11 @@ def chat(req: ChatRequest):
     except FileNotFoundError as exc:
         raise HTTPException(status_code=503, detail=str(exc))
 
-    messages = _build_messages(req)
+    # Only in-character requests learn: the eval path must stay identical to
+    # the reported setup.
+    updates = player_memory.extract(req.message) if req.name else {}
+    memory = player_memory.merge(req.player_memory, updates) if req.name else {}
+    messages = _build_messages(req, memory)
 
     gen_start = time.perf_counter()
     result = llm.create_chat_completion(messages=messages, max_tokens=req.max_tokens,
@@ -547,4 +576,6 @@ def chat(req: ChatRequest):
         drift_score=drift,
         kbd=kbd_result.get("kbd"),
         leaked_fact_ids=[str(f) for f in kbd_result.get("violations", [])],
+        memory_updates=updates,
+        player_memory=memory,
     )

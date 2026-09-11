@@ -105,6 +105,9 @@ var _awaiting := false
 ## would otherwise fill the output with the same warning every turn.
 var _voice_warning_shown := false
 
+## What each NPC has learned about the player; persisted across sessions.
+var _memory := PlayerMemoryStore.new()
+
 
 func _ready() -> void:
 	_player = get_node_or_null(player_path)
@@ -217,6 +220,7 @@ func _open(npc: NpcActor) -> void:
 	_active = npc
 	npc.set_prompt_visible(false)
 	_hud.open_with(npc.display_name, npc.archetype, npc.tint, npc.role_label_text, npc.tint)
+	_hud.show_memory(_memory.get_for(npc.display_name))
 	_set_player_active(false)
 
 
@@ -244,6 +248,9 @@ func _set_player_active(active: bool) -> void:
 
 func _on_message_submitted(text: String) -> void:
 	if _awaiting or _active == null:
+		return
+	if text.begins_with("/"):
+		_run_command(_active, text)
 		return
 	_awaiting = true
 	_hud.show_pending(text)
@@ -282,11 +289,45 @@ func _persona_for(npc: NpcActor) -> Dictionary:
 		"fact_demos": CampusFacts.demos_for(npc.display_name),
 		"others": _others_at_event(npc),
 		"max_tokens": REPLY_TOKENS,
+		"player_memory": _memory.get_for(npc.display_name),
 	}
+
+
+## Testing commands, typed into the chat box instead of a line of dialogue.
+## They exist so a personalisation test can be repeated from a known state
+## without quitting the game or hand-editing the save file.
+##   /forget       this NPC forgets you (memory and conversation)
+##   /forget all   everyone forgets you
+##   /memory       show what this NPC remembers
+func _run_command(npc: NpcActor, text: String) -> void:
+	var command := text.strip_edges().to_lower()
+	match command:
+		"/forget":
+			_memory.forget(npc.display_name)
+			npc.history.clear()
+			_hud.show_note(text, "%s no longer remembers you." % npc.display_name)
+		"/forget all":
+			_memory.forget_all()
+			for other in _npcs:
+				other.history.clear()
+			_hud.show_note(text, "Nobody remembers you now.")
+		"/memory":
+			var memory := _memory.get_for(npc.display_name)
+			_hud.show_note(text, JSON.stringify(memory) if not memory.is_empty()
+				else "%s knows nothing about you yet." % npc.display_name)
+		_:
+			_hud.show_note(text, "Commands: /memory, /forget, /forget all")
+	_hud.show_memory(_memory.get_for(npc.display_name))
 
 
 func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	_awaiting = false
+
+	# Learned before the walked-away check below: the NPC heard what the player
+	# said even if the player left before the answer came back.
+	var updates: Dictionary = reply.get("memory_updates", {})
+	if not reply.has("error") and not updates.is_empty():
+		_memory.set_for(npc.display_name, reply.get("player_memory", {}))
 
 	# The player may have walked away, or opened a different NPC, while this
 	# was in flight. Showing the reply now would put one NPC's line in
@@ -302,6 +343,7 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	npc.remember(message, text)
 	_hud.show_reply(message, text)
 	_hud.update_metrics(reply)
+	_hud.show_memory(_memory.get_for(npc.display_name), updates)
 	# Fire and forget. The line is already on screen; speech catches up a few
 	# hundred milliseconds later and must never hold the subtitle back.
 	if voice_enabled:

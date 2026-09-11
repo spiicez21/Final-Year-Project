@@ -46,6 +46,13 @@ var _body: RichTextLabel
 var _input: LineEdit
 var _status: Label
 var _metrics := {}
+var _memory: RichTextLabel
+
+## Display order and captions for player_memory slots (backend/player_memory.py).
+const MEMORY_ROWS := [
+	["name", "name"], ["year", "year"], ["studies", "studies"], ["from", "from"],
+	["project", "project"], ["interests", "into"], ["feeling", "felt"],
+]
 
 # "…thinking" animates rather than sitting still, so a slow first turn reads as
 # working rather than as frozen.
@@ -231,6 +238,28 @@ func _build_metrics() -> void:
 		box.add_child(line)
 		_metrics[row[0]] = value
 	reset_metrics()
+
+	# What this NPC has learned about the player. In the metrics column rather
+	# than the dialogue box because it is the same kind of thing: state the
+	# model is conditioned on, shown so a tester can see *why* an NPC said
+	# "Priya" rather than taking it on faith.
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 4)
+	box.add_child(spacer)
+	var heading := _label("REMEMBERS YOU", 10, TEXT_MUTED)
+	heading.tooltip_text = ("Facts this NPC picked up from what you told it, and only\n"
+		+ "this NPC. Saved between sessions. Type /forget to reset.")
+	heading.mouse_filter = Control.MOUSE_FILTER_STOP
+	box.add_child(heading)
+	_memory = RichTextLabel.new()
+	_memory.bbcode_enabled = true
+	_memory.fit_content = true
+	_memory.scroll_active = false
+	_memory.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_memory.add_theme_font_size_override("normal_font_size", 12)
+	_memory.add_theme_color_override("default_color", TEXT)
+	box.add_child(_memory)
+	show_memory({})
 
 
 # --- dialogue --------------------------------------------------------------
@@ -422,6 +451,39 @@ func show_error(message: String, error: String) -> void:
 	_input.grab_focus()
 	_said.text = "You:  %s" % message
 	_body.text = "[color=#ff8585]%s[/color]" % error
+
+
+## A system line in the reply area (command results), styled apart from
+## anything an NPC says so it is never mistaken for dialogue.
+func show_note(message: String, note: String) -> void:
+	_pending = false
+	_input.editable = true
+	_input.text = ""
+	_input.grab_focus()
+	_said.text = "You:  %s" % message
+	_body.text = "[color=#8b93a1][i]%s[/i][/color]" % note.replace("[", "[lb]")
+
+
+## `updates` are the slots learned from the latest line; they are marked so
+## the moment of learning is visible, which is most of what a tester wants
+## to check.
+func show_memory(memory: Dictionary, updates: Dictionary = {}) -> void:
+	if _memory == null:
+		return
+	if memory.is_empty():
+		_memory.text = "[color=#8e96a3]nothing yet[/color]"
+		return
+	var lines: Array[String] = []
+	for row in MEMORY_ROWS:
+		if not memory.has(row[0]):
+			continue
+		var value = memory[row[0]]
+		# Values are the player's own words, so "[" is escaped rather than
+		# trusted as markup.
+		var shown := (", ".join(value) if value is Array else str(value)).replace("[", "[lb]")
+		var fresh := "  [color=#85e8a1]new[/color]" if updates.has(row[0]) else ""
+		lines.append("[color=#bdc6d8]%s[/color]  %s%s" % [row[1], shown, fresh])
+	_memory.text = "\n".join(lines)
 
 
 func reset_metrics() -> void:
