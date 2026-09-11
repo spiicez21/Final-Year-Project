@@ -82,6 +82,95 @@ than adding more prompt:
 Final: **11 of 11**, at a cost of **+55 ms** per warm turn (median 333 ms with
 facts vs 278 ms without).
 
+## Voices
+
+Each NPC speaks its replies aloud in its own voice, synthesised locally by
+[Piper](https://github.com/rhasspy/piper) (ONNX, CPU). Five distinct speakers,
+one per NPC, assigned in `VOICE_BY_NPC` in `backend/tts.py`.
+
+Fetch the models once — they are ~63 MB each, gitignored, and not
+pip-installable:
+
+```bash
+.venv/Scripts/python.exe backend/fetch_voices.py
+```
+
+Use `backend/fetch_voices.py` rather than Piper's own downloader: Piper's does
+not verify that the file it wrote is the size the index advertises, and on a
+slow link that fails silently. We ended up with a 6.6 MB file where 63.1 MB was
+expected, and the only symptom was `InvalidProtobuf: Protobuf parsing failed`
+at load time several steps later. Ours checks the size and retries.
+
+Set `voice_enabled = false` on the `NpcDirector` node to run silent. Speech is
+also entirely optional at runtime: with no voices on disk the server reports
+`speech: false` on `/health`, `/speak` returns 503, and the game logs one
+warning and carries on with text only.
+
+### Why speech is a second request, not part of `/chat`
+
+`/chat` returns text; the game then calls `/speak`. Bundling them would hold
+the subtitle back until synthesis finished and push every spoken line past the
+project's 500 ms target. Split, the line appears at generation latency and the
+voice follows:
+
+| Stage | Time |
+|---|---|
+| Text on screen | 557 ms (generation) |
+| Voice starts | 648 ms (+91 ms synthesis) |
+| Audio length | 2810 ms |
+
+Report those two separately. Do not add them together and call the sum text
+latency — the RQ4 number is unchanged by speech.
+
+Synthesis is far cheaper than playback: median **191 ms of compute for 4841 ms
+of audio**, a real-time factor of **0.039**. Nothing here needs streaming at
+NPC line lengths.
+
+Two costs worth knowing. A voice takes ~1.3 s to load and its first synthesis
+costs ~2 s of ONNX warm-up against a ~190 ms steady state, so the server loads
+and warms every voice at startup — which is why boot now takes ~8 s. And audio
+is returned as raw 16-bit mono PCM rather than WAV, because Godot builds an
+`AudioStreamWAV` straight from samples and a header would only be parsed and
+discarded.
+
+Playback is positional (`AudioStreamPlayer3D` on the NPC), so a voice comes
+from the character rather than from the HUD, and it stops when you leave the
+conversation.
+
+### Pauses and tone
+
+Out of the box Piper made four specific mistakes on the lines these NPCs
+produce, all found by probing rather than by ear:
+
+| Input | What Piper did |
+|---|---|
+| `Prof. Adeyemi` | Two sentences — "prof." *pause* "Adeyemi" — the stop after the abbreviation ended the sentence mid-name |
+| `Ms. Okafor` | "M. S." *pause* "Okafor" |
+| `4pm... Ms. Okafor` | No pause at the ellipsis at all; the next sentence glued on |
+| `CS2011` | Read as a year: "C S two thousand and eleven" |
+
+`backend/tts.py` now normalises text before synthesis (`Professor`, `Miz`,
+`C S 20 11`, `C S 10 oh 2`) and speaks one sentence at a time, inserting a
+pause chosen by how the sentence ended: longer after a question than a
+statement, longest on a trailing-off ellipsis. The on-screen line keeps
+reading "Prof." and "CS2011"; only the audio is rewritten. `/speak` returns
+the rewritten text as `spoken_text`, so a mispronunciation can be traced to
+the text rather than guessed at.
+
+Sentence gaps went from **115–290 ms** (Piper's default, which sounds
+rushed) to **~300–670 ms**, and each NPC has its own `SpeechStyle` in
+`STYLE_BY_NPC` — pace, pitch liveliness, rhythm variation and pause length.
+Halvorsen is the slowest with the longest pauses; Nadia is brisk. These are
+tuned by ear against each character, not measured against anything, so
+change them freely.
+
+One thing that looked equivalent and was not: the first version refused to
+split a sentence after any digit, to protect decimals like `3.5`. That
+silently removed the pause after every sentence ending in a number —
+"I earn about 52,000. I love it." ran together — and pay and course-code
+answers end in numbers constantly. Only a full stop *followed* by a digit is
+now protected.
+
 ## Memory
 
 Each NPC keeps its own conversation memory for the session. Walking away and
@@ -206,8 +295,19 @@ To launch the built game with its server in one step:
 tools\run_demo.bat
 ```
 
-That starts `backend/gguf_server.py`, waits for `/health` to answer, then
-launches the exe.
+That is the one-step way to run the demo with voices. In order, it:
+
+1. downloads the NPC voices (~315 MB) if `backend/voices/` has none;
+2. **rebuilds the exe if it is older than any script in `Systems/NPC/`**;
+3. starts `backend/gguf_server.py` and waits for `/health` (about 10 s, since
+   startup loads and warms every voice);
+4. prints `Speech: ON (5 voices)`, or says plainly that speech is off;
+5. launches the game.
+
+Step 2 exists because this bit once: speech was added to the game code but
+the exe was not re-exported, so the demo launched a build that never asked
+for audio while the server stood ready to provide it. Nothing looked broken;
+the NPCs were simply mute.
 
 ### What is NOT in the .exe
 
@@ -278,8 +378,8 @@ switching persona swaps a whole model handle. It is not the framework's
 | File | Role |
 |---|---|
 | `npc_director.gd` | Spawns the NPCs, tracks which one is in range, runs the conversation loop. The only node you place in a scene. |
-| `npc_actor.gd` | One NPC: billboard sprite, name plates, interaction trigger, persona fields and that NPC's conversation memory. |
-| `npc_client.gd` | HTTP client for `/archetypes` and `/chat`. |
+| `npc_actor.gd` | One NPC: billboard sprite, name plates, interaction trigger, persona fields, positional voice playback, and that NPC's conversation memory. |
+| `npc_client.gd` | HTTP client for `/archetypes`, `/chat` and `/speak`. |
 | `npc_dialogue_hud.gd` | Dialogue box and metrics panel. |
 | `../../tools/npc_smoke_test.gd` | Headless check that the game and server still agree on the wire format. |
 | `../../tools/npc_persona_check.gd` | Holds a real multi-turn conversation with one NPC and prints every reply. Use it after editing a persona. |

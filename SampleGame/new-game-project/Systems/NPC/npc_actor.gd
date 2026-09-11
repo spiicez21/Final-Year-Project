@@ -43,6 +43,7 @@ var history: Array = []
 const MAX_HISTORY := 16
 
 var _prompt: Label3D
+var _speaker: AudioStreamPlayer3D
 
 
 static func create(entry: Dictionary) -> NpcActor:
@@ -103,6 +104,34 @@ func _ready() -> void:
 	_prompt = _make_label("[E] talk", 0.16, 1.84, Color(1.0, 0.86, 0.4))
 	_prompt.visible = false
 	add_child(_prompt)
+
+	# Positional, so a voice comes from the character rather than from the HUD.
+	# Attenuation is deliberately gentle: this is a conversation you are stood
+	# in front of, not a sound effect across the room.
+	_speaker = AudioStreamPlayer3D.new()
+	_speaker.position = Vector3(0.0, 1.6, 0.0)
+	_speaker.unit_size = 6.0
+	_speaker.max_distance = 25.0
+	add_child(_speaker)
+
+
+## Plays one synthesised line. `pcm` is raw signed 16-bit mono, which is what
+## backend/tts.py returns — no WAV header to parse.
+func play_voice(pcm: PackedByteArray, sample_rate: int) -> void:
+	if _speaker == null or pcm.is_empty():
+		return
+	var stream := AudioStreamWAV.new()
+	stream.format = AudioStreamWAV.FORMAT_16_BITS
+	stream.mix_rate = sample_rate
+	stream.stereo = false
+	stream.data = pcm
+	_speaker.stream = stream
+	_speaker.play()
+
+
+func stop_voice() -> void:
+	if _speaker and _speaker.playing:
+		_speaker.stop()
 
 
 ## `size` is the cap height of the text in world units (metres), so a 0.22

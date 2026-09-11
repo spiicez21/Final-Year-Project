@@ -35,6 +35,7 @@ Usage:
     .venv/Scripts/python.exe -m uvicorn backend.gguf_server:app --port 8000
 """
 
+import base64
 import json
 import os
 import re
@@ -52,6 +53,9 @@ sys.path.insert(0, str(REPO_ROOT / "evaluation"))
 
 from kbd_scorer import compute_kbd, load_knowledge_base
 from pdm_v2 import build_archetype_lexicons, build_reference_features, single_turn_drift_v2
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from tts import VoicePool, style_for
 
 DATASET_PATH = REPO_ROOT / "data" / "processed" / "modern_npc_dataset.json"
 GGUF_MODELS_DIR = REPO_ROOT / "training" / "gguf_models"
@@ -369,6 +373,7 @@ app.add_middleware(
 )
 
 pool = ModelPool()
+voices = VoicePool()
 KNOWLEDGE_ITEMS = []
 LEXICONS = {}
 REFERENCE_FEATURES = {}
@@ -430,12 +435,20 @@ def _startup():
     available = [a for a, g in ARCHETYPE_GGUF.items() if (GGUF_MODELS_DIR / g).exists()]
     print(f"[startup] scoring references built for {len(REFERENCE_FEATURES)} archetypes")
     print(f"[startup] GGUF present for {len(available)}/{len(ARCHETYPE_GGUF)}: {available}")
+    if voices.available and voices.installed():
+        # First synthesis on a fresh ONNX session costs ~2s against a ~170ms
+        # steady state, so pay it here instead of on a player's first line.
+        voices.warm()
+        print(f"[startup] voices warmed: {voices.installed()}")
+    else:
+        print("[startup] speech disabled (no piper or no voices on disk)")
 
 
 @app.get("/health")
 def health():
     return {"status": "ok", "resident_models": pool.resident(),
-            "max_resident": MAX_RESIDENT_MODELS}
+            "max_resident": MAX_RESIDENT_MODELS,
+            "speech": voices.available, "voices": voices.installed()}
 
 
 @app.get("/archetypes")
@@ -445,6 +458,62 @@ def archetypes():
     NPC in the world that errors the moment a player talks to it."""
     return {"available": [a for a, g in ARCHETYPE_GGUF.items()
                           if (GGUF_MODELS_DIR / g).exists()]}
+
+
+class SpeakRequest(BaseModel):
+    text: str
+    npc_name: str | None = None   # picks that NPC's assigned voice
+    voice: str | None = None      # explicit override, wins over npc_name
+
+
+class SpeakResponse(BaseModel):
+    audio_b64: str      # raw 16-bit mono PCM, base64
+    sample_rate: int
+    channels: int
+    synth_ms: float
+    duration_ms: float
+    voice: str
+    # What was actually fed to the voice after normalisation ("Prof." ->
+    # "Professor", "CS2011" -> "C S 20 11"). Returned so a mispronunciation
+    # can be traced to the text rather than guessed at.
+    spoken_text: str = ""
+
+
+@app.post("/speak", response_model=SpeakResponse)
+def speak(req: SpeakRequest):
+    """Synthesises one NPC line.
+
+    Deliberately separate from /chat so the subtitle can be shown at
+    generation latency and the audio can arrive after it -- see the note at
+    the top of tts.py. Callers that want silence just never call this.
+    """
+    if not voices.available:
+        raise HTTPException(status_code=503,
+                            detail="speech unavailable: piper not installed or no voices "
+                                   "on disk (run backend/fetch_voices.py)")
+    text = req.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="text is empty")
+
+    name = voices.voice_for(req.npc_name, req.voice)
+    if name is None:
+        raise HTTPException(status_code=503,
+                            detail="no voice models installed; run backend/fetch_voices.py")
+    try:
+        # Each NPC has its own pace, liveliness and pause length (tts.STYLE_BY_NPC).
+        out = voices.synthesize(text, name, style_for(req.npc_name))
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+
+    return SpeakResponse(
+        audio_b64=base64.b64encode(out["pcm"]).decode("ascii"),
+        sample_rate=out["sample_rate"],
+        channels=out["channels"],
+        synth_ms=out["synth_ms"],
+        duration_ms=out["duration_ms"],
+        voice=out["voice"],
+        spoken_text=out.get("spoken_text", ""),
+    )
 
 
 @app.post("/chat", response_model=ChatResponse)

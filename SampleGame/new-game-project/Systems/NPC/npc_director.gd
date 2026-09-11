@@ -22,6 +22,10 @@ class_name NpcDirector
 ## per turn than the evaluation configuration.
 const REPLY_TOKENS := 64
 
+## Speak replies aloud. Turn off to run silent — everything else is unaffected,
+## and the server is never asked to synthesise.
+@export var voice_enabled: bool = true
+
 ## The scenario every NPC is framed with. Sent to the server as `situation`.
 const EVENT := "the Computer Science department open day"
 
@@ -96,6 +100,10 @@ var _npcs: Array[NpcActor] = []
 var _active: NpcActor = null
 var _nearest: NpcActor = null
 var _awaiting := false
+
+## Speech failures are logged once, not once per line — a missing voice model
+## would otherwise fill the output with the same warning every turn.
+var _voice_warning_shown := false
 
 
 func _ready() -> void:
@@ -208,7 +216,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _open(npc: NpcActor) -> void:
 	_active = npc
 	npc.set_prompt_visible(false)
-	_hud.open_with(npc.display_name, npc.archetype, npc.tint)
+	_hud.open_with(npc.display_name, npc.archetype, npc.tint, npc.role_label_text, npc.tint)
 	_set_player_active(false)
 
 
@@ -216,6 +224,8 @@ func _close() -> void:
 	# Deliberately allowed mid-request: the pending chat() call still resolves
 	# and _deliver() drops the result because _active is null. Blocking Esc
 	# until a slow reply lands would feel like a hang.
+	if _active:
+		_active.stop_voice()
 	_active = null
 	_awaiting = false
 	_hud.set_dialogue_visible(false)
@@ -292,6 +302,30 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	npc.remember(message, text)
 	_hud.show_reply(message, text)
 	_hud.update_metrics(reply)
+	# Fire and forget. The line is already on screen; speech catches up a few
+	# hundred milliseconds later and must never hold the subtitle back.
+	if voice_enabled:
+		_speak(npc, text)
+
+
+## Synthesises and plays one reply.
+##
+## Deliberately tolerant: if the server has no voices installed, or synthesis
+## fails, the NPC simply does not speak. Speech is an enhancement, not a
+## dependency, so nothing here is allowed to interrupt the conversation.
+func _speak(npc: NpcActor, text: String) -> void:
+	var audio: Dictionary = await _client.speak(text, npc.display_name)
+	if audio.has("error"):
+		if not _voice_warning_shown:
+			_voice_warning_shown = true
+			push_warning("NpcDirector: speech unavailable (%s). Continuing silently."
+				% audio["error"])
+		return
+	# The player may have walked off or started a new line while this was being
+	# synthesised; do not make an NPC speak over its own next answer.
+	if _active != npc:
+		return
+	npc.play_voice(audio["pcm"], audio["sample_rate"])
 
 
 func _on_connection_changed(online: bool, detail: String) -> void:

@@ -34,3 +34,6 @@ wandb/
 
 #godot gamefiles
 medivel-fpy
+
+# Piper voice models (5 x 63MB, fetched by backend/fetch_voices.py)
+backend/voices/

@@ -121,3 +121,53 @@ func chat(archetype: String, message: String, persona: Dictionary = {},
 
 	_set_online(true, base_url)
 	return parsed
+
+
+## Synthesises one line of NPC speech.
+##
+## Separate from chat() on purpose: the server returns text at generation
+## latency and audio after it, so the dialogue box can show the line while the
+## voice is still being made. See the note at the top of backend/tts.py.
+##
+## Returns {"pcm": PackedByteArray, "sample_rate": int, ...} on success, or
+## {"error": String}. Speech failing is never fatal — the caller shows the
+## line silently.
+func speak(text: String, npc_name: String, voice: String = "") -> Dictionary:
+	var http := _make_request(REQUEST_TIMEOUT)
+	var body := {"text": text, "npc_name": npc_name}
+	if not voice.is_empty():
+		body["voice"] = voice
+
+	var err := http.request(
+		base_url + "/speak",
+		["Content-Type: application/json"],
+		HTTPClient.METHOD_POST,
+		JSON.stringify(body)
+	)
+	if err != OK:
+		http.queue_free()
+		return {"error": "could not start speech request"}
+
+	var result: Array = await http.request_completed
+	http.queue_free()
+
+	if result[0] != HTTPRequest.RESULT_SUCCESS:
+		return {"error": "no response from speech endpoint"}
+
+	var parsed = JSON.parse_string(result[3].get_string_from_utf8())
+	if result[1] != 200:
+		var detail := "HTTP %d" % result[1]
+		if parsed is Dictionary and parsed.has("detail"):
+			detail = str(parsed["detail"])
+		return {"error": detail}
+	if not (parsed is Dictionary) or not parsed.has("audio_b64"):
+		return {"error": "malformed speech response"}
+
+	return {
+		"pcm": Marshalls.base64_to_raw(parsed["audio_b64"]),
+		"sample_rate": int(parsed.get("sample_rate", 22050)),
+		"channels": int(parsed.get("channels", 1)),
+		"synth_ms": float(parsed.get("synth_ms", 0.0)),
+		"duration_ms": float(parsed.get("duration_ms", 0.0)),
+		"voice": str(parsed.get("voice", "")),
+	}

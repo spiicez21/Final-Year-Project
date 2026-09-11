@@ -52,3 +52,13 @@ llama-cpp-python==0.3.35
 bert-score==0.3.13
 matplotlib==3.11.1
 psutil==7.2.2
+
+# NPC speech (backend/tts.py). Piper is ONNX-based neural TTS: ~63 MB per
+# voice, and on this machine it synthesises at a real-time factor of ~0.04,
+# i.e. ~190 ms of compute per ~4.8 s of speech, so it comfortably keeps ahead
+# of playback on CPU. onnxruntime comes in as a dependency.
+#
+# Voice models are NOT pip-installable and are NOT in git (5 x 63 MB).
+# Fetch them once with:
+#   .venv/Scripts/python.exe backend/fetch_voices.py
+piper-tts==1.8.0
