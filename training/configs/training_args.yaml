@@ -20,3 +20,14 @@ logging_steps: 10
 # at step 63. This field is kept for reference/spec-alignment but is
 # overridden in code.
 save_strategy: "epoch"
+
+# --- added 2026-09-10: evaluation and schedule ------------------------------
+# The original 8 adapters were trained without these (no held-out set, linear
+# decay, no warmup, loss logged every 10 of 24 steps). They only take effect
+# when a held-out split exists -- see training/make_split.py -- so rerunning
+# with --no-holdout reproduces the original configuration.
+warmup_ratio: 0.1
+lr_scheduler_type: "cosine"
+weight_decay: 0.0
+eval_steps: 2
+logging_steps_eval: 2
