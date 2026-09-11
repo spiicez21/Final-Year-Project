@@ -4,7 +4,8 @@
 %% DRAFT. Every number in this file is traceable to a file in the repository;
 %% see paper/NUMBERS.md for the mapping. Nothing here is illustrative or
 %% placeholder data. Sections marked [PENDING] depend on experiments that have
-%% not been run yet (see Section IX) and must not be submitted as written.
+%% not been run yet (see the Pending Work section) and must not be submitted
+%% as written.
 %%
 %% Build:  pdflatex main && bibtex main && pdflatex main && pdflatex main
 %% ---------------------------------------------------------------------------
@@ -80,10 +81,11 @@ the failure players actually notice, which is a character knowing something it
 has no business knowing. We call this \emph{epistemic} persona drift, and it is
 the subject of this paper.
 
-Measuring it is awkward for the usual reason: the standard tool is a large
-judge model scoring outputs on a Likert scale~\cite{liu2025character,
-andreasen2025fixed}, which is expensive, non-reproducible across judge versions,
-and impossible to run per-turn inside a game loop. We wanted a metric that could
+Measuring it is awkward for the usual reason: the standard tool is a second,
+larger language model acting as judge --- scoring on a Likert
+scale~\cite{liu2025personalized} or marking replies correct or
+incorrect~\cite{braas2025fixed} --- which is expensive, non-reproducible across
+judge versions, and impossible to run per-turn inside a game loop. We wanted a metric that could
 run on the same consumer machine serving the NPC, on every line, without a
 second model in the loop.
 
@@ -110,35 +112,57 @@ Our contributions are:
 
 \section{Related Work}
 
-The closest work to ours is Andreasen and Esterle~\cite{andreasen2025fixed},
-who also build fixed-persona NPCs on TinyLlama-1.1B with LoRA and benchmark
-them on consumer hardware. The difference is what gets swapped. They hold the
-persona fixed in the weights and swap \emph{memory stores}; we swap the persona
-adapter and its visibility set together. They evaluate out-of-scope refusal with
-Openchat-3.6 as a judge and report no drift metric and no multi-turn
-degradation analysis. KBD is intended precisely as the automatic,
-source-attributable replacement for that judge. We also adopt their finding that
-a small curated set beats a larger synthetic one, which is why our dataset is
-in the low thousands rather than the tens of thousands.
+The closest work to ours is Braas and Esterle~\cite{braas2025fixed}, who
+fine-tune small language models --- DistilGPT-2, TinyLlama-1.1B and
+Mistral-7B --- with LoRA to encode NPC personas, and benchmark them on consumer
+hardware. The difference is what gets swapped. They hold the persona fixed in
+the weights and swap runtime \emph{memory modules}; we swap the persona adapter
+and its visibility set together. They judge factual correctness and refusal of
+questions outside a character's knowledge scope with Openchat-3.6 as an
+automated judge, and they evaluate multi-turn \emph{context retention} --- whether
+an NPC recalls a keyword such as the player's name across 30 multi-turn
+interactions. What they do not measure is whether the persona, or the boundary
+of what it knows, degrades across turns. KBD is intended as the automatic,
+source-attributable replacement for their refusal judge. We also adopt their
+finding that a small curated set (about 115 pairs) outperformed a larger
+synthetic one (about 564), which is why our dataset is in the low thousands
+rather than the tens of thousands.
 
-Wang et al.~\cite{wang2025fusion} serve multiple LoRAs and fuse adapter
-parameters for game NPC dialogue, fusing adapters trained for the same function
-across data sources. Their work establishes weight merging as standard, which
-is exactly why we treat $W_{\text{blend}} = \alpha W_A + (1-\alpha) W_B$ as
-given and put the research question on the other side of it: what happens to
-knowledge, not to throughput.
+Liu et al.~\cite{liu2025personalized} target the same boundary we do: their
+protective fine-tuning is designed so that a model ``does not generate content
+beyond the character's cognitive scope'', combined with a dynamic knowledge
+graph and AMR parsing of player input. They score this, among other qualities,
+with GPT-4o on a 7-point Likert scale. The problem is shared; the stance is
+opposite. They mitigate, and depend on a judge model to know whether mitigation
+worked. We measure, without one.
 
-Buakhaw et al.~\cite{buakhaw2025deflanderization} name character drift in NPC
-dialogue and mitigate it with prompting and SFT on Qwen3-14B. They mitigate; we
-measure, at roughly an order of magnitude less compute.
-Nuriyev~\cite{nuriyev2025toolcalling} routes between three LoRA adapters by
-function (tool, persona, direct); we route by archetype and study interpolation
-across epistemic access rather than across function.
-McGrath et al.~\cite{mcgrath2025echoes} demonstrate local 4-bit LoRA RPG
-dialogue with a latency comparison, in a two-page demo with three scenarios and
-LLM-as-judge scoring. Liu et al.~\cite{liu2025character} attack character
-hallucination with knowledge graphs and protective fine-tuning, scored by GPT-4o
-on a 7-point scale --- the judge dependence we are trying to remove.
+Wang et al.~\cite{wang2025fusion} serve several function-specific LoRA
+adapters on one Qwen3-14B base, and use \emph{model fusion} in the sense of
+averaging the weights of LoRA checkpoints saved at successive epochs of a
+single run. Merging LoRA weights is therefore established practice, which is
+why we treat $W_{\text{blend}} = \alpha W_A + (1-\alpha) W_B$ as given. The
+distinction is worth being precise about: averaging checkpoints of one model
+is expected to smooth it, whereas we interpolate between two \emph{different}
+personas and ask what happens to the knowledge each is allowed to have.
+
+Buakhaw et al.~\cite{buakhaw2025deflanderization} address ``flanderization''
+--- a character reduced over time to a single exaggerated trait --- with a
+prompting method and SFT with LoRA on Qwen3-14B, reporting that it mitigates
+character drift over extended dialogue. They mitigate; we measure, with a
+model roughly a thirteenth the size.
+Nuriyev~\cite{nuriyev2025toolcalling} uses three LoRA experts on Qwen3 --- tool
+calling, tool-response interpretation and direct dialogue --- routing by
+function; we route by archetype and study interpolation across epistemic
+access rather than across function.
+McGrath et al.~\cite{mcgrath2025echoes} compare a cloud model, a local 7B model
+and a LoRA-tuned 4-bit local variant in an Unreal Engine 5 demo, across three
+RPG scenarios scored by an LLM judge, focusing on the latency--quality trade-off
+between local and cloud inference.
+
+Information spreading between game characters is also well studied, most
+directly in Park et al.'s generative agents~\cite{park2023generative}. We
+return to this in Section~\ref{sec:generality}: the point there is not that
+our system spreads information, but that KBD can measure a system that does.
 
 \section{Framework}
 
@@ -165,7 +189,7 @@ shopkeeper, bartender, social worker, executive, service worker. The set
 contains 1{,}160 input/output pairs, unevenly distributed by design: police
 officer 325, pharmacist 140, professor 120, and 115 each for the remaining five.
 Sources are persona re-voiced from cleared corpora, principally
-SODA~\cite{hong2024soda}, plus hand-authored refusal and contrastive-confirm
+SODA~\cite{kim2023soda}, plus hand-authored refusal and contrastive-confirm
 examples added after the first round of KBD results showed how badly the
 adapters acquiesced to leading questions.
 
@@ -175,7 +199,7 @@ signature phrases used for detection. Visibility resolution is deliberately a
 set intersection, \texttt{archetype in item["visible\_to"]}, with no hierarchy
 or graph --- the simplest thing that supports the metric.
 
-\section{Metrics}
+\section{Metrics} \label{sec:metrics}
 
 \subsection{Knowledge Boundary Drift}
 
@@ -239,7 +263,7 @@ Yes, and the first thing the metric did was expose a problem in itself. The
 initial calibration flagged 1 of 14 forbidden probes. Manual reading of the 13
 supposedly clean responses found several that plainly confirmed the forbidden
 fact without restating any of its content words. With the probe-aware layer
-described in Section IV, the corrected figure is \textbf{5 of 14 (36\%)}, and
+described in Section~\ref{sec:metrics}, the corrected figure is \textbf{5 of 14 (36\%)}, and
 all 3 control probes correctly stayed unflagged.
 
 The finding underneath the metric matters more than the metric passing. A 1.1B
@@ -268,7 +292,7 @@ bartender      & 1/2 (50\%)  & never \\
 \end{tabular}
 \end{table}
 
-\subsection{RQ2: does the epistemic boundary interpolate?}
+\subsection{RQ2: does the epistemic boundary interpolate?} \label{sec:rq2}
 
 Mostly not. Table~\ref{tab:alpha} gives KBD violation rate on forbidden probes
 across the mixing range for three adapter pairs, 8 probes per cell. Weights are
@@ -326,15 +350,29 @@ not because the conclusion changed --- it strengthened.
 
 \subsection{RQ3: does a domain-agnostic drift metric show signal?}
 
-Yes, consistently. Across all seven archetypes with adapters and probes, the
-adapter scored lower drift than the stock baseline, with a mean gap of 0.0660
-and correct ordering in every case (Table~\ref{tab:pdm}). This is the metric
-doing its job where the original lexicon-specific version saturated at 0.9833
-and separated nothing.
+Yes, but the evidence here is weaker than the table makes it look, for a
+reason stated up front. Across all seven archetypes the adapter scored lower
+drift than the stock baseline, with a mean gap of 0.0660 and correct ordering
+in every case (Table~\ref{tab:pdm}), where the original lexicon-specific metric
+saturated at 0.9833 and separated nothing.
+
+\textbf{The prompts in this comparison are training prompts.} The dataset had
+no held-out split when these adapters were trained, and the evaluation drew
+its test prompts --- and the per-archetype reference features PDM v2 scores
+against --- from the same entries. Each adapter is therefore being compared to
+the stock model on inputs it was trained on, measured against a reference
+built from its own training targets. That inflates the adapter's advantage by
+an amount we cannot bound from these numbers. What survives is narrower: PDM
+v2 \emph{separates} a trained adapter from a stock model where PDM v1 could
+not, which is the property RQ3 asks about. Whether adapters reduce drift on
+unseen inputs is not established by this experiment. A stratified held-out
+split (173 of 1{,}160 entries) now exists for the rerun; see
+Section~\ref{sec:pending}.
 
 \begin{table}[t]
-\caption{PDM v2 drift, stock baseline vs.\ trained adapter. Lower is more in
-character. Ordering is correct for all seven archetypes.}
+\caption{PDM v2 drift, stock baseline vs.\ trained adapter, on
+\emph{training} prompts (see text). Lower is more in character. Ordering is
+correct for all seven archetypes.}
 \label{tab:pdm}
 \centering
 \begin{tabular}{lccc}
@@ -364,9 +402,11 @@ The ordering is correct in all seven cases.}
 \label{fig:pdm}
 \end{figure}
 
-BERTScore~\cite{zhang2020bertscore} against held-out references agrees on
-direction: 0.8530 for the baseline against 0.9049 for the adapters, a gain of
-0.0519.
+BERTScore~\cite{zhang2020bertscore} agrees on direction --- 0.8530 for the
+baseline against 0.9049 for the adapters --- but it carries the same caveat in
+a stronger form: its references are the adapters' own training targets, so a
+higher score partly measures memorisation. We report it for completeness and
+draw no conclusion from it.
 
 \subsection{Trained weights versus prompt injection}
 
@@ -445,6 +485,41 @@ example turns eliminated the failure across 25 probes. We note this because much
 of the persona-stability literature assumes instruction following that a 1.1B
 model does not reliably have.
 
+\section{Beyond Static Roles} \label{sec:generality}
+
+Everything above uses visibility sets that are fixed at design time: a
+pharmacist knows pharmacy facts, and always will. Nothing in KBD requires
+that. The metric asks only whether a referenced fact is in the active
+character's visibility set at the moment it is scored; it is indifferent to
+\emph{why} the fact is or is not there. Any mechanism that partitions
+knowledge between characters, or changes that partition over time, can be
+scored with it unchanged:
+
+\begin{itemize}
+  \item \textbf{Quest and spoiler gating.} A character should not reference a
+        plot development the player has not yet reached. Visibility becomes a
+        function of quest state.
+  \item \textbf{Information diffusion.} When facts spread between characters,
+        as in generative agents~\cite{park2023generative}, a character's
+        visibility set grows as it is told things. KBD then measures whether a
+        fact reaches a character before it should.
+  \item \textbf{Per-player state in multiplayer.} A character should not tell
+        one player what another player did.
+\end{itemize}
+
+The $\alpha$-sweep is arguably already a case of this: blending two adapters
+asks what happens when two visibility sets are merged, and
+Section~\ref{sec:rq2} is the answer for one kind of merge.
+
+We make no empirical claim for these settings here; only the static case is
+measured in this paper. One caveat applies to all of them and should be stated
+before anyone builds on this: in each, visibility would change at runtime by
+changing what goes into the \emph{prompt}, not what is in the weights. That is
+Condition~C's mechanism layered on a Condition~B adapter, and given that
+Condition~C leaked on every probe we ran it on, it is not safe to assume the
+dynamic case inherits the trained boundary of the static one. That is the
+question worth measuring next.
+
 \section{Limitations}
 
 The evaluation is entirely automatic. There is no human study, which is a
@@ -453,8 +528,8 @@ adapters reduce measured drift without claiming players would notice.
 
 Probe counts are small. The per-archetype table rests on 2 forbidden probes per
 archetype and the $\alpha$-sweep on 8 per cell; the sample-size correction
-described in Section VI-B is direct evidence that conclusions at this scale can
-move. Two archetypes, shopkeeper and service worker, have no forbidden probes at
+described in Section~\ref{sec:rq2} is direct evidence that conclusions at this
+scale can move. Two archetypes, shopkeeper and service worker, have no forbidden probes at
 all yet.
 
 The $\alpha$-sweep rerun entangled two changes --- doubled probes and retrained
@@ -465,10 +540,30 @@ KBD detects references by signature phrase plus, where a target fact is known, a
 probe-aware affirm/deny classifier. It will miss paraphrases that share no
 content words with the fact and are not clearly affirmative.
 
+The adapters were trained without a held-out split. Beyond the evaluation
+problem discussed under RQ3, this meant there was no validation loss to stop
+training on, and every archetype was trained for a fixed three epochs. Because
+archetypes range from 115 to 325 examples, a fixed epoch count gives very
+different numbers of optimiser steps. Retraining one archetype on the new
+split shows why that matters: for the police officer, the largest archetype,
+held-out loss reached its minimum (1.7105) at step 34 of 54 and rose to 1.7425
+by the end of training, so the deployed adapter was very likely trained past
+its best point. We have not measured whether this affects KBD.
+
+The KBD, $\alpha$-sweep and Condition~C results are not affected by the
+missing split, because their probes were written separately and are not drawn
+from the training data.
+
 \section{Pending Work} \label{sec:pending}
 
-Two items must be completed before submission, and are marked here so no reader
-mistakes their absence for a result.
+Three items must be completed before submission, and are marked here so no
+reader mistakes their absence for a result.
+
+\textbf{[PENDING] Held-out rerun.} Retrain all eight adapters on the 987-entry
+training split with early stopping on held-out loss, then rerun PDM v2 and
+BERTScore on the 173 held-out entries. The KBD and $\alpha$-sweep results
+should be rerun on the retrained adapters too, so that every number in the
+paper comes from the same set of weights.
 
 \textbf{[PENDING] Second base model.} The generalizability claim in RQ4 requires
 Qwen3-0.6B alongside TinyLlama, including a Base-versus-Instruct ablation, on
@@ -492,18 +587,22 @@ usually inherits the leakier parent's boundary rather than averaging the two;
 and a persona-voice metric watching the same blends registers almost nothing
 while the epistemic boundary collapses underneath it. Against that, trained
 adapters clearly beat prompt-injected facts on the one pair where the comparison
-is cleanest, they improve voice-level drift consistently across seven
-archetypes, and the whole thing now runs inside a playable game inside the
-real-time budget on current consumer hardware.
+is cleanest, PDM v2 separates a trained adapter from the stock model across
+all seven archetypes where its predecessor could not --- though on training
+prompts, pending the held-out rerun --- and the whole thing now runs inside a
+playable game inside the real-time budget on current consumer hardware.
 
 For practitioners the operational message is narrow and, we think, useful: do
 not tune persona blending by listening to it.
 
 \section*{Acknowledgment}
 
-Draft prepared with AI assistance for code, experiment tooling and manuscript
-preparation; all reported measurements were produced by the repository's own
-evaluation scripts and are traceable to committed result files.
+Prepared with AI assistance for code, experiment tooling and manuscript
+drafting. Every reported measurement was produced by the project's own
+evaluation scripts and is traceable to a result file or dated lab-notebook
+entry in the project repository; the mapping from each number to its source is
+kept alongside the manuscript. All cited works were verified against their DOI
+or publisher record.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}

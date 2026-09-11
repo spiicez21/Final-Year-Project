@@ -131,7 +131,7 @@ Schema — archetype, disposition, social class, context, `persona_features[]` (
 
 **Modern city: 960 pairs** in `data/processed/modern_npc_dataset.json` — 600 extracted from SODA (speaker-role matched, CC BY 4.0), a hand-authored police-officer pilot, a 300-entry police top-up, and hand-authored refusal-training + contrastive-confirm examples added while closing the KBD epistemic-boundary gap (see `Docs/TODO.md` Week 6 follow-ups). Provenance recorded per entry. `knowledge_base.json` provides flat archetype visibility sets (set intersection, not a tree/graph) for all 8 archetypes. **Dataset freeze: 6 September 2026** — full sourcing detail in [`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
 
-> **Why not thousands:** Andreasen & Esterle (arXiv:2511.10277) found LoRA fine-tuning on a curated ~115-pair set outperformed a ~564-pair synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a defensible methodological choice, not a compromise.
+> **Why not thousands:** Braas & Esterle (arXiv:2511.10277) found LoRA fine-tuning on a curated ~115-pair set outperformed a ~564-pair synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a defensible methodological choice, not a compromise.
 
 The originally planned **stress-test corpus** extension (planted forbidden facts for KBD) targeted the archived medieval-domain file and is superseded: KBD's actual "planted forbidden fact" probes live in `data/processed/knowledge_base.json` + `kbd_probes.json` + `kbd_alpha_sweep_probes.json` (56 probes, all 8 archetypes covered), built directly for the modern domain instead.
 
@@ -141,7 +141,7 @@ Pipeline scripts, source-dataset licensing, and rejected datasets: [`Docs/DATA_P
 
 ## Related Work
 
-The closest prior work is **Andreasen & Esterle, *Fixed-Persona SLMs with Modular Memory* (arXiv:2511.10277)** — TinyLlama-1.1B + LoRA personas + runtime-swappable modules + consumer-hardware benchmarks. They swap *memory stores* with persona fixed in weights; this project swaps *persona adapters and visibility sets*, adds a judge-free drift metric (KBD), and analyses multi-turn degradation and α-interpolation. This project is positioned as a direct extension of that work rather than a collision with it.
+The closest prior work is **Braas & Esterle, *Fixed-Persona SLMs with Modular Memory* (arXiv:2511.10277)** — TinyLlama-1.1B + LoRA personas + runtime-swappable modules + consumer-hardware benchmarks. They swap *memory stores* with persona fixed in weights; this project swaps *persona adapters and visibility sets*, adds a judge-free drift metric (KBD), and analyses multi-turn degradation and α-interpolation. This project is positioned as a direct extension of that work rather than a collision with it.
 
 Full nine-paper differentiation table (Wang et al. LoRA fusion, Buakhaw et al. *Deflanderization*, Liu/Xie/Jiang, McGrath et al. *Echoes of Others*, Nuriyev, Kim et al. *MART*, Tódová, and one IEEE paper): [`Docs/RELATED_WORK.md`](Docs/RELATED_WORK.md). 8 of 9 source PDFs are archived locally under `Base Papers/`; the IEEE paper (arnumber 11419836) remains inaccessible behind a JS-gated paywall as of 2026-08-15 — still an open item.
 

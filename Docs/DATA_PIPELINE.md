@@ -43,7 +43,7 @@ Eight archetypes: police officer, shopkeeper, professor, bartender, social worke
 
 ### Rationale for the 600-pair target
 
-Andreasen & Esterle (arXiv:2511.10277) found that LoRA fine-tuning on a curated **~115-pair** set outperformed a **~564-pair** synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a **defensible methodological choice, not a compromise** — this is worth a sentence in the paper's dataset section.
+Braas & Esterle (arXiv:2511.10277) found that LoRA fine-tuning on a curated **~115-pair** set outperformed a **~564-pair** synthetic set on factuality, context retention, and fluency, attributing the gap to dataset quality and overfitting. Small and curated is a **defensible methodological choice, not a compromise** — this is worth a sentence in the paper's dataset section.
 
 ## Archived: medieval-fantasy dataset (out of scope, kept on disk)
 

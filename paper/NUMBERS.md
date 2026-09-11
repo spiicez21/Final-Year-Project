@@ -93,6 +93,43 @@ whose raw output files store responses but not scores.
 | Persona-break rate after fix | 0 / 25 probes | same README, regression probe |
 | Break-in hallucination, KBD undefined | `kbd: null`, 0 leaked ids | same README |
 
+## Training and the held-out split (added 2026-09-11)
+
+| Claim | Value | Source |
+|---|---|---|
+| Held-out split | 173 held-out / 987 train, stratified by archetype | `data/processed/modern_split.json`, from `training/make_split.py` (seeded; byte-identical on rerun) |
+| Police officer, held-out loss minimum | 1.7105 at step 34 of 54 | `training/adapters/modern_r16_a32_policeofficer_ho_legacy_mb16/training_summary.json` |
+| Police officer, held-out loss at end of training | 1.7425 | same file, last entry of `eval_loss_curve` |
+| Archetype size range | 115–325 examples | `modern_npc_dataset.json`, counted |
+
+> **Train-set evaluation.** PDM v2 (Table III) and BERTScore were computed on
+> prompts drawn from the adapters' own training data, with PDM v2's reference
+> features built from the same entries. Both are reported in the paper with
+> that caveat stated in the text and the table caption. They must not be
+> quoted elsewhere as generalisation results.
+
+## Citations (verified 2026-09-11)
+
+Every entry in `refs.bib` was resolved against its DOI (`doi-mcp`) or, for the
+INLG demo, Google Scholar and the ACL Anthology (`scholar_mcp`). Claims made
+about each paper in Related Work were then checked against the PDFs in
+`Base Papers/`. Corrections made in that pass:
+
+| Entry | Was | Is |
+|---|---|---|
+| closest prior work | "Andreasen & Esterle" | **Braas** & Esterle |
+| Braas & Esterle, multi-turn | "no multi-turn analysis" | they do evaluate multi-turn *context retention*; not drift |
+| Braas & Esterle, models | "on TinyLlama-1.1B" | DistilGPT-2, TinyLlama-1.1B **and** Mistral-7B |
+| Wang et al., "fusion" | averaging adapters across data sources | averaging LoRA checkpoints across epochs of one run |
+| Nuriyev, experts | tool / persona / direct | tool calling / tool-response interpretation / direct dialogue |
+| Liu et al. | wrong title, wrong first names | *Personalized Non-Player Characters: …*, Xiao Liu, Zhenping Xie, Senlin Jiang |
+| McGrath et al. | invented title, wrong first name | *…Real-Time LLM Dialogue Generation for Immersive NPC Interaction*, James McGrath |
+| Buakhaw, Wang, Nuriyev | wrong first names | Pasin, Kangxu, Mahammad |
+
+Verbatim-overlap check (7-word spans) against all seven source PDFs: two
+shared spans, both legitimate — a quoted phrase from Liu et al. in quotation
+marks with citation, and the names of Nuriyev's three system components.
+
 ## Not in the paper, and why
 
 - **Adapter routing accuracy 47.4% (91/192)** — `evaluation/results/adapter_routing_results.json`.
