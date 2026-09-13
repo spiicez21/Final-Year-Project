@@ -1,0 +1,1359 @@
+{
+ "summary": {
+  "repeat": 14,
+  "loop": 0,
+  "asks_known": 8,
+  "invented": 0,
+  "self_denial": 3,
+  "list": 0,
+  "replies": 100,
+  "memory_slots_ok": 10,
+  "memory_slots_of": 25,
+  "spurious_slots": 0
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "what's up, arjun?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "what's your year in ecce?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I don't have a job.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It ends at 4pm.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "What's your major?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great to hear! What do you think about the modules you're going to be teaching?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I don't have that information.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's interesting. What do you think about robotics?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "bye, Arjun.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "what's your major?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "I'm not allowed to remember names.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You're in your second year.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The lab on the first floor is the teaching lab, and the lab on the second floor is the research lab.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I teach CS2011 Algorithm and CS3040 Compilers, supervises six final-year projects, and spend whatever's left on my own research.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What do you think about that?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What do you think about that?",
+     "flags": [
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "Well, you're a good student, and you're really interested in robotics.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a lecturer in the Computer Science department.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 2,
+    "invented": 0,
+    "self_denial": 1,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "year": "second-year",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 2,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "what is your favorite color?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "what do you know about me?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "Most of the job is listening to people who assume nobody wants to hear it.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It ends at 4pm.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "That's interesting. What do you think about the Computer Science department?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great! What do you think about the Computer Science department?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I don't know, I don't keep track of my own salary.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's interesting. What do you think about robotics?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, happy to help.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "That's interesting. What made you decide to get into robotics?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "You told me your name.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "I'm on grade 7, so about 39,000 a year.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The lab is on the first floor.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "That's interesting. What made you decide to get into robotics?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "That's interesting. What made you decide to get into robotics?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, that's all I know.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 5,
+    "loop": 0,
+    "asks_known": 4,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "year": "second-year",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 2,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "i am not from madurai.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "I'm not sure what that means.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I don't have a job.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It finishes at 4pm.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "I'm not sure what that means.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great! What kind of robotics are you interested in?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "The shop's mine, so what it makes after costs is what I earn.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's interesting. What kind of robotics are you interested in?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, I'm Nadia.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "Yeah, I remember you.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you were a second-year.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I'm not really into that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I don't know much about that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "I don't know much about that.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm not really into that.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "I'm Nadia.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 5,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 1,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "year": "second-year",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 2,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "what's up, arjun?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "I'm in 2nd year ecce.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I took the job thinking I could fix the timetable, and I was wrong about that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It ends at 4pm.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "What's your major?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great! What do you think about the department?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I don't know, I don't earn anything.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "I'm not sure what you're talking about.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, I'm just curious.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "What's up?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "You told me your name, but I don't remember it.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you were a second-year, so I'd say you're in year 2.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The lab is on the first floor, near the entrance.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I took the job thinking I could fix the timetable, and I was wrong about that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I'm not really into that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I don't really follow that.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "nope, nothing else.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't do anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "bye!",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 1,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "year": "second-year",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 2,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's on your mind?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "what do you want to talk about?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "I'm a second-year, in the science block.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "standard constable.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It ends at 4pm.",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "What's your major?",
+     "flags": [],
+     "memory": {
+      "year": "second-year"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great! Do you have any specific questions about the department?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "standard constable scale, about 41,000 a year.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's interesting. Do you have any specific projects you're working on?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, have a good day.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "That's interesting. What's your project?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "I'm sorry, I didn't catch your name.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you were a second-year, so that's the year you're in.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The lab on the first floor, and the one on the second floor is the teaching lab.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I'm the campus liasion officer for the Computer Science department.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "That's interesting. What's your project?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "That's interesting. What's your favorite part of the day?",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, that's all I know.",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm the campus liasion officer for the city police department.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "That's interesting. Do you have any hobbies or interests outside of work?",
+     "flags": [],
+     "memory": {
+      "year": "second-year",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 3,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "year": "second-year",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 2,
+   "slots_of": 5,
+   "spurious_slots": []
+  }
+ }
+}

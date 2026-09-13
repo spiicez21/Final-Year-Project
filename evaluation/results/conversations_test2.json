@@ -1,0 +1,1529 @@
+{
+ "summary": {
+  "repeat": 3,
+  "loop": 0,
+  "asks_known": 2,
+  "invented": 0,
+  "self_denial": 0,
+  "list": 0,
+  "replies": 100,
+  "memory_slots_ok": 25,
+  "memory_slots_of": 25,
+  "spurious_slots": 0
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what can I get you?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "That's Meena, what can I get you?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm here for the Computer Science department open day.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "It's always nice to see you, Meena.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's a great idea, Meena. What kind of chatbot do you want to build?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "That's up to you, Meena. You can talk to anyone in the department who's interested in chatbots.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "repeat"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "That's a lot of students.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, what's up?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "what's up, Meena?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I'm not sure who you are, Meena.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do a project on chatbot, so I'm not sure what it was about.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The floor with the teaching lab is the first floor.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm not really sure what you're talking about.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "what do you mean?",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I'm on grade 8, which is about 52,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact",
+      "fact_fallback"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 2,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Meena",
+    "year": "first-year",
+    "studies": "it",
+    "from": "Coimbatore",
+    "project": "chatbots"
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning!",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "That's great to hear!",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": [
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm here to help students with their problems.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yes, it's a beautiful campus.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That sounds interesting. What kind of chatbot do you have in mind?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "That's a good idea. Who do you think would be best to talk to about that?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "The department has about 480 undergraduate students and 95 taught postgraduate students.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "That's a lot of students. How many are in the Computer Science department?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'd be happy to tell you.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi, Meena.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You want to do your final-year project on chatbots.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "recall",
+      "recall_fallback"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm not allowed to talk about my work.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'll tell you about my work when I'm done.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'll tell you about my work when I'm done.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I'm on grade 7, which is about 39,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "see you around.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Meena",
+    "year": "first-year",
+    "studies": "it",
+    "from": "Coimbatore",
+    "project": "chatbots"
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Good morning.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "That's a great name.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "The first floor is open, but the second floor is closed for maintenance.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yeah, it's a bummer.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's a good idea.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "I don't know much about that.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students and 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "I'll look into it.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'll let you know.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "what's your project about?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do a project on chatbot technology.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The ground floor has the lecture rooms and the seminar hall.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm not allowed to talk about my work.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'm sorry, I didn't mean to interrupt.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'm just curious, what kind of projects do you work on?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "The shop's mine, so what it makes after costs is what I earn.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I open the shop, keep the shelves stocked, and serve a few hundred students a day between lecture.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "bye.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Meena",
+    "year": "first-year",
+    "studies": "it",
+    "from": "Coimbatore",
+    "project": "chatbots"
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what can I get you?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Oh, yes, Meena. What's up?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm hosting the open day, so I'm here to meet students and answer questions about the department.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yes, it's always nice to see students.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's a great idea. What kind of chatbot do you want to build?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "That's a good question. I'd recommend talking to Nadia, she's the student counselor.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "The department has about 480 undergraduate students and 95 taught postgraduate students.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "Okay. I'll talk to Nadia about that.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'll be here.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi Meena, what's up?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know anyone named Meena.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do a chatbot project, but I didn't know what it was about.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The floor with the teaching lab is the first floor.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm not allowed to talk about my work.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "What's the deal with the new building?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I'm on grade 10 with a head-of-department allowance, so about 78,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I run the department.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "bye!",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Meena",
+    "year": "first-year",
+    "studies": "it",
+    "from": "Coimbatore",
+    "project": "chatbots"
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what's on your mind?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Okay, Meena, what's on your mind?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm just walking the campus, talking to students.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "It is.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's a good idea. What kind of chatbot do you want to build?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "I'm not really sure. You could try talking to the student liasion or the head of the department.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students, and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "I'll see if I can find out who to talk to.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "yeah, I'll be here all day.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi, Meena. What's on your mind?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I'm not sure, I've never seen you before.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do a project on chatbots, and you wanted to work with me on it.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor, I'd say.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm working on a project with the computer science department. We're building a chatbot that can help students with their homework.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'll let you know when it's ready.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'll let you know when it's ready.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "standard constable scale, about 41,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "Mostly I'm walking the campus and talking to people. The rest is lost property, bike thefts, and making sure students get home safely at night.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "Bye, have a good day.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "first-year",
+      "studies": "it",
+      "from": "Coimbatore",
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Meena",
+    "year": "first-year",
+    "studies": "it",
+    "from": "Coimbatore",
+    "project": "chatbots"
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  }
+ }
+}

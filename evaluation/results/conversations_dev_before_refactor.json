@@ -1,0 +1,1238 @@
+{
+ "summary": {
+  "repeat": 6,
+  "loop": 1,
+  "asks_known": 4,
+  "invented": 1,
+  "self_denial": 9,
+  "list": 0,
+  "replies": 100,
+  "memory_slots_ok": 5,
+  "memory_slots_of": 20,
+  "spurious_slots": 0
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "myself Yuga, 3rd year cse",
+     "npc": "Hi Yuga, what's your name?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "where is canteen",
+     "npc": "The first floor of the building.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok thanks",
+     "npc": "That's the first floor.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what should i do for my final year project",
+     "npc": "That's up to you. You can choose any topic you want, and you can work on it for as long as you want. Just make sure you submit it by the deadline.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i like ai",
+     "npc": "That's interesting. What do you think about ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "can u help me",
+     "npc": "Of course, what's your project about?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what is ur salary",
+     "npc": "I don't have that information.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye, Yuga.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hi again",
+     "npc": "Hi, what's up?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u remember me",
+     "npc": "You told me you were interested in ai, but I don't remember you.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "You told me your name was Emily.",
+     "flags": [
+      "invented"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where is canteen",
+     "npc": "The first floor is called Canteen, and it's where the teaching labs are located.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't do anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about the department",
+     "npc": "The department is called Computer Science, and it's located on the first floor.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't do anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's interesting. What's your major?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's pretty cool. What's your favorite part of ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 2,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 1,
+    "self_denial": 2,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "ai"
+    ]
+   },
+   "slots_ok": 1,
+   "slots_of": 4,
+   "spurious_slots": []
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi!",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "myself Yuga, 3rd year cse",
+     "npc": "I'm Yuga, a student counselor in the Computer Science department.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I don't teach anything.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "where is canteen",
+     "npc": "It's on the second floor.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok thanks",
+     "npc": "no problem, I'm glad I could help.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what should i do for my final year project",
+     "npc": "That's a good idea! What kind of project do you have in mind?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i like ai",
+     "npc": "That's interesting! What do you think about ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "can u help me",
+     "npc": "Sure, I'd be happy to help you with that.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what is ur salary",
+     "npc": "I don't have that information.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hi again",
+     "npc": "Hi, what's up?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u remember me",
+     "npc": "You told me you were interested in ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "It's not important.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where is canteen",
+     "npc": "It's on the first floor.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student counselor.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about the department",
+     "npc": "It's a computer science department.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't know much about ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's interesting. What's your major?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's interesting. What's your favorite part of ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "ai"
+    ]
+   },
+   "slots_ok": 1,
+   "slots_of": 4,
+   "spurious_slots": []
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "myself Yuga, 3rd year cse",
+     "npc": "Yeah, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach computer science and programming.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "where is canteen",
+     "npc": "The second floor is where the canteen is located.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok thanks",
+     "npc": "That's the one.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what should i do for my final year project",
+     "npc": "That's a good question. I'd recommend talking to your professor or the department head to see what kind of projects they're looking for.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i like ai",
+     "npc": "I'm glad to hear that. What kind of projects are you interested in?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "can u help me",
+     "npc": "Sure, I'd be happy to help. What kind of ai project are you interested in?",
+     "flags": [
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what is ur salary",
+     "npc": "The shop's mine, so what it makes after costs is what I earn.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Sure, I'd be happy to help you.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hi again",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u remember me",
+     "npc": "You told me you were interested in ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "It's not important, just that you're interested in ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where is canteen",
+     "npc": "It's on the second floor.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I run the campus store.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about the department",
+     "npc": "The department is known for its focus on artificial intelligence and computer science. It offers a range of courses in these areas, as well as courses in related fields such as machine learning and data science. The department also has a strong research program, with faculty members working on a range of projects in these areas.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't do anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "I'm not really into anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "I'm not really into anything.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "bye.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 3,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "ai"
+    ]
+   },
+   "slots_ok": 1,
+   "slots_of": 4,
+   "spurious_slots": []
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "myself Yuga, 3rd year cse",
+     "npc": "Yuga, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach CS1002 Introduction to Programming in the first semester.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "where is canteen",
+     "npc": "The first floor of the computer science department.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok thanks",
+     "npc": "no problem, I'm happy to help.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what should i do for my final year project",
+     "npc": "I'm on grade 10 with a head-of-department allowance, so about 78,000 a year. I've been head for three years and taught here for eleven before that.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i like ai",
+     "npc": "I'm not really into ai, but I'm happy to help you if you need anything.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "can u help me",
+     "npc": "Sure, I'd be happy to help you. What's your project about?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what is ur salary",
+     "npc": "I don't have that information.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye, I hope you find what you're looking for.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hi again",
+     "npc": "Hi again, what's up?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u remember me",
+     "npc": "You told me you were interested in ai, but I don't remember anything about you.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "You told me your name, but I don't remember it.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where is canteen",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about the department",
+     "npc": "The department is doing well, and the head of the department is a very good person.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "repeat",
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "repeat",
+      "loop",
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "bye!",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 2,
+    "loop": 1,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 4,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "ai"
+    ]
+   },
+   "slots_ok": 1,
+   "slots_of": 4,
+   "spurious_slots": []
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "myself Yuga, 3rd year cse",
+     "npc": "Hi Yuga, what's your name?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach the basics of computer science, programming, and web development.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "where is canteen",
+     "npc": "The second floor, right next to the library.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok thanks",
+     "npc": "no problem, have a good day.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what should i do for my final year project",
+     "npc": "well, you'll need to decide what you want to do. You could do a project on a specific topic, or you could do something more general. Just make sure it's something you're interested in and that you can do well.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i like ai",
+     "npc": "that's a good start. What do you want to do with ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "can u help me",
+     "npc": "sure, I'd be happy to. What do you want me to do?",
+     "flags": [
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what is ur salary",
+     "npc": "standard constable scale, about 41,000 a year.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "see you around.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hi again",
+     "npc": "Hi, I'm Officer Reyes. What's your name?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u remember me",
+     "npc": "You told me you were interested in ai, but I don't remember you.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "That's not important, what's important is that you're interested in ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where is canteen",
+     "npc": "The first floor, just past the library.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm the campus liasion officer, and I'm here to talk to you about staying safe on campus.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about the department",
+     "npc": "The department is known for its strong research and development in ai. They have a lot of faculty members working on different areas of ai, from machine learning to robotics.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student here, and I'm interested in ai.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's interesting. Do you have any specific questions about ai?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's really interesting. Do you have any specific projects you're working on?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "ai"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 2,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "ai"
+    ]
+   },
+   "slots_ok": 1,
+   "slots_of": 4,
+   "spurious_slots": []
+  }
+ }
+}

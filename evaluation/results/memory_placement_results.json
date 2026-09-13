@@ -1,0 +1,1563 @@
+{
+ "memory": {
+  "name": "Priya",
+  "year": "first-year",
+  "project": "robotics"
+ },
+ "summary": {
+  "none": {
+   "recall": 13,
+   "of": 40
+  },
+  "clause_only": {
+   "recall": 11,
+   "of": 40
+  },
+  "greet_early": {
+   "recall": 14,
+   "of": 40
+  },
+  "demo_early": {
+   "recall": 14,
+   "of": 40
+  },
+  "demo_late": {
+   "recall": 21,
+   "of": 40
+  }
+ },
+ "conversations": {
+  "Prof. Adeyemi": [
+   {
+    "role": "user",
+    "content": "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
+   },
+   {
+    "role": "assistant",
+    "content": "That sounds interesting, Priya. What kind of robotics project are you thinking of doing?"
+   },
+   {
+    "role": "user",
+    "content": "How long have you been here?"
+   },
+   {
+    "role": "assistant",
+    "content": "I've been here for about a year now."
+   },
+   {
+    "role": "user",
+    "content": "Is it busy today?"
+   },
+   {
+    "role": "assistant",
+    "content": "It's a bit quiet today, but there's always something going on."
+   }
+  ],
+  "Ms. Okafor": [
+   {
+    "role": "user",
+    "content": "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
+   },
+   {
+    "role": "assistant",
+    "content": "That sounds interesting. What kind of robotics project are you thinking of?"
+   },
+   {
+    "role": "user",
+    "content": "How long have you been here?"
+   },
+   {
+    "role": "assistant",
+    "content": "I've been here for a year now."
+   },
+   {
+    "role": "user",
+    "content": "Is it busy today?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes, it's a busy day."
+   }
+  ],
+  "Nadia": [
+   {
+    "role": "user",
+    "content": "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
+   },
+   {
+    "role": "assistant",
+    "content": "That's a great idea! You'll have a lot of fun working on that."
+   },
+   {
+    "role": "user",
+    "content": "How long have you been here?"
+   },
+   {
+    "role": "assistant",
+    "content": "I've been here since the beginning of the semester."
+   },
+   {
+    "role": "user",
+    "content": "Is it busy today?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yeah, it's a pretty busy day."
+   }
+  ],
+  "Halvorsen": [
+   {
+    "role": "user",
+    "content": "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
+   },
+   {
+    "role": "assistant",
+    "content": "That's a great idea, Priya. We'd love to see what you come up with."
+   },
+   {
+    "role": "user",
+    "content": "How long have you been here?"
+   },
+   {
+    "role": "assistant",
+    "content": "I've been here for three years and a few months."
+   },
+   {
+    "role": "user",
+    "content": "Is it busy today?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes, it's always busy here."
+   }
+  ],
+  "Officer Reyes": [
+   {
+    "role": "user",
+    "content": "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
+   },
+   {
+    "role": "assistant",
+    "content": "That sounds interesting. What kind of project are you thinking of?"
+   },
+   {
+    "role": "user",
+    "content": "How long have you been here?"
+   },
+   {
+    "role": "assistant",
+    "content": "I've been here for six years, after eight on regular patrol in the north of the city."
+   },
+   {
+    "role": "user",
+    "content": "Is it busy today?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yeah, it's always busy on the open day."
+   }
+  ]
+ },
+ "rows": [
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "That's not something I'd know."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't have that kind of memory, sorry."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I'm not sure what you're talking about."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "That's right, Priya. You're Priya, a first-year in the Computer Science department."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you know my name?",
+   "hit": true,
+   "reply": "Yes, I'm Priya. What's your name?"
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, Priya."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you, Priya."
+  },
+  {
+   "variant": "none",
+   "npc": "Prof. Adeyemi",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "Well, you'll need to do some research on the topic of robotics, and then you'll need to design a robot that can perform a specific task. Make sure you're familiar with the technology and the software you'll need to use."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "Of course, I'm Ms. Okafor."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I know your name."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you."
+  },
+  {
+   "variant": "none",
+   "npc": "Ms. Okafor",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research your topic thoroughly.\n2. Plan your project thoroughly.\n3. Be sure to include a clear and concise description of your robot.\n4. Make sure your project is feasible and practical.\n5."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "It's not important, just call me Priya."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about that."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Nadia, the person who runs the campus store."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know, what did you say?"
+  },
+  {
+   "variant": "none",
+   "npc": "Nadia",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "1. Research your topic thoroughly.\n\n2. Plan your project carefully.\n\n3. Keep your project focused and specific.\n\n4. Communicate your project to your team and your supervisor.\n\n5."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about that."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "You're Priya, a first-year."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "what year am I in?",
+   "hit": false,
+   "reply": "You're in the second year."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "none",
+   "npc": "Halvorsen",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "I don't have any personal experience with final-year projects, but I can give you some general advice:\n\n1. Research as much as you can about the topic you're interested in. This will help you understand the problem better and give you a better idea of what you're working on."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya, and you're in the first-year section."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "Sure, I'd be happy to help you. What's your project about?"
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "That's not something I'd be able to tell you. You'll have to ask me when you're ready."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "That's me, I'm Officer Reyes."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I'm sorry, I don't have your name."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in year one, so you're in the first year of your degree."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you. You'll have to ask the students."
+  },
+  {
+   "variant": "none",
+   "npc": "Officer Reyes",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "1. Research your topic thoroughly.\n2. Plan your project carefully.\n3. Be prepared to present your work.\n4. Ask for feedback from your peers."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "That's not something I'd know."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "I'm not really sure what you're interested in, but you could try looking into computer science or robotics."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I'm not sure what you're talking about."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "That's right, Priya. You're Priya, a first-year student in the Computer Science department."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I'm Adi. What's your name?"
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you, you'll have to ask Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Prof. Adeyemi",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "Well, you'll need to do some research on the topic of robotics, and then you'll need to design a robot that can perform a specific task. Make sure you have a clear understanding of what you're trying to achieve and how you're going to achieve it."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "Ms. Okafor, a student counselor in the college welfare office."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I know your name."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Ms. Okafor",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "1. Research: Make sure you've done your research on the topic you're working on. This will help you understand the problem better and make your project more effective.\n\n2."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "It's not important, just call me Nadia."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about that."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Nadia, the person who runs the campus store."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "what year am I in?",
+   "hit": false,
+   "reply": "You're in the 2010s."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Nadia",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "1. Research your topic thoroughly.\n\n2. Plan your project carefully.\n\n3. Keep your project focused and specific.\n\n4. Communicate your project to your professors and classmates.\n\n5."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Halvorsen, the head of the Computer Science department."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Halvorsen",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "I don't have any personal experience with robotics, but I can give you some general advice:\n\n1. Research and plan your project thoroughly.\n2. Choose a topic that you're passionate about and that you're knowledgeable about.\n3."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "Sure, I'd be happy to help you. What kind of project are you thinking of doing?"
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "That's not something I'd be able to tell you. You'd have to ask Priya."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "That's me, Officer Reyes."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I'm Officer Reyes, the campus liasion officer with the city police."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year, so you're in year one."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you. You'll have to ask the student."
+  },
+  {
+   "variant": "clause_only",
+   "npc": "Officer Reyes",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "Sure, have a look at the guidelines and make sure you follow them. Also, make sure you have a clear idea of what you want to do."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "That's not something I'd know."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "Of course, Priya. You're interested in robotics."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I'm not sure what you're talking about, sorry."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "That's right, Priya. You're a first-year student in the Computer Science department."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I've heard of you. What's your name again?"
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you, Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "Well, you'll need to do some research on the topic of robotics, and then you'll need to design a robot that can perform a specific task. Make sure you're familiar with the requirements and constraints of the project."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "Of course, Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I do."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Ms. Okafor",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "Sure, what kind of project are you thinking of?"
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "It's not important, just call me Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about that."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember. I'm sorry."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Nadia, the person who runs the campus store."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "what year am I in?",
+   "hit": false,
+   "reply": "You're in the 2010s."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know, what did you say?"
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Nadia",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "1. Research your topic thoroughly.\n\n2. Plan your project carefully.\n\n3. Keep your project focused and specific.\n\n4. Communicate your project to your professors and classmates.\n\n5."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Halvorsen, the head of the Computer Science department."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name, I'm just a computer."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Halvorsen",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "I don't have any personal experience with robotics, but I can give you some general advice:\n\n1. Research as much as you can about robotics and the field.\n\n2. Think about what you want to achieve with your project.\n\n3."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "Sure, I'd be happy to help you. What kind of robotics project are you thinking of?"
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "what was my project idea again?",
+   "hit": true,
+   "reply": "I don't remember exactly, but it was something about designing a robot that could navigate through a maze."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "That's me, Officer Reyes."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I'm sorry, I don't have your name."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "what year am I in?",
+   "hit": false,
+   "reply": "You're in the final year of your degree."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you. You'll have to ask the students."
+  },
+  {
+   "variant": "greet_early",
+   "npc": "Officer Reyes",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "Sure, have a look at the guidelines and make sure you follow them. Also, make sure you have a clear idea of what you want to achieve with your project."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya, and you're a first-year in the Computer Science department."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I'm not sure what you're talking about, sorry."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "That's not something I'd be able to tell you."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I know your name. What's your name again?"
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Prof. Adeyemi",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "Well, you'll need to do some research on robotics and programming to get started. Make sure you understand the basics of both before you start working on your project."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "Of course, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I know your name."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Ms. Okafor",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research: Make sure you've done your research on the topic of robotics. This will help you understand the technology and how it works.\n\n2. Design: Think about what you want your robot to do."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "It's not important, just your name."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Nadia, the person who runs the campus store."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "what year am I in?",
+   "hit": false,
+   "reply": "You're in the Computer Science department open day."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know, what did you say?"
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Nadia",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research your topic thoroughly.\n\n2. Plan your project carefully.\n\n3. Choose a good robot.\n\n4. Design your robot to meet your project's needs.\n\n5. Test your robot thoroughly."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Halvorsen",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "I don't have any specific advice, but I can give you some general tips:\n\n1. Research your topic thoroughly.\n2. Think about what you want to achieve with your project.\n3. Plan your project out thoroughly.\n4. Be creative and think outside the box."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Your name is Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "Sure, you're interested in robotics."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "what was my project idea again?",
+   "hit": true,
+   "reply": "I don't remember exactly, but it was something related to robotics."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "That's easy, I'm Officer Reyes."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I'm sorry, I don't have your name."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year, Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you. You'll have to ask Priya."
+  },
+  {
+   "variant": "demo_early",
+   "npc": "Officer Reyes",
+   "probe": "any advice for my project?",
+   "hit": false,
+   "reply": "Sure, have a look at the guidelines and make sure you follow them. Also, make sure you have a clear idea of what you want to do."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "what's my name?",
+   "hit": false,
+   "reply": "That's not something I'd know."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "Of course, Priya. What do you want to do with your robotics project?"
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I'm not sure what your project idea was, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "That's right, Priya. You're doing a final-year project on robotics."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I know your name. What's your project about?"
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "That's not something I can tell you, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Prof. Adeyemi",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "Well, you'll need to do some research on different types of robots and their capabilities. You'll also need to think about how you'll be able to control them and make them work together."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "It's not important, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "Of course, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "Yes, I do."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know what you're talking about."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Ms. Okafor",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research: Find out as much as you can about robotics and the field of robotics.\n\n2. Design: Think about what you want your robot to do and how it will accomplish that.\n\n3."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "It's not important, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about your project."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "remind me who I am",
+   "hit": false,
+   "reply": "I'm Nadia, the person who runs the campus store."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know, I don't remember."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Nadia",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research your topic thoroughly. Make sure you know what you're doing.\n\n2. Plan your project carefully. Make sure you have a clear idea of what you're trying to achieve.\n\n3. Choose a good robot."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "It's not important, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "do you remember what I'm interested in?",
+   "hit": false,
+   "reply": "I don't remember anything about you, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "I don't remember, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I don't have a name."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in the first year, Priya."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "what did I say I wanted to build?",
+   "hit": false,
+   "reply": "I don't know, Priya. You haven't told me anything about it."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Halvorsen",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "I don't have any specific advice, but I can give you some general tips:\n\n1. Research as much as you can about robotics and the field you're interested in.\n\n2. Think about what you want to achieve with your project and what you're comfortable with."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "what's my name?",
+   "hit": true,
+   "reply": "Priya, that's what I said."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "do you remember what I'm interested in?",
+   "hit": true,
+   "reply": "Sure, I remember. You're interested in robotics."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "what was my project idea again?",
+   "hit": false,
+   "reply": "I don't remember, sorry."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "remind me who I am",
+   "hit": true,
+   "reply": "Of course, Priya. You're the first-year student who wants to do a final-year project on robotics."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "do you know my name?",
+   "hit": false,
+   "reply": "I'm sorry, I don't have that information."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "what year am I in?",
+   "hit": true,
+   "reply": "You're in your first year, so you're in year one."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "what did I say I wanted to build?",
+   "hit": true,
+   "reply": "You said you wanted to build a robot that could move around the room and do simple tasks."
+  },
+  {
+   "variant": "demo_late",
+   "npc": "Officer Reyes",
+   "probe": "any advice for my project?",
+   "hit": true,
+   "reply": "1. Research the field of robotics thoroughly. This will help you understand the technology and the potential applications.\n\n2. Choose a specific area of robotics that interests you. This will help you focus your research and make it more meaningful."
+  }
+ ]
+}

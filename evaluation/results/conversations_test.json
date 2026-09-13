@@ -1,0 +1,1668 @@
+{
+ "summary": {
+  "repeat": 3,
+  "loop": 0,
+  "asks_known": 1,
+  "invented": 0,
+  "self_denial": 0,
+  "list": 0,
+  "replies": 100,
+  "memory_slots_ok": 25,
+  "memory_slots_of": 25,
+  "spurious_slots": 0
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "Nice to meet you, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai"
+     },
+     "repairs": [
+      "introduced",
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "That's right, you're in 2nd year.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I'm a lecture in the Computer Science department.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It's not specified in the text, but it's usually around 4pm.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "That's pretty cool. What kind of questions do students ask you?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "that's really interesting. What do you think about robotics?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I'm on grade 8, which is about 52,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "fact",
+      "fact_fallback"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's a lot of money.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "bye, have a good day.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "What's up, Arjun?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "You told me your name, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You're in the second year, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The lab on the first floor is the teaching lab, and the lab on the second floor is the research lab.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What do you do in your job?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, that's all I know.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm not allowed to talk about my job.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Arjun",
+    "from": "Madurai",
+    "year": "second-year",
+    "studies": "ece",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "it sounds like arjun is a very interesting name.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "that's great!",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": [
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I see students one to one, mostly about stress, money worries, and homesickness.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It's a long day, but it's worth it.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "I'm glad I could help.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's great! What do you think about it?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I'm on grade 7, which is about 39,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "fact",
+      "fact_fallback"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's a lot of money.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, have a great day!",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "That's interesting, Arjun. What made you decide to study robotics?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "You told me your name, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you're in second year, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What's your favorite color?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, that's all I know.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Arjun",
+    "from": "Madurai",
+    "year": "second-year",
+    "studies": "ece",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "Nice to meet you, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai"
+     },
+     "repairs": [
+      "introduced"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "That's right.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I open the campus store, keep the shelves stocked, and serve a few hungrd students a day between lectures.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It finishes at 4pm.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "Yeah, it's a pretty busy day.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "I know, it's a lot of fun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "The shop's mine, so what it makes after costs is what I earn.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's fine.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "Bye.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "I'm glad to hear that. What's your favorite subject?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "I remember you, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you were in second year, so that's the year you're in.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I open at seven, keep the shelves stocked, and serve a few hundred students a day between lecture.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I'm not really interested in that.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I'm not really interested in that either.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "no, that's all I know.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I open the shop.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "bye.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Arjun",
+    "from": "Madurai",
+    "year": "second-year",
+    "studies": "ece",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "oh, yes, I remember you. What's up with you?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "oh, that's interesting.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": [
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "I don't have one.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "It's 4pm.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "I'm glad I could help.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "me too. It's a fun and exciting field.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "I'm on grade 10 with a head-of-department allowance, so about 78,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "fact"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "Okay. I'll definitely look into that.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem. Have a good day.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "What's up, Arjun?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "Of course, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You told me you were a second-year, so that's the year you're in.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I run the department, so time tables, hiiring, budgeting, and a lot of meetings.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What's your favorite subject?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, nothing else.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a computer science professor.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Arjun",
+    "from": "Madurai",
+    "year": "second-year",
+    "studies": "ece",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hello",
+     "npc": "hi, what's on your mind?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am arjun from madurai",
+     "npc": "okay, arjun, what's on your mind?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "im in 2nd year ece",
+     "npc": "okay, that's a bit confusing. Can you tell me what your major is?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "whats ur job",
+     "npc": "standard constable, about 41,000 a year.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "wat time does the open day finish",
+     "npc": "The open day finishes at 4pm.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "cool",
+     "npc": "That's a good time to come.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i really like robotics",
+     "npc": "That's a great interest. You might want to check out the robotics club on campus.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how much do u earn",
+     "npc": "That's a bit vague, but I'd say it's around that.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "k",
+     "npc": "That's a good start. You might want to look into internships or volunteering opportunities to get some experience in the field.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "thanks bye",
+     "npc": "No problem, happy to help.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hey",
+     "npc": "Hey, Arjun. What's up?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "u remember my name?",
+     "npc": "Of course, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which year am i in",
+     "npc": "You're in the second year, Arjun.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "where r the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur job again",
+     "npc": "I'm the campus liasion officer. I walk the campus and talk to students.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "I'll have to ask you to come with me. We need to talk about something.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "Okay, I'll come back to you.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "anything else i should know",
+     "npc": "No, that's all I need.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a police officer.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye.",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "from": "Madurai",
+      "year": "second-year",
+      "studies": "ece",
+      "interests": [
+       "robotics"
+      ]
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "name": "Arjun",
+    "from": "Madurai",
+    "year": "second-year",
+    "studies": "ece",
+    "interests": [
+     "robotics"
+    ]
+   },
+   "slots_ok": 5,
+   "slots_of": 5,
+   "spurious_slots": []
+  }
+ }
+}

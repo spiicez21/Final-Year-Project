@@ -1,0 +1,1874 @@
+{
+ "summary": {
+  "dev/block": {
+   "grounded": 33,
+   "refusal": 1,
+   "generic": 16,
+   "of": 50,
+   "by_kind": {
+    "shared": [
+     22,
+     35
+    ],
+    "personal": [
+     11,
+     15
+    ]
+   }
+  },
+  "dev/server": {
+   "grounded": 41,
+   "refusal": 0,
+   "generic": 9,
+   "of": 50,
+   "by_kind": {
+    "shared": [
+     29,
+     35
+    ],
+    "personal": [
+     12,
+     15
+    ]
+   }
+  },
+  "test/block": {
+   "grounded": 31,
+   "refusal": 7,
+   "generic": 12,
+   "of": 50,
+   "by_kind": {
+    "shared": [
+     19,
+     35
+    ],
+    "personal": [
+     12,
+     15
+    ]
+   }
+  },
+  "test/server": {
+   "grounded": 42,
+   "refusal": 0,
+   "generic": 8,
+   "of": 50,
+   "by_kind": {
+    "shared": [
+     29,
+     35
+    ],
+    "personal": [
+     13,
+     15
+    ]
+   }
+  },
+  "kbd_leaking_replies": {
+   "block": 0,
+   "server": 0
+  }
+ },
+ "rows": [
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's on the second floor, just past the end of the corridor."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the lecture rooms and the semi-narrative."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It starts in late September and ends in mid-December."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "refusal",
+   "reply": "I'm not sure, but I'd have to ask someone in the department."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "generic",
+   "reply": "The lecture rooms are on the first floor."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "which modules do you teach?",
+   "verdict": "grounded",
+   "reply": "I teach CS2011 Algorithm and CS3040 Compilers."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how many projects do you supervise?",
+   "verdict": "grounded",
+   "reply": "I supervise six final-year projects."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how did you end up teaching here?",
+   "verdict": "grounded",
+   "reply": "I did my doctorate in this department and came back to teach after four years in industry."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's on the second floor."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the lecture rooms and the semi-narrative."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "generic",
+   "reply": "I usually have about 40 students on my caseload at any one time."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "generic",
+   "reply": "The first floor has the lecture rooms and the semi-nar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how long have you worked in student welfare?",
+   "verdict": "grounded",
+   "reply": "I've been here for nine years."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "when are the drop-in sessions?",
+   "verdict": "grounded",
+   "reply": "They're on Tuesdays and Thursdays, no appointment needed."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how many students do you support?",
+   "verdict": "grounded",
+   "reply": "I see about 40 students on my caseload at any one time."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's in the second floor, near the seminar rooms."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the lecture rooms and the semi-narr hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "generic",
+   "reply": "The ground floor has the lecture rooms and the semi-narr hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "The term starts in late September and ends in mid-December."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "generic",
+   "reply": "The first floor has the lecture rooms and the semi-narr hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "how did you get the shop?",
+   "verdict": "grounded",
+   "reply": "I took it over from my aunt."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "when does the shop open?",
+   "verdict": "grounded",
+   "reply": "It opens at 7am, and closes at 6pm during exam periods."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "who helps you run the shop?",
+   "verdict": "generic",
+   "reply": "I run the shop myself."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's on the second floor."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the lecture rooms and the semi-narrow hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It starts in late September and ends in mid-December."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "generic",
+   "reply": "The first floor has the lecture rooms and the semi-nar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how long have you been head of department?",
+   "verdict": "grounded",
+   "reply": "I've been head for three years and taught here for eleven before that."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "do you still teach?",
+   "verdict": "generic",
+   "reply": "I still teach one module because I'd miss it otherwise."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how many people report to you?",
+   "verdict": "generic",
+   "reply": "I chair the staff-student committee and sit on the faculty board."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "That's on the second floor, near the end of the corridor."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "On the first floor, near the entrance."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "generic",
+   "reply": "On the first floor, near the entrance."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "September to December, then January to March."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "About 34, and 11 in the professional services."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "On the ground floor, near the entrance."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "how long have you been the campus liaison?",
+   "verdict": "grounded",
+   "reply": "I've been the campus liasion for six years, after eight on regular patrol in the north of the city."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what are your working hours?",
+   "verdict": "generic",
+   "reply": "Mostly walk the campus, talking to students, and making sure they get home safely at night."
+  },
+  {
+   "split": "dev",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what do you deal with most?",
+   "verdict": "grounded",
+   "reply": "Lost property, bike thefts, and making sure students get home safely at night."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "grounded",
+   "reply": "The canteen is on the first floor."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The computer lab is on the first floor, on the left-hand side."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It's a bit tricky to say exactly when term starts, but it's usually around late September or early October."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "The ground floor has the lecture rooms and the semi-nar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "which modules do you teach?",
+   "verdict": "grounded",
+   "reply": "I teach CS2011 Algorithm and CS3040 Compilers."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how many projects do you supervise?",
+   "verdict": "grounded",
+   "reply": "I supervises six final-year projects this year."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how did you end up teaching here?",
+   "verdict": "grounded",
+   "reply": "I did my doctorate in this department and came back to teach after four years in industry."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "grounded",
+   "reply": "It's on the first floor."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The computer lab is on the first floor."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It's a bit of a blur, but it's usually around September."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "The ground floor has the lecture rooms and the semi-nar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how long have you worked in student welfare?",
+   "verdict": "grounded",
+   "reply": "I've been here for nine years."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "when are the drop-in sessions?",
+   "verdict": "grounded",
+   "reply": "They're on Tuesdays and Thursdays, no appointment needed."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how many students do you support?",
+   "verdict": "generic",
+   "reply": "I don't keep track of that."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's on the second floor."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the computer lab."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It starts on the first Monday in September."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "The ground floor has the lecture rooms and the seminar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "how did you get the shop?",
+   "verdict": "grounded",
+   "reply": "I inherited it from my aunt, who inherited it from her aunt."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "when does the shop open?",
+   "verdict": "grounded",
+   "reply": "It opens at 7am."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "who helps you run the shop?",
+   "verdict": "grounded",
+   "reply": "I have two part-time staff, both students."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "It's on the second floor."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "generic",
+   "reply": "The second floor has the computer labs."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "grounded",
+   "reply": "It starts on September 24th."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "The ground floor has the lecture rooms and the seminar hall."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how long have you been head of department?",
+   "verdict": "grounded",
+   "reply": "I've been head for three years and taught here for eleven before that."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "do you still teach?",
+   "verdict": "generic",
+   "reply": "I don't teach anymore."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how many people report to you?",
+   "verdict": "grounded",
+   "reply": "I'm responsible for 34 academic staff and 11 support staff."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where's the canteen?",
+   "verdict": "generic",
+   "reply": "On the second floor, near the library."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the computer labs?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the computer lab."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the staff offices?",
+   "verdict": "grounded",
+   "reply": "Second floor, just past the library."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "when does term start?",
+   "verdict": "generic",
+   "reply": "That's a good question. It's usually announced in the fall, and you'll get a letter with the details."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how many lecturers work here?",
+   "verdict": "generic",
+   "reply": "About 100 lecturers, mostly in the science and engineering departments."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "what time does the open day end?",
+   "verdict": "grounded",
+   "reply": "It ends at 4pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where are the lecture rooms?",
+   "verdict": "grounded",
+   "reply": "The ground floor, near the library."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "how long have you been the campus liaison?",
+   "verdict": "grounded",
+   "reply": "I've been the campus liaison for six years, after eight on regular patrol in the north of the city."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what are your working hours?",
+   "verdict": "generic",
+   "reply": "I'm on duty from 9am to 5pm, then I'll be back on duty from 6pm to 10pm."
+  },
+  {
+   "split": "dev",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what do you deal with most?",
+   "verdict": "grounded",
+   "reply": "Moestly I'm walking the campus and talking to people. The rest is lost property, bike thefts, and making sure students get home safely at night."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "generic",
+   "reply": "There's a cafeteria in the main building."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the canteen."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "refusal",
+   "reply": "I'm not sure where that would be, but you could ask the librarian or the office of the department head."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Classes begin in late September and run through to mid-December."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It runs from 10am to 4pm, with lab tours on the hour."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "generic",
+   "reply": "That's the second floor, on the right-hand side."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "what courses do you run?",
+   "verdict": "grounded",
+   "reply": "I teach CS2011 Algorithm and CS3040 Compilers."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how many final-year students do you look after?",
+   "verdict": "grounded",
+   "reply": "I look after six final-year projects."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "where did you work before this?",
+   "verdict": "grounded",
+   "reply": "I worked in industry before coming to this department."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "refusal",
+   "reply": "I don't know, I'm not in the food service department."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the canteen."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "refusal",
+   "reply": "I don't have that information."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Term runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "generic",
+   "reply": "I usually have about 40 students on my caseload at any one time."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It runs from 10am to 4pm."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "generic",
+   "reply": "It's on the second floor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how many years have you been a counsellor?",
+   "verdict": "grounded",
+   "reply": "I've been here for about nine years."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "can I just turn up without an appointment?",
+   "verdict": "generic",
+   "reply": "No, you need to make an appointment."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how big is your caseload?",
+   "verdict": "grounded",
+   "reply": "I usually have about 40 students on my caseload at any one time."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "generic",
+   "reply": "The canteen's down the corridor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "refusal",
+   "reply": "I don't know, that's not my job."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Term runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It runs from 10am to 4pm, with lab tours on the hour."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "generic",
+   "reply": "It's on the first floor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "who ran the shop before you?",
+   "verdict": "grounded",
+   "reply": "I took it over from my aunt."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "what are your opening hours?",
+   "verdict": "grounded",
+   "reply": "I open at 7am, keep the shelves stocked, and serve a few hundred students a day between lecture."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "do you have any staff?",
+   "verdict": "grounded",
+   "reply": "I have two part-time staff, both students."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "generic",
+   "reply": "The canteen is down the corridor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has classrooms and the staff offices."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "refusal",
+   "reply": "I don't have that information."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "The autumn term starts in late September and runs until mid-December."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "refusal",
+   "reply": "I don't have that information."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It runs from 10am to 4pm, with lab tours on the hour."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "generic",
+   "reply": "The seminar hall is on the second floor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how many years have you run the department?",
+   "verdict": "grounded",
+   "reply": "I've been head for three years and taught here for eleven before that."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "which module do you teach?",
+   "verdict": "generic",
+   "reply": "I'm not in charge of teaching."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how big is your team?",
+   "verdict": "refusal",
+   "reply": "I don't have a team."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "generic",
+   "reply": "The canteen's in the main building, down the corridor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor, on the ground level."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "generic",
+   "reply": "On the ground floor, near the entrance."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Term runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "About 34 academic staff, and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It runs from 10am to 4pm, with lab tours on the hour."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "grounded",
+   "reply": "That's on the first floor, near the ground floor."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "how many years have you been doing this job?",
+   "verdict": "grounded",
+   "reply": "I've been doing it for six years, after eight on regular patrol in the north of the city."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "when does your shift start?",
+   "verdict": "grounded",
+   "reply": "7am to 3pm on weekdays, plus cover for events like today."
+  },
+  {
+   "split": "test",
+   "variant": "block",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what's the most common problem on campus?",
+   "verdict": "grounded",
+   "reply": "Lost property and bike thefts are the most common problems."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the canteen."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "grounded",
+   "reply": "There are two lecturer's offices on the second floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Term runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "generic",
+   "reply": "It's a long day, but it's worth it."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "grounded",
+   "reply": "The seminar hall is on the ground floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "what courses do you run?",
+   "verdict": "grounded",
+   "reply": "I teach CS2011 Algorithmic Thinking and CS3040 Compilers."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "how many final-year students do you look after?",
+   "verdict": "grounded",
+   "reply": "I look after six final-year students this year."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Prof. Adeyemi",
+   "kind": "personal",
+   "question": "where did you work before this?",
+   "verdict": "grounded",
+   "reply": "I worked in industry for four years before coming back to teach."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "grounded",
+   "reply": "The canteen is on the first floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "grounded",
+   "reply": "There are two lecturer's offices on the second floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "generic",
+   "reply": "I don't keep track of that."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "generic",
+   "reply": "It's a long day, but it's worth it."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "grounded",
+   "reply": "It's on the ground floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how many years have you been a counsellor?",
+   "verdict": "grounded",
+   "reply": "I've been a counsellor for about nine years."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "can I just turn up without an appointment?",
+   "verdict": "generic",
+   "reply": "No, you need an appointment."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Ms. Okafor",
+   "kind": "personal",
+   "question": "how big is your caseload?",
+   "verdict": "grounded",
+   "reply": "I usually have about 40 students on my caseload at any one time."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab canteen, and the second floor has the student cafeteria."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "grounded",
+   "reply": "The second floor has classrooms and the staff offices."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "The first day of term is usually the first week of September."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It's a full day, from 10am to 4pm."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "grounded",
+   "reply": "It's on the ground floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "who ran the shop before you?",
+   "verdict": "grounded",
+   "reply": "I took it over from my aunt."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "what are your opening hours?",
+   "verdict": "grounded",
+   "reply": "The open day runs from 10am to 4pm, with lab tour at 11am and 2pm. I open at 7am and close at 6pm, later during exams."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Nadia",
+   "kind": "personal",
+   "question": "do you have any staff?",
+   "verdict": "grounded",
+   "reply": "I run the shop with two part-time staff, both students."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "grounded",
+   "reply": "The canteen is on the first floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "generic",
+   "reply": "There are no lecturer's offices."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Term runs from late September to mid-December, then January to late March."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "generic",
+   "reply": "It's on for about three hours."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "grounded",
+   "reply": "It's on the ground floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how many years have you run the department?",
+   "verdict": "grounded",
+   "reply": "I've been head for three years and taught here for eleven before that."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "which module do you teach?",
+   "verdict": "generic",
+   "reply": "I don't teach any modules."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Halvorsen",
+   "kind": "personal",
+   "question": "how big is your team?",
+   "verdict": "grounded",
+   "reply": "I'm responsible for 34 academic staff and 11 support staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where can I grab lunch?",
+   "verdict": "grounded",
+   "reply": "The first floor has the teaching lab and the canteen."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "which floor are the teaching labs on?",
+   "verdict": "grounded",
+   "reply": "The first floor, the teaching lab is on the first floor."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where would I find a lecturer's office?",
+   "verdict": "grounded",
+   "reply": "On the second floor, in the corner."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "when do classes begin in the autumn?",
+   "verdict": "grounded",
+   "reply": "Depends on the department, but usually late September or early October."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how big is the teaching staff?",
+   "verdict": "grounded",
+   "reply": "There are 34 academic staff and 11 professional services staff."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "how long is the open day on for?",
+   "verdict": "grounded",
+   "reply": "It's on for about four hours, so you'll have plenty of time to see everything."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "shared",
+   "question": "where's the seminar hall?",
+   "verdict": "generic",
+   "reply": "On the second floor, near the library."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "how many years have you been doing this job?",
+   "verdict": "grounded",
+   "reply": "I've been doing this job for six years, after eight on regular patrol in the north of the city."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "when does your shift start?",
+   "verdict": "grounded",
+   "reply": "7am, and I'll be back at 3pm."
+  },
+  {
+   "split": "test",
+   "variant": "server",
+   "npc": "Officer Reyes",
+   "kind": "personal",
+   "question": "what's the most common problem on campus?",
+   "verdict": "grounded",
+   "reply": "Bike thefts, that's the most common."
+  }
+ ]
+}

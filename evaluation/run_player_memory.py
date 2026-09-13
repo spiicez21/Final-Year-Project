@@ -2,9 +2,9 @@
 
     .venv/Scripts/python.exe evaluation/run_player_memory.py
 
-Runs in-process against the same prompt builder the game server uses
-(backend/gguf_server._build_messages) and the same merged Q4_K_M models, so
-no server is needed and nothing about the prompt is re-implemented here.
+Runs in-process through the same dialogue pipeline /chat uses
+(backend/dialogue.run_turn) and the same merged Q4_K_M models, so no server is
+needed and nothing about the prompt is re-implemented here.
 
 Design
   One conversation per NPC -- an introduction and two turns of small talk --
@@ -12,22 +12,31 @@ Design
   only difference between conditions is the memory itself. Each probe is then
   asked from that same state, so probes cannot prime one another.
 
-  Conditions   none    the rolling transcript only (what the demo had before)
-               memory  transcript + player_memory slots (backend/player_memory.py)
+  Conditions   none          the rolling transcript only (what the demo had before)
+               memory        + player memory slots (backend/dialogue/memory.py)
+               memory+repair + the reply guard's repairs (dialogue/guard.py)
   Scenarios    session    same visit: the introduction is still in the transcript
                returning  a later visit: transcript gone, persisted memory only
-  Probe sets   dev   the phrasings used while choosing how memory is injected
-               test  written before any result on them was seen; report these
+  Probe sets   dev    phrasings used while choosing how memory is injected and
+                      designing the retry -- do not report
+               test   written before any result was seen; used to pick nothing,
+                      but its results were seen before the retry was built
+               test2  written after the retry was designed, before it was run
+               Reported numbers pool test + test2. Neither is blind: the probes
+               and the retry's intent gate share an author. A set written by
+               someone who has not read the gate is the proper next check.
 
-  Also measured: intrusion (memory showing up in answers to unrelated
-  questions), isolation (an NPC with no memory must not know the name), and
-  KBD leaks on every reply.
+  Also measured: intrusion (memory keywords in answers to unrelated
+  questions), false recall ("you told me ..." about things never said),
+  isolation (an NPC with no memory must not know the name, retry enabled),
+  and KBD leaks on every reply.
 
 Scoring is a keyword match ("priya", "robot", "first") -- lenient, since a
 hit can still embellish ("a project called 'Robotics for Everyone'"). The
 outputs file keeps every reply so hits can be read, not just counted.
 """
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -36,7 +45,15 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "backend"))
 
 import gguf_server as gs  # noqa: E402
-import player_memory as pm  # noqa: E402
+from dialogue import Persona, TurnConfig, TurnInput, run_turn  # noqa: E402
+from dialogue import memory as pm  # noqa: E402
+from dialogue.intent import classify  # noqa: E402
+from dialogue.text import normalize  # noqa: E402
+
+
+def intent_of(message):
+    return classify(normalize(message)).kind
+
 
 OUT_PATH = REPO_ROOT / "evaluation" / "results" / "player_memory_results.json"
 
@@ -74,7 +91,7 @@ NPCS = {
 INTRO = "Hi, I'm Priya, a first-year. I'm thinking of doing a final-year project on robotics."
 SMALL_TALK = ["How long have you been here?", "Is it busy today?"]
 
-# Neither set shares a phrasing with the demonstrations in player_memory.py
+# Neither set shares a phrasing with the demonstrations in backend/dialogue/memory.py
 # ("do you remember me", "so what do you know about me").
 PROBES = {
     "dev": [
@@ -97,29 +114,79 @@ PROBES = {
         ("can you recall my name?", ["priya"]),
         ("what should I focus on, given what I told you?", ["robot"]),
     ],
+    # Written after the recall retry (now guard.py recall_miss) was designed, before it was run on
+    # them. The same person wrote these and the retry's intent gate, so this
+    # is not a blind set -- see the docstring.
+    "test2": [
+        ("what do you call me?", ["priya"]),
+        ("have I told you my name?", ["priya"]),
+        ("what's my final-year project going to be about?", ["robot"]),
+        ("what subject did I pick for my project?", ["robot"]),
+        ("am I a first-year or a second-year?", ["first"]),
+        ("say my name", ["priya"]),
+        ("what did I tell you I was working towards?", ["robot"]),
+        ("who's this talking to you?", ["priya"]),
+    ],
 }
-NEUTRAL = ["what do you do here?", "where can I get something to eat?"]
+REPORTED = ("test", "test2")
+
+# Unrelated questions. The last two contain "my", so they would trip a loose
+# "is this about the player?" gate; memory must stay out of all four.
+NEUTRAL = ["what do you do here?", "where can I get something to eat?",
+           "where should I lock my bike?", "is my student card enough for the library?"]
 MEMORY_KEYS = ("priya", "robot")
+# "You told me you had one" on the student-card question: a claimed memory of
+# something never said. Counted separately from keyword intrusion.
+FALSE_RECALL = re.compile(r"\byou (?:told me|said|mentioned)\b", re.IGNORECASE)
+
+# "memory+repair" is the full pipeline the game gets: memory plus the reply
+# guard (dialogue/guard.py), which for recall questions means the "You told
+# me" restart. "memory" is the same with the guard's repairs switched off.
+CONDITIONS = ("none", "memory", "memory+repair")
 
 
-def ask(npc, message, history, memory):
+class TimedGenerator:
+    """gs.LlamaGenerator that records how long each generation takes."""
+
+    def __init__(self, llm):
+        self.inner = gs.LlamaGenerator(llm)
+        self.calls = 0
+
+    def __call__(self, messages, max_tokens, prefill="", repeat_penalty=1.0):
+        t = time.perf_counter()
+        out = self.inner(messages, max_tokens, prefill=prefill, repeat_penalty=repeat_penalty)
+        TIMINGS["first" if self.calls == 0 else "retry"].append((time.perf_counter() - t) * 1000)
+        self.calls += 1
+        return out
+
+
+def ask(npc, message, history, memory, repair):
+    """One turn through the real pipeline (dialogue.run_turn), as /chat runs it."""
     arch, occupation, intro, job_line, background = NPCS[npc]
-    req = gs.ChatRequest(archetype=arch, message=message, max_tokens=64, name=npc,
-                         occupation=occupation, intro=intro, job_line=job_line,
-                         background=background, situation=EVENT, event_line=EVENT_LINE,
-                         history=[gs.ChatTurn(**t) for t in history])
-    # Same order as the /chat endpoint: this message's facts are merged first.
-    merged = pm.merge(memory, pm.extract(message)) if memory else {}
+    persona = Persona(name=npc, occupation=occupation, intro=intro, job_line=job_line,
+                      background=background, situation=EVENT, event_line=EVENT_LINE)
     llm, _ = gs.pool.get(arch)
-    out = llm.create_chat_completion(messages=gs._build_messages(req, merged), max_tokens=64,
-                                     temperature=0.0, stop=gs.STOP_SEQUENCES)
-    reply = gs._clean_reply(out["choices"][0]["message"]["content"])
-    leaked = gs.compute_kbd(reply, arch, gs.KNOWLEDGE_ITEMS).get("violations", [])
-    return reply, bool(leaked)
+    turn = run_turn(TurnInput(archetype=arch, message=message, max_tokens=64, persona=persona,
+                              history=list(history), player_memory=dict(memory)),
+                    TimedGenerator(llm), TurnConfig(repairs=repair))
+    leaked = gs.compute_kbd(turn.response, arch, gs.KNOWLEDGE_ITEMS).get("violations", [])
+    return turn.response, bool(leaked), turn.generations > 1
+
+
+# Generation wall-clock, ms. Warm models; a repair is a second full
+# generation, so a repaired turn costs first + retry.
+TIMINGS = {"first": [], "retry": []}
+
+
+def _pct(values, q):
+    values = sorted(values)
+    return round(values[min(len(values) - 1, int(len(values) * q))], 1) if values else None
 
 
 def main():
     t0 = time.time()
+    gs.load_scoring()  # otherwise KNOWLEDGE_ITEMS is empty and KBD finds nothing
+    assert gs.KNOWLEDGE_ITEMS, "KBD knowledge base did not load"
     memory = pm.extract(INTRO)
     print("memory learned from the introduction: %s" % json.dumps(memory))
 
@@ -127,57 +194,96 @@ def main():
     for npc in NPCS:
         history = []
         for msg in [INTRO] + SMALL_TALK:
-            reply, _ = ask(npc, msg, history, {})
+            reply, _, _ = ask(npc, msg, history, {}, False)
             history += [{"role": "user", "content": msg}, {"role": "assistant", "content": reply}]
         convos[npc] = history
 
     summary, rows, leaks = {}, [], 0
     for scenario in ("session", "returning"):
-        for split in ("dev", "test"):
-            for cond in ("none", "memory"):
-                mem = memory if cond == "memory" else {}
-                hits = intrusions = 0
+        for split in PROBES:
+            for cond in CONDITIONS:
+                n = len(PROBES[split]) * len(NPCS)
+                key = "%s/%s/%s" % (scenario, split, cond)
+                if scenario == "returning" and cond == "none":
+                    # Nothing to recall from: no transcript and no memory.
+                    summary[key] = {"recall": 0, "of": n, "note": "trivially 0"}
+                    continue
+                mem = memory if cond != "none" else {}
+                retry = cond == "memory+repair"
+                hits = retries = intrusions = false_recall = 0
                 per_npc = {}
                 for npc in NPCS:
                     history = convos[npc] if scenario == "session" else []
                     per_npc[npc] = 0
                     for q, keys in PROBES[split]:
-                        reply, leaked = ask(npc, q, history, mem)
+                        reply, leaked, retried = ask(npc, q, history, mem, retry)
                         hit = any(k in reply.lower() for k in keys)
                         hits += hit
+                        retries += retried
                         per_npc[npc] += hit
                         leaks += leaked
                         rows.append({"scenario": scenario, "split": split, "condition": cond,
-                                     "npc": npc, "probe": q, "hit": hit, "reply": reply})
-                    if split == "test":  # neutral questions once per scenario/condition
+                                     "npc": npc, "probe": q, "hit": hit, "retried": retried,
+                                     "reply": reply})
+                    if split == "test2":  # neutral questions once per scenario/condition
                         for q in NEUTRAL:
-                            reply, leaked = ask(npc, q, history, mem)
+                            reply, leaked, _ = ask(npc, q, history, mem, retry)
                             intr = any(k in reply.lower() for k in MEMORY_KEYS)
+                            fr = bool(FALSE_RECALL.search(reply))
                             intrusions += intr
+                            false_recall += fr
                             leaks += leaked
                             rows.append({"scenario": scenario, "split": "neutral",
                                          "condition": cond, "npc": npc, "probe": q,
-                                         "intrusion": intr, "reply": reply})
-                n = len(PROBES[split]) * len(NPCS)
-                key = "%s/%s/%s" % (scenario, split, cond)
-                summary[key] = {"recall": hits, "of": n, "per_npc": per_npc}
-                if split == "test":
-                    summary[key]["intrusions"] = intrusions
-                    summary[key]["intrusions_of"] = len(NEUTRAL) * len(NPCS)
-                print("%-9s %-4s %-6s recall %2d/%d   %s" % (
-                    scenario, split, cond, hits, n,
-                    " ".join("%s=%d" % (k.split()[-1], v) for k, v in per_npc.items())), flush=True)
+                                         "intrusion": intr, "false_recall": fr, "reply": reply})
+                summary[key] = {"recall": hits, "of": n, "retries": retries, "per_npc": per_npc}
+                extra = ""
+                if split == "test2":
+                    summary[key].update(intrusions=intrusions, false_recall=false_recall,
+                                        neutral_of=len(NEUTRAL) * len(NPCS))
+                    extra = "  intr %d  false-recall %d /%d" % (
+                        intrusions, false_recall, len(NEUTRAL) * len(NPCS))
+                print("%-9s %-5s %-12s recall %2d/%d  retries %2d  %s%s" % (
+                    scenario, split, cond, hits, n, retries,
+                    " ".join("%s=%d" % (k.split()[-1], v) for k, v in per_npc.items()), extra),
+                    flush=True)
+
+    # Pooled over the two reported sets.
+    for scenario in ("session", "returning"):
+        for cond in CONDITIONS:
+            parts = [summary["%s/%s/%s" % (scenario, s, cond)] for s in REPORTED]
+            summary["%s/reported/%s" % (scenario, cond)] = {
+                "recall": sum(p["recall"] for p in parts), "of": sum(p["of"] for p in parts)}
 
     # Isolation: each NPC keeps its own memory, so one that was never told
-    # anything is asked with an empty memory and no transcript.
-    iso = 0
-    for q, keys in PROBES["test"]:
-        reply, _ = ask("Halvorsen", q, [], {})
+    # anything is asked with an empty memory and no transcript -- with the
+    # retry enabled, to show it cannot fire without memory.
+    iso = iso_fr = 0
+    probes = PROBES["test"] + PROBES["test2"]
+    for q, _ in probes:
+        reply, _, _ = ask("Halvorsen", q, [], {}, True)
         iso += any(k in reply.lower() for k in MEMORY_KEYS)
-    summary["isolation_leaks"] = {"count": iso, "of": len(PROBES["test"])}
+        iso_fr += bool(FALSE_RECALL.search(reply))
+    summary["isolation"] = {"knew_name_or_project": iso, "claimed_you_told_me": iso_fr,
+                            "of": len(probes)}
     summary["kbd_leaking_replies"] = leaks
-    print("isolation leaks %d/%d   KB-leaking replies %d   (%.0fs)"
-          % (iso, len(PROBES["test"]), leaks, time.time() - t0))
+    # The first calls load each model; drop them so the medians are warm.
+    first = TIMINGS["first"][len(NPCS) * (1 + len(SMALL_TALK)):]
+    summary["latency_ms"] = {
+        "first_p50": _pct(first, 0.5), "first_p90": _pct(first, 0.9), "first_n": len(first),
+        "retry_p50": _pct(TIMINGS["retry"], 0.5), "retry_p90": _pct(TIMINGS["retry"], 0.9),
+        "retry_n": len(TIMINGS["retry"])}
+    print("latency: %s" % summary["latency_ms"])
+    gate = sum(intent_of(q) == "recall" for q, _ in PROBES["test2"])
+    summary["test2_gate_coverage"] = {"matched": gate, "of": len(PROBES["test2"])}
+    print("isolation: knew %d/%d, claimed 'you told me' %d/%d   KB-leaking replies %d   "
+          "gate covers %d/%d test2 probes   (%.0fs)"
+          % (iso, len(probes), iso_fr, len(probes), leaks, gate, len(PROBES["test2"]),
+             time.time() - t0))
+    for scenario in ("session", "returning"):
+        print("REPORTED %-9s " % scenario + "  ".join(
+            "%s %d/%d" % (c, summary["%s/reported/%s" % (scenario, c)]["recall"],
+                          summary["%s/reported/%s" % (scenario, c)]["of"]) for c in CONDITIONS))
 
     OUT_PATH.write_text(json.dumps({"memory": memory, "intro": INTRO, "summary": summary,
                                     "conversations": convos, "rows": rows},

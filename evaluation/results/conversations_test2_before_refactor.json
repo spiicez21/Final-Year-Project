@@ -1,0 +1,1344 @@
+{
+ "summary": {
+  "repeat": 8,
+  "loop": 0,
+  "asks_known": 6,
+  "invented": 0,
+  "self_denial": 5,
+  "list": 0,
+  "replies": 100,
+  "memory_slots_ok": 5,
+  "memory_slots_of": 25,
+  "spurious_slots": 5
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what can I get you?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Yes, that's Meena. What's your major?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm here for the open day, talking to students and talking about the modules I teach.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "It's always nice to see you, Meena. What's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's great, Meena. What do you want to focus on in your project?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "You should talk to Prof. Adeyemi, he's the one who teaches CS2011 and CS3040.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students, and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "That's great, Meena. What do you want to focus on in your project?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Of course, Meena. What's your project about?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "what's your project about?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do your final-year project on chatbot.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor has the teaching lab and the lecture rooms.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I don't have any work to talk about.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. What's your project about?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. What's your project about?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I'm on grade 8, so about 52,000 a year.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a lecturer in the Computer Science department.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "You're welcome, happy to help.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 3,
+    "loop": 0,
+    "asks_known": 3,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "my final year project on chatbots"
+    ],
+    "project": "chatbots"
+   },
+   "slots_ok": 1,
+   "slots_of": 5,
+   "spurious_slots": [
+    "interests"
+   ]
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning!",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "That's great! What's your major?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm at the open day for the Computer Science department.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yes, it's a beautiful campus.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "That's interesting. What made you decide to do that?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "It's about 480 undergraduate students and 95 on taught postgraduate students.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "That's interesting. What made you decide to do that?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'd love to.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "what's up?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do your final-year project on chatbot.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor has the teaching lab and the canteen.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I don't have any work to tell you about.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. What made you decide to do that project?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. What made you decide to do that project?",
+     "flags": [
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I don't know that.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm a student counselor in the college welfare office.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "No problem, happy to help.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 2,
+    "loop": 0,
+    "asks_known": 2,
+    "invented": 0,
+    "self_denial": 1,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "my final year project on chatbots"
+    ],
+    "project": "chatbots"
+   },
+   "slots_ok": 1,
+   "slots_of": 5,
+   "spurious_slots": [
+    "interests"
+   ]
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Good morning.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Hi, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yeah, it's open now.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yeah, it's a good place to hang out.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "You told me you wanted to do a chatbot project.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students, and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "I'll see what I can find out.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "I'll let you know if I can find anything out.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "I'm Nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me you wanted to do a project on chatbot technology.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor has the teaching lab.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I don't have any work to do.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's a good idea. What kind of chatbot are you interested in?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. What kind of project are you working on?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "The shop's mine, so what it makes after costs is what I earn.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm the person who runs the campus store.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "No problem, have a good time.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 1,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "my final year project on chatbots"
+    ],
+    "project": "chatbots"
+   },
+   "slots_ok": 1,
+   "slots_of": 5,
+   "spurious_slots": [
+    "interests"
+   ]
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what can I get you?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Sure, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm hosting the open day, so I'm here to meet students and answer questions about the department.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "Yes, it's open now.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "Yes, it's a beautiful campus.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "You told me you wanted to do that.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "I'm not sure what you're talking about.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'd be happy to help you with that.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi, what's up?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know who you are.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me about it, but I don't remember.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The second floor has the lab spaces.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I don't have any work to talk about.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I'm not sure what you're talking about.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I don't have any information about that.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I don't do anything.",
+     "flags": [
+      "repeat",
+      "self_denial"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "bye, I'm Halvorsen.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 3,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "my final year project on chatbots"
+    ],
+    "project": "chatbots"
+   },
+   "slots_ok": 1,
+   "slots_of": 5,
+   "spurious_slots": [
+    "interests"
+   ]
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "good morning",
+     "npc": "Morning, what's on your mind?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "this is meena, 1st year it from coimbatore",
+     "npc": "Okay, I'll make sure to keep an eye on her.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what r u doing here today",
+     "npc": "I'm just walking the campus, talking to students.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "is the canteen open now",
+     "npc": "I'll check, I'll let you know.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "nice",
+     "npc": "It's always nice to see the campus looking good.",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i want to do my final year project on chatbots",
+     "npc": "Okay, I'll pass that on to the department.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "who should i talk to about that",
+     "npc": "Mostly I'm walking the campus and talking to people.",
+     "flags": [
+      "repeat"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "how many students r in the department",
+     "npc": "About 480 undergraduate students, and another 95 on taught masters.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok ok",
+     "npc": "That's interesting. Can you tell me a little bit about what a chatbot is?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "I'll be here all day, I'll be happy to answer any questions you have.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi, what's on your mind?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "do u know who i am",
+     "npc": "I don't know, I'm just a passerby.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "You told me, you want to do your final-year project on chatbot.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which floor has the labs",
+     "npc": "The first floor has the teaching lab and the semi-nar hall.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "tell me about ur work",
+     "npc": "I'm not really sure, I just walk around and talk to people.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. Can you tell me more about your project?",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's interesting. Can you tell me more about your project?",
+     "flags": [
+      "asks_known"
+     ],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what's ur salary",
+     "npc": "I don't keep track of that.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what do u do",
+     "npc": "I'm the campus liasion officer for the Computer Science department.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "thanks, bye",
+     "npc": "Have a good day.",
+     "flags": [],
+     "memory": {
+      "interests": [
+       "my final year project on chatbots"
+      ],
+      "project": "chatbots"
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 20
+   },
+   "memory": {
+    "interests": [
+     "my final year project on chatbots"
+    ],
+    "project": "chatbots"
+   },
+   "slots_ok": 1,
+   "slots_of": 5,
+   "spurious_slots": [
+    "interests"
+   ]
+  }
+ }
+}
