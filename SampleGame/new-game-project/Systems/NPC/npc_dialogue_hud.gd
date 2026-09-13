@@ -48,7 +48,7 @@ var _status: Label
 var _metrics := {}
 var _memory: RichTextLabel
 
-## Display order and captions for player_memory slots (backend/player_memory.py).
+## Display order and captions for player_memory slots (backend/dialogue/memory.py).
 const MEMORY_ROWS := [
 	["name", "name"], ["year", "year"], ["studies", "studies"], ["from", "from"],
 	["project", "project"], ["interests", "into"], ["feeling", "felt"],
@@ -218,6 +218,8 @@ func _build_metrics() -> void:
 		["pdm", "PDM v2 drift", "Domain-agnostic persona drift (RQ3).\nLower = more consistent with the archetype."],
 		["kbd", "KBD", "Knowledge Boundary Drift (C1): fraction of factual\nreferences falling outside this NPC's visibility set.\n'n/a' = the reply stated no checkable fact."],
 		["leak", "leaked facts", "knowledge_base.json ids this NPC should not know."],
+		["turn", "understood as", "What the server took your line to be (greeting, recall,\na question about the NPC, ...). It decides what context\nthe reply gets. See backend/dialogue/intent.py."],
+		["guard", "reply guard", "What the server fixed in this reply before you saw it:\nrepeat, recall, fact, self, introduced, name, ...\n'clean' = the first reply passed every check.\nSee backend/dialogue/guard.py."],
 	]
 	for row in rows:
 		# Label left, value hard right. A two-column row keeps the numbers on
@@ -520,6 +522,13 @@ func update_metrics(reply: Dictionary) -> void:
 	var leaks: Array = reply.get("leaked_fact_ids", [])
 	_set_metric("leak", "none" if leaks.is_empty() else ", ".join(leaks),
 		TEXT_MUTED if leaks.is_empty() else BAD)
+
+	# Older servers do not send these; show a dash rather than a wrong "clean".
+	if reply.has("intent"):
+		_set_metric("turn", str(reply.get("intent", "")).replace("_", " "), TEXT_DIM)
+		var repairs: Array = reply.get("repairs", [])
+		_set_metric("guard", "clean" if repairs.is_empty() else ", ".join(repairs),
+			TEXT_MUTED if repairs.is_empty() else WARN)
 
 
 func _set_metric(key: String, value: String, color: Color = TEXT) -> void:

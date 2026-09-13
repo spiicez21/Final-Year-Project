@@ -9,7 +9,7 @@ class_name PlayerMemoryStore
 ## knowing something it was never told is a leak, the same failure KBD
 ## measures for world facts.
 ##
-## The server does the learning (backend/player_memory.py extracts facts from
+## The server does the learning (backend/dialogue/memory.py extracts facts from
 ## what the player says and returns the merged memory); this class only keeps
 ## the result and writes it to disk after every change. The file is plain JSON
 ## so a tester can read, edit or seed it by hand:

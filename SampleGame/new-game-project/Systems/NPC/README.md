@@ -82,6 +82,42 @@ than adding more prompt:
 Final: **11 of 11**, at a cost of **+55 ms** per warm turn (median 333 ms with
 facts vs 278 ms without).
 
+### ...but 11 questions was too few: NPCs mixed facts up
+
+A larger check (`evaluation/run_grounding.py`: 10 questions per NPC × 5 NPCs,
+each answerable from its prompt, in two phrasings) showed that replies which
+*sounded* generic were mostly the NPC confusing its own facts. The 11-question
+check had not caught it:
+
+- *"Where's the canteen?"* → "second floor" from **all five** NPCs, with "The
+  first floor has the teaching labs and the canteen" in the prompt. There
+  are three near-identical floor sentences and the 1.1B model blends them.
+- *"How many lecturers work here?"* → Okafor quoted her own caseload of 40.
+
+With all facts in one block, **31/50** answered correctly (held-out
+phrasings). The server now **retrieves** the one or two facts a question
+needs (`backend/dialogue/knowledge.py`, word overlap plus a small table of
+everyday synonyms: "lunch" → canteen) and shows only those, as an exchange
+immediately before the question. A refusal on a question whose facts were
+found gets one retry, with the reply started on the fact's first two words.
+Result: **42/50**, no refusals.
+
+Two design notes:
+- **Why the facts go at the end, not in a smaller system block.** Both scored
+  about the same, but the system prompt is the start of llama.cpp's cached
+  prefix. Changing it on every question made the whole persona reprocess
+  each turn. Over an eight-turn conversation, median generation went from
+  0.62 s (all facts in a block) to **2.42 s**. At the end only a few dozen
+  tokens change: **0.91 s**, retries included. Measured with
+  `run_grounding.py latency`.
+- **What is still wrong.** 8 of 50 are still off. Some are confident errors
+  ("there are no lecturer's offices"; Okafor saying you need an appointment
+  when her drop-ins need none). Retrieval narrows what the model looks at;
+  it does not make a 1.1B model read carefully.
+
+`TurnConfig(fact_retrieval=False)` (`backend/dialogue/turn.py`) restores the old
+block, for comparison.
+
 ## Voices
 
 Each NPC speaks its replies aloud in its own voice, synthesised locally by
@@ -206,9 +242,9 @@ interests, how they said they felt, where they are from. These are saved to
 `user://npc_memory.json` and survive a restart.
 
 - **Learned from what you say, by rules, not by the model.**
-  `backend/player_memory.py` pulls facts out of your own words with patterns
-  ("I'm Priya", "my name is priya", "project on robotics"). It is cheap,
-  deterministic and unit-tested (`backend/test_player_memory.py`). If a
+  `backend/dialogue/memory.py` pulls facts out of your own words with patterns
+  ("I'm Priya", "myself yuga, 3rd year cse", "project on robotics"). It is cheap,
+  deterministic and unit-tested (`backend/test_dialogue.py`). If a
   pattern misses something, the NPC just doesn't remember it. That is a safer
   failure than remembering something you never said. Questions *about* the
   NPC ("are you interested in AI?") teach it nothing about you.
@@ -222,22 +258,25 @@ interests, how they said they felt, where they are from. These are saved to
   `/forget all`. Or launch with `CampusNPC.exe -- --forget`. The JSON file can
   also be edited by hand to set up a test from a known state.
 
-**Measured** (`evaluation/run_player_memory.py`: 5 NPCs × 8 held-out recall
-questions, written before any results were seen):
+**Measured** (`evaluation/run_player_memory.py`: 5 NPCs × 16 held-out recall
+questions; the design was tuned on a separate set):
 
-| Scenario | Transcript only | + player memory |
-|---|---|---|
-| Same visit (intro still in the transcript) | 11/40 | 13/40 |
-| **Returning player** (new session) | **0/40** | **18/40** |
-| NPC never told: knows your name anyway | — | 0/8 |
+| Scenario | Transcript only | + player memory | + recall retry |
+|---|---|---|---|
+| Same visit (intro still in the transcript) | 22/80 | 33/80 | **56/80** |
+| **Returning player** (new session) | 0/80 | 37/80 | **64/80** |
+| NPC never told: knows your name anyway | — | — | 0/16 |
 
-Within one visit, memory adds almost nothing. The payoff is persistence: a
-returning player goes from never recalled to recalled about half the time.
-Recall depends heavily on the adapter. The police officer recalls a returning
-player 7/8 times, while the executive (trained hardest to refuse) manages 0/8.
-Some hits also embellish ("a project called 'Robotics for Everyone'"). Memory
-never showed up in answers to unrelated questions, and no memory-conditioned
-reply leaked a knowledge-base fact.
+**The recall retry.** Most misses were the adapters' trained refusal ("That's
+not something I can tell you" to "what's my name?"). When the NPC has memory
+of you, the question is about you, and the reply is a refusal mentioning
+nothing remembered, the server regenerates once with the reply started as
+"You told me". It fires on about a third of recall questions and never on
+ordinary conversation. It can't fire with empty memory, so it can't invent a
+past. Cost: a second generation (~245 ms), so those turns land around 600 ms.
+Of the 54 retried replies I read, 48 were faithful, 2 added a detail you never
+gave ("a robot that can navigate through a maze"), and 4 were wrong or
+non-answers. No reply to an unrelated question claimed you'd said something.
 
 One finding shaped the design. *Where* the memory goes in the prompt mattered
 more than *what* it says. Stated in the system prompt alone, it scored 11/40
