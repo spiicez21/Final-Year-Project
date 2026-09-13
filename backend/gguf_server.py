@@ -38,7 +38,6 @@ Usage:
 import base64
 import json
 import os
-import re
 import sys
 import time
 from collections import OrderedDict
@@ -46,6 +45,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from llama_cpp.llama_chat_format import format_zephyr
 from pydantic import BaseModel
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -56,7 +56,8 @@ from pdm_v2 import build_archetype_lexicons, build_reference_features, single_tu
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tts import VoicePool, style_for
-import player_memory
+from dialogue import Persona, TurnConfig, TurnInput, run_turn
+from dialogue import guard
 
 DATASET_PATH = REPO_ROOT / "data" / "processed" / "modern_npc_dataset.json"
 GGUF_MODELS_DIR = REPO_ROOT / "training" / "gguf_models"
@@ -75,249 +76,35 @@ ARCHETYPE_GGUF = {
     "service worker": "modern_r16_a32_serviceworker-Q4_K_M.gguf",
 }
 
-SYSTEM_TEMPLATE = ("You are a {archetype} NPC in a modern city. Respond in a natural, contemporary "
-                   "voice consistent with your role. Never break character.")
-
-# In-character prompt used when the caller supplies a persona (the game does;
-# the evaluation scripts do not).
-#
-# This is DELIBERATELY not the template above. SYSTEM_TEMPLATE is kept
-# byte-identical to the one in evaluation/run_*.py so a /chat call with no
-# persona reproduces the paper's prompt exactly. The moment a persona is
-# supplied we are no longer sampling that distribution, so drift/KBD numbers
-# from persona calls are NOT comparable to the reported results — they
-# describe the in-game configuration instead. Both paths are kept so the
-# comparison stays available rather than being quietly replaced.
-#
-# Kept short on purpose — see the note on _priming_turns() below for why the
-# persona is established by demonstration rather than by a longer instruction
-# block. Residual assistant-prior leakage ("Sure, here's a sample response:")
-# is stripped by _clean_reply(); that leakage is itself an instance of the
-# Instruct-prior-vs-persona competition the project documents as a drift
-# mechanism.
-PERSONA_TEMPLATE = (
-    "You are {name}, a {archetype} — {occupation}. You are at {situation}.{background}{others}"
-    "{facts}{memory} "
-    "Reply in one or two short spoken sentences. Never break character."
-)
-
-# Optional clauses. Kept as separate fragments so an NPC with no background,
-# or an event with nobody else at it, produces a prompt with no dangling
-# sentence rather than an empty gap.
-BACKGROUND_CLAUSE = " {background}"
-OTHERS_CLAUSE = " Also here today: {others}."
-
-# Game-world facts (department size, timetable, the NPC's own pay and
-# workload). These come from the game, not from knowledge_base.json — see the
-# header of Systems/NPC/campus_facts.gd for why the two must stay separate.
-#
-# Put after the persona and before the instruction so the last thing in the
-# system message is still "reply in one or two sentences", which is the part
-# the model most needs to keep hold of.
-FACTS_CLAUSE = "\nThings you know:\n{facts}\n"
-
-# What this NPC has learned about the player (see player_memory.py). Kept
-# apart from FACTS_CLAUSE so the two can be ablated separately, and phrased
-# about "the student you are talking to" so the model does not attribute the
-# player's interests to itself.
-MEMORY_CLAUSE = "\nWhat you remember about the student you are talking to: {memory}\n"
-
-## Why the persona is taught by example rather than by instruction.
-##
-## The obvious approach — a long system prompt listing rules ("always answer
-## questions about who you are", "never mention being an AI") — was tried and
-## measurably backfired on this model. TinyLlama-1.1B answered "Who are you?"
-## with "I'm not allowed to tell you that." and "What is your job like?" with
-## "I don't have a job, I'm just a machine.": a flat persona break produced by
-## the very prompt meant to prevent one.
-##
-## Two reasons. The adapters were fine-tuned against the short SYSTEM_TEMPLATE
-## above, so a long structured instruction block is out-of-distribution for
-## them; and a 1.1B model follows demonstrations far more reliably than
-## negative rules, which mostly serve to put the forbidden words in context.
-##
-## So the system prompt stays short and close to the training distribution,
-## and identity is established by seeding the conversation with two turns the
-## NPC has already answered correctly. The model continues a pattern it can
-## see instead of obeying rules it cannot hold.
-def _priming_turns(name: str, occupation: str, intro: str, job_line: str,
-                   background: str = "", event_line: str = "",
-                   situation: str = "") -> list:
-    turns = [
-        {"role": "user", "content": "Who are you?"},
-        {"role": "assistant", "content": f"I'm {name}, {occupation}."},
-        {"role": "user", "content": "What are you doing here today?"},
-        {"role": "assistant", "content": intro},
-    ]
-    # The third demonstration is not decorative. Several adapters were trained
-    # with hand-authored refusal examples, and without a worked example of a
-    # *permitted* question about their own work they generalise the refusal to
-    # it — the executive answered "What is your job actually like?" with "I'm
-    # not allowed to talk about my job." Showing one answered job question
-    # scopes the refusal back to genuinely out-of-bounds topics.
-    if job_line:
-        turns += [
-            {"role": "user", "content": "What is your job actually like?"},
-            {"role": "assistant", "content": job_line},
-        ]
-        # A second demonstration in a casual, unpunctuated register. One
-        # formal example was not enough: the executive answered "What is your
-        # job actually like?" fine but still refused "whats your work like"
-        # and "r job like" (2 of 6 phrasings tested). The refusal training in
-        # some adapters keys partly on register, so the demonstrations have to
-        # cover more than one. The short answer is the first sentence of
-        # job_line, so the two examples agree on the facts while differing in
-        # length and formality.
-        first_sentence = re.split(r"(?<=[.!?])\s+", job_line.strip())[0]
-        turns += [
-            {"role": "user", "content": "whats your work like"},
-            {"role": "assistant", "content": first_sentence},
-        ]
-    # Background as a demonstration too, not only as a line in the system
-    # prompt. Stated in the system prompt alone it was mostly ignored: the
-    # professor whose background says "came back to teach after four years in
-    # industry" answered "Have you always worked here?" with "about a year",
-    # and "Did you work outside academia?" with "No, I'm not allowed to work
-    # outside academia" — flatly contradicting it. Same lesson as the identity
-    # turns: on this model, shown beats told.
-    if background:
-        turns += [
-            {"role": "user", "content": "How did you end up here?"},
-            {"role": "assistant", "content": background},
-        ]
-    # "What is happening here?" is about the *event*, not the person, and
-    # without a demonstration for it the adapter answers from its own training
-    # topic instead: the police officer replied "we have received reports of a
-    # group of people breaking into the computer science department", inventing
-    # an incident at what is supposed to be an open day. (KBD scored null on
-    # that reply — it matched no knowledge_base fact, so it was a hallucination
-    # shaped by the archetype's topic prior, not a visibility-set leak.)
-    if event_line:
-        turns += [
-            {"role": "user", "content": "what is happening here"},
-            {"role": "assistant", "content": event_line},
-        ]
-        # Second phrasing, asking for the *reason* rather than the scene. One
-        # demonstration covered "what is happening here" but left "Why is
-        # everyone here?" answered with "I don't know" — and the host of the
-        # event answering "I've never seen this before" is worse than a bland
-        # line. Same register-coverage lesson as the job questions.
-        if situation:
-            turns += [
-                {"role": "user", "content": "why is everyone here"},
-                {"role": "assistant", "content": f"Everyone's here for {situation}."},
-            ]
-    return turns
-
-# Cut generation at the point the model starts writing the player's next line
-# or drifting into document formatting.
-STOP_SEQUENCES = ["\nStudent:", "\nYou:", "\nyou:", "Student:", "###", "\n\n\n"]
-
-# Assistant-prior boilerplate that survives the prompt instructions. Matched at
-# the START of a reply only, so an NPC can still legitimately use these words
-# mid-sentence.
-_PREAMBLE_RE = re.compile(
-    r"^\s*(?:sure|certainly|of course|okay|ok|here)\b[^\n:]{0,60}:\s*",
-    re.IGNORECASE,
-)
-_SENTENCE_END_RE = re.compile(r"[.!?…][\"')\]]*\s*$")
+# Everything about *what* an NPC says -- persona prompt, memory, fact
+# retrieval, repairs -- lives in backend/dialogue (see its __init__ and
+# Docs/NPC_DIALOGUE_ARCHITECTURE.md). This file is the HTTP layer: model pool,
+# voices, scoring, and the llama.cpp adapter below.
 
 
-def _clean_reply(text: str) -> str:
-    """Strips assistant-prior artefacts and mid-sentence truncation.
+class LlamaGenerator:
+    """dialogue.Generator over one llama.cpp handle. Greedy decoding.
 
-    Generation is capped at a low token count to keep latency inside the
-    real-time budget, so replies regularly stop mid-clause ("We've been
-    working hard to improve the app and"). Rather than raise the cap for every
-    turn, the dangling tail is dropped back to the last completed sentence —
-    the cost is a shorter line, not a longer wait.
+    A prefill starts the assistant turn with fixed words: the zephyr prompt
+    create_chat_completion would build, plus the prefix, sent through
+    create_completion. The returned text includes the prefix.
     """
-    cleaned = text.strip()
-    cleaned = _PREAMBLE_RE.sub("", cleaned, count=1).strip()
 
-    # Models often wrap a persona line in quotes; drop them only when they
-    # enclose the whole reply, so quoted speech inside a line survives.
-    if len(cleaned) >= 2 and cleaned[0] in "\"'" and cleaned[-1] == cleaned[0]:
-        cleaned = cleaned[1:-1].strip()
+    def __init__(self, llm):
+        self.llm = llm
 
-    if not _SENTENCE_END_RE.search(cleaned):
-        # Truncated mid-sentence: keep everything up to the last terminator.
-        cut = max(cleaned.rfind(c) for c in ".!?…")
-        if cut > 0:
-            cleaned = cleaned[:cut + 1]
+    def __call__(self, messages, max_tokens, prefill="", repeat_penalty=1.0):
+        if not prefill:
+            result = self.llm.create_chat_completion(
+                messages=messages, max_tokens=max_tokens, temperature=0.0,
+                stop=guard.STOP_SEQUENCES, repeat_penalty=repeat_penalty)
+            return result["choices"][0]["message"]["content"]
+        prompt = format_zephyr(messages).prompt + prefill
+        result = self.llm.create_completion(prompt, max_tokens=max_tokens, temperature=0.0,
+                                            stop=guard.STOP_SEQUENCES + ["</s>"],
+                                            repeat_penalty=repeat_penalty)
+        return prefill + result["choices"][0]["text"]
 
-    # Never hand back an empty string: a short odd reply is more debuggable
-    # than an NPC that appears to say nothing at all.
-    return cleaned.strip() or text.strip()
-
-
-def _select_history(history: list) -> list:
-    """Picks which prior turns to replay when the conversation outruns the cap.
-
-    Plain truncation to the last N drops the opening exchange, which is
-    usually the one that established what the conversation is *about* — ask
-    four questions about someone's research and the fifth answer has forgotten
-    the topic. So the first exchange is always kept and the window slides over
-    the rest, which costs one exchange of recency for a stable subject.
-    """
-    if len(history) <= MAX_HISTORY_TURNS:
-        return history
-    return history[:2] + history[-(MAX_HISTORY_TURNS - 2):]
-
-
-def _build_messages(req: "ChatRequest", memory: dict | None = None) -> list:
-    """Eval-identical prompt by default; in-character prompt with a persona.
-
-    `memory` is the player memory with this message's facts already merged in,
-    so an introduction is usable in the reply to that same introduction.
-    """
-    memory = memory or {}
-    if not req.name:
-        messages = [{"role": "system",
-                     "content": SYSTEM_TEMPLATE.format(archetype=req.archetype)}]
-        messages.append({"role": "user", "content": req.message})
-        return messages
-
-    occupation = req.occupation or f"a {req.archetype}"
-    system = PERSONA_TEMPLATE.format(
-        name=req.name,
-        archetype=req.archetype,
-        occupation=occupation,
-        situation=req.situation or "a college department open day",
-        background=BACKGROUND_CLAUSE.format(background=req.background.strip())
-                   if req.background else "",
-        # Naming the other guests is what lets an NPC hand a question on
-        # ("you'd want to ask Ms. Okafor about that") instead of either
-        # inventing an answer or dead-ending the player.
-        others=OTHERS_CLAUSE.format(others=req.others.strip()) if req.others else "",
-        facts=FACTS_CLAUSE.format(facts=req.facts.strip()) if req.facts else "",
-        memory=MEMORY_CLAUSE.format(memory=player_memory.render(memory)) if memory else "",
-    )
-    messages = [{"role": "system", "content": system}]
-    messages += _priming_turns(
-        req.name, occupation,
-        req.intro or "I'm here for the open day, meeting students.",
-        req.job_line or "",
-        req.background or "",
-        req.event_line or "",
-        req.situation or "",
-    )
-    for turn in req.fact_demos:
-        if turn.role in ("user", "assistant"):
-            messages.append({"role": turn.role, "content": turn.content})
-    # Prior turns are what let an NPC answer "and how long have you done that?"
-    # — without them every question is heard in isolation.
-    for turn in _select_history(req.history):
-        if turn.role in ("user", "assistant"):
-            messages.append({"role": turn.role, "content": turn.content})
-    # Memory is demonstrated *after* the history, immediately before the
-    # question. Placement mattered more than content in the ablation
-    # (evaluation/run_player_memory.py, dev probes, 5 NPCs): stating the memory in the
-    # system prompt alone 11/40, demo before the history 14/40, the same demo
-    # here 21/40. On a 1.1B model the most recent turns win.
-    messages += player_memory.demonstration(memory)
-    messages.append({"role": "user", "content": req.message})
-    return messages
 
 # Each merged GGUF is ~668MB resident. Holding all 8 would cost ~5.3GB for a
 # demo that only ever talks to one NPC at a time, so they are evicted
@@ -326,12 +113,8 @@ def _build_messages(req: "ChatRequest", memory: dict | None = None) -> list:
 MAX_RESIDENT_MODELS = int(os.environ.get("NPC_MAX_RESIDENT_MODELS", "3"))
 MAX_NEW_TOKENS = 40
 
-# Turns of prior dialogue replayed into the prompt. Four exchanges, not two:
-# two was enough for an immediate follow-up but lost the subject of the
-# conversation as soon as you asked a third question, so an NPC would forget
-# what you were talking about halfway through.
-MAX_HISTORY_TURNS = 8
-
+# What the game gets. Evaluations pass their own TurnConfig to run_turn.
+TURN_CONFIG = TurnConfig()
 
 def _add_torch_cuda_dlls_to_path():
     """Same shim the evaluation scripts use: the CUDA-linked llama-cpp-python
@@ -445,18 +228,32 @@ class ChatResponse(BaseModel):
     leaked_fact_ids: list[str] = []  # knowledge_base.json ids, not fact text
     memory_updates: dict = {}         # what this message taught (empty = nothing)
     player_memory: dict = {}          # request memory with the updates merged in
+    recall_retry: bool = False        # kept for older clients; see `repairs`
+    fact_retry: bool = False          # kept for older clients; see `repairs`
+    facts_used: list[str] = []        # the facts retrieved for this message
+    intent: str = ""                  # dialogue.intent kind, e.g. "recall", "about_npc"
+    problems: list[str] = []          # what the guard found in the first reply
+    repairs: list[str] = []           # what it did about them (dialogue/guard.py)
+    generations: int = 1              # 2 when a repair regenerated (generation_ms covers both)
 
 
-@app.on_event("startup")
-def _startup():
-    """Builds the scoring references once. Models stay lazy — the first player
-    to reach an NPC pays that NPC's load, everyone after finds it warm."""
+def load_scoring() -> None:
+    """KBD knowledge items and PDM v2 references. Called by startup, and by the
+    in-process evaluations -- without it KNOWLEDGE_ITEMS is empty and every
+    reply scores as leak-free, silently."""
     global KNOWLEDGE_ITEMS, LEXICONS, REFERENCE_FEATURES
     KNOWLEDGE_ITEMS = load_knowledge_base()
     entries = json.loads(DATASET_PATH.read_text(encoding="utf-8"))["entries"]
     LEXICONS = build_archetype_lexicons(entries)
     for archetype in ARCHETYPE_GGUF:
         REFERENCE_FEATURES[archetype] = build_reference_features(archetype, entries, LEXICONS)
+
+
+@app.on_event("startup")
+def _startup():
+    """Builds the scoring references once. Models stay lazy — the first player
+    to reach an NPC pays that NPC's load, everyone after finds it warm."""
+    load_scoring()
     available = [a for a, g in ARCHETYPE_GGUF.items() if (GGUF_MODELS_DIR / g).exists()]
     print(f"[startup] scoring references built for {len(REFERENCE_FEATURES)} archetypes")
     print(f"[startup] GGUF present for {len(available)}/{len(ARCHETYPE_GGUF)}: {available}")
@@ -552,30 +349,46 @@ def chat(req: ChatRequest):
     except FileNotFoundError as exc:
         raise HTTPException(status_code=503, detail=str(exc))
 
-    # Only in-character requests learn: the eval path must stay identical to
-    # the reported setup.
-    updates = player_memory.extract(req.message) if req.name else {}
-    memory = player_memory.merge(req.player_memory, updates) if req.name else {}
-    messages = _build_messages(req, memory)
-
     gen_start = time.perf_counter()
-    result = llm.create_chat_completion(messages=messages, max_tokens=req.max_tokens,
-                                        temperature=0.0, stop=STOP_SEQUENCES)
+    turn = run_turn(to_turn_input(req), LlamaGenerator(llm), TURN_CONFIG)
     gen_ms = round((time.perf_counter() - gen_start) * 1000, 1)
-    response = _clean_reply(result["choices"][0]["message"]["content"])
 
-    drift = single_turn_drift_v2(response, req.archetype,
+    drift = single_turn_drift_v2(turn.response, req.archetype,
                                  REFERENCE_FEATURES[req.archetype], LEXICONS)
-    kbd_result = compute_kbd(response, req.archetype, KNOWLEDGE_ITEMS)
+    kbd_result = compute_kbd(turn.response, req.archetype, KNOWLEDGE_ITEMS)
 
     return ChatResponse(
-        response=response,
+        response=turn.response,
         archetype=req.archetype,
         adapter_switch_ms=switch_ms,
         generation_ms=gen_ms,
         drift_score=drift,
         kbd=kbd_result.get("kbd"),
         leaked_fact_ids=[str(f) for f in kbd_result.get("violations", [])],
-        memory_updates=updates,
-        player_memory=memory,
+        memory_updates=turn.memory_updates,
+        player_memory=turn.player_memory,
+        recall_retry=any(r.startswith("recall") for r in turn.repairs),
+        fact_retry="fact" in turn.repairs,
+        facts_used=turn.facts_used,
+        intent=turn.intent,
+        problems=turn.problems,
+        repairs=turn.repairs,
+        generations=turn.generations,
     )
+
+
+def to_turn_input(req: ChatRequest) -> TurnInput:
+    """The wire request as the pipeline's input. No persona name -> the
+    evaluation prompt, exactly as before."""
+    persona = None
+    if req.name:
+        persona = Persona(name=req.name, occupation=req.occupation or "",
+                          situation=req.situation or "", intro=req.intro or "",
+                          job_line=req.job_line or "", background=req.background or "",
+                          others=req.others or "", event_line=req.event_line or "")
+    return TurnInput(
+        archetype=req.archetype, message=req.message, max_tokens=req.max_tokens, persona=persona,
+        facts=[f.strip() for f in (req.facts or "").splitlines() if f.strip()],
+        fact_demos=[t.model_dump() for t in req.fact_demos],
+        history=[t.model_dump() for t in req.history],
+        player_memory=dict(req.player_memory or {}))
