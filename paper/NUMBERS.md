@@ -93,6 +93,57 @@ whose raw output files store responses but not scores.
 | Persona-break rate after fix | 0 / 25 probes | same README, regression probe |
 | Break-in hallucination, KBD undefined | `kbd: null`, 0 leaked ids | same README |
 
+## Player memory — Section "A first dynamic case" (added 2026-09-11)
+
+All from `evaluation/results/player_memory_results.json` (`evaluation/run_player_memory.py`)
+unless noted. 5 NPCs, greedy decoding, keyword scoring. "Reported" pools the
+`test` and `test2` probe sets (8 + 8 questions × 5 NPCs = 80).
+
+| Claim | Value | Source key in `summary` |
+|---|---|---|
+| Same visit: transcript / +memory / +retry | 22/80, 33/80, 56/80 | `session/reported/{none,memory,memory+retry}` |
+| Returning: transcript / +memory / +retry | 0/80, 37/80, 64/80 | `returning/reported/...` (none is trivially 0) |
+| Retry fired | 54 of 160 reported questions | sum of `retries` over `{session,returning}/{test,test2}/memory+retry` (14+9+15+16) |
+| Retry latency | first gen p50 339.5 ms; retry p50 244.7 ms | `latency_ms` (first p90 is inflated by model swaps across 5 NPCs in a 3-model pool; not quoted) |
+| False "you told me" on unrelated questions | 0/40 | `{session,returning}/test2/memory+retry` → `false_recall` (20 each) |
+| Never-told NPC knew the player | 0/16; claimed "you told me" 0/16 | `isolation` |
+| KB-leaking replies | 0 | `kbd_leaking_replies` |
+| Intent filter covers test2 | 6/8 | `test2_gate_coverage` |
+| Hand audit of retried replies | 54 read: 48 faithful, 2 invented detail (keyword hits), 4 wrong/non-answer | `rows` with `retried: true`, split test/test2 — audited by hand 2026-09-11 |
+| Placement, design set | none 13/40, clause only 11/40, greeting demo early 14/40, demo early 14/40, demo late 21/40 | `evaluation/results/memory_placement_results.json` (`evaluation/run_memory_placement.py`) |
+
+> The `dev` set was used for every design decision and is not reported.
+> `test` results were seen before the retry was built; `test2` was written
+> after the retry was designed and before it was run. Both were written by the
+> same person who wrote the retry's intent filter, so neither is blind — the
+> paper says so in Limitations.
+
+## Fact grounding — Playable Integration, third finding (added 2026-09-11)
+
+From `evaluation/results/grounding_results.json` (`evaluation/run_grounding.py`,
+default run: `block` vs `server` through the real `/chat` handler) unless noted.
+5 NPCs × 10 questions; facts parsed from `campus_facts.gd`. Reported numbers
+are the `test` phrasings; `dev` was used for design.
+
+| Claim | Value | Source |
+|---|---|---|
+| All facts in system prompt | 31/50 grounded, 7 refusals | `summary["test/block"]` |
+| Retrieval + late turn + retry | 42/50 grounded, 0 refusals | `summary["test/server"]` |
+| Canteen on the wrong floor | 5/5 NPCs ("second floor") | `rows`, dev, variant block, "where's the canteen?" |
+| Fixed / broke | 16 fixed (10 wrong + 6 refusals → correct), 5 correct → wrong | verdict transitions block→server over `rows`, test |
+| Regressions explained | 3 × "how long is the open day on for?" (retrieval "long → years"), 1 baseline scorer false positive (Reyes, "near the ground floor") | same rows, read by hand |
+| KB-leaking replies | 0 in both layouts | `summary["kbd_leaking_replies"]` |
+| Retrieved-only system block + retry | 39/50 (test) | `run_grounding.py test sys_retry` (placement ablation; table in the script docstring) |
+| Latency, 8-turn conversation, median | block 620 ms; retrieved-only system block 2416 ms; server 906 ms (incl. retries) | `evaluation/results/grounding_latency.json` (`run_grounding.py latency`) |
+
+> **Bug found and fixed while doing this.** The in-process evaluations call
+> the server's KBD scorer, whose knowledge base is loaded at server startup.
+> Run in-process, it was empty, so the first player-memory run's "0 KB-leaking
+> replies" checked nothing. `gguf_server.load_scoring()` now loads it, both
+> evaluations call it and assert it loaded, and the memory evaluation was
+> rerun: still 0 leaks, recall unchanged, first-generation median 339.5 ms
+> (was 354.6 ms; the paper uses 340).
+
 ## Training and the held-out split (added 2026-09-11)
 
 | Claim | Value | Source |

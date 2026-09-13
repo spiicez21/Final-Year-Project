@@ -56,7 +56,11 @@ range, while the persona voice measured by a separate drift metric stays nearly
 flat over the same sweep --- voice blends smoothly, knowledge does not. A
 prompt-only baseline that injects the character's permitted facts and instructs
 refusal leaked on 4 of 4 probes where the trained adapter leaked on none.
-Finally, we show the framework runs inside a playable 3D game at 331\,ms median
+Giving each NPC a saved, per-character memory of what the player told it
+exposes the reverse failure: the adapters' trained refusals decline even the
+player's own name. A returning player is recalled on 37 of 80 questions from
+memory alone and 64 of 80 once refusals are repaired by a single constrained
+retry. Finally, we show the framework runs inside a playable 3D game at 331\,ms median
 per reply on a current consumer laptop, and report the same benchmark failing
 its latency target on an older one, which locates the real-time claim in
 hardware rather than in method.
@@ -108,6 +112,10 @@ Our contributions are:
         game with the drift metrics computed live on each reply, which is what
         turned two of the findings in this paper into observations rather than
         conjectures.
+  \item \textbf{Per-character player memory}, persisted across sessions, with
+        a recall evaluation and a constrained-retry repair for refusal-trained
+        adapters (Section~\ref{sec:memory}) --- a first measurement of a
+        visibility set that changes at runtime.
 \end{itemize}
 
 \section{Related Work}
@@ -461,14 +469,14 @@ are real-time'' but ``this configuration became real-time between one consumer
 laptop generation and the next,'' which is a more useful thing for a game
 developer to know.
 
-\section{Playable Integration}
+\section{Playable Integration} \label{sec:playable}
 
 The framework drives NPCs in an HD-2D 3D game: five characters at a department
 open day, each backed by its own quantized adapter, with model-switch latency,
 generation latency, PDM v2 and KBD displayed live on every reply. Median warm
 generation in play is 333\,ms.
 
-Two findings came out of building it rather than out of the evaluation harness.
+Three findings came out of building it rather than out of the evaluation harness.
 First, prompt content interferes with adapter behaviour in ways that are easy to
 miss offline: a persona line describing the officer's duties as including
 ``the odd break-in'' was enough, combined with the archetype's own topic prior,
@@ -484,6 +492,31 @@ have a job, I'm just a machine''; replacing the instruction with two worked
 example turns eliminated the failure across 25 probes. We note this because much
 of the persona-stability literature assumes instruction following that a 1.1B
 model does not reliably have.
+
+Third, a dozen facts are enough to confuse a model this small. Each NPC is
+given about a dozen short game-world facts: where things are, term dates,
+staff numbers, its own hours and caseload. With all of them in the system
+prompt, NPCs answered 31 of 50 fact questions correctly (5 NPCs, 10
+questions each, phrasings held out from design). Most of the misses were not
+generic invention but confusion between facts. All five NPCs put the canteen
+on the wrong floor, blending three near-identical sentences about floors, and
+one answered a question about staff numbers with its own caseload. We now
+select the one or two facts a question needs by word overlap, and show only
+those, as a turn stated immediately before the question. When the reply
+still refuses, it gets the same single constrained retry used for player
+memory (Section~\ref{sec:memory}), started on the fact's first two words.
+This raised correct answers to 42 of 50 with no refusals, and KBD found no
+knowledge-base leak under either layout. The change is not free. Of the 50
+answers, 16 were fixed but 5 that were scored correct before were scored
+wrong after. Three of those trace to one over-broad retrieval rule (``how
+long'' read as a question about years of service), and one was a scoring
+false positive in the baseline. Placement was decided by latency, not
+accuracy. Keeping only the retrieved facts in the system prompt scored
+slightly lower (39 of 50), and it changes the start of the cached prompt
+prefix on every turn,
+and over an eight-turn conversation median generation rose from 0.62\,s to
+2.42\,s. Placed at the end, where only a few dozen tokens change, the cost is
+0.91\,s including retries.
 
 \section{Beyond Static Roles} \label{sec:generality}
 
@@ -511,14 +544,92 @@ The $\alpha$-sweep is arguably already a case of this: blending two adapters
 asks what happens when two visibility sets are merged, and
 Section~\ref{sec:rq2} is the answer for one kind of merge.
 
-We make no empirical claim for these settings here; only the static case is
-measured in this paper. One caveat applies to all of them and should be stated
-before anyone builds on this: in each, visibility would change at runtime by
-changing what goes into the \emph{prompt}, not what is in the weights. That is
-Condition~C's mechanism layered on a Condition~B adapter, and given that
-Condition~C leaked on every probe we ran it on, it is not safe to assume the
-dynamic case inherits the trained boundary of the static one. That is the
-question worth measuring next.
+One caveat applies to all of them and should be stated before anyone builds on
+this: in each, visibility would change at runtime by changing what goes into
+the \emph{prompt}, not what is in the weights. That is Condition~C's mechanism
+layered on a Condition~B adapter, and given that Condition~C leaked on every
+probe we ran it on, it is not safe to assume the dynamic case inherits the
+trained boundary of the static one. We have not measured that question. The
+next subsection measures the simplest dynamic case, and it turns up the
+opposite problem.
+
+\subsection{A first dynamic case: what an NPC learns about the player}
+\label{sec:memory}
+
+The playable build needed one of these settings anyway. Each NPC keeps a small
+record of what the player has told \emph{it} --- name, year, final-year project,
+interests --- and the record is saved between play sessions. Facts are
+extracted from the player's own words by regular expressions, not by the model:
+this is cheap, deterministic, and fails safe, because a missed pattern means
+the character forgets something rather than remembering something that was
+never said. This is the information-diffusion case above in its most basic
+form. A character's visibility set grows by exactly what it is told, and each
+character has its own.
+
+We measured recall with five NPCs. The player introduces themselves once (a
+first-year planning a robotics project), makes two turns of small talk, and
+then asks a recall question; every question is asked from that same state.
+Answers are decoded greedily and scored by keyword. One set of 8 questions was
+used for every design decision below. We report two further sets of 8, which
+were not used to choose anything, pooled over the five NPCs. They are not blind,
+though: the same author wrote them and the retry's intent filter described
+below. In a \emph{returning} session the transcript is gone, so whatever the
+NPC has saved is all it has.
+
+\begin{table}[t]
+\caption{Recall of what the player said, 5 NPCs $\times$ 16 held-out questions.
+Keyword-scored; see text for a hand audit.}
+\label{tab:memory}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Scenario & transcript & + memory & + retry \\
+\midrule
+Same visit       & 22/80 & 33/80 & 56/80 \\
+Returning player & 0/80  & 37/80 & 64/80 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three things came out of it (Table~\ref{tab:memory}).
+
+\emph{Placement mattered more than content.} On the design set, putting the
+remembered facts in the system prompt scored \emph{below} having no memory at
+all (11/40 against 13/40). Adding a worked example of the NPC using them, placed
+before the transcript, reached 14/40. The same example placed immediately before
+the player's question reached 21/40. This is the demonstration finding of the
+playable build again, with recency added: on a 1.1B model the last few turns
+outweigh everything above them.
+
+\emph{The ceiling was the adapters' refusals, not the memory.} With the facts in
+place, most misses were refusals such as ``That's not something I can tell
+you'' in reply to ``what's my name?''. The refusal examples that keep an
+adapter from answering forbidden questions (RQ1) also stop it saying the
+player's own name. We repair this with one constrained retry: if the NPC has
+memory of this player, the question is about the player, the reply is a
+refusal, and the reply mentions nothing remembered, the reply is regenerated
+once with its first words fixed as ``You told me''. This retry fired on 54 of
+the 160 reported questions and lifted returning-player recall from 37 to 64
+of 80. It costs a second generation (median 245\,ms on top of 340\,ms), so a
+retried turn misses the 500\,ms target of RQ4. Ordinary turns are unaffected.
+
+\emph{What it costs in faithfulness.} We read all 54 retried replies. 48 state
+only what was remembered, 2 add a detail the player never gave (``a robot that
+can navigate through a maze'') and still count as keyword hits, and 4 are wrong
+or non-answers. No reply to four unrelated questions, two of which contain
+``my'' to tempt the filter, claimed the player had said something (0/40). An
+NPC that was never told anything knew nothing about the player (0/16), and the
+retry cannot fire without memory, so it cannot invent a past conversation. No
+memory-conditioned reply leaked a knowledge-base fact.
+
+Isolation holds here by construction, since an NPC that was never told has
+nothing about the player in its prompt. So 0/16 shows only that the retry
+cannot fabricate, not that a boundary held under pressure. What the study does
+show is a mirror image of Condition~C. There, a prompt instructing the model to
+withhold facts lost to a model trained to answer. Here, a prompt supplying facts
+lost to adapters trained to refuse. In both cases what the prompt says loses to
+what the weights were trained to do. That is the reason not to assume prompt-level
+control of a small persona model in either direction.
 
 \section{Limitations}
 
@@ -553,6 +664,18 @@ its best point. We have not measured whether this affects KBD.
 The KBD, $\alpha$-sweep and Condition~C results are not affected by the
 missing split, because their probes were written separately and are not drawn
 from the training data.
+
+The memory study (Section~\ref{sec:memory}) uses one introduction, so one name
+and one project, and scores recall by keyword, which the hand audit shows
+slightly overstates it. Its questions and the retry's intent filter share an
+author, and 2 of the 8 questions in the second reported set fall outside that
+filter entirely. A question set written by people who have not seen the filter
+is the proper test. We have also not measured how often the extraction rules
+catch what real players type. The fact-grounding check in
+Section~\ref{sec:playable} has the same weaknesses: one author, keyword
+scoring, 50 questions. Its absolute latencies come from a benchmark
+conversation and are higher than the in-play median reported there, so
+only the comparison between layouts should be read from them.
 
 \section{Pending Work} \label{sec:pending}
 
