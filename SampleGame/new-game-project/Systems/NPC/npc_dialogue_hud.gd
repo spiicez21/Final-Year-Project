@@ -283,8 +283,8 @@ See backend/dialogue/events.py."],
 	news_spacer.custom_minimum_size = Vector2(0, 4)
 	box.add_child(news_spacer)
 	var news_heading := _label("HEARD NEWS", 10, TEXT_MUTED)
-	news_heading.tooltip_text = ("Things players reported, as far as this NPC has heard.
-"
+	news_heading.tooltip_text = ("Things players told NPCs, as far as this one has heard:\n"
+		+ "reported incidents, and notes of anything else that was said.\n"
 		+ "News spreads from NPC to NPC over time. Type /news or /forget news.")
 	news_heading.mouse_filter = Control.MOUSE_FILTER_STOP
 	box.add_child(news_heading)
@@ -580,9 +580,10 @@ func show_news(known: Array) -> void:
 		var where := str(e.get("where", "")).replace("[", "[lb]")
 		var source := str(e.get("heard_from", ""))
 		var from_text := "from you" if source == "player" or source.is_empty() else "from " + source.replace("[", "[lb]")
+		if str(e.get("kind", "incident")) == "note":
+			from_text = "said · " + from_text
 		lines.append("%s%s  [color=#6f7785]%s[/color]" % [what, (" · " + where) if not where.is_empty() else "", from_text])
-	_news.text = "
-".join(lines)
+	_news.text = "\n".join(lines)
 
 
 func reset_metrics() -> void:

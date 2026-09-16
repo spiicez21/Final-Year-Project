@@ -241,7 +241,8 @@ class ChatResponse(BaseModel):
     problems: list[str] = []          # what the guard found in the first reply
     repairs: list[str] = []           # what it did about them (dialogue/guard.py)
     generations: int = 1              # 2 when a repair regenerated (generation_ms covers both)
-    reported_event: dict | None = None  # {"what", "where", "score"} when the player reported something
+    reported_event: dict | None = None  # {"what", "where", "score", "kind"}: an incident the player
+                                        # reported, or a note of anything else they told this NPC
     shared_event_id: str = ""         # a heard event this reply passed on to the player
     event_leaks: list[str] = []       # unheard events the reply mentions (KBD for rumours)
 

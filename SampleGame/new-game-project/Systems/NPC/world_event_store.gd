@@ -1,7 +1,7 @@
 extends RefCounted
 class_name WorldEventStore
 
-## News in the world: what players report, and which NPCs have heard it.
+## News in the world: what players tell NPCs, and which NPCs have heard it.
 ##
 ## When the player tells an NPC about something happening ("i saw a man
 ## carrying a knife near the gym"), the server marks the incident and its
@@ -33,7 +33,7 @@ func _init() -> void:
 
 ## Records a report made to `npc_name`. The same incident reported twice is one
 ## event, now known to both NPCs. Returns the event id.
-func add_report(npc_name: String, what: String, where: String) -> String:
+func add_report(npc_name: String, what: String, where: String, kind: String = "incident") -> String:
 	var key := what.strip_edges().to_lower() + "|" + where.strip_edges().to_lower()
 	for e in _events:
 		if (str(e["what"]).to_lower() + "|" + str(e["where"]).to_lower()) == key:
@@ -46,6 +46,9 @@ func add_report(npc_name: String, what: String, where: String) -> String:
 		"where": where.strip_edges(),
 		"at": Time.get_unix_time_from_system(),
 		"reported_to": npc_name,
+		# "incident" (something happening, worth volunteering) or "note"
+		# (anything else the player said, passed on when asked). backend/dialogue/events.py.
+		"kind": kind,
 		"heard_by": {},
 	}
 	_next_id += 1
@@ -63,7 +66,8 @@ func known_by(npc_name: String) -> Array:
 		if e["heard_by"].has(npc_name):
 			var h: Dictionary = e["heard_by"][npc_name]
 			out.append({"id": e["id"], "what": e["what"], "where": e["where"],
-				"heard_from": h["from"], "fresh": not h["told_player"]})
+				"heard_from": h["from"], "fresh": not h["told_player"],
+				"kind": e.get("kind", "incident"), "raw": e.get("kind", "incident") == "note"})
 	return out
 
 
@@ -72,7 +76,8 @@ func unheard_by(npc_name: String) -> Array:
 	var out: Array = []
 	for e in _events:
 		if not e["heard_by"].has(npc_name):
-			out.append({"id": e["id"], "what": e["what"], "where": e["where"]})
+			out.append({"id": e["id"], "what": e["what"], "where": e["where"],
+				"kind": e.get("kind", "incident")})
 	return out
 
 
@@ -83,6 +88,27 @@ func mark_shared(npc_name: String, event_id: String) -> void:
 			e["heard_by"][npc_name]["told_player"] = true
 			save()
 			return
+
+
+## Everyone who has not heard each event hears it now, from someone who has.
+## Returns one {id, from, to} per NPC that learned something.
+func spread_all(npc_names: Array) -> Array:
+	var told: Array = []
+	for e in _events:
+		var knowers: Array = []
+		for n in npc_names:
+			if e["heard_by"].has(n):
+				knowers.append(n)
+		if knowers.is_empty():
+			continue
+		for n in npc_names:
+			if not e["heard_by"].has(n):
+				var teller: String = knowers[randi() % knowers.size()]
+				_hear(e, n, teller, false)
+				told.append({"id": e["id"], "from": teller, "to": n})
+	if not told.is_empty():
+		save()
+	return told
 
 
 ## One step of gossip among `npc_names`, restricted by `npc_types`: a random NPC

@@ -126,6 +126,12 @@ var _settings: NpcSettings
 ## within a few minutes of play.
 @export var news_spread_seconds := 45.0
 
+## News reaches every NPC the moment it is reported, rather than travelling one
+## NPC at a time. The gossip timer above still runs as a fallback -- and note
+## that it only passes news between NPCs of the same archetype, which never
+## fires here, because every NPC in SPAWNS is a different archetype.
+@export var news_spreads_instantly := true
+
 
 func _ready() -> void:
 	_player = get_node_or_null(player_path)
@@ -415,6 +421,19 @@ func _persona_for(npc: NpcActor) -> Dictionary:
 	}
 
 
+## Everyone hears what was just reported (news_spreads_instantly).
+func _spread_news_now() -> void:
+	var names: Array = []
+	for npc in _npcs:
+		names.append(npc.display_name)
+	var told: Array = _news.spread_all(names)
+	if told.is_empty():
+		return
+	print("NpcDirector: news reached %d other NPCs at once" % told.size())
+	if _active != null:
+		_hud.show_news(_news.known_by(_active.display_name))
+
+
 ## One step of gossip between the NPCs that are actually in the world.
 func _spread_news() -> void:
 	var names: Array = []
@@ -481,7 +500,10 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	# Same for news: a report was made to this NPC even if the player walked off.
 	var reported = reply.get("reported_event")
 	if not reply.has("error") and reported is Dictionary and not str(reported.get("what", "")).is_empty():
-		_news.add_report(npc.display_name, str(reported["what"]), str(reported.get("where", "")))
+		_news.add_report(npc.display_name, str(reported["what"]), str(reported.get("where", "")),
+			str(reported.get("kind", "incident")))
+		if news_spreads_instantly:
+			_spread_news_now()
 	var shared := str(reply.get("shared_event_id", ""))
 	if not shared.is_empty():
 		_news.mark_shared(npc.display_name, shared)

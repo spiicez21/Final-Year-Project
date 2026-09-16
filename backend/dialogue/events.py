@@ -14,6 +14,20 @@ visibility set here grows at runtime, as it hears things, and a reply that
 mentions an event it has not heard is a leak -- the "information diffusion"
 case the paper names but had not measured.
 
+Two kinds of news, kept the same way:
+
+  incident  something happening that the player reports ("a guy with a gun near
+            the old library"). The extractor marks the incident and the place.
+  note      anything else the player states that is worth passing on ("the lift
+            in the physics block is stuck", "the robotics club meets on
+            Friday"). Nothing is extracted: the player's own sentence is kept
+            and quoted, because an invented paraphrase of a fact nobody can
+            check is worse than a quote. Facts the player states *about
+            themselves* are not notes -- those are player memory (memory.py).
+
+An NPC passes an incident on when greeted, because it is urgent; a note only
+when a question reaches it. Both spread NPC to NPC in the game.
+
 Event shape, as sent by the game:
     {"id": "e3", "what": "a man carrying a knife", "where": "the gym",
      "heard_from": "player" | "<NPC name>", "fresh": true}
@@ -32,8 +46,15 @@ someone somebody some guy man woman people person student there here this that s
 """.split())
 
 
+# A note needs this many content words: "ok thanks" and "yeah" are not news.
+MIN_NOTE_WORDS = 3
+# ... and at most this many characters. A player once typed a department list
+# that repeated "AI" forty times; it was stored whole and passed around.
+MAX_NOTE_CHARS = 200
+
+
 def event_from(reading: dict, message: str, is_report: bool):
-    """An event from the extractor's event reading, or None.
+    """An incident from the extractor's event reading, or None.
 
     The incident span is the event. If the intent classifier says this is a
     report but the extractor found no incident span, the player's own line is
@@ -50,7 +71,24 @@ def event_from(reading: dict, message: str, is_report: bool):
         return None
     if not what:
         return None
-    return {"what": what, "where": place[0] if place else "", "score": round(float(score), 3), "raw": raw}
+    return {"what": what, "where": place[0] if place else "", "score": round(float(score), 3),
+            "raw": raw, "kind": "incident"}
+
+
+def note_from(message: str):
+    """Anything else the player tells an NPC, kept as a note, or None.
+
+    The whole sentence is kept as typed. The caller decides *when* to ask for
+    one (turn.py: a statement that taught no fact about the player), so this
+    only judges whether there is enough here to be worth repeating.
+    """
+    what = (message or "").strip()
+    words = _content_words(what)
+    if len(words) < MIN_NOTE_WORDS or "?" in what:
+        return None
+    if len(what) > MAX_NOTE_CHARS:
+        what = what[:MAX_NOTE_CHARS].rsplit(" ", 1)[0].rstrip(",;") + "…"
+    return {"what": what, "where": "", "score": 0.0, "raw": True, "kind": "note"}
 
 
 def sentence(event: dict, npc_name: str = "") -> str:
@@ -58,6 +96,10 @@ def sentence(event: dict, npc_name: str = "") -> str:
     what = event.get("what", "").strip().rstrip(".")
     where = event.get("where", "").strip()
     source = event.get("heard_from", "player")
+    if event.get("kind") == "note":
+        if source in ("", "player"):
+            return 'You told me: "%s".' % what
+        return '%s told me a student said: "%s".' % (source, what)
     if event.get("raw"):
         # Only the player's own words were kept: quote them, don't rephrase.
         if source in ("", "player"):

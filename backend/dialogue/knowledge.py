@@ -47,11 +47,11 @@ SYNONYMS = {
     "teaching": ("teach",),
     # Questions about news reach the events an NPC has heard, which are stated
     # as "... reported ..." (events.sentence).
-    "happen": ("reported",), "happened": ("reported",), "happening": ("reported",),
-    "news": ("reported",), "incident": ("reported",), "incidents": ("reported",),
-    "safe": ("reported",), "unsafe": ("reported",), "danger": ("reported",), "dangerous": ("reported",),
-    "trouble": ("reported",), "problem": ("reported",), "wrong": ("reported",), "heard": ("reported", "told"),
-    "going": ("reported",),
+    "happen": ("reported", "said"), "happened": ("reported", "said"), "happening": ("reported", "said"),
+    "news": ("reported", "said"), "incident": ("reported", "said"), "incidents": ("reported", "said"),
+    "safe": ("reported", "said"), "unsafe": ("reported", "said"), "danger": ("reported", "said"), "dangerous": ("reported", "said"),
+    "trouble": ("reported", "said"), "problem": ("reported", "said"), "wrong": ("reported", "said"), "heard": ("reported", "said", "told"),
+    "going": ("reported", "said"),
     # Asking about someone else at the event reaches the guest sentences
     # (guest_facts), which all say "... is another guest ...".
     "else": ("guest",), "guests": ("guest",), "present": ("guest",), "anyone": ("guest",),

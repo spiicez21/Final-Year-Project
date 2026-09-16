@@ -375,7 +375,8 @@ KNIFE = {"id": "e1", "what": "a man carrying a knife", "where": "the gym", "hear
 
 def test_event_from_extraction_and_from_report_intent():
     reading = {"incident": ("a man carrying a knife", 0.9), "place": ("the gym", 0.8)}
-    assert events.event_from(reading, "i saw a man carrying a knife near the gym", False) ==         {"what": "a man carrying a knife", "where": "the gym", "score": 0.9, "raw": False}
+    assert events.event_from(reading, "i saw a man carrying a knife near the gym", False) ==         {"what": "a man carrying a knife", "where": "the gym", "score": 0.9,
+         "raw": False, "kind": "incident"}
     # A report the extractor could not parse keeps the player's own words.
     assert events.event_from({}, "something weird near block c", True)["what"] == "something weird near block c"
     assert events.event_from({}, "i like cricket", False) is None
@@ -470,6 +471,42 @@ def test_other_guests_are_retrievable_by_who_they_are():
     assert knowledge.select("is there a counsellor around?", pool) == [guests[1]]
     # A place in a guest's job title is not a reason to retrieve them.
     assert knowledge.select("where would i find a lecturer's office?", pool) == [pool[-1]]
+
+
+def test_anything_else_the_player_states_is_kept_as_a_note():
+    gen = Scripted("Good to know.")
+    intent.default._ready = False
+    out = run_turn(_input("the lift in the physics block is stuck again"), gen, extract=no_facts)
+    assert out.intent == "statement"
+    assert out.reported_event["kind"] == "note"
+    assert out.reported_event["what"] == "the lift in the physics block is stuck again"
+    assert out.player_memory == {}          # a note is never a fact about the player
+
+
+def test_small_talk_and_questions_are_not_notes():
+    assert events.note_from("ok thanks") is None
+    assert events.note_from("where is the canteen?") is None
+    intent.default._ready = False
+    gen = Scripted("Nice to meet you, Yuga.")
+    out = run_turn(_input("my name is yuga"), gen,
+                   extract=lambda m, c="": {"name": ("Yuga", 1.0)})
+    assert out.reported_event is None       # the memory took it; not news
+
+
+def test_a_heard_note_answers_a_question_but_is_not_blurted_on_greeting():
+    note = {"id": "e9", "what": "the lift in the physics block is stuck", "where": "",
+            "heard_from": "Nadia", "fresh": True, "kind": "note", "raw": True}
+    hello = _input("hi")
+    hello.known_events = [note]
+    gen = Scripted("Hello there.")
+    assert run_turn(hello, gen, extract=no_facts).shared_event_id == ""
+    asked = _input("is anything happening on campus?")
+    asked.known_events = [note]
+    gen = Scripted("Nadia told me a student said the lift in the physics block is stuck.")
+    out = run_turn(asked, gen, extract=no_facts)
+    prompt = " ".join(m["content"] for m in gen.calls[0]["messages"])
+    assert 'Nadia told me a student said: "the lift in the physics block is stuck"' in prompt
+    assert out.shared_event_id == "e9"
 
 
 def test_similar():

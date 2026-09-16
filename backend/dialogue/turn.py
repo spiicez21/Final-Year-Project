@@ -112,6 +112,10 @@ def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfi
     memory, updates = player_memory.merge(inp.player_memory, readings)
     reported = (events.event_from(event_reading, inp.message, intent.kind == intents.REPORT)
                 if config.news else None)
+    if reported is None and config.news and intent.kind == intents.STATEMENT and not updates:
+        # Anything else the player states and the memory did not take: kept as
+        # a note in the player's own words, so an NPC can pass it on later.
+        reported = events.note_from(inp.message)
 
     # Facts answer questions. Retrieving for statements put the head of
     # department's salary into his reply to "i'm in 2nd year ece".
@@ -127,10 +131,13 @@ def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfi
                                       + known_news + guests,
                                       knowledge.split_sentences(inp.persona.background))
     # A greeted NPC passes on the freshest news it heard from someone else.
+    # Incidents only: an NPC volunteers something urgent, not every remark it
+    # was told, which would make every greeting a monologue.
     rumour = None
     if config.news and intent.kind == intents.GREETING:
         rumour = next((e for e in reversed(inp.known_events)
-                       if e.get("fresh") and e.get("heard_from") not in ("", "player")), None)
+                       if e.get("fresh") and e.get("heard_from") not in ("", "player")
+                       and e.get("kind", "incident") != "note"), None)
 
     # The event this reply is expected to carry: the rumour it was primed with,
     # or heard news that retrieval picked for the question.
