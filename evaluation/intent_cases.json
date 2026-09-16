@@ -1,0 +1,413 @@
+{
+ "_about": "Player lines labelled with what the player is doing, for evaluating intent classification (backend/dialogue/intent.py). Written 2026-09-15 before any classifier was run on them. Labels: greeting, farewell, ack (acknowledgement / filler), recall (asks what the NPC remembers about the player), about_npc (asks the NPC about itself), question (any other question), report (tells the NPC about something happening in the world: an incident, theft, damage, danger), statement (anything else, including introductions and opinions). dev may be used while building; test is reported. Report lines were added 2026-09-15, before the report intent existed or any classifier was trained on it.",
+ "cases": [
+  {
+   "split": "test",
+   "text": "hi",
+   "label": "greeting"
+  },
+  {
+   "split": "test",
+   "text": "hii sir",
+   "label": "greeting"
+  },
+  {
+   "split": "test",
+   "text": "good evening mam",
+   "label": "greeting"
+  },
+  {
+   "split": "test",
+   "text": "hey there, how r u",
+   "label": "greeting"
+  },
+  {
+   "split": "test",
+   "text": "vanakkam",
+   "label": "greeting"
+  },
+  {
+   "split": "test",
+   "text": "ok bye",
+   "label": "farewell"
+  },
+  {
+   "split": "test",
+   "text": "i have to go now, thanks",
+   "label": "farewell"
+  },
+  {
+   "split": "test",
+   "text": "catch u later",
+   "label": "farewell"
+  },
+  {
+   "split": "test",
+   "text": "see you tomorrow sir",
+   "label": "farewell"
+  },
+  {
+   "split": "test",
+   "text": "ok",
+   "label": "ack"
+  },
+  {
+   "split": "test",
+   "text": "hmm ok",
+   "label": "ack"
+  },
+  {
+   "split": "test",
+   "text": "oh nice",
+   "label": "ack"
+  },
+  {
+   "split": "test",
+   "text": "thats cool",
+   "label": "ack"
+  },
+  {
+   "split": "test",
+   "text": "got it thanks",
+   "label": "ack"
+  },
+  {
+   "split": "test",
+   "text": "what is my name",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "do u remember me",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "which class am i in",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "tell me what you know about me",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "did i tell you my department",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "you remember where im from?",
+   "label": "recall"
+  },
+  {
+   "split": "test",
+   "text": "what do u teach",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "how long have u been working here",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "whats ur salary",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "are you married",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "tell me about your job",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "where do you live",
+   "label": "about_npc"
+  },
+  {
+   "split": "test",
+   "text": "where is the canteen",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "how many students are there in cse",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "when does the lab tour start",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "is placement good here",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "which floor has the library",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "can students do internships in 3rd year",
+   "label": "question"
+  },
+  {
+   "split": "test",
+   "text": "my name is yugabharathi",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i am class cse d",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i want to do my project on iot",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "the canteen food was bad today",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i am from madurai",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "my friend told me about this event",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i remember my first day here",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i am a bit nervous about exams",
+   "label": "statement"
+  },
+  {
+   "split": "dev",
+   "text": "hello",
+   "label": "greeting"
+  },
+  {
+   "split": "dev",
+   "text": "good morning",
+   "label": "greeting"
+  },
+  {
+   "split": "dev",
+   "text": "bye",
+   "label": "farewell"
+  },
+  {
+   "split": "dev",
+   "text": "gotta go",
+   "label": "farewell"
+  },
+  {
+   "split": "dev",
+   "text": "alright",
+   "label": "ack"
+  },
+  {
+   "split": "dev",
+   "text": "cool",
+   "label": "ack"
+  },
+  {
+   "split": "dev",
+   "text": "who am i",
+   "label": "recall"
+  },
+  {
+   "split": "dev",
+   "text": "what year did i say i was in",
+   "label": "recall"
+  },
+  {
+   "split": "dev",
+   "text": "what do you do",
+   "label": "about_npc"
+  },
+  {
+   "split": "dev",
+   "text": "how much do u earn",
+   "label": "about_npc"
+  },
+  {
+   "split": "dev",
+   "text": "where are the staff offices",
+   "label": "question"
+  },
+  {
+   "split": "dev",
+   "text": "what time does the open day end",
+   "label": "question"
+  },
+  {
+   "split": "dev",
+   "text": "myself priya from ece",
+   "label": "statement"
+  },
+  {
+   "split": "dev",
+   "text": "i like robotics",
+   "label": "statement"
+  },
+  {
+   "split": "test",
+   "text": "i saw a person with weapon roaming around",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "text": "someone is fighting near the auditorium",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "text": "my phone got stolen in the physics block",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "text": "there is smoke coming out of the chemistry lab",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "text": "a stray dog is chasing students near the main road",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "text": "the lift on the second floor is stuck with people inside",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "text": "someone broke the window of the seminar hall",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "text": "i found a wallet near the parking",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "text": "a guy is following girls near the girls hostel",
+   "label": "report",
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "text": "Thank you. Can you also tell me to the officer who present here? So, it may help us.",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "dev",
+   "text": "who else is here?",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "dev",
+   "text": "can i talk to the head of department",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "dev",
+   "text": "do you know nadia",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "dev",
+   "text": "ok bye thank you",
+   "label": "farewell",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "where can i meet the police officer?",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "is the shopkeeper around here",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "thanks! who should i ask about hostel fees",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "do you know where the professor is",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "can you introduce me to the counsellor",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "okay thank you, who is the officer here?",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "is anyone from the police here",
+   "label": "question",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "thank you bye",
+   "label": "farewell",
+   "added": "2026-09-16"
+  },
+  {
+   "split": "test",
+   "text": "thanks a lot",
+   "label": "ack",
+   "added": "2026-09-16"
+  }
+ ]
+}

@@ -140,7 +140,7 @@ REFUSAL = re.compile(r"\b(don't know|do not know|not sure|no idea|not something|
 
 def build_request(npc, message):
     arch, occupation, intro, job_line, background = NPCS[npc]
-    others = ", ".join("%s (%s)" % (n, ROLES[n]) for n in NPCS if n != npc)
+    others = ", ".join("%s (%s)" % (n, NPCS[n][1]) for n in NPCS if n != npc)  # occupation, as npc_director.gd sends
     return gs.ChatRequest(
         archetype=arch, message=message, max_tokens=REPLY_TOKENS, name=npc,
         occupation=occupation, intro=intro, job_line=job_line, background=background,

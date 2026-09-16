@@ -1,6 +1,6 @@
 {
  "summary": {
-  "repeat": 0,
+  "repeat": 2,
   "loop": 0,
   "asks_known": 0,
   "invented": 0,
@@ -29,8 +29,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "introduced",
@@ -44,20 +49,30 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "where is canteen",
-     "npc": "The second floor has the computer labs and the canteen.",
+     "npc": "The second floor has the canteen.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -68,8 +83,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -82,42 +102,56 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i like ai",
-     "npc": "That's a great interest, Yuga. What kind of project do you have in mind?",
+     "npc": "That's a great interest, Yuga. What do you think about using ai for web development?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "can u help me",
-     "npc": "Of course, Yuga.",
+     "npc": "Of course, Yuga. What kind of project do you have in mind?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
-      "repeat",
-      "asks_known"
+      "repeat"
      ]
     },
     {
@@ -127,16 +161,18 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": [
-      "fact",
-      "fact_fallback"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
@@ -145,11 +181,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -160,11 +201,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -175,29 +221,38 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
-      "repeat",
       "asks_known"
      ]
     },
     {
      "visit": "visit2",
      "you": "what is my name",
-     "npc": "You told me your name was Yuga.",
+     "npc": "You told me your name, Yuga.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -206,105 +261,144 @@
     {
      "visit": "visit2",
      "you": "where is canteen",
-     "npc": "The first floor of the Computer Science department.",
+     "npc": "The second floor has the computer labs, the library, and the student lounge.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "npc": "I'm a professor in the Computer Science department.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about the department",
-     "npc": "Well, the department is pretty big. There are about 480 undergraduate students, and another 95 on masters.",
+     "npc": "The department is called Computer Science, and it's one of the largest departments in the university.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "repeat"
+     ]
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "npc": "I'm a professor in the Computer Science department.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "ok",
-     "npc": "That's a lot of students. What kind of courses do they offer?",
+     "npc": "That's great to hear, Yuga. What do you like to do in your free time?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "ok",
-     "npc": "I'd have to check with them to see what kind of courses they offer.",
+     "npc": "Okay.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "acknowledge"
+     ]
     },
     {
      "visit": "visit2",
      "you": "bye",
-     "npc": "bye!",
+     "npc": "Bye!",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -320,8 +414,8 @@
    },
    "memory": {
     "name": "Yuga",
-    "year": "third-year",
-    "studies": "cse",
+    "year": "3rd",
+    "department": "CSE",
     "interests": [
      "ai"
     ]
@@ -347,8 +441,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "introduced"
@@ -361,8 +460,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -373,47 +477,67 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "ok thanks",
-     "npc": "No problem.",
+     "npc": "no problem, I'm glad I could help.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what should i do for my final year project",
-     "npc": "That's a good idea! What do you want to do?",
+     "npc": "That's a great start! What do you want to do with your project?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i like ai",
-     "npc": "That's a great idea! What do you think about using ai for your project?",
+     "npc": "That's a great idea! What do you think about using ai to help with the counseling process?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -424,26 +548,36 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what is ur salary",
-     "npc": "I'm on grade 7, so about 39,000 a year.",
+     "npc": "I'm on grade 7, which is about 39,000 a year.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -454,11 +588,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -469,11 +608,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -484,11 +628,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -499,11 +648,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -516,11 +670,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -531,28 +690,40 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about the department",
-     "npc": "The department is called Computer Science.",
+     "npc": "The department is called Computer Science and Engineering, and it's located in the college.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "repeat"
+     ]
     },
     {
      "visit": "visit2",
@@ -561,11 +732,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -578,11 +754,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -593,11 +774,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -608,11 +794,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -628,8 +819,8 @@
    },
    "memory": {
     "name": "Yuga",
-    "year": "third-year",
-    "studies": "cse",
+    "year": "3rd",
+    "department": "CSE",
     "interests": [
      "ai"
     ]
@@ -655,8 +846,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "introduced"
@@ -665,80 +861,108 @@
     {
      "visit": "visit1",
      "you": "what do u teach",
-     "npc": "I teach cse, computer science, and programming.",
+     "npc": "I don't teach anything.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "where is canteen",
-     "npc": "The canteen is on the second floor.",
+     "npc": "The second floor.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "ok thanks",
-     "npc": "I'll be there in a few minutes.",
+     "npc": "I'll be there in a minute.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what should i do for my final year project",
-     "npc": "That's a good question. I'd recommend talking to your professor or the department head.",
+     "npc": "That's a good question. I'd recommend talking to your professor or the CS department head.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i like ai",
-     "npc": "I'm not really into ai.",
+     "npc": "I'd recommend talking to the CS department head. They'll have more information about what kind of projects they're looking for.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": [
-      "repeat"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
      "you": "can u help me",
-     "npc": "Sure, I'd be happy to help. What kind of ai project are you thinking of?",
+     "npc": "Sure, I'd be happy to help. What kind of project are you thinking of doing?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -749,11 +973,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -766,26 +995,36 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hi again",
-     "npc": "I'm glad to see you again.",
+     "npc": "Yeah, I remember you.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "asks_known"
@@ -795,14 +1034,21 @@
      "visit": "visit2",
      "you": "do u remember me",
      "npc": "I remember you, Yuga.",
-     "flags": [],
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -813,26 +1059,36 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "where is canteen",
-     "npc": "It's on the second floor.",
+     "npc": "The canteen is on the second floor.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -843,71 +1099,98 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about the department",
-     "npc": "The department open day is a great opportunity to meet students and talk about the department's courses.",
+     "npc": "The department of Computer Science and Engineering is a large department with a diverse range of courses. The department is known for its cutting-edge research and innovative teaching methods.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I'm a shopkeeper.",
+     "npc": "I open the shop and keep the shelves stocked.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's all I do.",
+     "flags": [],
+     "memory": {
+      "name": "Yuga",
+      "year": "3rd",
+      "department": "CSE",
+      "interests": [
+       "ai"
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "ok",
-     "npc": "I'll be there.",
+     "npc": "That's all I do.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "ok",
-     "npc": "I'll be there too.",
-     "flags": [],
-     "memory": {
-      "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
-      "interests": [
-       "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -918,17 +1201,22 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 0,
+    "repeat": 1,
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
@@ -938,8 +1226,8 @@
    },
    "memory": {
     "name": "Yuga",
-    "year": "third-year",
-    "studies": "cse",
+    "year": "3rd",
+    "department": "CSE",
     "interests": [
      "ai"
     ]
@@ -965,8 +1253,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -977,8 +1270,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -989,8 +1287,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1001,8 +1304,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1013,8 +1321,13 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1025,11 +1338,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1040,11 +1358,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "asks_known"
@@ -1057,11 +1380,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -1074,11 +1402,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1089,11 +1422,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1104,43 +1442,58 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what is my name",
-     "npc": "You told me your name, Yuga.",
-     "flags": [],
+     "npc": "I don't remember your name, Yuga.",
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": [
-      "recall"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit2",
      "you": "where is canteen",
-     "npc": "The first floor has the teaching lab and the canteen.",
+     "npc": "It's on the second floor.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1151,28 +1504,40 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about the department",
-     "npc": "I'm not really in charge of anything.",
+     "npc": "You told me you were interested in ai.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "recall"
+     ]
     },
     {
      "visit": "visit2",
@@ -1181,14 +1546,39 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Yuga",
+      "year": "3rd",
+      "department": "CSE",
+      "interests": [
+       "ai"
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
-      "self"
+      "acknowledge"
      ]
     },
     {
@@ -1198,11 +1588,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -1210,37 +1605,27 @@
     },
     {
      "visit": "visit2",
-     "you": "ok",
-     "npc": "What's the deal with the department open day?",
-     "flags": [],
-     "memory": {
-      "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
-      "interests": [
-       "ai"
-      ]
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
      "you": "bye",
-     "npc": "Bye.",
+     "npc": "Bye!",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 0,
+    "repeat": 1,
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
@@ -1250,8 +1635,8 @@
    },
    "memory": {
     "name": "Yuga",
-    "year": "third-year",
-    "studies": "cse",
+    "year": "3rd",
+    "department": "CSE",
     "interests": [
      "ai"
     ]
@@ -1277,32 +1662,47 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what do u teach",
-     "npc": "I teach cse, and I also teach csr.",
+     "npc": "I teach CS101, CS201, CS301, and CS401.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "where is canteen",
-     "npc": "On the second floor, near the library.",
+     "npc": "It's on the second floor.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1313,50 +1713,70 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what should i do for my final year project",
-     "npc": "That's up to you, but I'd recommend doing something related to computer science.",
+     "npc": "That's up to you, you can choose any topic you want. Just make sure it's related to computer science.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse"
+      "year": "3rd",
+      "department": "CSE",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i like ai",
-     "npc": "that's a great choice, ai is a growing field and you'll learn a lot.",
+     "npc": "that's a great choice, you could do a project on ai and machine learning.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "can u help me",
-     "npc": "sure, I'd be happy to. What do you have in mind?",
+     "npc": "sure, I'd be happy to help. What kind of project are you thinking of?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1367,11 +1787,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1382,41 +1807,56 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hi again",
-     "npc": "Hi, Yuga. What's been going on with you?",
+     "npc": "Hi, Yuga. What's your interest in ai?",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "do u remember me",
-     "npc": "You told me you were interested in ai, but I don't remember you.",
+     "npc": "You told me you were interested in ai, but I didn't really pay much attention to it.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -1429,11 +1869,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1444,11 +1889,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1459,11 +1909,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -1472,60 +1927,82 @@
     {
      "visit": "visit2",
      "you": "tell me about the department",
-     "npc": "The department is pretty big, but I'd be happy to help you find what you're looking for.",
+     "npc": "The department is called the Computer Science department, and it's located on the second floor of the library.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I'm a police officer, but I also work as a campus liasion officer.",
+     "npc": "Mostly I'm walking the campus and talking to people.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's helpful. Do you know if there's anything else I can do to help out?",
+     "flags": [],
+     "memory": {
+      "name": "Yuga",
+      "year": "3rd",
+      "department": "CSE",
+      "interests": [
+       "ai"
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "ok",
-     "npc": "That's really helpful. Do you have any tips for staying safe on campus?",
+     "npc": "That's great. I'll definitely keep an eye out for you.",
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "ok",
-     "npc": "Keep your keys in your pocket or on your keychain. Don't leave them in your backpack or purse.",
-     "flags": [],
-     "memory": {
-      "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
-      "interests": [
-       "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1536,11 +2013,16 @@
      "flags": [],
      "memory": {
       "name": "Yuga",
-      "year": "third-year",
-      "studies": "cse",
+      "year": "3rd",
+      "department": "CSE",
       "interests": [
        "ai"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -1556,8 +2038,8 @@
    },
    "memory": {
     "name": "Yuga",
-    "year": "third-year",
-    "studies": "cse",
+    "year": "3rd",
+    "department": "CSE",
     "interests": [
      "ai"
     ]

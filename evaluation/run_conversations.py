@@ -44,8 +44,7 @@ MAX_HISTORY = 16  # npc_actor.gd
 PLAYERS = {
     "dev": {
         # What this player says about themselves, and the slots it should produce.
-        "expected_memory": {"name": "Yuga", "year": "third-year", "studies": "cse",
-                            "interests": ["ai"]},
+        "expected_memory": {"name": "Yuga", "year": "3", "department": "cse", "interests": ["ai"]},
         "name": "yuga",
         "visit1": ["hi", "myself Yuga, 3rd year cse", "what do u teach", "where is canteen",
                    "ok thanks", "what should i do for my final year project", "i like ai",
@@ -55,8 +54,8 @@ PLAYERS = {
                    "bye"],
     },
     "test": {
-        "expected_memory": {"name": "Arjun", "year": "second-year", "studies": "ece",
-                            "from": "Madurai", "interests": ["robotics"]},
+        "expected_memory": {"name": "Arjun", "year": "2", "department": "ece", "hometown": "Madurai",
+                            "interests": ["robotics"]},
         "name": "arjun",
         "visit1": ["hello", "i am arjun from madurai", "im in 2nd year ece", "whats ur job",
                    "wat time does the open day finish", "cool", "i really like robotics",
@@ -69,8 +68,8 @@ PLAYERS = {
     # fix three failures (facts retrieved for statements, "open" treated as a
     # weak word, evasive recall), before any of those fixes was run.
     "test2": {
-        "expected_memory": {"name": "Meena", "year": "first-year", "studies": "it",
-                            "from": "Coimbatore", "project": "chatbots"},
+        "expected_memory": {"name": "Meena", "year": "1", "department": "it", "hometown": "Coimbatore",
+                            "project": "chatbots"},
         "name": "meena",
         "visit1": ["good morning", "this is meena, 1st year it from coimbatore",
                    "what r u doing here today", "is the canteen open now", "nice",
@@ -80,9 +79,39 @@ PLAYERS = {
                    "tell me about ur work", "alright", "alright", "what's ur salary",
                    "what do u do", "thanks, bye"],
     },
+    # The reported bug, replayed: the name was saved, then "i am class cse d"
+    # renamed the player "Class". A reproduction, not a held-out test -- its
+    # first lines are also in evaluation/memory_extraction_cases.json.
+    "reported": {
+        "expected_memory": {"name": "Yugabharathi", "department": "cse", "section": "d"},
+        "name": "yugabharathi",
+        "visit1": ["hi", "my name is yugabharathi", "i am class cse d", "what do u teach",
+                   "which section am i in", "ok bye"],
+        "visit2": ["hello again", "what is my name", "which class am i in", "ok", "bye"],
+    },
 }
 
 WORDS = re.compile(r"[a-z0-9']+")
+_ORDINALS = {"first": "1", "second": "2", "third": "3", "fourth": "4", "1st": "1", "2nd": "2",
+             "3rd": "3", "4th": "4"}
+
+
+def memory_facts(memory):
+    """Saved slots without bookkeeping (the server's per-slot confidences)."""
+    return {k: v for k, v in (memory or {}).items() if not k.startswith("_")}
+
+
+def same_value(got, want):
+    """Lenient: case, ordinal form ("3rd" = "third" = "3") and "year" suffixes ignored."""
+    if isinstance(want, list):
+        got = got if isinstance(got, list) else [got]
+        return all(any(same_value(g, w) for g in got) for w in want)
+    if isinstance(got, list):
+        return any(same_value(g, want) for g in got)
+    norm = lambda x: " ".join(_ORDINALS.get(t, t) for t in re.findall(r"[a-z0-9]+", str(x).lower())
+                             if t not in ("year", "yr"))
+    g, w = norm(got), norm(want)
+    return bool(g) and (g == w or w in g or g in w)
 
 
 def words(s):
@@ -155,10 +184,9 @@ def run_player(npc, player, turn_fn):
             report["turns"].append({"visit": visit, "you": msg, "npc": reply, "flags": flags,
                                     "memory": memory, "repairs": out.get("repairs", [])})
     expected = player["expected_memory"]
-    got = memory
-    slots_ok = sum(1 for k, v in expected.items()
-                   if (set(map(str.lower, got.get(k, []))) >= set(map(str.lower, v))
-                       if isinstance(v, list) else str(got.get(k, "")).lower() == v.lower()))
+    got = memory_facts(memory)
+    slots_ok = sum(1 for k, v in expected.items() if k in got and same_value(got[k], v))
+    # A slot the player never stated at all (not merely a different wording).
     spurious = [k for k in got if k not in expected]
     report.update(counts=counts, memory=got, slots_ok=slots_ok, slots_of=len(expected),
                   spurious_slots=spurious)

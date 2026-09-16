@@ -1,0 +1,262 @@
+{
+ "summary": {
+  "trials": 9,
+  "captured": 9,
+  "leak_before": 0,
+  "shared_on_greeting": 9,
+  "answered_after": 9,
+  "shared_by_fallback": 0,
+  "answered_by_fallback": 0,
+  "told_reply_repaired": 6,
+  "shared_needed_restart": 9,
+  "answered_needed_restart": 9
+ },
+ "rows": [
+  {
+   "report": "i saw someone climbing into the principal's office through the window",
+   "told": "Prof. Adeyemi",
+   "other": "Nadia",
+   "told_reply": "Thanks for telling me. I'll make sure the right people hear about it.",
+   "intent": "report",
+   "event": {
+    "what": "i saw someone climbing into the principal's office through the window",
+    "where": "the principal's office",
+    "score": 0.0,
+    "raw": true
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Yeah, there's a lot of students around.",
+   "leaked": false,
+   "greeted": "Have you heard? Prof. Adeyemi told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "shared": true,
+   "asked": "Prof. Adeyemi told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "answered": true
+  },
+  {
+   "report": "i saw someone climbing into the principal's office through the window",
+   "told": "Ms. Okafor",
+   "other": "Officer Reyes",
+   "told_reply": "Thanks for telling me. I'll make sure the right people hear about it.",
+   "intent": "report",
+   "event": {
+    "what": "i saw someone climbing into the principal's office through the window",
+    "where": "the principal's office",
+    "score": 0.0,
+    "raw": true
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "My shift is 7am to 3pm on weekdays, plus cover for events like today.",
+   "leaked": false,
+   "greeted": "Have you heard? Ms. Okafor told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "shared": true,
+   "asked": "Ms. Okafor told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "answered": true
+  },
+  {
+   "report": "i saw someone climbing into the principal's office through the window",
+   "told": "Halvorsen",
+   "other": "Prof. Adeyemi",
+   "told_reply": "Thanks for telling me. I'll look into it.",
+   "intent": "report",
+   "event": {
+    "what": "i saw someone climbing into the principal's office through the window",
+    "where": "the principal's office",
+    "score": 0.0,
+    "raw": true
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Not that I'm aware of.",
+   "leaked": false,
+   "greeted": "Have you heard? Halvorsen told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "shared": true,
+   "asked": "Halvorsen told me a student reported: \"i saw someone climbing into the principal's office through the window\".",
+   "answered": true
+  },
+  {
+   "report": "there's a kid bleeding badly near the basketball court",
+   "told": "Prof. Adeyemi",
+   "other": "Nadia",
+   "told_reply": "Thanks for telling me. I'll make sure the right people hear about it.",
+   "intent": "report",
+   "event": {
+    "what": "a kid bleeding badly",
+    "where": "the basketball court",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Yeah, there's a lot of students around.",
+   "leaked": false,
+   "greeted": "Have you heard? Prof. Adeyemi told me a student reported a kid bleeding badly at the basketball court.",
+   "shared": true,
+   "asked": "Prof. Adeyemi told me a student reported a kid bleeding badly at the basketball court.",
+   "answered": true
+  },
+  {
+   "report": "there's a kid bleeding badly near the basketball court",
+   "told": "Ms. Okafor",
+   "other": "Officer Reyes",
+   "told_reply": "I'll go check it out.",
+   "intent": "report",
+   "event": {
+    "what": "a kid bleeding badly",
+    "where": "the basketball court",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "My shift is 7am to 3pm on weekdays, plus cover for events like today.",
+   "leaked": false,
+   "greeted": "Have you heard? Ms. Okafor told me a student reported a kid bleeding badly at the basketball court.",
+   "shared": true,
+   "asked": "Ms. Okafor told me a student reported a kid bleeding badly at the basketball court.",
+   "answered": true
+  },
+  {
+   "report": "there's a kid bleeding badly near the basketball court",
+   "told": "Halvorsen",
+   "other": "Prof. Adeyemi",
+   "told_reply": "I'll go check it out.",
+   "intent": "report",
+   "event": {
+    "what": "a kid bleeding badly",
+    "where": "the basketball court",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Not that I'm aware of.",
+   "leaked": false,
+   "greeted": "Have you heard? Halvorsen told me a student reported a kid bleeding badly at the basketball court.",
+   "shared": true,
+   "asked": "Halvorsen told me a student reported a kid bleeding badly at the basketball court.",
+   "answered": true
+  },
+  {
+   "report": "a guy with a gun is walking around the old library building",
+   "told": "Prof. Adeyemi",
+   "other": "Nadia",
+   "told_reply": "Thanks for telling me. I'll make sure the right people hear about it.",
+   "intent": "report",
+   "event": {
+    "what": "a guy with a gun",
+    "where": "the old library building",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Yeah, there's a lot of students around.",
+   "leaked": false,
+   "greeted": "Have you heard? Prof. Adeyemi told me a student reported a guy with a gun at the old library building.",
+   "shared": true,
+   "asked": "Prof. Adeyemi told me a student reported a guy with a gun at the old library building.",
+   "answered": true
+  },
+  {
+   "report": "a guy with a gun is walking around the old library building",
+   "told": "Ms. Okafor",
+   "other": "Officer Reyes",
+   "told_reply": "That's not a good idea.",
+   "intent": "report",
+   "event": {
+    "what": "a guy with a gun",
+    "where": "the old library building",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "My shift is 7am to 3pm on weekdays, plus cover for events like today.",
+   "leaked": false,
+   "greeted": "Have you heard? Ms. Okafor told me a student reported a guy with a gun at the old library building.",
+   "shared": true,
+   "asked": "Ms. Okafor told me a student reported a guy with a gun at the old library building.",
+   "answered": true
+  },
+  {
+   "report": "a guy with a gun is walking around the old library building",
+   "told": "Halvorsen",
+   "other": "Prof. Adeyemi",
+   "told_reply": "Thanks for telling me. I'll make sure the right people hear about it.",
+   "intent": "report",
+   "event": {
+    "what": "a guy with a gun",
+    "where": "the old library building",
+    "score": 1.0,
+    "raw": false
+   },
+   "told_repairs": [
+    "report"
+   ],
+   "greeted_repairs": [
+    "news"
+   ],
+   "asked_repairs": [
+    "news"
+   ],
+   "before": "Not that I'm aware of.",
+   "leaked": false,
+   "greeted": "Have you heard? Halvorsen told me a student reported a guy with a gun at the old library building.",
+   "shared": true,
+   "asked": "Halvorsen told me a student reported a guy with a gun at the old library building.",
+   "answered": true
+  }
+ ]
+}

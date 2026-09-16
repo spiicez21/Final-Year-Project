@@ -1,13 +1,13 @@
 {
  "summary": {
-  "repeat": 3,
+  "repeat": 7,
   "loop": 0,
   "asks_known": 2,
   "invented": 0,
-  "self_denial": 0,
+  "self_denial": 1,
   "list": 0,
   "replies": 100,
-  "memory_slots_ok": 25,
+  "memory_slots_ok": 20,
   "memory_slots_of": 25,
   "spurious_slots": 0
  },
@@ -32,9 +32,13 @@
      ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -45,9 +49,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -58,9 +66,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -71,9 +83,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -84,42 +100,55 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "who should i talk to about that",
-     "npc": "That's up to you, Meena. You can talk to anyone in the department who's interested in chatbots.",
+     "npc": "You should talk to Prof. Adelymi, he's the head of the Computer Science department.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "how many students r in the department",
-     "npc": "About 480 undergraduate students and another 95 on taught masters.",
+     "npc": "About 480 undergraduate students, and another 95 on taught masters.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": [
-      "repeat"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
@@ -128,10 +157,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -142,55 +176,76 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hii",
-     "npc": "what's up, Meena?",
+     "npc": "hi Meena, what's up?",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "do u know who i am",
-     "npc": "I'm not sure who you are, Meena.",
+     "npc": "I don't have that information, Meena.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what was my project about",
-     "npc": "You told me you wanted to do a project on chatbot, so I'm not sure what it was about.",
+     "npc": "You're doing a project on chatbots.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
-      "recall"
+      "recall",
+      "recall_fallback"
      ]
     },
     {
@@ -200,40 +255,34 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about ur work",
-     "npc": "I'm not really sure what you're talking about.",
+     "npc": "I'm not allowed to talk about my work.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "alright",
-     "npc": "what do you mean?",
-     "flags": [
-      "repeat"
-     ],
-     "memory": {
-      "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -244,10 +293,36 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -260,10 +335,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "fact",
@@ -277,30 +357,40 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "thanks, bye",
-     "npc": "Bye!",
+     "npc": "Bye, Meena.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 2,
+    "repeat": 1,
     "loop": 0,
     "asks_known": 1,
     "invented": 0,
@@ -310,12 +400,11 @@
    },
    "memory": {
     "name": "Meena",
-    "year": "first-year",
-    "studies": "it",
-    "from": "Coimbatore",
+    "year": "1st",
+    "hometown": "Coimbatore",
     "project": "chatbots"
    },
-   "slots_ok": 5,
+   "slots_ok": 4,
    "slots_of": 5,
    "spurious_slots": []
   },
@@ -332,28 +421,34 @@
     {
      "visit": "visit1",
      "you": "this is meena, 1st year it from coimbatore",
-     "npc": "That's great to hear!",
+     "npc": "That's great! How long have you been studying here?",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
-     "repairs": [
-      "asks_known"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what r u doing here today",
-     "npc": "I'm here to help students with their problems.",
+     "npc": "I'm at the open day to meet with students and point them towards the right support.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -364,9 +459,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -377,37 +476,53 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i want to do my final year project on chatbots",
-     "npc": "That sounds interesting. What kind of chatbot do you have in mind?",
+     "npc": "That sounds interesting.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "asks_known"
+     ]
     },
     {
      "visit": "visit1",
      "you": "who should i talk to about that",
-     "npc": "That's a good idea. Who do you think would be best to talk to about that?",
+     "npc": "That's a good idea.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -418,10 +533,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -430,129 +550,175 @@
     {
      "visit": "visit1",
      "you": "ok ok",
-     "npc": "That's a lot of students. How many are in the Computer Science department?",
+     "npc": "That's a lot of students.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "see you",
-     "npc": "Sure, I'd be happy to tell you.",
+     "npc": "Sure, I'll be here.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hii",
-     "npc": "Hi, Meena.",
+     "npc": "hi Meena!",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "do u know who i am",
-     "npc": "I don't know who you are.",
+     "npc": "You told me you were Meena, in 1st year, from Coimbatore.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "recall"
+     ]
     },
     {
      "visit": "visit2",
      "you": "what was my project about",
-     "npc": "You want to do your final-year project on chatbots.",
+     "npc": "You told me you were doing a project on chatbot, Meena.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
-      "recall",
-      "recall_fallback"
+      "recall"
      ]
     },
     {
      "visit": "visit2",
      "you": "which floor has the labs",
-     "npc": "The first floor has the teaching lab and the canteen.",
+     "npc": "The floor with the teaching lab is the first floor.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about ur work",
-     "npc": "I'm not allowed to talk about my work.",
+     "npc": "I'm a student counselor in the college welfare office. My job is to listen to students and point them towards the right support.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "I'll tell you about my work when I'm done.",
+     "npc": "That sounds like a great job.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "I'll tell you about my work when I'm done.",
+     "npc": "That's great!",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -563,46 +729,64 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
-      "fact"
+      "fact",
+      "fact_fallback"
      ]
     },
     {
      "visit": "visit2",
      "you": "what do u do",
      "npc": "I'm a student counselor in the college welfare office.",
-     "flags": [],
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "thanks, bye",
-     "npc": "see you around.",
+     "npc": "Sure, happy to help.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 0,
+    "repeat": 1,
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
@@ -612,12 +796,11 @@
    },
    "memory": {
     "name": "Meena",
-    "year": "first-year",
-    "studies": "it",
-    "from": "Coimbatore",
+    "year": "1st",
+    "hometown": "Coimbatore",
     "project": "chatbots"
    },
-   "slots_ok": 5,
+   "slots_ok": 4,
    "slots_of": 5,
    "spurious_slots": []
   },
@@ -638,9 +821,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -651,65 +838,89 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "is the canteen open now",
-     "npc": "The first floor is open, but the second floor is closed for maintenance.",
+     "npc": "Yeah, it's open now.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
-     "repairs": [
-      "fact"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
      "you": "nice",
-     "npc": "Yeah, it's a bummer.",
+     "npc": "Yeah, it's a great place.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i want to do my final year project on chatbots",
-     "npc": "That's a good idea.",
-     "flags": [],
+     "npc": "That's a great idea.",
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "asks_known"
+     ]
     },
     {
      "visit": "visit1",
      "you": "who should i talk to about that",
-     "npc": "I don't know much about that.",
+     "npc": "I don't know much about that, but you can ask me anything.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -720,24 +931,34 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "ok ok",
-     "npc": "I'll look into it.",
+     "npc": "I'll see what I can find out.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -748,10 +969,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -762,38 +988,57 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "do u know who i am",
-     "npc": "I don't know who you are.",
+     "npc": "You told me you were Meena, in 1st year, from Coimbatore.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "recall"
+     ]
     },
     {
      "visit": "visit2",
      "you": "what was my project about",
-     "npc": "You told me you wanted to do a project on chatbot technology.",
-     "flags": [],
+     "npc": "You told me you were doing a project on chatbot, in 1st year, from Coimbatore.",
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -802,14 +1047,19 @@
     {
      "visit": "visit2",
      "you": "which floor has the labs",
-     "npc": "The ground floor has the lecture rooms and the seminar hall.",
+     "npc": "The first floor has the teaching lab.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -820,38 +1070,53 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "I'm sorry, I didn't mean to interrupt.",
+     "npc": "I'll tell you about it when I'm done.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "I'm just curious, what kind of projects do you work on?",
+     "npc": "I'll tell you about it when I'm done.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -862,10 +1127,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -874,18 +1144,21 @@
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I open the shop, keep the shelves stocked, and serve a few hundred students a day between lecture.",
+     "npc": "I'm a shopkeeper.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": [
-      "self"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit2",
@@ -894,16 +1167,21 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 0,
+    "repeat": 2,
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
@@ -913,12 +1191,11 @@
    },
    "memory": {
     "name": "Meena",
-    "year": "first-year",
-    "studies": "it",
-    "from": "Coimbatore",
+    "year": "1st",
+    "hometown": "Coimbatore",
     "project": "chatbots"
    },
-   "slots_ok": 5,
+   "slots_ok": 4,
    "slots_of": 5,
    "spurious_slots": []
   },
@@ -935,13 +1212,17 @@
     {
      "visit": "visit1",
      "you": "this is meena, 1st year it from coimbatore",
-     "npc": "Oh, yes, Meena. What's up?",
+     "npc": "Ah, Meena. What's up?",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -952,9 +1233,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -965,9 +1250,13 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -978,37 +1267,53 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i want to do my final year project on chatbots",
-     "npc": "That's a great idea. What kind of chatbot do you want to build?",
+     "npc": "That's a great idea!",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "who should i talk to about that",
-     "npc": "That's a good question. I'd recommend talking to Nadia, she's the student counselor.",
-     "flags": [],
+     "npc": "I don't know anything about that.",
+     "flags": [
+      "self_denial"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -1019,10 +1324,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -1031,72 +1341,99 @@
     {
      "visit": "visit1",
      "you": "ok ok",
-     "npc": "Okay. I'll talk to Nadia about that.",
+     "npc": "I'll look into it.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
-     },
-     "repairs": [
-      "acknowledge"
-     ]
-    },
-    {
-     "visit": "visit1",
-     "you": "see you",
-     "npc": "Sure, I'll be here.",
-     "flags": [],
-     "memory": {
-      "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
-     "visit": "visit2",
-     "you": "hii",
-     "npc": "Hi Meena, what's up?",
+     "visit": "visit1",
+     "you": "see you",
+     "npc": "Sure, I'll be here all day.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
+     },
+     "repairs": [
+      "repeat"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "hii",
+     "npc": "Hi, Meena. What's up?",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "do u know who i am",
-     "npc": "I don't know anyone named Meena.",
+     "npc": "You told me you were Meena, in 1st year, from Coimbatore, and you're doing a project on chatbot.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "recall"
+     ]
     },
     {
      "visit": "visit2",
      "you": "what was my project about",
-     "npc": "You told me you wanted to do a chatbot project, but I didn't know what it was about.",
+     "npc": "You told me you were doing a project on chatbot, but I don't remember anything about it.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -1109,24 +1446,34 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about ur work",
-     "npc": "I'm not allowed to talk about my work.",
+     "npc": "I'm not really sure what you're talking about.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -1137,10 +1484,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -1149,16 +1501,23 @@
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "What's the deal with the new building?",
+     "npc": "Okay.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "acknowledge"
+     ]
     },
     {
      "visit": "visit2",
@@ -1167,10 +1526,15 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -1183,24 +1547,34 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "thanks, bye",
-     "npc": "bye!",
+     "npc": "Bye.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     }
@@ -1210,18 +1584,17 @@
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
-    "self_denial": 0,
+    "self_denial": 1,
     "list": 0,
     "replies": 20
    },
    "memory": {
     "name": "Meena",
-    "year": "first-year",
-    "studies": "it",
-    "from": "Coimbatore",
+    "year": "1st",
+    "hometown": "Coimbatore",
     "project": "chatbots"
    },
-   "slots_ok": 5,
+   "slots_ok": 4,
    "slots_of": 5,
    "spurious_slots": []
   },
@@ -1245,76 +1618,104 @@
      ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "what r u doing here today",
-     "npc": "I'm just walking the campus, talking to students.",
+     "npc": "I'm just walking the campus and talking to people.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "is the canteen open now",
-     "npc": "Yes, it's open now.",
+     "npc": "No idea, I'd have to ask the front desk.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "nice",
-     "npc": "It is.",
+     "npc": "Yeah, it's always nice to see the campus open.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i want to do my final year project on chatbots",
-     "npc": "That's a good idea. What kind of chatbot do you want to build?",
+     "npc": "That's a good idea.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "asks_known"
+     ]
     },
     {
      "visit": "visit1",
      "you": "who should i talk to about that",
-     "npc": "I'm not really sure. You could try talking to the student liasion or the head of the department.",
+     "npc": "Just ask me, I'd be happy to help you.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -1325,84 +1726,116 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "ok ok",
-     "npc": "I'll see if I can find out who to talk to.",
+     "npc": "I'll make sure to mention that to the department head.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "see you",
-     "npc": "yeah, I'll be here all day.",
+     "npc": "Sure, I'll be here all day.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hii",
-     "npc": "Hi, Meena. What's on your mind?",
+     "npc": "Hi, Meena.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "asks_known"
+     ]
     },
     {
      "visit": "visit2",
      "you": "do u know who i am",
-     "npc": "I'm not sure, I've never seen you before.",
+     "npc": "You told me you were Meena, and that you were doing a project on chatbots.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "what was my project about",
-     "npc": "You told me you wanted to do a project on chatbots, and you wanted to work with me on it.",
-     "flags": [],
-     "memory": {
-      "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "recall"
      ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what was my project about",
+     "npc": "I don't remember, I just remember you told me you were doing a project on chatbot.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
+     },
+     "repairs": []
     },
     {
      "visit": "visit2",
@@ -1411,66 +1844,93 @@
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "tell me about ur work",
-     "npc": "I'm working on a project with the computer science department. We're building a chatbot that can help students with their homework.",
+     "npc": "Mostly I'm walking the campus and talking to people. The rest is lost property, bike thefts, and making sure students get home safely at night.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
+     },
+     "repairs": [
+      "self"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "alright",
+     "npc": "That's it for me. Have a good day.",
+     "flags": [],
+     "memory": {
+      "name": "Meena",
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "alright",
-     "npc": "I'll let you know when it's ready.",
+     "npc": "Alright, have a good day too.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "alright",
-     "npc": "I'll let you know when it's ready.",
-     "flags": [],
-     "memory": {
-      "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what's ur salary",
-     "npc": "standard constable scale, about 41,000 a year.",
+     "npc": "That's about right, I think.",
      "flags": [],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": []
     },
@@ -1478,13 +1938,20 @@
      "visit": "visit2",
      "you": "what do u do",
      "npc": "Mostly I'm walking the campus and talking to people. The rest is lost property, bike thefts, and making sure students get home safely at night.",
-     "flags": [],
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -1494,19 +1961,28 @@
      "visit": "visit2",
      "you": "thanks, bye",
      "npc": "Bye, have a good day.",
-     "flags": [],
+     "flags": [
+      "repeat"
+     ],
      "memory": {
       "name": "Meena",
-      "year": "first-year",
-      "studies": "it",
-      "from": "Coimbatore",
-      "project": "chatbots"
+      "year": "1st",
+      "hometown": "Coimbatore",
+      "project": "chatbots",
+      "_confidence": {
+       "name": 1.0,
+       "year": 1.0,
+       "hometown": 1.0,
+       "project": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "repeat"
+     ]
     }
    ],
    "counts": {
-    "repeat": 1,
+    "repeat": 3,
     "loop": 0,
     "asks_known": 1,
     "invented": 0,
@@ -1516,12 +1992,11 @@
    },
    "memory": {
     "name": "Meena",
-    "year": "first-year",
-    "studies": "it",
-    "from": "Coimbatore",
+    "year": "1st",
+    "hometown": "Coimbatore",
     "project": "chatbots"
    },
-   "slots_ok": 5,
+   "slots_ok": 4,
    "slots_of": 5,
    "spurious_slots": []
   }

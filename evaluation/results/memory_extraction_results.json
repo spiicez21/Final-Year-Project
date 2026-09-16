@@ -1,0 +1,854 @@
+{
+ "base": {
+  "threshold_chosen_on_dev": 0.7,
+  "dev": {
+   "0.3": {
+    "cases_ok": 4,
+    "cases": 17,
+    "slots_ok": 7,
+    "slots": 17,
+    "forbidden_learned": 11,
+    "ms_per_line": 226.9
+   },
+   "0.4": {
+    "cases_ok": 5,
+    "cases": 17,
+    "slots_ok": 7,
+    "slots": 17,
+    "forbidden_learned": 10,
+    "ms_per_line": 95.5
+   },
+   "0.5": {
+    "cases_ok": 6,
+    "cases": 17,
+    "slots_ok": 7,
+    "slots": 17,
+    "forbidden_learned": 6,
+    "ms_per_line": 95.2
+   },
+   "0.6": {
+    "cases_ok": 6,
+    "cases": 17,
+    "slots_ok": 7,
+    "slots": 17,
+    "forbidden_learned": 5,
+    "ms_per_line": 100.1
+   },
+   "0.7": {
+    "cases_ok": 6,
+    "cases": 17,
+    "slots_ok": 6,
+    "slots": 17,
+    "forbidden_learned": 3,
+    "ms_per_line": 94.2
+   }
+  },
+  "test": {
+   "cases_ok": 17,
+   "cases": 42,
+   "slots_ok": 10,
+   "slots": 45,
+   "forbidden_learned": 4,
+   "ms_per_line": 109.8,
+   "rows": [
+    {
+     "context": null,
+     "text": "my name is yugabharathi",
+     "ok": true,
+     "got": {
+      "name": "yugabharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am class cse d",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "I am class CSE D",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am from cse d",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am in cse d section",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "my class is cse d",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am in d section",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am studying 3rd year cse d",
+     "ok": false,
+     "got": {
+      "name": "i",
+      "year": "3rd year"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am yugabharathi from cse d",
+     "ok": false,
+     "got": {
+      "name": "yugabharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am doing b.e cse",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i'm a cse student",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am from sri krishna college",
+     "ok": true,
+     "got": {
+      "college": "sri krishna college"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am good",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am here to see the lab",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am not yuga",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "actually my name is bharathi",
+     "ok": true,
+     "got": {
+      "name": "bharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am cr of cse d",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am president of coding club",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am hosteller",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am tamil",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am placement coordinator",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am yuga's friend",
+     "ok": false,
+     "got": {
+      "name": "yuga"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am from mech department",
+     "ok": true,
+     "got": {
+      "department": "mech department"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am vijay from trichy",
+     "ok": true,
+     "got": {
+      "name": "vijay",
+      "hometown": "trichy"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am in ai and ds",
+     "ok": false,
+     "got": {
+      "name": "i"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am doing mini project on iot",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am final year cse",
+     "ok": false,
+     "got": {
+      "year": "final year"
+     }
+    },
+    {
+     "context": "What's your name?",
+     "text": "yuga",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": "Which year are you in?",
+     "text": "3rd",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": "What do you study?",
+     "text": "ece",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": "Where are you from?",
+     "text": "madurai",
+     "ok": false,
+     "got": {
+      "name": "madurai"
+     }
+    },
+    {
+     "context": "What's your name?",
+     "text": "why do you want to know",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "what is your name",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "where is the canteen",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i like machine learning and web dev",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "im really stressed about exams",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i saw a person with weapon roaming around",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "someone is fighting near the auditorium",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "my phone got stolen in the physics block",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "there is smoke coming out of the chemistry lab",
+     "ok": false,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am yugabharathi from cse d",
+     "ok": true,
+     "got": {
+      "name": "yugabharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "the canteen food was bad today",
+     "ok": true,
+     "got": {}
+    }
+   ]
+  },
+  "scenarios": [
+   {
+    "lines": [
+     "my name is yugabharathi",
+     "i am class cse d"
+    ],
+    "ok": false,
+    "memory": {
+     "name": "Yugabharathi"
+    }
+   },
+   {
+    "lines": [
+     "i am vijay",
+     "i am from trichy",
+     "i am hosteller"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Vijay",
+     "hometown": "Trichy"
+    }
+   },
+   {
+    "lines": [
+     "meena",
+     "i am in ece b"
+    ],
+    "ok": false,
+    "memory": {
+     "name": "Meena"
+    }
+   },
+   {
+    "lines": [
+     "call me yb",
+     "actually my name is yogesh"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Yogesh"
+    }
+   },
+   {
+    "lines": [
+     "i am placement coordinator",
+     "i am tamil",
+     "where is the canteen"
+    ],
+    "ok": true,
+    "memory": {}
+   },
+   {
+    "lines": [
+     "my name is kavitha",
+     "i have a dog named bruno",
+     "my brother arivu is in mech"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Kavitha"
+    }
+   }
+  ]
+ },
+ "fine-tuned": {
+  "threshold_chosen_on_dev": 0.7,
+  "dev": {
+   "0.3": {
+    "cases_ok": 15,
+    "cases": 17,
+    "slots_ok": 16,
+    "slots": 17,
+    "forbidden_learned": 1,
+    "ms_per_line": 99.4
+   },
+   "0.4": {
+    "cases_ok": 15,
+    "cases": 17,
+    "slots_ok": 16,
+    "slots": 17,
+    "forbidden_learned": 1,
+    "ms_per_line": 92.3
+   },
+   "0.5": {
+    "cases_ok": 15,
+    "cases": 17,
+    "slots_ok": 16,
+    "slots": 17,
+    "forbidden_learned": 1,
+    "ms_per_line": 99.2
+   },
+   "0.6": {
+    "cases_ok": 15,
+    "cases": 17,
+    "slots_ok": 16,
+    "slots": 17,
+    "forbidden_learned": 1,
+    "ms_per_line": 104.6
+   },
+   "0.7": {
+    "cases_ok": 16,
+    "cases": 17,
+    "slots_ok": 16,
+    "slots": 17,
+    "forbidden_learned": 0,
+    "ms_per_line": 94.6
+   }
+  },
+  "test": {
+   "cases_ok": 41,
+   "cases": 42,
+   "slots_ok": 44,
+   "slots": 45,
+   "forbidden_learned": 0,
+   "ms_per_line": 92.4,
+   "rows": [
+    {
+     "context": null,
+     "text": "my name is yugabharathi",
+     "ok": true,
+     "got": {
+      "name": "yugabharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am class cse d",
+     "ok": true,
+     "got": {
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "I am class CSE D",
+     "ok": true,
+     "got": {
+      "department": "CSE",
+      "section": "D"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am from cse d",
+     "ok": true,
+     "got": {
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am in cse d section",
+     "ok": true,
+     "got": {
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "my class is cse d",
+     "ok": true,
+     "got": {
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am in d section",
+     "ok": true,
+     "got": {
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am studying 3rd year cse d",
+     "ok": true,
+     "got": {
+      "year": "3rd",
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am yugabharathi from cse d",
+     "ok": true,
+     "got": {
+      "name": "yugabharathi",
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am doing b.e cse",
+     "ok": true,
+     "got": {
+      "department": "cse"
+     }
+    },
+    {
+     "context": null,
+     "text": "i'm a cse student",
+     "ok": true,
+     "got": {
+      "department": "cse"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am from sri krishna college",
+     "ok": true,
+     "got": {
+      "college": "sri krishna college"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am good",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am here to see the lab",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am not yuga",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "actually my name is bharathi",
+     "ok": true,
+     "got": {
+      "name": "bharathi"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am cr of cse d",
+     "ok": true,
+     "got": {
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am president of coding club",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am hosteller",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am tamil",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am placement coordinator",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am yuga's friend",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i am from mech department",
+     "ok": true,
+     "got": {
+      "department": "mech"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am vijay from trichy",
+     "ok": true,
+     "got": {
+      "name": "vijay",
+      "hometown": "trichy"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am in ai and ds",
+     "ok": true,
+     "got": {
+      "department": "ai"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am doing mini project on iot",
+     "ok": true,
+     "got": {
+      "project": "iot"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am final year cse",
+     "ok": true,
+     "got": {
+      "year": "final",
+      "department": "cse"
+     }
+    },
+    {
+     "context": "What's your name?",
+     "text": "yuga",
+     "ok": true,
+     "got": {
+      "name": "yuga"
+     }
+    },
+    {
+     "context": "Which year are you in?",
+     "text": "3rd",
+     "ok": true,
+     "got": {
+      "year": "3rd"
+     }
+    },
+    {
+     "context": "What do you study?",
+     "text": "ece",
+     "ok": true,
+     "got": {
+      "department": "ece"
+     }
+    },
+    {
+     "context": "Where are you from?",
+     "text": "madurai",
+     "ok": true,
+     "got": {
+      "hometown": "madurai"
+     }
+    },
+    {
+     "context": "What's your name?",
+     "text": "why do you want to know",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "what is your name",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "where is the canteen",
+     "ok": true,
+     "got": {}
+    },
+    {
+     "context": null,
+     "text": "i like machine learning and web dev",
+     "ok": true,
+     "got": {
+      "interests": [
+       "machine learning",
+       "web dev"
+      ]
+     }
+    },
+    {
+     "context": null,
+     "text": "im really stressed about exams",
+     "ok": true,
+     "got": {
+      "feeling": "stressed"
+     }
+    },
+    {
+     "context": null,
+     "text": "i saw a person with weapon roaming around",
+     "ok": true,
+     "got": {
+      "incident": "a person with weapon roaming around"
+     }
+    },
+    {
+     "context": null,
+     "text": "someone is fighting near the auditorium",
+     "ok": true,
+     "got": {
+      "incident": "someone is fighting",
+      "place": "the auditorium"
+     }
+    },
+    {
+     "context": null,
+     "text": "my phone got stolen in the physics block",
+     "ok": true,
+     "got": {
+      "incident": "my phone got stolen",
+      "place": "the physics block"
+     }
+    },
+    {
+     "context": null,
+     "text": "there is smoke coming out of the chemistry lab",
+     "ok": false,
+     "got": {
+      "place": "the chemistry lab"
+     }
+    },
+    {
+     "context": null,
+     "text": "i am yugabharathi from cse d",
+     "ok": true,
+     "got": {
+      "name": "yugabharathi",
+      "department": "cse",
+      "section": "d"
+     }
+    },
+    {
+     "context": null,
+     "text": "the canteen food was bad today",
+     "ok": true,
+     "got": {}
+    }
+   ]
+  },
+  "scenarios": [
+   {
+    "lines": [
+     "my name is yugabharathi",
+     "i am class cse d"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Yugabharathi",
+     "department": "CSE",
+     "section": "D"
+    }
+   },
+   {
+    "lines": [
+     "i am vijay",
+     "i am from trichy",
+     "i am hosteller"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Vijay",
+     "hometown": "Trichy"
+    }
+   },
+   {
+    "lines": [
+     "meena",
+     "i am in ece b"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Meena",
+     "department": "ECE",
+     "section": "B"
+    }
+   },
+   {
+    "lines": [
+     "call me yb",
+     "actually my name is yogesh"
+    ],
+    "ok": true,
+    "memory": {
+     "name": "Yogesh"
+    }
+   },
+   {
+    "lines": [
+     "i am placement coordinator",
+     "i am tamil",
+     "where is the canteen"
+    ],
+    "ok": true,
+    "memory": {}
+   },
+   {
+    "lines": [
+     "my name is kavitha",
+     "i have a dog named bruno",
+     "my brother arivu is in mech"
+    ],
+    "ok": false,
+    "memory": {
+     "name": "Kavitha",
+     "department": "MECH"
+    }
+   }
+  ]
+ }
+}

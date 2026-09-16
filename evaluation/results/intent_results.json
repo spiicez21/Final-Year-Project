@@ -1,0 +1,143 @@
+{
+ "rules": {
+  "dev": {
+   "ok": 17,
+   "of": 22,
+   "ms_per_line": 0.0,
+   "misses": [
+    {
+     "text": "someone broke the window of the seminar hall",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "i found a wallet near the parking",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "a guy is following girls near the girls hostel",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "Thank you. Can you also tell me to the officer who present here? So, it may help us.",
+     "want": "question",
+     "got": "statement"
+    },
+    {
+     "text": "do you know nadia",
+     "want": "question",
+     "got": "about_npc"
+    }
+   ]
+  },
+  "test": {
+   "ok": 39,
+   "of": 55,
+   "ms_per_line": 0.0,
+   "misses": [
+    {
+     "text": "hii sir",
+     "want": "greeting",
+     "got": "statement"
+    },
+    {
+     "text": "good evening mam",
+     "want": "greeting",
+     "got": "statement"
+    },
+    {
+     "text": "hey there, how r u",
+     "want": "greeting",
+     "got": "statement"
+    },
+    {
+     "text": "oh nice",
+     "want": "ack",
+     "got": "statement"
+    },
+    {
+     "text": "thats cool",
+     "want": "ack",
+     "got": "statement"
+    },
+    {
+     "text": "i saw a person with weapon roaming around",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "someone is fighting near the auditorium",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "my phone got stolen in the physics block",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "there is smoke coming out of the chemistry lab",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "a stray dog is chasing students near the main road",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "the lift on the second floor is stuck with people inside",
+     "want": "report",
+     "got": "statement"
+    },
+    {
+     "text": "thanks! who should i ask about hostel fees",
+     "want": "question",
+     "got": "statement"
+    },
+    {
+     "text": "do you know where the professor is",
+     "want": "question",
+     "got": "about_npc"
+    },
+    {
+     "text": "can you introduce me to the counsellor",
+     "want": "question",
+     "got": "about_npc"
+    },
+    {
+     "text": "okay thank you, who is the officer here?",
+     "want": "question",
+     "got": "about_npc"
+    },
+    {
+     "text": "thanks a lot",
+     "want": "ack",
+     "got": "statement"
+    }
+   ]
+  }
+ },
+ "learned": {
+  "dev": {
+   "ok": 22,
+   "of": 22,
+   "ms_per_line": 82.3,
+   "misses": []
+  },
+  "test": {
+   "ok": 54,
+   "of": 55,
+   "ms_per_line": 54.4,
+   "misses": [
+    {
+     "text": "thanks a lot",
+     "want": "ack",
+     "got": "farewell"
+    }
+   ]
+  }
+ }
+}

@@ -34,3 +34,7 @@ wandb/
 
 #godot gamefiles
 medivel-fpy
+
+# Player-fact extractor: weights and checkpoints are reproduced by training/extractor/*.py
+training/extractor/player_facts_gliner/
+training/extractor/checkpoints/

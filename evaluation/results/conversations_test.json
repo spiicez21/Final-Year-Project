@@ -1,6 +1,6 @@
 {
  "summary": {
-  "repeat": 3,
+  "repeat": 2,
   "loop": 0,
   "asks_known": 1,
   "invented": 0,
@@ -29,7 +29,11 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai"
+      "hometown": "Madurai",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": [
       "introduced",
@@ -39,26 +43,40 @@
     {
      "visit": "visit1",
      "you": "im in 2nd year ece",
-     "npc": "That's right, you're in 2nd year.",
+     "npc": "That's great to hear, Arjun.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "asks_known"
+     ]
     },
     {
      "visit": "visit1",
      "you": "whats ur job",
-     "npc": "I'm a lecture in the Computer Science department.",
+     "npc": "I'm a lecture in the computer science department.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -69,38 +87,56 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "cool",
-     "npc": "That's pretty cool. What kind of questions do students ask you?",
+     "npc": "That's a great time to be there.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i really like robotics",
-     "npc": "that's really interesting. What do you think about robotics?",
+     "npc": "I'm not really into that.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -111,12 +147,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact",
@@ -130,28 +172,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "thanks bye",
-     "npc": "bye, have a good day.",
+     "npc": "Bye!",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -162,12 +216,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -178,12 +238,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -192,16 +258,22 @@
     {
      "visit": "visit2",
      "you": "which year am i in",
-     "npc": "You're in the second year, Arjun.",
+     "npc": "You're in 2nd year, Arjun.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -212,28 +284,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what's ur job again",
-     "npc": "I teach CS2011 Algorithm and CS3040 Compilers.",
+     "npc": "I'm a lecturer in the Computer Science department.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -244,12 +328,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -260,12 +350,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -274,32 +370,44 @@
     {
      "visit": "visit2",
      "you": "anything else i should know",
-     "npc": "No, that's all I know.",
+     "npc": "Well, Arjun, you're a really interesting person. What do you like to do outside of school?",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I'm not allowed to talk about my job.",
+     "npc": "I'm not really into hobbies or anything like that.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -310,12 +418,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -331,9 +445,9 @@
    },
    "memory": {
     "name": "Arjun",
-    "from": "Madurai",
-    "year": "second-year",
-    "studies": "ece",
+    "hometown": "Madurai",
+    "year": "2nd",
+    "department": "ECE",
     "interests": [
      "robotics"
     ]
@@ -359,7 +473,11 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai"
+      "hometown": "Madurai",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -370,9 +488,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "asks_known"
@@ -385,9 +509,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -400,9 +530,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -413,9 +549,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -426,12 +568,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -442,12 +590,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact",
@@ -461,12 +615,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -477,28 +637,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hey",
-     "npc": "That's interesting, Arjun. What made you decide to study robotics?",
+     "npc": "What's your favorite part of robotics?",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -509,12 +681,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -523,16 +701,22 @@
     {
      "visit": "visit2",
      "you": "which year am i in",
-     "npc": "You told me you're in second year, Arjun.",
+     "npc": "You told me you're in 2nd year, so that's the year you're in.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -545,28 +729,62 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what's ur job again",
-     "npc": "I'm a student counselor in the college welfare office.",
+     "npc": "I see students one to one, mostly about stress, money worries, and homesickness, and I point them towards the right support.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "What do you think about the job you're doing?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "interests": [
+       "robotics"
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -577,32 +795,22 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
      ]
-    },
-    {
-     "visit": "visit2",
-     "you": "hmm",
-     "npc": "What's your favorite color?",
-     "flags": [],
-     "memory": {
-      "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
-      "interests": [
-       "robotics"
-      ]
-     },
-     "repairs": []
     },
     {
      "visit": "visit2",
@@ -611,12 +819,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -624,17 +838,21 @@
      "visit": "visit2",
      "you": "what do u do",
      "npc": "I'm a student counselor in the college welfare office.",
-     "flags": [
-      "repeat"
-     ],
+     "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -645,18 +863,24 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
    ],
    "counts": {
-    "repeat": 1,
+    "repeat": 0,
     "loop": 0,
     "asks_known": 0,
     "invented": 0,
@@ -666,9 +890,9 @@
    },
    "memory": {
     "name": "Arjun",
-    "from": "Madurai",
-    "year": "second-year",
-    "studies": "ece",
+    "hometown": "Madurai",
+    "year": "2nd",
+    "department": "ECE",
     "interests": [
      "robotics"
     ]
@@ -694,7 +918,11 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai"
+      "hometown": "Madurai",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": [
       "introduced"
@@ -707,26 +935,36 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "whats ur job",
-     "npc": "I open the campus store, keep the shelves stocked, and serve a few hungrd students a day between lectures.",
+     "npc": "I'm the campus shopkeeper.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": [
-      "self"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
@@ -735,9 +973,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -748,9 +992,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -761,12 +1011,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -777,12 +1033,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -795,12 +1057,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -811,28 +1079,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hey",
-     "npc": "I'm glad to hear that. What's your favorite subject?",
+     "npc": "That's interesting. What are you working on?",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -843,28 +1123,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "which year am i in",
-     "npc": "You told me you were in second year, so that's the year you're in.",
+     "npc": "You told me you were in 2nd year, so that's 2018.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -877,12 +1169,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -893,12 +1191,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -907,66 +1211,96 @@
     {
      "visit": "visit2",
      "you": "hmm",
-     "npc": "I'm not really interested in that.",
+     "npc": "Okay.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "acknowledge"
+     ]
     },
     {
      "visit": "visit2",
      "you": "hmm",
-     "npc": "I'm not really interested in that either.",
+     "npc": "Okay.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "acknowledge"
+     ]
     },
     {
      "visit": "visit2",
      "you": "anything else i should know",
-     "npc": "no, that's all I know.",
+     "npc": "You told me you're interested in robotics.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "recall"
+     ]
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I open the shop.",
+     "npc": "I open at seven, keep the shelves stocked, and serve a few hundred students a day between lecture.",
      "flags": [
       "repeat"
      ],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "self"
@@ -975,16 +1309,22 @@
     {
      "visit": "visit2",
      "you": "bye",
-     "npc": "bye.",
+     "npc": "Bye.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -1000,9 +1340,9 @@
    },
    "memory": {
     "name": "Arjun",
-    "from": "Madurai",
-    "year": "second-year",
-    "studies": "ece",
+    "hometown": "Madurai",
+    "year": "2nd",
+    "department": "ECE",
     "interests": [
      "robotics"
     ]
@@ -1028,7 +1368,11 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai"
+      "hometown": "Madurai",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
@@ -1039,9 +1383,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "asks_known"
@@ -1050,15 +1400,23 @@
     {
      "visit": "visit1",
      "you": "whats ur job",
-     "npc": "I don't have one.",
+     "npc": "I run the department, so time tables, hiiring, budgeting, and a lot of meetings.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "self"
+     ]
     },
     {
      "visit": "visit1",
@@ -1067,38 +1425,56 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "cool",
-     "npc": "I'm glad I could help.",
+     "npc": "I'm glad you're enjoying it.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "i really like robotics",
-     "npc": "me too. It's a fun and exciting field.",
+     "npc": "me too. It's a great field to be in.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1109,12 +1485,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "fact"
@@ -1123,34 +1505,44 @@
     {
      "visit": "visit1",
      "you": "k",
-     "npc": "Okay. I'll definitely look into that.",
+     "npc": "That's a good salary.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": [
-      "acknowledge"
-     ]
+     "repairs": []
     },
     {
      "visit": "visit1",
      "you": "thanks bye",
-     "npc": "No problem. Have a good day.",
+     "npc": "No problem, I'm happy to help.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1161,12 +1553,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1177,28 +1575,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "which year am i in",
-     "npc": "You told me you were a second-year, so that's the year you're in.",
+     "npc": "You told me you were in 2nd year, so that's right.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "recall"
@@ -1211,44 +1621,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what's ur job again",
-     "npc": "I run the department, so time tables, hiiring, budgeting, and a lot of meetings.",
+     "npc": "I'm the head of the Computer Science department.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
-     },
-     "repairs": []
-    },
-    {
-     "visit": "visit2",
-     "you": "hmm",
-     "npc": "What's your favorite subject?",
-     "flags": [],
-     "memory": {
-      "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
-      "interests": [
-       "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1259,12 +1665,42 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "hmm",
+     "npc": "Okay. What's the problem?",
+     "flags": [],
+     "memory": {
+      "name": "Arjun",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "interests": [
+       "robotics"
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": [
       "acknowledge"
@@ -1277,12 +1713,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1293,12 +1735,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1309,12 +1757,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -1330,9 +1784,9 @@
    },
    "memory": {
     "name": "Arjun",
-    "from": "Madurai",
-    "year": "second-year",
-    "studies": "ece",
+    "hometown": "Madurai",
+    "year": "2nd",
+    "department": "ECE",
     "interests": [
      "robotics"
     ]
@@ -1361,20 +1815,30 @@
      ],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai"
+      "hometown": "Madurai",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "im in 2nd year ece",
-     "npc": "okay, that's a bit confusing. Can you tell me what your major is?",
+     "npc": "okay, that's interesting. What's your favorite subject?",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1385,9 +1849,15 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1398,22 +1868,34 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "cool",
-     "npc": "That's a good time to come.",
+     "npc": "That's a good time to go.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece"
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1424,60 +1906,84 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "how much do u earn",
-     "npc": "That's a bit vague, but I'd say it's around that.",
+     "npc": "That's a good question. It depends on a lot of factors, like where you work, how much you're responsible for, and how much you're paid for overtime.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "k",
-     "npc": "That's a good start. You might want to look into internships or volunteering opportunities to get some experience in the field.",
+     "npc": "That's a good point. I'd be happy to help you figure it out.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit1",
      "you": "thanks bye",
-     "npc": "No problem, happy to help.",
+     "npc": "No problem, just happy to help.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1488,12 +1994,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1504,28 +2016,40 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "which year am i in",
-     "npc": "You're in the second year, Arjun.",
+     "npc": "You're in 2nd year, so you're in the second year of your degree.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
@@ -1536,94 +2060,132 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what's ur job again",
-     "npc": "I'm the campus liasion officer. I walk the campus and talk to students.",
+     "npc": "I'm the campus liasion officer, I walk the campus and talk to students.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hmm",
-     "npc": "I'll have to ask you to come with me. We need to talk about something.",
+     "npc": "I'll have to ask you to come back and talk to me again.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "hmm",
-     "npc": "Okay, I'll come back to you.",
+     "npc": "Okay, I'll see you next time.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "anything else i should know",
-     "npc": "No, that's all I need.",
+     "npc": "No, that's all I know.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     },
     {
      "visit": "visit2",
      "you": "what do u do",
-     "npc": "I'm a police officer.",
+     "npc": "Mostly I'm walking the campus and talking to people.",
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
-     "repairs": []
+     "repairs": [
+      "self"
+     ]
     },
     {
      "visit": "visit2",
@@ -1632,12 +2194,18 @@
      "flags": [],
      "memory": {
       "name": "Arjun",
-      "from": "Madurai",
-      "year": "second-year",
-      "studies": "ece",
+      "hometown": "Madurai",
+      "year": "2nd",
+      "department": "ECE",
       "interests": [
        "robotics"
-      ]
+      ],
+      "_confidence": {
+       "name": 1.0,
+       "hometown": 1.0,
+       "year": 1.0,
+       "department": 1.0
+      }
      },
      "repairs": []
     }
@@ -1653,9 +2221,9 @@
    },
    "memory": {
     "name": "Arjun",
-    "from": "Madurai",
-    "year": "second-year",
-    "studies": "ece",
+    "hometown": "Madurai",
+    "year": "2nd",
+    "department": "ECE",
     "interests": [
      "robotics"
     ]

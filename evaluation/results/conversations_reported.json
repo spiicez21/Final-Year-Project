@@ -1,0 +1,1031 @@
+{
+ "summary": {
+  "repeat": 1,
+  "loop": 0,
+  "asks_known": 1,
+  "invented": 0,
+  "self_denial": 0,
+  "list": 0,
+  "replies": 55,
+  "memory_slots_ok": 15,
+  "memory_slots_of": 15,
+  "spurious_slots": 0
+ },
+ "by_npc": {
+  "Prof. Adeyemi": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "my name is yugabharathi",
+     "npc": "that's a great name, what's your favorite color?",
+     "flags": [
+      "repeat",
+      "asks_known"
+     ],
+     "memory": {
+      "name": "Yugabharathi",
+      "_confidence": {
+       "name": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am class cse d",
+     "npc": "Got it.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach CS2011 Algorithmic and Data Structures, and CS3040 Compilers.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "which section am i in",
+     "npc": "You're in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall",
+      "recall_fallback"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hello again",
+     "npc": "Hi, Yugabharathi. What's new with you?",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "You told me your name was Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "which class am i in",
+     "npc": "You're in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall",
+      "recall_fallback"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "Okay.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 1,
+    "loop": 0,
+    "asks_known": 1,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 11
+   },
+   "memory": {
+    "name": "Yugabharathi",
+    "department": "CSE",
+    "section": "D"
+   },
+   "slots_ok": 3,
+   "slots_of": 3,
+   "spurious_slots": []
+  },
+  "Ms. Okafor": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi!",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "my name is yugabharathi",
+     "npc": "that's a great name!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "_confidence": {
+       "name": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am class cse d",
+     "npc": "i am not able to access the class csd.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "repeat"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I don't teach anything.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "which section am i in",
+     "npc": "You told me you're in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hello again",
+     "npc": "Hi, how are you doing today?",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "It's Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which class am i in",
+     "npc": "You told me you were in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's right.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 11
+   },
+   "memory": {
+    "name": "Yugabharathi",
+    "department": "CSE",
+    "section": "D"
+   },
+   "slots_ok": 3,
+   "slots_of": 3,
+   "spurious_slots": []
+  },
+  "Nadia": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "my name is yugabharathi",
+     "npc": "my name is nadia.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "_confidence": {
+       "name": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am class cse d",
+     "npc": "i am nadia, the person who runs the campus store.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I don't teach anything.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "which section am i in",
+     "npc": "You're in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall",
+      "recall_fallback"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "bye.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hello again",
+     "npc": "Hi, I'm Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which class am i in",
+     "npc": "You told me you were in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "That's right.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 11
+   },
+   "memory": {
+    "name": "Yugabharathi",
+    "department": "CSE",
+    "section": "D"
+   },
+   "slots_ok": 3,
+   "slots_of": 3,
+   "spurious_slots": []
+  },
+  "Halvorsen": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's up?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "my name is yugabharathi",
+     "npc": "Nice to meet you, Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "_confidence": {
+       "name": 1.0
+      }
+     },
+     "repairs": [
+      "introduced"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "i am class cse d",
+     "npc": "Yeah, I'm Halvorsen.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach CS1002 Introduction to Programming in the first semester.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "which section am i in",
+     "npc": "You told me you were in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hello again",
+     "npc": "Hi, Yugabharathi. What's up?",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which class am i in",
+     "npc": "You told me you were in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "Okay. I'll look into it.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "acknowledge"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye!",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 11
+   },
+   "memory": {
+    "name": "Yugabharathi",
+    "department": "CSE",
+    "section": "D"
+   },
+   "slots_ok": 3,
+   "slots_of": 3,
+   "spurious_slots": []
+  },
+  "Officer Reyes": {
+   "turns": [
+    {
+     "visit": "visit1",
+     "you": "hi",
+     "npc": "hi, what's your name?",
+     "flags": [],
+     "memory": {},
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "my name is yugabharathi",
+     "npc": "okay, yugabharathi, what's your major?",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "_confidence": {
+       "name": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "i am class cse d",
+     "npc": "okay, that's a good choice. What's your favorite subject?",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "what do u teach",
+     "npc": "I teach CS101, CS102, and CS103.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "which section am i in",
+     "npc": "Section D, that's the one with the most students.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit1",
+     "you": "ok bye",
+     "npc": "see you around.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "hello again",
+     "npc": "Hi, Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "asks_known"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "what is my name",
+     "npc": "Yugabharathi, that's a great name.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "which class am i in",
+     "npc": "You told me you were in section D.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": [
+      "recall"
+     ]
+    },
+    {
+     "visit": "visit2",
+     "you": "ok",
+     "npc": "Okay, I'll go check it out.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    },
+    {
+     "visit": "visit2",
+     "you": "bye",
+     "npc": "Bye, Yugabharathi.",
+     "flags": [],
+     "memory": {
+      "name": "Yugabharathi",
+      "department": "CSE",
+      "section": "D",
+      "_confidence": {
+       "name": 1.0,
+       "department": 1.0,
+       "section": 1.0
+      }
+     },
+     "repairs": []
+    }
+   ],
+   "counts": {
+    "repeat": 0,
+    "loop": 0,
+    "asks_known": 0,
+    "invented": 0,
+    "self_denial": 0,
+    "list": 0,
+    "replies": 11
+   },
+   "memory": {
+    "name": "Yugabharathi",
+    "department": "CSE",
+    "section": "D"
+   },
+   "slots_ok": 3,
+   "slots_of": 3,
+   "spurious_slots": []
+  }
+ }
+}

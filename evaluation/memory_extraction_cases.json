@@ -1,0 +1,638 @@
+{
+ "_about": "Labelled player lines for evaluating what an NPC learns about the player. Written 2026-09-15, before any extractor was run on them. 'context' is the NPC's previous line (or null). 'expect' lists the slots that must be learned; 'forbid' lists slots that must NOT be learned. Values are compared case-insensitively, and a learned value matches if it contains the expected text or vice versa. Split: dev cases may be used while building the extractor; test cases are reported only. Incident cases (slots incident and place) were added 2026-09-15, before those labels existed or any extractor was trained on them. Their place values, and the exact incident phrases, are excluded from training; single words inside a phrase (e.g. 'stolen') can still occur in training phrases.",
+ "cases": [
+  {
+   "split": "test",
+   "context": null,
+   "text": "my name is yugabharathi",
+   "expect": {
+    "name": "yugabharathi"
+   }
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am class cse d",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "I am class CSE D",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am from cse d",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name",
+    "hometown"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am in cse d section",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "my class is cse d",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am in d section",
+   "expect": {
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am studying 3rd year cse d",
+   "expect": {
+    "year": "3",
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am yugabharathi from cse d",
+   "expect": {
+    "name": "yugabharathi",
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "hometown"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am doing b.e cse",
+   "expect": {
+    "department": "cse"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i'm a cse student",
+   "expect": {
+    "department": "cse"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am from sri krishna college",
+   "expect": {
+    "college": "sri krishna"
+   },
+   "forbid": [
+    "name",
+    "hometown"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am good",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am here to see the lab",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am not yuga",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "actually my name is bharathi",
+   "expect": {
+    "name": "bharathi"
+   }
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am cr of cse d",
+   "expect": {
+    "department": "cse",
+    "section": "d"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am president of coding club",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am hosteller",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am tamil",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am placement coordinator",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am yuga's friend",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am from mech department",
+   "expect": {
+    "department": "mech"
+   },
+   "forbid": [
+    "name",
+    "hometown"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am vijay from trichy",
+   "expect": {
+    "name": "vijay",
+    "hometown": "trichy"
+   }
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am in ai and ds",
+   "expect": {
+    "department": "ai and ds"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am doing mini project on iot",
+   "expect": {
+    "project": "iot"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am final year cse",
+   "expect": {
+    "year": "final",
+    "department": "cse"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": "What's your name?",
+   "text": "yuga",
+   "expect": {
+    "name": "yuga"
+   }
+  },
+  {
+   "split": "test",
+   "context": "Which year are you in?",
+   "text": "3rd",
+   "expect": {
+    "year": "3"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": "What do you study?",
+   "text": "ece",
+   "expect": {
+    "department": "ece"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": "Where are you from?",
+   "text": "madurai",
+   "expect": {
+    "hometown": "madurai"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": "What's your name?",
+   "text": "why do you want to know",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "what is your name",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "where is the canteen",
+   "expect": {},
+   "forbid": [
+    "name",
+    "hometown"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i like machine learning and web dev",
+   "expect": {
+    "interests": "machine learning"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "im really stressed about exams",
+   "expect": {
+    "feeling": "stressed"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "myself priya, 2nd year it",
+   "expect": {
+    "name": "priya",
+    "year": "2",
+    "department": "it"
+   }
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am arjun from madurai",
+   "expect": {
+    "name": "arjun",
+    "hometown": "madurai"
+   }
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am in ece b",
+   "expect": {
+    "department": "ece",
+    "section": "b"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am tired",
+   "expect": {
+    "feeling": "tired"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am the class rep",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am day scholar",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i want to do my final year project on chatbots",
+   "expect": {
+    "project": "chatbots"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": "What should I call you?",
+   "text": "meena",
+   "expect": {
+    "name": "meena"
+   }
+  },
+  {
+   "split": "dev",
+   "context": "Which department are you in?",
+   "text": "civil",
+   "expect": {
+    "department": "civil"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "call me yb",
+   "expect": {
+    "name": "yb"
+   }
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i am indian",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "i study at psg college of technology",
+   "expect": {
+    "college": "psg"
+   },
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "added": "2026-09-15, found in play after the first fine-tune",
+   "context": null,
+   "text": "i have a dog named bruno",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "added": "2026-09-15, found in play after the first fine-tune",
+   "context": null,
+   "text": "my brother arivu is also in mech",
+   "expect": {},
+   "forbid": [
+    "name"
+   ]
+  },
+  {
+   "split": "dev",
+   "added": "2026-09-15, found in play after the first fine-tune",
+   "context": null,
+   "text": "k",
+   "expect": {},
+   "forbid": [
+    "name",
+    "section"
+   ]
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i saw a person with weapon roaming around",
+   "expect": {
+    "incident": "person with weapon"
+   },
+   "forbid": [
+    "name",
+    "hometown",
+    "place"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "someone is fighting near the auditorium",
+   "expect": {
+    "incident": "fighting",
+    "place": "auditorium"
+   },
+   "forbid": [
+    "name",
+    "hometown"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "my phone got stolen in the physics block",
+   "expect": {
+    "incident": "phone got stolen",
+    "place": "physics block"
+   },
+   "forbid": [
+    "name",
+    "hometown"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "there is smoke coming out of the chemistry lab",
+   "expect": {
+    "incident": "smoke coming out",
+    "place": "chemistry lab"
+   },
+   "forbid": [
+    "name",
+    "department"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "someone broke the window of the seminar hall",
+   "expect": {
+    "incident": "broke the window",
+    "place": "seminar hall"
+   },
+   "forbid": [
+    "name"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "dev",
+   "context": null,
+   "text": "a guy is following girls near the girls hostel",
+   "expect": {
+    "incident": "following girls",
+    "place": "girls hostel"
+   },
+   "forbid": [
+    "name"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "i am yugabharathi from cse d",
+   "expect": {
+    "name": "yugabharathi"
+   },
+   "forbid": [
+    "incident",
+    "place"
+   ],
+   "added": "2026-09-15"
+  },
+  {
+   "split": "test",
+   "context": null,
+   "text": "the canteen food was bad today",
+   "expect": {},
+   "forbid": [
+    "incident",
+    "name"
+   ],
+   "added": "2026-09-15"
+  }
+ ]
+}

@@ -144,6 +144,29 @@ are the `test` phrasings; `dev` was used for design.
 > rerun: still 0 leaks, recall unchanged, first-generation median 339.5 ms
 > (was 354.6 ms; the paper uses 340).
 
+## Understanding the player — learned extraction and intent (added 2026-09-15)
+
+Not yet in `main.tex`. Replaces the pattern-based extraction and intent that the
+player-memory numbers above were measured with; those sections must be rerun
+before they are quoted again.
+
+| Claim | Value | Source |
+|---|---|---|
+| Reported failure (pattern rules) | "my name is yugabharathi" then "i am class cse d" → name "Class"; also "Tamil", "Hosteller", "Cr" as names | reproduced 2026-09-15; `evaluation/memory_extraction_cases.json` lines |
+| TinyLlama-1.1B JSON-schema extraction (tried, rejected) | dev 8/12 lines fully right with grounding, ~1.3 s/line, slot confusions ("madurai" as year) | scratch prototype, 2026-09-15 — not kept as code |
+| Extractor | GLiNER small (`urchade/gliner_small-v2.1`, Apache-2.0, 166M) fine-tuned on 6,000 generated lines, 3.0 min on RTX 5060, val loss 10.53 → 0.316 | `training/extractor/player_facts_gliner/training_summary.json` |
+| Value disjointness | generator aborts if any case value is in its lists (it caught "cse" and "trichy") | `training/extractor/make_extraction_data.py`, `check_no_leakage` |
+| Zero-shot GLiNER, test | 16/36 lines fully right, 9/37 slots, 1 forbidden slot learned, scenarios 3/5, 56 ms/line | `evaluation/results/memory_extraction_results.json` → `base` |
+| **Fine-tuned, test** | **35/36 lines, 36/37 slots, 0 forbidden, scenarios 5/5, 58 ms/line**; threshold 0.3 chosen on dev (11/12) | same file → `fine-tuned` |
+| Only miss | "i am doing mini project on iot" → department "iot" | same file, test rows |
+| Intent, pattern rules | dev 14/14, test 35/40 | `evaluation/results/intent_results.json` → `rules` |
+| **Intent, learned heads** | **dev 14/14, test 40/40, ~51 ms/line** (encoder forward, CPU) | same file → `learned`; heads from `training/extractor/train_intent.py` |
+
+> Caveats: 36 extraction and 40 intent test lines, one author; generator
+> templates were written after the case lines, so sentence shapes may overlap
+> even though values cannot. Synthetic validation (100% intent, 0.316 extraction
+> loss) says nothing about real lines and is not quoted as a result.
+
 ## Training and the held-out split (added 2026-09-11)
 
 | Claim | Value | Source |
@@ -191,3 +214,25 @@ marks with citation, and the names of Nuriyev's three system components.
   decision of 2026-08-08. Must not be reported as project findings.
 - **Qwen3-0.6B** — not trained. This is why RQ4's base-model comparison is
   marked `[PENDING]` in the draft.
+
+## Reported news (evaluation/run_events.py, 2026-09-15)
+
+3 report lines × 3 (told NPC, other NPC) pairs, real pipeline, fine-tuned extractor at 0.7.
+
+| | result |
+|---|---|
+| report captured as an event | 9/9 (1 report line kept as the player's quoted words: no incident span ≥ 0.7) |
+| unheard NPC mentions the incident (leak, KBD) | 0/9 |
+| greeted NPC passes heard news on | 9/9 — **all 9 needed the `news` restart**; 0/9 before the repair existed |
+| NPC answers "is anything happening?" with heard news | 9/9 — **all 9 needed the restart**; 0/9 before |
+| authored fallback line used | 0 |
+| told-NPC reply repaired (`report_refusal`) | 6/9; 2 unrepaired replies still off ("I'll go check it out.", "That's not a good idea.") |
+
+Honest reading: the prompt carried the news every time and the 1.1B model ignored it;
+passing news on works only because the guard restarts the reply on the news line's
+opening words and the model completes it. An incident threshold of 0.4 was tried and
+reverted: it made "the canteen food was bad today" an incident on test lines and had
+been chosen from a run_events report line, not dev.
+
+Conversations at threshold 0.7 (with news repairs): reported 15/15 memory slots, dev 20/20,
+test 25/25, test2 20/25 (department "it" in "1st year it" missed for all 5 NPCs); spurious slots 0 in all.
