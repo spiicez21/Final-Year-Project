@@ -27,6 +27,13 @@ second of latency -- and is ordered so the most specific diagnosis wins:
   nothing else     "myself Yuga"                               you, Yuga."
   repeat           the same line as an earlier reply, to a     regenerate with that exchange
                    different message                           hidden from the transcript
+  news_miss        "hi, what's going on?" from an NPC with     restart on the news line's
+                   fresh news, or news retrieved for "is       opening ("Have you heard?
+                   anything happening?" and not said           Halvorsen told me a student
+                                                               reported"); if the event is
+                                                               still missing, say the line
+  report_refusal   "That's not allowed." to "there's a kid     restart as "Thanks for
+                   bleeding near the court"                    telling me."
 
 Prefilled restarts give the model a frame, never the answer: the words after
 the prefix are still generated.
@@ -35,8 +42,8 @@ the prefix are still generated.
 import re
 from dataclasses import dataclass, field
 
-from . import memory as player_memory
-from .intent import ABOUT_NPC, ACK, RECALL
+from . import events, memory as player_memory
+from .intent import ABOUT_NPC, ACK, GREETING, RECALL, REPORT
 from .text import similar, split_sentences
 
 # Cut generation at the point the model starts writing the player's next line
@@ -119,7 +126,11 @@ _ASKS = {
     "name": re.compile(r"\b(what's|what is|may i have|can i get) your name\b|\bwho are you\b", re.I),
     "year": re.compile(r"\b(what|which) year are you\b", re.I),
     "project": re.compile(r"\bwhat('s| is) your project\b|\bwhat (kind of )?project\b", re.I),
-    "studies": re.compile(r"\bwhat do you study\b|\bwhat('s| is) your (major|course|branch)\b", re.I),
+    "department": re.compile(r"\bwhat do you study\b|\bwhat('s| is) your (major|course|branch|department)\b"
+                            r"|\bwhich (department|branch)\b", re.I),
+    "section": re.compile(r"\bwhich (section|class) are you\b|\bwhat('s| is) your (section|class)\b", re.I),
+    "hometown": re.compile(r"\bwhere are you from\b", re.I),
+    "college": re.compile(r"\bwhich college\b|\bwhere do you study\b", re.I),
 }
 _NOT_PLAYER_NAMES = {"Sure", "Yes", "No", "Well", "Okay", "Thanks", "Welcome", "Right", "Great",
                      "Good", "Nice", "Hello", "Hi", "Bye", "Professor", "Officer", "Ms", "Mr"}
@@ -136,6 +147,7 @@ class Check:
     job_line: str = ""
     persona_text: str = ""     # name, archetype, occupation, intro, job line: who the NPC is
     updates: dict = field(default_factory=dict)  # what this message taught
+    news: dict | None = None   # heard event this reply should pass on (greeting) or answer with
 
 
 @dataclass
@@ -164,14 +176,26 @@ def _wrong_identity(reply: str, check: Check) -> bool:
 
 def _mentions_memory(reply: str, memory: dict, slots=("any",)) -> bool:
     low = reply.lower()
+    memory = player_memory.facts(memory)
     keys = [k for k in memory if k != "feeling"] if "any" in slots else [s for s in slots if s in memory]
     values = []
     for k in keys:
         v = memory[k]
         values += v if isinstance(v, list) else [v]
-    # "first-year" is recalled by "your first year", "robotics" by "a robot".
-    stems = [str(v).lower().replace("-", " ").split()[0][:5] for v in values if str(v).strip()]
-    return any(re.search(r"\b" + re.escape(s), low) for s in stems)
+    for v in values:
+        word = str(v).lower().replace("-", " ").split()[0] if str(v).strip() else ""
+        if not word:
+            continue
+        if len(word) <= 3:
+            # Short values ("D", "CSE", "IT", "3rd") must appear as whole words:
+            # as a prefix, section "D" matched "don't" and "degree", so "I don't
+            # keep track of that" counted as recalling the section.
+            if re.search(r"(?<![\w'])" + re.escape(word) + r"(?![\w'])", low):
+                return True
+        # Longer values match by prefix: "robotics" is recalled by "a robot".
+        elif re.search(r"\b" + re.escape(word[:5]), low):
+            return True
+    return False
 
 
 def _stated_player_name(reply: str, check: Check):
@@ -201,12 +225,19 @@ def detect(reply: str, check: Check) -> set:
         # A specific slot that is saved must appear in the answer: "Yes, I
         # remember you." to "u remember my name?" is a dodge, not a refusal.
         # For a general "do you remember me", only a refusal counts as a miss.
-        specific = [s for s in intent.recall_slots if s != "any" and s in memory]
+        # The predicted slot narrows the check only when that fact is actually
+        # remembered. A mispredicted slot ("which college did i say" read as
+        # hometown, with no hometown saved) falls back to "anything
+        # remembered" instead of producing a wrong specific answer.
+        remembered = player_memory.facts(memory)
+        specific = [s for s in intent.recall_slots if s != "any" and s in remembered]
+        asked_unknown = [s for s in intent.recall_slots if s != "any" and s not in remembered]
         if specific:
             if not _mentions_memory(reply, memory, specific):
                 found.add("recall_miss")
-        elif "any" in intent.recall_slots and RECALL_REFUSAL.search(reply) \
-                and not _mentions_memory(reply, memory):
+        elif asked_unknown:
+            pass  # asked for something never told: "I don't think you've told me" is right
+        elif RECALL_REFUSAL.search(reply) and not _mentions_memory(reply, memory):
             found.add("recall_miss")
 
     if check.facts_used and FACT_REFUSAL.search(reply):
@@ -217,6 +248,11 @@ def detect(reply: str, check: Check) -> set:
         found.add("wrong_identity")
     if intent.kind == ACK and FACT_REFUSAL.search(reply):
         found.add("ack_refusal")
+    if intent.kind == REPORT and (FACT_REFUSAL.search(reply) or SELF_DENIAL.search(reply)
+                                  or re.search(r"not (something i|able)", reply, re.I)):
+        found.add("report_refusal")
+    if check.news and not events.mentions(reply, check.news):
+        found.add("news_miss")
 
     if any(s.endswith("?") and _is_known_question(s, check) for s in split_sentences(reply)):
         found.add("asks_known")
@@ -263,16 +299,28 @@ def _first_words(sentence: str, n: int = 2) -> str:
     return " ".join((sentence or "").split()[:n])
 
 
+def _news_opening(check: Check) -> str:
+    lead = events.lead_words(check.news)
+    return ("Have you heard? " + lead) if check.intent.kind == GREETING else lead
+
+
 def plan_regeneration(reply: str, problems: set, check: Check):
     """The one allowed retry, most specific diagnosis first, or None."""
     intent = check.intent
     if intent.kind == RECALL and ("recall_miss" in problems or "invented_name" in problems):
-        asked_known = any(s in check.memory or (s == "any" and check.memory)
-                          for s in intent.recall_slots)
-        if asked_known:
-            return Regeneration("recall", prefill="You told me")
-        if "invented_name" in problems:
+        remembered = player_memory.facts(check.memory)
+        # An invented name with no name saved is answered honestly, whatever
+        # slot the classifier thought was asked about.
+        if "invented_name" in problems and not remembered.get("name"):
             return Regeneration("recall_unknown", prefill="I don't think you've told me")
+        if remembered:
+            return Regeneration("recall", prefill="You told me")
+    if "news_miss" in problems:
+        # Before fact_refusal: the retrieved "fact" may be the news line itself.
+        # The restart names the source and stops before what happened.
+        return Regeneration("news", prefill=_news_opening(check))
+    if "report_refusal" in problems:
+        return Regeneration("report", prefill="Thanks for telling me.")
     if "fact_refusal" in problems and check.facts_used:
         return Regeneration("fact", prefill=_first_words(check.facts_used[0]))
     if ("self_denial" in problems or "wrong_identity" in problems) and check.job_line:
@@ -282,18 +330,36 @@ def plan_regeneration(reply: str, problems: set, check: Check):
         # "myself Yuga". Acknowledge the introduction instead.
         if check.updates.get("name"):
             return Regeneration("introduced", prefill="Nice to meet you, %s." % check.updates["name"])
+        if check.updates:
+            # Same after any other fact: "i am class cse d" -> "what's your
+            # name?" when the name is already known. Acknowledge what was said.
+            return Regeneration("acknowledge", prefill="Got it.")
     if intent.kind == ACK and problems & {"asks_known", "repeat", "ack_refusal"}:
         # "alright" -> "what's your name?" or "I'm sorry, I don't have that
         # information." twice running. An acknowledgement needs an
         # acknowledgement back, not new content.
         return Regeneration("acknowledge", prefill="Okay.")
-    if "repeat" in problems:
+    if "repeat" in problems and not (intent.kind == RECALL and _mentions_memory(reply, check.memory)):
+        # (A recall answer that names what is remembered is right even if it
+        # echoes an earlier line; regenerating it once turned "That's a great
+        # name, Yugabharathi." into "That's not something I'd know.")
         # A repetition penalty does not reach it: llama.cpp penalises only the
         # last 64 tokens, and the repeated line is further back. What the model
         # cannot see it cannot copy, so the exchange it is copying is hidden
         # for the retry. (4/4 replayed repeats broke; penalty 1.3-2.0: 0/4.)
         return Regeneration("repeat", hide_reply=reply)
     return None
+
+
+# Problems that make a reply wrong, not merely awkward. A retry that introduces
+# one of these is worse than the reply it replaced.
+SERIOUS = {"recall_miss", "invented_name", "fact_refusal", "self_denial", "wrong_identity", "ack_refusal",
+           "news_miss", "report_refusal"}
+
+
+def worse(original: str, retry: str, check: Check) -> bool:
+    """True when the retry has a serious problem the original did not."""
+    return bool((detect(retry, check) & SERIOUS) - (detect(original, check) & SERIOUS))
 
 
 def after_regeneration(reply: str, regen: Regeneration, check: Check) -> tuple:
@@ -315,6 +381,11 @@ def after_regeneration(reply: str, regen: Regeneration, check: Check) -> tuple:
         # with the start fixed). Say the retrieved fact itself: an authored
         # line, not a generated one, and reported as such.
         return check.facts_used[0], "fact_fallback"
+    if regen.name == "news" and check.news and not events.mentions(reply, check.news):
+        # "Have you heard? Halvorsen told me a student reported that." -- the
+        # frame without the event. Say the heard line: authored, reported.
+        line = events.sentence(check.news)
+        return (("Have you heard? " + line) if check.intent.kind == GREETING else line), "news_fallback"
     return reply, None
 
 

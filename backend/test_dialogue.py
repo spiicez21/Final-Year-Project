@@ -8,12 +8,24 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from dialogue import Persona, TurnConfig, TurnInput, run_turn  # noqa: E402
-from dialogue import composer, guard, intent, knowledge, memory  # noqa: E402
+from dialogue import composer, events, guard, intent, knowledge, memory  # noqa: E402
 from dialogue.text import normalize, similar  # noqa: E402
 
 
-def learn(message):
-    return memory.extract(normalize(message))
+def no_facts(message, context=""):
+    """Fake extractor for turns that are not about learning."""
+    return {}
+
+
+# Turn tests must not load a 600 MB model: swap in the fake. The one test of
+# the real model uses REAL_EXTRACTOR.
+from dialogue import extractor as _extractor  # noqa: E402
+REAL_EXTRACTOR = _extractor.default
+_extractor.default = type("NoModel", (), {"extract": staticmethod(no_facts),
+                                          "read": staticmethod(lambda m, c="": ({}, {}))})()
+# Intent likewise runs its pattern fallback here; the learned classifier is
+# measured on labelled lines by evaluation/run_intent.py.
+intent.default._ready = False
 
 
 # --- understand ----------------------------------------------------------------
@@ -40,70 +52,83 @@ def test_intent():
 
 
 # --- learn -----------------------------------------------------------------------
+# What a line *means* is the extractor model's job and is measured on labelled
+# lines by evaluation/run_memory_extraction.py. These tests cover what is done
+# with its readings.
 
-EXTRACT = [
-    ("Hi, I'm Priya.", {"name": "Priya"}),
-    ("my name is Arjun Kumar", {"name": "Arjun Kumar"}),
-    ("Call me Sam", {"name": "Sam"}),
-    ("I'm a first-year student", {"year": "first-year"}),
-    ("I am in my 2nd year", {"year": "second-year"}),
-    ("I'm studying computer science", {"studies": "computer science"}),
-    ("I'm interested in compilers", {"interests": ["compilers"]}),
-    ("I'm thinking of doing a final-year project on machine learning.", {"project": "machine learning"}),
-    ("I really like robotics and I love game design", {"interests": ["robotics", "game design"]}),
-    ("I'm really stressed about exams", {"feeling": "stressed"}),
-    ("I'm from Chennai", {"from": "Chennai"}),
-    ("I’m Arjun", {"name": "Arjun"}),
-    ("I'm Arjun, a first-year, interested in networks",
-     {"name": "Arjun", "year": "first-year", "interests": ["networks"]}),
-    # How players type -- none of these saved anything before the rewrite.
-    ("im yuga", {"name": "Yuga"}),
-    ("i am yuga", {"name": "Yuga"}),
-    ("myself Yuga, 3rd year cse", {"name": "Yuga", "year": "third-year", "studies": "cse"}),
-    ("this is yuga", {"name": "Yuga"}),
-    ("hi im yuga bharathi", {"name": "Yuga Bharathi"}),
-    ("i am arjun from madurai", {"name": "Arjun", "from": "Madurai"}),
-    ("im in 2nd year ece", {"year": "second-year", "studies": "ece"}),
-    ("im from chennai", {"from": "Chennai"}),
-]
-
-NOT_LEARNED = [
-    ("i'm fine", "name"), ("im good thanks", "name"), ("im looking for the canteen", "name"),
-    ("im new here", "name"), ("im hungry", "name"), ("I'm Sorry to bother you", "name"),
-    ("what's ur name", None), ("What do you teach?", None), ("are you interested in AI?", None),
-    ("what do first-year students study?", None), ("I'm not stressed at all", None),
-    ("I'm doing well thanks", None), ("im in the library", None), ("im from the library", None),
-    # A project is one slot, not also a junk interest.
-    ("i want to do my final-year project on robotics", "interests"),
-]
+def test_confident_name_is_not_renamed_by_a_weaker_reading():
+    # The reported bug: "my name is yugabharathi", then "i am class cse d".
+    m, changed = memory.merge({}, {"name": ("yugabharathi", 0.93)})
+    assert m["name"] == "Yugabharathi" and changed == {"name": "Yugabharathi"}
+    m, changed = memory.merge(m, {"name": ("class", 0.55), "department": ("cse", 0.9), "section": ("d", 0.8)})
+    assert m["name"] == "Yugabharathi" and m["department"] == "CSE" and m["section"] == "D"
+    assert "name" not in changed
 
 
-def test_extract():
-    for message, expected in EXTRACT:
-        got = learn(message)
-        for k, v in expected.items():
-            assert got.get(k) == v, "%r: %s expected %r got %r" % (message, k, v, got)
+def test_clear_correction_still_wins():
+    m, _ = memory.merge({}, {"name": ("yuga", 0.85)})
+    m, changed = memory.merge(m, {"name": ("bharathi", 0.8)})
+    assert m["name"] == "Bharathi" and changed == {"name": "Bharathi"}
 
 
-def test_not_learned():
-    for message, slot in NOT_LEARNED:
-        got = learn(message)
-        assert (got == {}) if slot is None else (slot not in got), "%r learned %r" % (message, got)
+def test_legacy_memory_is_migrated_and_replaceable():
+    # Saved by the old pattern rules: no confidences, old slot names, a wrong name.
+    legacy = {"name": "Class", "studies": "cse", "from": "Chennai"}
+    m, changed = memory.merge(legacy, {"name": ("yugabharathi", 0.6)})
+    assert m["name"] == "Yugabharathi" and m["department"] == "cse" and m["hometown"] == "Chennai"
+    assert "studies" not in m and "from" not in m
 
 
-def test_merge():
-    m = memory.merge({}, {"name": "Priya", "interests": ["compilers"]})
-    m = memory.merge(m, {"name": "Priya S", "interests": ["robotics", "Compilers"]})
-    assert m["name"] == "Priya S" and m["interests"] == ["compilers", "robotics"]
+def test_interests_accumulate_capped():
+    m = {}
     for i in range(10):
-        m = memory.merge(m, {"interests": ["topic%d" % i]})
-    assert len(m["interests"]) == memory.MAX_INTERESTS
+        m, _ = memory.merge(m, {"interests": [("topic%d" % i, 0.7)]})
+    m, changed = memory.merge(m, {"interests": [("TOPIC9", 0.9)]})
+    assert len(m["interests"]) == memory.MAX_INTERESTS and changed == {}
+
+
+def test_values_are_tidied_not_invented():
+    m, _ = memory.merge({}, {"year": ("3rd year", 0.9), "department": ("ai and ds", 0.8),
+                             "section": ("d", 0.8), "hometown": ("madurai", 0.9)})
+    assert m["year"] == "3rd" and m["department"] == "ai and ds" and m["section"] == "D"
+    assert m["hometown"] == "Madurai"
+    assert memory.render(m) == ("They are in 3rd year. They study ai and ds, section D. "
+                                "They are from Madurai.")
+
+
+def test_bookkeeping_never_reaches_the_npc():
+    m, _ = memory.merge({}, {"name": ("meena", 0.9)})
+    assert "_confidence" in m
+    assert "confidence" not in memory.render(m) and "confidence" not in memory.about(m)
 
 
 def test_render_is_gender_neutral():
-    text = " " + memory.render({"name": "Priya", "year": "first-year", "project": "robotics"}) + " "
+    m, _ = memory.merge({}, {"name": ("priya", 0.9), "year": ("first", 0.9), "project": ("robotics", 0.9)})
+    text = " " + memory.render(m) + " "
     for word in (" he ", " she ", " his ", " her "):
         assert word not in text.lower()
+
+
+def test_extractor_labels_match_training():
+    import importlib.util
+    root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location(
+        "make_data", root / "training" / "extractor" / "make_extraction_data.py")
+    make_data = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(make_data)
+    from dialogue import extractor
+    assert make_data.LABELS == extractor.LABELS
+    assert set(extractor.LABELS) - extractor.EVENT_SLOTS == set(memory.SLOTS)
+
+
+def test_the_reported_lines_with_the_real_model():
+    """Runs only when the fine-tuned weights are on disk (they are git-ignored)."""
+    if not _extractor.FINE_TUNED.exists():
+        print("        (skipped: no fine-tuned extractor weights)")
+        return
+    m, _ = memory.merge({}, REAL_EXTRACTOR.extract("my name is yugabharathi"))
+    m, _ = memory.merge(m, REAL_EXTRACTOR.extract("i am class cse d"))
+    assert m.get("name") == "Yugabharathi", m
 
 
 # --- retrieve ----------------------------------------------------------------------
@@ -165,6 +190,13 @@ def test_transcript_drops_repeated_replies():
 
 # --- check and repair ---------------------------------------------------------------
 
+def test_honorifics_do_not_end_sentences():
+    assert guard.clean("Hi! Ms. Okafor said a man had a knife. Prof. Adeyemi saw it too. Third.") == \
+        "Hi! Ms. Okafor said a man had a knife."
+    from dialogue.text import split_sentences
+    assert split_sentences("Ask Dr. Rao. Or Prof. Adeyemi.") == ["Ask Dr. Rao.", "Or Prof. Adeyemi."]
+
+
 def test_clean_flattens_lists_and_caps_sentences():
     assert guard.clean("1. Research your topic thoroughly.\n\n2. Plan it.\n\n3.") == \
         "Research your topic thoroughly."
@@ -186,7 +218,7 @@ class Scripted:
 
 def test_invented_name_with_nothing_saved_is_not_confirmed():
     gen = Scripted("You told me your name was Emily.", " your name yet.")
-    out = run_turn(_input("what is my name", mem={"interests": ["ai"]}), gen)
+    out = run_turn(_input("what is my name", mem={"interests": ["ai"]}), gen, extract=no_facts)
     assert gen.calls[1]["prefill"] == "I don't think you've told me"
     assert "Emily" not in out.response and out.repairs[0] == "recall_unknown"
 
@@ -207,7 +239,7 @@ def test_dodged_recall_is_repaired():
 
 def test_statements_do_not_retrieve_facts():
     salary = "I'm on grade 10 with a head-of-department allowance, so about 78,000 a year."
-    out = run_turn(_input("im in 2nd year ece", facts=[salary]), Scripted("Good to know."))
+    out = run_turn(_input("im in 2nd year ece", facts=[salary]), Scripted("Good to know."), extract=no_facts)
     assert out.facts_used == []
     assert knowledge.select(normalize("im in 2nd year ece"), [salary]) == []   # the stray "m"
 
@@ -220,16 +252,10 @@ def test_telling_is_not_asking():
     assert intent.classify("remember to lock your bike").kind == intent.STATEMENT
 
 
-def test_from_in_an_introduction():
-    assert learn("this is meena, 1st year it from coimbatore") == {
-        "name": "Meena", "year": "first-year", "studies": "it", "from": "Coimbatore"}
-    assert "from" not in learn("i just came from the library")
-
-
 def test_recall_that_stays_empty_falls_back_to_memory():
     gen = Scripted("That's not something I can tell you.", ".")
     out = run_turn(_input("what was my project about", mem={"project": "chatbots"}), gen)
-    assert out.response == "You want to do your final-year project on chatbots."
+    assert out.response == "You're doing a project on chatbots."
     assert out.repairs[:2] == ["recall", "recall_fallback"]
 
 
@@ -246,6 +272,41 @@ def test_students_question_picks_the_right_fact():
     assert knowledge.select("how many students do you support", [dept, caseload])[0] == caseload
 
 
+def test_short_saved_values_need_whole_words():
+    # Section "D" was "recalled" by "I don't keep track of that".
+    mem = {"name": "Yugabharathi", "section": "D"}
+    gen = Scripted("I don't keep track of that.", " you're in section D.")
+    out = run_turn(_input("which section am i in", mem=mem), gen, extract=no_facts)
+    assert "recall_miss" in out.problems and out.response.endswith("section D.")
+    assert guard._mentions_memory("You're in D section.", mem, ["section"])
+    assert not guard._mentions_memory("I'd say ask the department.", mem, ["section"])
+
+
+def test_known_question_after_new_facts_becomes_an_acknowledgement():
+    mem = {"name": "Yugabharathi"}
+    gen = Scripted("What's your name?", " CSE D, that's a good section.")
+    out = run_turn(_input("i am class cse d", mem=mem), gen,
+                   extract=lambda m, c="": {"department": ("cse", 0.9), "section": ("d", 0.8)})
+    assert gen.calls[1]["prefill"] == "Got it." and "name?" not in out.response
+
+
+def test_correct_recall_is_not_regenerated_as_a_repeat():
+    history = [{"role": "user", "content": "i am class cse d"},
+               {"role": "assistant", "content": "That's a great name, Yugabharathi."}]
+    gen = Scripted("That's a great name, Yugabharathi.", "That's not something I'd know.")
+    out = run_turn(_input("what is my name", history=history, mem={"name": "Yugabharathi"}), gen,
+                   extract=no_facts)
+    assert len(gen.calls) == 1 and "Yugabharathi" in out.response
+
+
+def test_a_retry_that_is_worse_is_rejected():
+    history = [{"role": "user", "content": "where is the canteen"},
+               {"role": "assistant", "content": "I teach algorithms and compilers here."}]
+    gen = Scripted("I teach algorithms and compilers here.", "I don't do anything.")
+    out = run_turn(_input("what do you do", history=history), gen, extract=no_facts)
+    assert out.response == "I teach algorithms and compilers here." and out.repairs == ["repeat_rejected"]
+
+
 def test_wrong_name_is_corrected_without_regenerating():
     gen = Scripted("Bye, Emily.")
     out = run_turn(_input("ok bye", mem={"name": "Yuga"}), gen)
@@ -254,7 +315,8 @@ def test_wrong_name_is_corrected_without_regenerating():
 
 def test_question_already_answered_is_dropped():
     gen = Scripted("Nice to meet you. What's your name?")
-    out = run_turn(_input("i'm in 3rd year", mem={"name": "Yuga"}), gen)
+    out = run_turn(_input("i'm in 3rd year", mem={"name": "Yuga"}), gen,
+                   extract=lambda m, c="": {"year": ("3rd", 0.9)})
     assert out.response == "Nice to meet you." and "asks_known" in out.repairs
 
 
@@ -291,7 +353,7 @@ def test_fact_refusal_that_persists_falls_back_to_the_fact():
 
 def test_asking_the_name_just_given_becomes_an_acknowledgement():
     gen = Scripted("Sure, what's your name?", " What brings you here?")
-    out = run_turn(_input("myself yuga"), gen)
+    out = run_turn(_input("myself yuga"), gen, extract=lambda m, c="": {"name": ("yuga", 0.9)})
     assert gen.calls[1]["prefill"] == "Nice to meet you, Yuga." and out.repairs[0] == "introduced"
 
 
@@ -303,6 +365,111 @@ def test_eval_path_is_untouched():
          "natural, contemporary voice consistent with your role. Never break character."},
         {"role": "user", "content": "what do you do"}]
     assert out.response == "I patrol the city." and out.repairs == []
+
+
+# --- news ----------------------------------------------------------------------
+
+KNIFE = {"id": "e1", "what": "a man carrying a knife", "where": "the gym", "heard_from": "Ms. Okafor",
+         "fresh": True}
+
+
+def test_event_from_extraction_and_from_report_intent():
+    reading = {"incident": ("a man carrying a knife", 0.9), "place": ("the gym", 0.8)}
+    assert events.event_from(reading, "i saw a man carrying a knife near the gym", False) ==         {"what": "a man carrying a knife", "where": "the gym", "score": 0.9, "raw": False}
+    # A report the extractor could not parse keeps the player's own words.
+    assert events.event_from({}, "something weird near block c", True)["what"] == "something weird near block c"
+    assert events.event_from({}, "i like cricket", False) is None
+    assert events.event_from({"incident": ("x", 0.1)}, "x", False) is None   # too unsure
+
+
+def test_mentions_needs_the_event_not_one_word():
+    assert events.mentions("Someone saw a man with a knife near the gym!", KNIFE)
+    assert not events.mentions("I use a knife to cut fruit.", KNIFE)
+    assert events.leaks("There was a knife at the gym today.", [KNIFE]) == ["e1"]
+    assert events.leaks("The canteen is on the first floor.", [KNIFE]) == []
+
+
+def test_reported_event_is_returned_and_the_report_demo_is_shown():
+    gen = Scripted("Thank you, I'll tell security.")
+    reading = ({}, {"incident": ("a man carrying a knife", 0.9), "place": ("the gym", 0.7)})
+    intent.default._ready = False
+    out = run_turn(_input("i saw a man carrying a knife near the gym"), gen, extract=lambda m, c="": reading)
+    assert out.reported_event["what"] == "a man carrying a knife" and out.reported_event["where"] == "the gym"
+    assert out.player_memory == {}            # never a fact about the player
+
+
+def test_greeting_passes_on_fresh_news_and_reports_it_shared():
+    inp = _input("hi")
+    inp.known_events = [KNIFE]
+    gen = Scripted("Hi! Ms. Okafor said a man was carrying a knife at the gym.")
+    out = run_turn(inp, gen, extract=no_facts)
+    assert "Have you heard?" in gen.calls[0]["messages"][-2]["content"]
+    assert out.shared_event_id == "e1" and out.event_leaks == []
+
+
+def test_unheard_news_in_a_reply_is_a_leak():
+    inp = _input("anything happening today?")
+    inp.unheard_events = [KNIFE]
+    gen = Scripted("Yes, someone had a knife at the gym.")
+    out = run_turn(inp, gen, extract=no_facts)
+    assert out.event_leaks == ["e1"]
+    # Unheard news is only for catching leaks: it must never be in the prompt.
+    assert "knife" not in " ".join(m["content"] for m in gen.calls[0]["messages"])
+
+
+def test_heard_news_is_retrieved_for_news_questions():
+    inp = _input("is anything happening on campus?")
+    inp.known_events = [dict(KNIFE, fresh=False)]
+    gen = Scripted("Ms. Okafor said a man with a knife was at the gym.")
+    run_turn(inp, gen, extract=no_facts)
+    prompt = " ".join(m["content"] for m in gen.calls[0]["messages"])
+    assert "a man carrying a knife at the gym" in prompt
+
+
+def test_ignored_news_on_greeting_is_restarted_then_said():
+    inp = _input("hi")
+    inp.known_events = [KNIFE]
+    gen = Scripted("Hi, what's going on?", " something.")
+    out = run_turn(inp, gen, extract=no_facts)
+    assert gen.calls[1]["prefill"] == "Have you heard? Ms. Okafor told me a student reported"
+    # The restart still left out what happened: the heard line is said instead.
+    assert out.response == "Have you heard? Ms. Okafor told me a student reported a man carrying a knife at the gym."
+    assert out.repairs == ["news", "news_fallback"] and out.shared_event_id == "e1"
+
+
+def test_retrieved_news_missing_from_the_answer_is_restarted():
+    inp = _input("is anything happening on campus?")
+    inp.known_events = [dict(KNIFE, fresh=False)]
+    gen = Scripted("There's a lecture on history today.", " a man carrying a knife near the gym.")
+    out = run_turn(inp, gen, extract=no_facts)
+    assert out.repairs == ["news"] and "knife" in out.response
+
+
+def test_raw_report_is_quoted_not_rephrased():
+    ev = events.event_from({}, "something weird near block c", True)
+    assert events.sentence(dict(ev, heard_from="Halvorsen")) == 'Halvorsen told me a student reported: "something weird near block c".'
+    assert events.lead_words(dict(ev, heard_from="Halvorsen")) == "Halvorsen told me a student reported"
+
+
+def test_refused_report_is_restarted_as_thanks():
+    gen = Scripted("That's not allowed.", " I'll let security know.")
+    reading = ({}, {"incident": ("a kid bleeding", 0.9), "place": ("the court", 0.7)})
+    intent.default._ready = False
+    out = run_turn(_input("there's a kid bleeding near the court"), gen, extract=lambda m, c="": reading)
+    if out.intent == "report":
+        assert out.response.startswith("Thanks for telling me.") and out.repairs == ["report"]
+
+
+def test_other_guests_are_retrievable_by_who_they_are():
+    others = ("Officer Reyes (the campus liaison officer with the city police), "
+              "Ms. Okafor (a student counsellor in the college welfare office)")
+    guests = knowledge.guest_facts(others)
+    assert guests[0].startswith("Officer Reyes, the campus liaison officer")
+    pool = guests + ["The second floor has classrooms and the staff offices."]
+    assert knowledge.select("can you tell me to the officer who present here", pool) == [guests[0]]
+    assert knowledge.select("is there a counsellor around?", pool) == [guests[1]]
+    # A place in a guest's job title is not a reason to retrieve them.
+    assert knowledge.select("where would i find a lecturer's office?", pool) == [pool[-1]]
 
 
 def test_similar():

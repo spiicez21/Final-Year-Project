@@ -25,8 +25,8 @@ the next three replies were the same line. An exchange whose reply repeats an
 earlier reply is dropped from what is replayed (the game still shows it).
 """
 
-from . import knowledge, memory as player_memory
-from .intent import GREETING, RECALL
+from . import events, knowledge, memory as player_memory
+from .intent import GREETING, RECALL, REPORT
 from .persona import (BACKGROUND_CLAUSE, FACTS_CLAUSE, MEMORY_CLAUSE, OTHERS_CLAUSE,
                       PERSONA_TEMPLATE, priming_turns)
 from .text import normalize, similar
@@ -77,8 +77,13 @@ def transcript(history: list, max_turns: int, config) -> list:
     return turns
 
 
-def late_turn(text: str, intent, memory: dict, facts_used: list, has_history: bool, config) -> list:
-    """The single just-had exchange placed before the message (see module doc)."""
+def late_turn(text: str, intent, memory: dict, facts_used: list, has_history: bool, config,
+              rumour: dict | None = None) -> list:
+    """The single just-had exchange placed before the message (see module doc).
+
+    Priority: the player's memory for recall; how to take a report; news to pass
+    on when greeted; otherwise the facts the question needs.
+    """
     mode = config.memory_turn
     show_memory = memory and (
         mode == "always"
@@ -87,12 +92,17 @@ def late_turn(text: str, intent, memory: dict, facts_used: list, has_history: bo
                                       and not has_history))))
     if show_memory:
         return player_memory.demonstration(memory)
+    if intent.kind == REPORT:
+        return events.report_demonstration()
+    if rumour and intent.kind == GREETING:
+        return events.rumour_demonstration(rumour)
     if facts_used:
         return knowledge.demonstration(text, facts_used)
     return []
 
 
-def compose(inp, text: str, intent, memory: dict, facts_used: list, config) -> list:
+def compose(inp, text: str, intent, memory: dict, facts_used: list, config,
+            rumour: dict | None = None) -> list:
     p = inp.persona
     occupation = p.occupation or f"a {inp.archetype}"
     messages = [{"role": "system", "content": system_prompt(inp, memory, config)}]
@@ -103,6 +113,6 @@ def compose(inp, text: str, intent, memory: dict, facts_used: list, config) -> l
     messages += [t for t in inp.fact_demos if t.get("role") in ("user", "assistant")]
     history = transcript(inp.history, config.max_history_turns, config)
     messages += history
-    messages += late_turn(text, intent, memory, facts_used, bool(history), config)
+    messages += late_turn(text, intent, memory, facts_used, bool(history), config, rumour)
     messages.append({"role": "user", "content": text})
     return messages

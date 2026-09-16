@@ -45,6 +45,22 @@ SYNONYMS = {
     "team": ("staff",), "report": ("staff",),
     "module": ("teach",), "modules": ("teach",), "courses": ("teach",), "course": ("teach",),
     "teaching": ("teach",),
+    # Questions about news reach the events an NPC has heard, which are stated
+    # as "... reported ..." (events.sentence).
+    "happen": ("reported",), "happened": ("reported",), "happening": ("reported",),
+    "news": ("reported",), "incident": ("reported",), "incidents": ("reported",),
+    "safe": ("reported",), "unsafe": ("reported",), "danger": ("reported",), "dangerous": ("reported",),
+    "trouble": ("reported",), "problem": ("reported",), "wrong": ("reported",), "heard": ("reported", "told"),
+    "going": ("reported",),
+    # Asking about someone else at the event reaches the guest sentences
+    # (guest_facts), which all say "... is another guest ...".
+    "else": ("guest",), "guests": ("guest",), "present": ("guest",), "anyone": ("guest",),
+    "someone": ("guest",), "somebody": ("guest",), "others": ("guest",), "around": ("guest",),
+    "talk": ("guest",), "speak": ("guest",), "meet": ("guest",), "introduce": ("guest",),
+    "police": ("police", "officer"), "cop": ("police", "officer"), "cops": ("police", "officer"),
+    "security": ("police", "officer"), "counselor": ("counsellor",), "counselling": ("counsellor",),
+    "hod": ("head",), "shopkeeper": ("store", "shop"), "store": ("store",),
+    "teacher": ("lecturer",), "professor": ("lecturer",),
     # "how long" asks for a duration, which the facts state in years.
     "long": ("years",),
 }
@@ -119,6 +135,11 @@ def select(question: str, facts: list, history: list = (), k: int = 2) -> list:
     pool = [(f, False) for f in facts] + [(h, True) for h in history]
     for i, (sentence, is_history) in enumerate(pool):
         terms = _terms(sentence, expand=False)
+        if GUEST_MARK in sentence:
+            # A guest is found by who they are, not by the places in their job
+            # title: "where would I find a lecturer's office?" matched Ms.
+            # Okafor on the "office" of "college welfare office".
+            terms -= _GUEST_PLACE_STEMS
         matched = [g for g in words if g & terms]
         strong = [g for g in matched if (g & terms) - _WEAK_STEMS]
         reaches_history = is_history and history_question
@@ -130,7 +151,11 @@ def select(question: str, facts: list, history: list = (), k: int = 2) -> list:
                  + (1.5 if about_npc and _FIRST_PERSON.match(sentence) else 0))
         scored.append((-score, i, sentence))
     scored.sort()
-    return [s for _, _, s in scored[:k]]
+    # A runner-up that matched less than half as well as the best is noise:
+    # "is there a counsellor around?" matched the counsellor on two words and
+    # every other guest on "around" alone.
+    best = -scored[0][0] if scored else 0
+    return [s for neg, _, s in scored[:k] if -neg * 2 > best]
 
 
 def topic(question: str, fact: str) -> str:
@@ -151,6 +176,32 @@ def demonstration(question: str, selected: list) -> list:
         {"role": "user", "content": "what do you know about %s" % topic(question, selected[0])},
         {"role": "assistant", "content": " ".join(selected)},
     ]
+
+
+GUEST_MARK = "is another guest"
+_GUEST_PLACE_STEMS = {_stem(w) for w in """office offices department college campus computer science
+welfare city corridor floor building block""".split()}
+_GUEST = re.compile(r"\s*,?\s*([^,()]+?)\s*\(([^()]*)\)")
+
+
+def guest_facts(others: str) -> list:
+    """The other guests, as sentences retrieval can pick.
+
+    The game sends them as "Officer Reyes (the campus liaison officer with the
+    city police), Nadia (...)". In the system prompt alone ("Also here today:
+    ...") the model ignored them: asked by the player to point them to the
+    officer, the head of department said "I don't know who you're talking
+    about." As retrievable sentences they reach the late turn like any fact.
+    Worded without "open day" or "today" so they are not retrieved for
+    questions about the event itself.
+    """
+    out = []
+    for name, role in _GUEST.findall(others or ""):
+        role = role.strip()
+        if not role.lower().startswith(("the ", "a ", "an ")):
+            role = "the " + role
+        out.append("%s, %s, %s, just along the corridor." % (name.strip(), role, GUEST_MARK))
+    return out
 
 
 def fact_pool(facts: list, job_line: str) -> list:

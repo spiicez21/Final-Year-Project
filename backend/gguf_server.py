@@ -56,8 +56,10 @@ from pdm_v2 import build_archetype_lexicons, build_reference_features, single_tu
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from tts import VoicePool, style_for
+import stt
 from dialogue import Persona, TurnConfig, TurnInput, run_turn
 from dialogue import guard
+from dialogue import extractor as fact_extractor
 
 DATASET_PATH = REPO_ROOT / "data" / "processed" / "modern_npc_dataset.json"
 GGUF_MODELS_DIR = REPO_ROOT / "training" / "gguf_models"
@@ -216,6 +218,10 @@ class ChatRequest(BaseModel):
     # Owned by the game (one per NPC, persisted there) so the server stays
     # stateless and each NPC only knows what it was told.
     player_memory: dict = {}
+    # News this NPC has heard / has not heard (see backend/dialogue/events.py).
+    # Owned by the game's event log; unheard events are used only to flag leaks.
+    known_events: list[dict] = []
+    unheard_events: list[dict] = []
 
 
 class ChatResponse(BaseModel):
@@ -235,6 +241,9 @@ class ChatResponse(BaseModel):
     problems: list[str] = []          # what the guard found in the first reply
     repairs: list[str] = []           # what it did about them (dialogue/guard.py)
     generations: int = 1              # 2 when a repair regenerated (generation_ms covers both)
+    reported_event: dict | None = None  # {"what", "where", "score"} when the player reported something
+    shared_event_id: str = ""         # a heard event this reply passed on to the player
+    event_leaks: list[str] = []       # unheard events the reply mentions (KBD for rumours)
 
 
 def load_scoring() -> None:
@@ -264,13 +273,28 @@ def _startup():
         print(f"[startup] voices warmed: {voices.installed()}")
     else:
         print("[startup] speech disabled (no piper or no voices on disk)")
+    # Loading the player-fact model takes a few seconds; pay it here, not on
+    # the first thing a player says.
+    if fact_extractor.default.available:
+        fact_extractor.default.extract("hello")
+        print(f"[startup] player-fact extractor: {fact_extractor.default.source}")
+    else:
+        print("[startup] player-fact extractor unavailable: NPCs will not learn about the player")
+    # Same for speech input: load Whisper now, not on the first spoken line.
+    if stt.default.available:
+        stt.default.transcribe(stt.np.random.default_rng(0).normal(0, 0.05, stt.TARGET_RATE).astype("float32"))
+        print(f"[startup] speech-to-text: {stt.default.source}")
+    else:
+        print("[startup] speech-to-text unavailable: players can still type")
 
 
 @app.get("/health")
 def health():
     return {"status": "ok", "resident_models": pool.resident(),
             "max_resident": MAX_RESIDENT_MODELS,
-            "speech": voices.available, "voices": voices.installed()}
+            "speech": voices.available, "voices": voices.installed(),
+            "fact_extractor": fact_extractor.default.source or None,
+            "speech_to_text": stt.default.source or None}
 
 
 @app.get("/archetypes")
@@ -338,6 +362,36 @@ def speak(req: SpeakRequest):
     )
 
 
+class TranscribeRequest(BaseModel):
+    audio_b64: str          # raw samples, base64
+    sample_rate: int
+    channels: int = 1       # >1: interleaved
+    format: str = "f32"     # "f32" little-endian float (what Godot captures) or "s16"
+
+
+class TranscribeResponse(BaseModel):
+    text: str               # "" when nothing was heard
+    transcribe_ms: float
+    duration_ms: float
+    skipped: str = ""       # "short" / "silence": the model was not run
+
+
+@app.post("/transcribe", response_model=TranscribeResponse)
+def transcribe(req: TranscribeRequest):
+    """What the player said, as text. The game then sends it to /chat like a
+    typed line -- see backend/stt.py."""
+    if not stt.default.available:
+        raise HTTPException(status_code=503,
+                            detail="speech-to-text unavailable: whisper model not on disk "
+                                   "(see backend/stt.py)")
+    try:
+        samples = stt.decode(base64.b64decode(req.audio_b64), req.format)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    audio = stt.to_mono_16k(samples, req.sample_rate, max(1, req.channels))
+    return TranscribeResponse(**stt.default.transcribe(audio))
+
+
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     if req.archetype not in ARCHETYPE_GGUF:
@@ -374,6 +428,9 @@ def chat(req: ChatRequest):
         problems=turn.problems,
         repairs=turn.repairs,
         generations=turn.generations,
+        reported_event=turn.reported_event,
+        shared_event_id=turn.shared_event_id,
+        event_leaks=turn.event_leaks,
     )
 
 
@@ -391,4 +448,5 @@ def to_turn_input(req: ChatRequest) -> TurnInput:
         facts=[f.strip() for f in (req.facts or "").splitlines() if f.strip()],
         fact_demos=[t.model_dump() for t in req.fact_demos],
         history=[t.model_dump() for t in req.history],
-        player_memory=dict(req.player_memory or {}))
+        player_memory=dict(req.player_memory or {}),
+        known_events=list(req.known_events or []), unheard_events=list(req.unheard_events or []))

@@ -1,16 +1,28 @@
-"""What a player message is doing, decided by rules.
+"""What a player message is doing.
 
 The composer uses this to choose the ONE piece of late context a reply gets,
-and the guard uses it to choose the repair. Getting it wrong is cheap -- the
-worst case is the context the pipeline used before intents existed -- so the
-rules favour precision: a message is only "about the player" when it
-unmistakably is, because the memory turn it triggers crowds out everything
-else (returning players asking "what do you do" got "I don't do anything"
-when memory was shown on every turn).
+and the guard uses it to choose the repair.
+
+Learned, not written. The first classifier was patterns, and it failed the
+way patterns fail: 14/14 on the lines it was written against, 35/40 on unseen
+ones -- "hii sir", "good evening mam", "hey there, how r u" were not
+greetings; "oh nice", "thats cool" were not acknowledgements. Now two small
+heads over the fact extractor's sentence encoder decide (LearnedIntent below;
+trained by training/extractor/train_intent.py): which of the seven intents,
+and for a recall question, which remembered facts it asks about.
+
+rules_classify() is kept only as the fallback when no trained head is on disk,
+so a fresh clone still runs. It is not consulted when the model is present.
 """
 
+import json
+import logging
 import re
+import threading
 from dataclasses import dataclass, field
+from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 GREETING = "greeting"
 FAREWELL = "farewell"
@@ -18,6 +30,7 @@ ACK = "ack"              # "ok", "cool", "hmm", "thanks"
 RECALL = "recall"        # asks what the NPC remembers about the player
 ABOUT_NPC = "about_npc"  # asks the NPC about itself
 QUESTION = "question"    # any other question (world, campus, advice)
+REPORT = "report"        # tells the NPC about something happening (see events.py)
 STATEMENT = "statement"  # anything else, including self-introductions
 
 # Which remembered slot a recall question is after. "any" = the whole record.
@@ -28,8 +41,10 @@ _RECALL_SLOTS = [
                 r"|\bwanted to (build|make|do)\b"),
     ("interests", r"\bwhat am i (into|interested in)\b|\bwhat i'm (into|interested in)\b"
                   r"|\bmy interests?\b|\bi('m| am) interested in\?"),
-    ("from", r"\bwhere am i from\b|\bwhere i'm from\b"),
-    ("studies", r"\bwhat do i study\b|\bmy (course|major|branch|subject)\b"),
+    ("hometown", r"\bwhere am i from\b|\bwhere i'm from\b|\bmy (home ?town|native)\b"),
+    ("department", r"\bwhat do i study\b|\bmy (course|major|branch|subject|department|dept)\b"),
+    ("section", r"\bmy (section|class)\b|\bwhich (section|class) am i\b"),
+    ("college", r"\bmy college\b|\bwhich college am i\b|\bwhere do i study\b"),
     ("any", r"\bremember me\b|\babout me\b|\bremind me\b|\bwhat did i (tell|say|mention)\b"
             r"|\bi (told|said|mentioned)\b|\bdid i (tell|say|mention)\b|\bremember\b|\brecall\b"),
 ]
@@ -61,8 +76,8 @@ class Intent:
     is_question: bool = False
 
 
-def classify(message: str) -> Intent:
-    """`message` should already be normalised (text.normalize)."""
+def rules_classify(message: str) -> Intent:
+    """The pattern classifier: fallback only. `message` should be normalised."""
     text = (message or "").strip()
     is_question = text.endswith("?") or bool(_QUESTION_START.match(text))
 
@@ -86,3 +101,73 @@ def classify(message: str) -> Intent:
     if is_question:
         return Intent(QUESTION, is_question=True)
     return Intent(STATEMENT)
+
+
+class LearnedIntent:
+    """Intent and recall-slot heads over the extractor's encoder."""
+
+    SLOT_THRESHOLD = 0.5
+
+    def __init__(self, model_dir: Path | None = None):
+        from . import extractor
+        self.model_dir = Path(model_dir) if model_dir else extractor.FINE_TUNED
+        self._extractor = extractor
+        self._ready = None
+        self._lock = threading.Lock()
+
+    def _load(self):
+        if self._ready is not None:
+            return self._ready
+        with self._lock:
+            if self._ready is not None:
+                return self._ready
+            head, meta = self.model_dir / "intent_head.pt", self.model_dir / "intent_head.json"
+            if not (head.exists() and meta.exists()):
+                log.warning("no trained intent head at %s: using the pattern fallback", self.model_dir)
+                self._ready = False
+                return False
+            model = (self._extractor.default._load()
+                     if self.model_dir == self._extractor.FINE_TUNED else None)
+            try:
+                import torch
+                from .encoder import SentenceEncoder
+                self.encoder = SentenceEncoder(self.model_dir, gliner_model=model)
+                info = json.loads(meta.read_text(encoding="utf-8"))
+                weights = torch.load(head, map_location="cpu")
+                self.intents, self.slots = info["intents"], info["slots"]
+                dim = info["encoder_dim"]
+                self.intent_head = torch.nn.Linear(dim, len(self.intents))
+                self.slot_head = torch.nn.Linear(dim, len(self.slots))
+                self.intent_head.load_state_dict(weights["intent"])
+                self.slot_head.load_state_dict(weights["slots"])
+                self._ready = True
+            except Exception as exc:  # noqa: BLE001 - fall back rather than break the turn
+                log.warning("could not load the intent head (%s): using the pattern fallback", exc)
+                self._ready = False
+            return self._ready
+
+    @property
+    def available(self) -> bool:
+        return bool(self._load())
+
+    def classify(self, message: str) -> Intent:
+        import torch
+        vector = self.encoder.encode([message or ""])
+        with torch.no_grad():
+            kind = self.intents[int(self.intent_head(vector).argmax(1))]
+            slot_probs = torch.sigmoid(self.slot_head(vector))[0]
+        if kind != RECALL:
+            return Intent(kind, is_question=kind in (ABOUT_NPC, QUESTION))
+        slots = [s for s, p in zip(self.slots, slot_probs.tolist()) if p >= self.SLOT_THRESHOLD]
+        return Intent(RECALL, recall_slots=slots or ["any"], is_question=True)
+
+
+default = LearnedIntent()
+
+
+def classify(message: str) -> Intent:
+    """What `message` (as the player typed it) is doing."""
+    if default.available:
+        return default.classify(message)
+    from .text import normalize
+    return rules_classify(normalize(message))

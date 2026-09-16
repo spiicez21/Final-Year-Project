@@ -1,8 +1,8 @@
 """One player message -> one NPC reply. Runs the stages in order; owns no rules.
 
-    understand  text.normalize, intent.classify
-    learn       memory.extract + merge (before generation, so an introduction
-                is usable in the reply to that same introduction)
+    understand  intent.classify (learned), text.normalize for what the model reads
+    learn       extractor.py (a fine-tuned span model) + memory.merge, before
+                generation, so an introduction is usable in the reply to it
     retrieve    knowledge.select
     compose     composer.compose
     generate    the injected Generator
@@ -15,7 +15,8 @@ server and by a scripted fake in unit tests, with no model loaded.
 from dataclasses import dataclass, field
 from typing import Protocol
 
-from . import composer, guard, intent as intents, knowledge, memory as player_memory
+from . import composer, events, guard, intent as intents, knowledge, memory as player_memory
+from . import extractor as facts_extractor
 from .persona import eval_messages
 from .text import normalize, similar
 
@@ -49,6 +50,10 @@ class TurnInput:
     fact_demos: list = field(default_factory=list)
     history: list = field(default_factory=list)
     player_memory: dict = field(default_factory=dict)
+    # News this NPC has heard, and news it has not (the latter only to catch
+    # leaks; it never enters the prompt). Shapes in events.py.
+    known_events: list = field(default_factory=list)
+    unheard_events: list = field(default_factory=list)
 
 
 @dataclass
@@ -61,6 +66,8 @@ class TurnConfig:
     deloop: bool = True              # drop repeated exchanges from the replayed transcript
     speech_shape: bool = True        # flatten lists, cap sentences (guard.clean)
     max_history_turns: int = 8
+    learn_facts: bool = True         # run the player-fact extractor (extractor.py)
+    news: bool = True                # learn reported events; share and retrieve heard ones
 
 
 @dataclass
@@ -73,27 +80,63 @@ class TurnResult:
     problems: list = field(default_factory=list)   # detected on the first reply
     repairs: list = field(default_factory=list)    # what was done about them
     generations: int = 1
+    reported_event: dict | None = None             # the player just reported this
+    shared_event_id: str = ""                      # this reply passed on that heard event
+    event_leaks: list = field(default_factory=list)  # ids of unheard events the reply mentions
 
 
-def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfig()) -> TurnResult:
+def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfig(),
+             extract=None) -> TurnResult:
+    """`extract(message, context) -> (facts, event)`, both {slot: (value, score)},
+    defaults to the GLiNER extractor's read(); tests pass a fake so no model is
+    needed. A fake may also return only the facts dict."""
     if inp.persona is None:
         raw = generate(eval_messages(inp.archetype, inp.message), inp.max_tokens)
         return TurnResult(response=guard.clean_basic(raw))
 
     text = normalize(inp.message) if config.normalize else inp.message
-    intent = intents.classify(text)
+    # The learned classifier reads the line as typed (it was trained on casual
+    # typing); the pattern fallback normalises for itself.
+    intent = intents.classify(inp.message)
 
-    updates = player_memory.extract(text)
-    memory = player_memory.merge(inp.player_memory, updates)
+    # Learn before generating, so an introduction can be answered by name. The
+    # NPC's last line is context: "yuga" after "What's your name?" is a name.
+    # The extractor reads the message as typed -- it was trained on casual
+    # typing, and normalising first would hide the casing it uses for names.
+    readings, event_reading = {}, {}
+    if config.learn_facts:
+        last_npc_line = next((t.get("content", "") for t in reversed(inp.history)
+                              if t.get("role") == "assistant"), "")
+        out = (extract or facts_extractor.default.read)(inp.message, last_npc_line)
+        readings, event_reading = out if isinstance(out, tuple) else (out, {})
+    memory, updates = player_memory.merge(inp.player_memory, readings)
+    reported = (events.event_from(event_reading, inp.message, intent.kind == intents.REPORT)
+                if config.news else None)
 
     # Facts answer questions. Retrieving for statements put the head of
     # department's salary into his reply to "i'm in 2nd year ece".
+    # News the NPC has heard joins the fact pool, so "is anything happening?"
+    # retrieves it the same way "where's the canteen?" retrieves the floor.
+    known_news = [events.sentence(e) for e in inp.known_events] if config.news else []
+    # The other guests too, so "where's the officer?" has an answer to find.
+    guests = knowledge.guest_facts(inp.persona.others)
     facts_used = []
-    if config.fact_retrieval and inp.facts and intent.kind in (intents.QUESTION, intents.ABOUT_NPC):
-        facts_used = knowledge.select(text, knowledge.fact_pool(inp.facts, inp.persona.job_line),
+    if (config.fact_retrieval and (inp.facts or known_news or guests)
+            and intent.kind in (intents.QUESTION, intents.ABOUT_NPC)):
+        facts_used = knowledge.select(text, knowledge.fact_pool(inp.facts, inp.persona.job_line)
+                                      + known_news + guests,
                                       knowledge.split_sentences(inp.persona.background))
+    # A greeted NPC passes on the freshest news it heard from someone else.
+    rumour = None
+    if config.news and intent.kind == intents.GREETING:
+        rumour = next((e for e in reversed(inp.known_events)
+                       if e.get("fresh") and e.get("heard_from") not in ("", "player")), None)
 
-    messages = composer.compose(inp, text, intent, memory, facts_used, config)
+    # The event this reply is expected to carry: the rumour it was primed with,
+    # or heard news that retrieval picked for the question.
+    news = rumour or next((e for e in inp.known_events if events.sentence(e) in facts_used), None)
+
+    messages = composer.compose(inp, text, intent, memory, facts_used, config, rumour)
     shape = guard.clean if config.speech_shape else guard.clean_basic
     reply = shape(generate(messages, inp.max_tokens))
     generations = 1
@@ -103,7 +146,7 @@ def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfi
                         history=composer.transcript(inp.history, config.max_history_turns, config),
                         facts_used=facts_used, npc_name=p.name, job_line=p.job_line,
                         persona_text=" ".join([p.name, inp.archetype, p.occupation, p.intro, p.job_line]),
-                        updates=updates)
+                        updates=updates, news=news)
     problems = guard.detect(reply, check)
     repairs = []
     if config.repairs:
@@ -118,15 +161,26 @@ def run_turn(inp: TurnInput, generate: Generator, config: TurnConfig = TurnConfi
                         keep += hidden[i:i + 2]
                 retry_input = TurnInput(**{**inp.__dict__, "history": keep})
                 retry_messages = composer.compose(retry_input, text, intent, memory, facts_used, config)
-            reply = shape(generate(retry_messages, inp.max_tokens, prefill=regen.prefill))
+            retry = shape(generate(retry_messages, inp.max_tokens, prefill=regen.prefill))
             generations += 1
-            repairs.append(regen.name)
-            reply, fallback = guard.after_regeneration(reply, regen, check)
-            if fallback:
-                repairs.append(fallback)
+            retry, fallback = guard.after_regeneration(retry, regen, check)
+            if guard.worse(reply, retry, check):
+                # Never trade a flawed reply for a wrong one.
+                repairs.append(regen.name + "_rejected")
+            else:
+                reply = retry
+                repairs.append(regen.name)
+                if fallback:
+                    repairs.append(fallback)
         reply, trimmed = guard.finish(reply, check)
         repairs += trimmed
 
+    shared = ""
+    if config.news:
+        shared = next((e.get("id", "") for e in inp.known_events if e.get("fresh")
+                       and events.mentions(reply, e)), "")
     return TurnResult(response=reply, memory_updates=updates, player_memory=memory,
                       facts_used=facts_used, intent=intent.kind, problems=sorted(problems),
-                      repairs=repairs, generations=generations)
+                      repairs=repairs, generations=generations, reported_event=reported,
+                      shared_event_id=shared,
+                      event_leaks=events.leaks(reply, inp.unheard_events) if config.news else [])

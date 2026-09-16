@@ -17,6 +17,7 @@
 # the pin below is no longer 2.5.1. Verify after install:
 #   python -c "import torch; print(torch.cuda.get_device_capability(0))"
 torch==2.11.0
+torchaudio==2.11.0   # speech input resampling (backend/stt.py); same index as torch
 transformers==5.12.1
 peft==0.19.1
 trl==1.7.0
@@ -62,3 +63,12 @@ psutil==7.2.2
 # Fetch them once with:
 #   .venv/Scripts/python.exe backend/fetch_voices.py
 piper-tts==1.8.0
+
+# --- Player-fact extractor (backend/dialogue/extractor.py) ------------------
+# A GLiNER span model reads what the player says about themselves. The base
+# model (urchade/gliner_small-v2.1, Apache-2.0, ~611 MB) is fetched from Hugging
+# Face on first use; the fine-tuned weights are NOT in git -- reproduce with:
+#   .venv/Scripts/python.exe training/extractor/make_extraction_data.py
+#   .venv/Scripts/python.exe training/extractor/train_extractor.py
+gliner==0.2.29
+sentencepiece==0.2.2

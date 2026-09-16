@@ -37,8 +37,21 @@ def normalize(message: str) -> str:
     return "".join(out)
 
 
+# A full stop after these is not the end of a sentence. Without this, "Hi! Ms.
+# Okafor said..." was cut to "Hi! Ms." by the two-sentence cap -- and two of the
+# five NPCs are called "Prof. Adeyemi" and "Ms. Okafor".
+_ABBREVIATIONS = ("mr.", "mrs.", "ms.", "dr.", "prof.", "st.", "sr.", "jr.", "e.g.", "i.e.", "vs.", "no.")
+
+
 def split_sentences(text: str) -> list:
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text or "") if s.strip()]
+    pieces = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text or "") if s.strip()]
+    out = []
+    for piece in pieces:
+        if out and out[-1].lower().rsplit(" ", 1)[-1] in _ABBREVIATIONS:
+            out[-1] = out[-1] + " " + piece
+        else:
+            out.append(piece)
+    return out
 
 
 _WORDS = re.compile(r"[a-z0-9']+")
