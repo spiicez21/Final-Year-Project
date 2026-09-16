@@ -6,10 +6,9 @@ class_name WorldEventStore
 ## When the player tells an NPC about something happening ("i saw a man
 ## carrying a knife near the gym"), the server marks the incident and its
 ## place (backend/dialogue/events.py) and returns it; this store keeps it. The
-## NPC that was told knows at once. Afterwards spread() passes news from an NPC
-## who knows it to one who does not, a step at a time, so it travels round the
-## event the way gossip does. No role is special: the police officer hears news
-## the same way the shopkeeper does.
+## NPC that was told knows it at once. Afterwards spread() passes news from an NPC
+## who knows it to another NPC of the same archetype, a step at a time. Rumours
+## stay within a character type, so police news cannot reach teaching staff.
 ##
 ## Every NPC only ever gets the events it has heard. The ones it has not are
 ## also sent to the server -- never into the prompt, only so a reply that
@@ -86,21 +85,28 @@ func mark_shared(npc_name: String, event_id: String) -> void:
 			return
 
 
-## One step of gossip among `npc_names`: a random NPC who knows some event tells
-## a random NPC who does not. Returns {id, from, to}, or {} when everyone who can
-## hear something already has.
-func spread(npc_names: Array) -> Dictionary:
+## One step of gossip among `npc_names`, restricted by `npc_types`: a random NPC
+## who knows some event tells a random NPC of the same archetype who does not.
+## Returns {id, from, to}, or {} when nobody of that type can hear it.
+func spread(npc_names: Array, npc_types: Dictionary) -> Dictionary:
 	var options: Array = []
 	for e in _events:
-		var knowers: Array = []
-		var listeners: Array = []
+		var type_knowers: Dictionary = {}
+		var type_listeners: Dictionary = {}
 		for n in npc_names:
 			if e["heard_by"].has(n):
-				knowers.append(n)
+				var known_type: String = str(npc_types.get(n, ""))
+				if not type_knowers.has(known_type):
+					type_knowers[known_type] = []
+				type_knowers[known_type].append(n)
 			else:
-				listeners.append(n)
-		if not knowers.is_empty() and not listeners.is_empty():
-			options.append([e, knowers, listeners])
+				var listener_type: String = str(npc_types.get(n, ""))
+				if not type_listeners.has(listener_type):
+					type_listeners[listener_type] = []
+					type_listeners[listener_type].append(n)
+		for archetype in type_knowers:
+			if type_listeners.has(archetype):
+				options.append([e, type_knowers[archetype], type_listeners[archetype]])
 	if options.is_empty():
 		return {}
 	var pick: Array = options[randi() % options.size()]

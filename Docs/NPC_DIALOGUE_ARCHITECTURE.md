@@ -142,8 +142,8 @@ roaming around" is news about the world, and it is handled as such
 2. **Store.** The server returns `reported_event` (`what`, `where`); the game's
    event log records it, with the NPC who was told as its first listener.
 3. **Spread.** Every `news_spread_seconds` (45 s) one NPC who knows an event
-   tells one who doesn't. Nobody is special, not even the police officer: news
-   travels round the event the way gossip does.
+   tells another NPC of the same archetype who doesn't. Rumours stay within a
+   character type, so police news cannot reach teaching staff.
 4. **Use.** Each request carries the events that NPC has heard. They join the
    retrieval pool, so "is anything happening?" can retrieve them like campus
    facts, and a greeted NPC with fresh news passes it on (the late turn, as

@@ -418,9 +418,11 @@ func _persona_for(npc: NpcActor) -> Dictionary:
 ## One step of gossip between the NPCs that are actually in the world.
 func _spread_news() -> void:
 	var names: Array = []
+	var types: Dictionary = {}
 	for npc in _npcs:
 		names.append(npc.display_name)
-	var step := _news.spread(names)
+		types[npc.display_name] = npc.archetype
+	var step := _news.spread(names, types)
 	if step.is_empty():
 		return
 	print("NpcDirector: news %s passed from %s to %s" % [step["id"], step["from"], step["to"]])

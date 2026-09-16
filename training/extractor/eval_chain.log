@@ -1,0 +1,44 @@
+ALL PASSED
+E:\Final Year Project\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py:189: UserWarning: The `resume_download` argument is deprecated and ignored in `snapshot_download`. Downloads always resume whenever possible.
+  warnings.warn(
+[transformers] The tokenizer you are loading from 'microsoft/deberta-v3-small' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+base       threshold 0.7 | dev cases 6/17 slots 6/17 forbidden 3 | TEST cases 17/42 slots 10/45 forbidden 4 | scenarios 4/6 | 91 ms/line
+fine-tuned threshold 0.7 | dev cases 16/17 slots 16/17 forbidden 0 | TEST cases 40/42 slots 44/45 forbidden 1 | scenarios 5/6 | 92 ms/line
+wrote evaluation\results\memory_extraction_results.json
+
+captured 9/9 | leaks before hearing 0/9 | shared on greeting 9/9 | answered after hearing 9/9   (110s)
+  needed the news restart: shared 9, answered 9 | by authored fallback: shared 0, answered 0 | told-NPC replies repaired 6
+wrote evaluation\results\events_results.json
+=== conversations reported
+Prof. Adeyemi  repeat 1 loop 0 asks_known 1 invented 0 self_denial 0 list 0 | memory 3/3 spurious []
+Ms. Okafor     repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 3/3 spurious []
+Nadia          repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 3/3 spurious []
+Halvorsen      repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 3/3 spurious []
+Officer Reyes  repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 3/3 spurious []
+TOTAL {"repeat": 1, "loop": 0, "asks_known": 1, "invented": 0, "self_denial": 0, "list": 0, "replies": 55} | memory slots 15/15, spurious 0  (114s)
+wrote evaluation/results/conversations_reported.json
+=== conversations dev
+Prof. Adeyemi  repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/4 spurious []
+Ms. Okafor     repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/4 spurious []
+Nadia          repeat 1 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/4 spurious []
+Halvorsen      repeat 1 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/4 spurious []
+Officer Reyes  repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/4 spurious []
+TOTAL {"repeat": 2, "loop": 0, "asks_known": 0, "invented": 0, "self_denial": 0, "list": 0, "replies": 100} | memory slots 20/20, spurious 0  (170s)
+wrote evaluation/results/conversations_dev.json
+=== conversations test
+Prof. Adeyemi  repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 5/5 spurious []
+Ms. Okafor     repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 5/5 spurious []
+Nadia          repeat 1 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 5/5 spurious []
+Halvorsen      repeat 0 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 5/5 spurious []
+Officer Reyes  repeat 1 loop 0 asks_known 1 invented 0 self_denial 0 list 0 | memory 5/5 spurious []
+TOTAL {"repeat": 2, "loop": 0, "asks_known": 1, "invented": 0, "self_denial": 0, "list": 0, "replies": 100} | memory slots 25/25, spurious 0  (163s)
+wrote evaluation/results/conversations_test.json
+=== conversations test2
+Prof. Adeyemi  repeat 1 loop 0 asks_known 1 invented 0 self_denial 0 list 0 | memory 4/5 spurious []
+Ms. Okafor     repeat 1 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/5 spurious []
+Nadia          repeat 2 loop 0 asks_known 0 invented 0 self_denial 0 list 0 | memory 4/5 spurious []
+Halvorsen      repeat 0 loop 0 asks_known 0 invented 0 self_denial 1 list 0 | memory 4/5 spurious []
+Officer Reyes  repeat 3 loop 0 asks_known 1 invented 0 self_denial 0 list 0 | memory 4/5 spurious []
+TOTAL {"repeat": 7, "loop": 0, "asks_known": 2, "invented": 0, "self_denial": 1, "list": 0, "replies": 100} | memory slots 20/25, spurious 0  (168s)
+wrote evaluation/results/conversations_test2.json
+CHAIN_DONE

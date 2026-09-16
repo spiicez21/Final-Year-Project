@@ -1,0 +1,5 @@
+=== train extractor
+"best_eval_loss": 0.4888216257095337
+=== train intent
+ "val_intent_accuracy": 0.996,
+=== TRAINED
