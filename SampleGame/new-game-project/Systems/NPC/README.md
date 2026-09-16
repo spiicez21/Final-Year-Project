@@ -237,22 +237,29 @@ them to answer the next question.
 ### What each NPC remembers about *you* — across sessions
 
 The transcript is gone when the game closes. So alongside it, each NPC keeps a
-few **facts about the player**: name, year, subject, final-year project,
-interests, how they said they felt, where they are from. These are saved to
-`user://npc_memory.json` and survive a restart.
+few **facts about the player**: name, year, department, class section,
+college, hometown, project, interests, how they said they felt. These are saved
+to `user://npc_memory.json` and survive a restart.
 
-- **Learned from what you say, by rules, not by the model.**
-  `backend/dialogue/memory.py` pulls facts out of your own words with patterns
-  ("I'm Priya", "myself yuga, 3rd year cse", "project on robotics"). It is cheap,
-  deterministic and unit-tested (`backend/test_dialogue.py`). If a
-  pattern misses something, the NPC just doesn't remember it. That is a safer
-  failure than remembering something you never said. Questions *about* the
-  NPC ("are you interested in AI?") teach it nothing about you.
+- **Read by a model, not matched by patterns.** A small span model
+  (`backend/dialogue/extractor.py`, GLiNER fine-tuned on generated student
+  lines) reads each line and marks what you said about yourself. The pattern
+  version could not keep up with how people type: after "my name is
+  yugabharathi", **"i am class cse d" renamed the player "Class"**, and "i am
+  tamil" or "i am hosteller" became names too. On 36 lines it never trained on,
+  the model gets 35 fully right and never files anything under the wrong fact
+  (`evaluation/run_memory_extraction.py`). Every saved value is a piece of what
+  you actually typed, so a miss means forgetting, never inventing.
+- **Confidence.** Each fact keeps how sure the model was (the dimmed % in the
+  panel). A later, less certain reading can't overwrite a clear one, but a clear
+  correction ("actually my name is bharathi") still does.
+- **Context.** The NPC's last line is part of what the model reads, so answering
+  "What's your name?" with just "yuga" works.
 - **Per NPC.** Tell Adeyemi your name and Halvorsen still has to ask. An NPC
   knowing something it was never told would be a leak, the same failure KBD
   measures for world facts.
-- **Visible.** The metrics panel has a **REMEMBERS YOU** section, and anything
-  learned from your latest line is marked `new`.
+- **Visible.** The metrics panel has a **REMEMBERS YOU** section with each
+  fact's confidence, and anything learned from your latest line is marked `new`.
 - **Resettable, for testing.** Type these into the chat box instead of dialogue:
   `/memory` (what this NPC knows), `/forget` (this NPC forgets you),
   `/forget all`. Or launch with `CampusNPC.exe -- --forget`. The JSON file can
@@ -381,20 +388,26 @@ Produces `SampleGame\build\CampusNPC.exe` plus `CampusNPC.pck` (~209MB total).
 The build directory is gitignored: it is large and fully reproducible from
 source.
 
-To launch the built game with its server in one step:
+To launch the built game with its server in one step, double-click
+`run_demo.bat` in the **project root**, or run it from a terminal:
 
 ```bash
-tools\run_demo.bat
+run_demo.bat
 ```
 
-That is the one-step way to run the demo with voices. In order, it:
+That is the one-step way to run the demo with voices and player memory. In
+order, it:
 
 1. downloads the NPC voices (~315 MB) if `backend/voices/` has none;
-2. **rebuilds the exe if it is older than any script in `Systems/NPC/`**;
-3. starts `backend/gguf_server.py` and waits for `/health` (about 10 s, since
-   startup loads and warms every voice);
-4. prints `Speech: ON (5 voices)`, or says plainly that speech is off;
-5. launches the game.
+2. warns, with the commands to fix it, if the fine-tuned player-fact extractor
+   (`training/extractor/player_facts_gliner/`) is missing;
+3. **rebuilds the exe if it is older than any script in `Systems/NPC/`**;
+4. reuses a server already running on port 8000, or starts
+   `backend/gguf_server.py` and waits for `/health` (about 15–20 s: startup
+   warms every voice and loads the extractor);
+5. prints `Speech: ON (5 voices)` and `Player memory: ON (fine-tuned extractor)`,
+   or says plainly what is off;
+6. launches the game, and **stops the server it started when you close the game**.
 
 Step 2 exists because this bit once: speech was added to the game code but
 the exe was not re-exported, so the demo launched a build that never asked

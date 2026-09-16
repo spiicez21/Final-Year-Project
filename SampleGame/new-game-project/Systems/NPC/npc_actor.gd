@@ -157,6 +157,12 @@ func _make_label(text: String, size: float, height: float, color: Color) -> Labe
 	return label
 
 
+## The interact key's name, so the prompt follows a rebinding (settings, F2).
+func set_prompt_key(key: String) -> void:
+	if _prompt:
+		_prompt.text = "[%s] talk" % key
+
+
 func set_prompt_visible(value: bool) -> void:
 	if _prompt:
 		_prompt.visible = value

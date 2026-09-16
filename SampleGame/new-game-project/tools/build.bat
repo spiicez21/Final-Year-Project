@@ -8,7 +8,7 @@ REM contents of Godot_v4.7-stable_export_templates.tpz into
 REM   %APPDATA%\Godot\export_templates\4.7.stable\
 REM
 REM The .exe is the game client only. NPC replies come from
-REM backend\gguf_server.py -- see tools\run_demo.bat.
+REM backend\gguf_server.py -- see run_demo.bat in the project root.
 
 setlocal
 set "GODOT=E:\Godot\Godot_v4.7-stable_win64_console.exe"

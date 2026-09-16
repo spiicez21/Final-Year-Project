@@ -22,6 +22,12 @@ class_name NpcDirector
 ## per turn than the evaluation configuration.
 const REPLY_TOKENS := 64
 
+## Let the player talk: hold push-to-talk (Tab) in a conversation, release to
+## send. The line is transcribed by the server (backend/stt.py) and then sent
+## exactly like a typed one.
+@export var speech_input_enabled: bool = true
+const PUSH_TO_TALK := &"push_to_talk"
+
 ## Speak replies aloud. Turn off to run silent — everything else is unaffected,
 ## and the server is never asked to synthesise.
 @export var voice_enabled: bool = true
@@ -108,6 +114,18 @@ var _voice_warning_shown := false
 ## What each NPC has learned about the player; persisted across sessions.
 var _memory := PlayerMemoryStore.new()
 
+## News players have reported, and which NPCs have heard it (world_event_store.gd).
+var _news := WorldEventStore.new()
+
+var _voice_input: VoiceInput
+var _transcribing := false
+var _settings: NpcSettings
+
+## How often one piece of news passes from an NPC who knows it to one who does
+## not. Slow enough that a player can see news travel, fast enough that it does
+## within a few minutes of play.
+@export var news_spread_seconds := 45.0
+
 
 func _ready() -> void:
 	_player = get_node_or_null(player_path)
@@ -127,6 +145,29 @@ func _ready() -> void:
 
 	_hud = NpcDialogueHud.new()
 	_hud.message_submitted.connect(_on_message_submitted)
+
+	if speech_input_enabled:
+		# Tab, not a letter: the chat box has focus during a conversation, so a
+		# letter key would be typed into it. Rebindable in Project Settings.
+		# Rebindable in the settings panel (F2); defaults in npc_settings.gd.
+		_voice_input = VoiceInput.new()
+		_voice_input.auto_stopped.connect(_finish_talking)
+		add_child(_voice_input)
+
+	# Saved microphone and key bindings, before anyone can be talked to.
+	NpcSettings.apply_saved()
+	_settings = NpcSettings.new()
+	_settings.voice_input = _voice_input
+	_settings.closed.connect(_on_settings_closed)
+	_settings.bindings_changed.connect(_on_bindings_changed)
+	add_child(_settings)
+	_on_bindings_changed()
+
+	var gossip := Timer.new()
+	gossip.wait_time = news_spread_seconds
+	gossip.autostart = true
+	gossip.timeout.connect(_spread_news)
+	add_child(gossip)
 	add_child(_hud)
 
 	await _spawn_npcs()
@@ -157,6 +198,7 @@ func _spawn_npcs() -> void:
 			continue
 		var npc := NpcActor.create(entry)
 		add_child(npc)
+		npc.set_prompt_key(NpcSettings.key_name(&"interact"))
 		_npcs.append(npc)
 		_snap_to_floor(npc)
 
@@ -183,7 +225,7 @@ func _snap_to_floor(npc: NpcActor) -> void:
 # --- interaction -----------------------------------------------------------
 
 func _process(_delta: float) -> void:
-	if _active != null or _player == null:
+	if _active != null or _player == null or (_settings and _settings.is_open()):
 		return
 
 	# Nearest in range wins, so standing between two NPCs is never ambiguous
@@ -204,6 +246,78 @@ func _process(_delta: float) -> void:
 		_nearest = best
 
 
+## Push-to-talk. In _input, ahead of the GUI, so Tab never reaches the chat
+## box (where it would move focus).
+func _input(event: InputEvent) -> void:
+	if _settings.is_open():
+		return   # the panel handles its own input, including rebinding
+	if event.is_action_pressed(NpcSettings.OPEN_ACTION):
+		_open_settings()
+		get_viewport().set_input_as_handled()
+		return
+	if _voice_input == null or _active == null or not event.is_action(PUSH_TO_TALK):
+		return
+	get_viewport().set_input_as_handled()
+	if event.is_echo():
+		return
+	if event.is_pressed():
+		if not _awaiting and not _transcribing:
+			_voice_input.start()
+			_hud.show_listening()
+	elif _voice_input.is_recording():
+		_finish_talking()
+
+
+func _finish_talking() -> void:
+	if not _voice_input.is_recording():
+		return
+	var npc := _active
+	var clip: Dictionary = _voice_input.stop()
+	if npc == null:
+		return
+	_transcribing = true
+	_hud.show_transcribing()
+	var heard: Dictionary = await _client.transcribe(clip["pcm"], clip["sample_rate"], clip["channels"])
+	_transcribing = false
+	if _active != npc:
+		return   # walked away while it was being transcribed
+	if heard.has("error"):
+		_hud.show_error("(speaking)", "Could not hear you: %s" % heard["error"])
+		return
+	var text := str(heard.get("text", "")).strip_edges()
+	_hud.set_metric_heard(float(heard.get("transcribe_ms", 0.0)), str(heard.get("skipped", "")))
+	if text.is_empty():
+		var key := NpcSettings.key_name(PUSH_TO_TALK)
+		_hud.show_note("(speaking)", ("Didn't catch that. Hold %s and speak, then let go. "
+			+ "Check the microphone in settings (F2).") % key
+			if heard.get("skipped", "") != "short" else "Hold %s while you speak, then let go." % key)
+		return
+	_on_message_submitted(text)
+
+
+func _open_settings() -> void:
+	if _voice_input and _voice_input.is_recording():
+		_voice_input.stop()
+	if _nearest:
+		_nearest.set_prompt_visible(false)
+		_nearest = null   # re-shown by _process once the panel closes
+	_settings.open()
+	_set_player_active(false)
+
+
+func _on_settings_closed() -> void:
+	if _active == null:
+		_set_player_active(true)
+	else:
+		_hud.focus_input()
+
+
+func _on_bindings_changed() -> void:
+	_hud.set_key_hints(NpcSettings.key_name(PUSH_TO_TALK) if _voice_input else "")
+	for npc in _npcs:
+		npc.set_prompt_key(NpcSettings.key_name(&"interact"))
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	# LineEdit marks typed keys as handled, so this never fires mid-sentence,
 	# which is why "e" can be typed into the chat box without reopening a
@@ -221,6 +335,7 @@ func _open(npc: NpcActor) -> void:
 	npc.set_prompt_visible(false)
 	_hud.open_with(npc.display_name, npc.archetype, npc.tint, npc.role_label_text, npc.tint)
 	_hud.show_memory(_memory.get_for(npc.display_name))
+	_hud.show_news(_news.known_by(npc.display_name))
 	_set_player_active(false)
 
 
@@ -228,6 +343,8 @@ func _close() -> void:
 	# Deliberately allowed mid-request: the pending chat() call still resolves
 	# and _deliver() drops the result because _active is null. Blocking Esc
 	# until a slow reply lands would feel like a hang.
+	if _voice_input and _voice_input.is_recording():
+		_voice_input.stop()
 	if _active:
 		_active.stop_voice()
 	_active = null
@@ -247,7 +364,7 @@ func _set_player_active(active: bool) -> void:
 
 
 func _on_message_submitted(text: String) -> void:
-	if _awaiting or _active == null:
+	if _awaiting or _transcribing or _active == null:
 		return
 	if text.begins_with("/"):
 		_run_command(_active, text)
@@ -272,7 +389,10 @@ func _others_at_event(self_npc: NpcActor) -> String:
 	var names: Array[String] = []
 	for npc in _npcs:
 		if npc != self_npc:
-			names.append("%s (%s)" % [npc.display_name, npc.role_label_text])
+			# The occupation, not the short label: "campus liaison" alone never
+			# told another NPC that Reyes is the police officer.
+			names.append("%s (%s)" % [npc.display_name,
+				npc.occupation if not npc.occupation.is_empty() else npc.role_label_text])
 	return ", ".join(names)
 
 
@@ -290,7 +410,22 @@ func _persona_for(npc: NpcActor) -> Dictionary:
 		"others": _others_at_event(npc),
 		"max_tokens": REPLY_TOKENS,
 		"player_memory": _memory.get_for(npc.display_name),
+		"known_events": _news.known_by(npc.display_name),
+		"unheard_events": _news.unheard_by(npc.display_name),
 	}
+
+
+## One step of gossip between the NPCs that are actually in the world.
+func _spread_news() -> void:
+	var names: Array = []
+	for npc in _npcs:
+		names.append(npc.display_name)
+	var step := _news.spread(names)
+	if step.is_empty():
+		return
+	print("NpcDirector: news %s passed from %s to %s" % [step["id"], step["from"], step["to"]])
+	if _active != null and _active.display_name == step["to"]:
+		_hud.show_news(_news.known_by(step["to"]))
 
 
 ## Testing commands, typed into the chat box instead of a line of dialogue.
@@ -299,6 +434,8 @@ func _persona_for(npc: NpcActor) -> Dictionary:
 ##   /forget       this NPC forgets you (memory and conversation)
 ##   /forget all   everyone forgets you
 ##   /memory       show what this NPC remembers
+##   /news         show what news this NPC has heard
+##   /forget news  clear all reported news
 func _run_command(npc: NpcActor, text: String) -> void:
 	var command := text.strip_edges().to_lower()
 	match command:
@@ -315,9 +452,20 @@ func _run_command(npc: NpcActor, text: String) -> void:
 			var memory := _memory.get_for(npc.display_name)
 			_hud.show_note(text, JSON.stringify(memory) if not memory.is_empty()
 				else "%s knows nothing about you yet." % npc.display_name)
+		"/news":
+			var heard := _news.known_by(npc.display_name)
+			_hud.show_note(text, JSON.stringify(heard) if not heard.is_empty()
+				else "%s has not heard any news." % npc.display_name)
+		"/forget news":
+			_news.forget_all()
+			_hud.show_note(text, "All reported news cleared.")
+		"/settings":
+			_hud.show_note(text, "Settings open (F2 or Esc to close).")
+			_open_settings()
 		_:
-			_hud.show_note(text, "Commands: /memory, /forget, /forget all")
+			_hud.show_note(text, "Commands: /memory, /news, /forget, /forget all, /forget news, /settings")
 	_hud.show_memory(_memory.get_for(npc.display_name))
+	_hud.show_news(_news.known_by(npc.display_name))
 
 
 func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
@@ -328,6 +476,13 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	var updates: Dictionary = reply.get("memory_updates", {})
 	if not reply.has("error") and not updates.is_empty():
 		_memory.set_for(npc.display_name, reply.get("player_memory", {}))
+	# Same for news: a report was made to this NPC even if the player walked off.
+	var reported = reply.get("reported_event")
+	if not reply.has("error") and reported is Dictionary and not str(reported.get("what", "")).is_empty():
+		_news.add_report(npc.display_name, str(reported["what"]), str(reported.get("where", "")))
+	var shared := str(reply.get("shared_event_id", ""))
+	if not shared.is_empty():
+		_news.mark_shared(npc.display_name, shared)
 
 	# The player may have walked away, or opened a different NPC, while this
 	# was in flight. Showing the reply now would put one NPC's line in
@@ -344,6 +499,7 @@ func _deliver(npc: NpcActor, message: String, reply: Dictionary) -> void:
 	_hud.show_reply(message, text)
 	_hud.update_metrics(reply)
 	_hud.show_memory(_memory.get_for(npc.display_name), updates)
+	_hud.show_news(_news.known_by(npc.display_name))
 	# Fire and forget. The line is already on screen; speech catches up a few
 	# hundred milliseconds later and must never hold the subtitle back.
 	if voice_enabled:

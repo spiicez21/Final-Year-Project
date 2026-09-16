@@ -44,14 +44,21 @@ var _role: Label
 var _said: Label
 var _body: RichTextLabel
 var _input: LineEdit
+var _hint: Label
+var _talk_key := "Tab"
 var _status: Label
 var _metrics := {}
 var _memory: RichTextLabel
+var _news: RichTextLabel
 
 ## Display order and captions for player_memory slots (backend/dialogue/memory.py).
+## Keys starting with "_" (the server's per-slot confidences) are bookkeeping
+## and never shown. "studies" and "from" are the pre-model names, kept so a save
+## file from an older build still displays until the server migrates it.
 const MEMORY_ROWS := [
-	["name", "name"], ["year", "year"], ["studies", "studies"], ["from", "from"],
-	["project", "project"], ["interests", "into"], ["feeling", "felt"],
+	["name", "name"], ["year", "year"], ["department", "dept"], ["section", "section"],
+	["college", "college"], ["hometown", "from"], ["project", "project"],
+	["interests", "into"], ["feeling", "felt"], ["studies", "studies"], ["from", "from"],
 ]
 
 # "…thinking" animates rather than sitting still, so a slow first turn reads as
@@ -220,6 +227,12 @@ func _build_metrics() -> void:
 		["leak", "leaked facts", "knowledge_base.json ids this NPC should not know."],
 		["turn", "understood as", "What the server took your line to be (greeting, recall,\na question about the NPC, ...). It decides what context\nthe reply gets. See backend/dialogue/intent.py."],
 		["guard", "reply guard", "What the server fixed in this reply before you saw it:\nrepeat, recall, fact, self, introduced, name, ...\n'clean' = the first reply passed every check.\nSee backend/dialogue/guard.py."],
+		["heard", "speech to text", "Time for the server to transcribe what you said
+(hold the push-to-talk key, Tab by default; F2 to change). '—' = you typed.
+See backend/stt.py."],
+		["news_leak", "news leaks", "Reported news this NPC has NOT heard but mentioned anyway
+(Knowledge Boundary Drift for rumours). 'none' = no leak.
+See backend/dialogue/events.py."],
 	]
 	for row in rows:
 		# Label left, value hard right. A two-column row keeps the numbers on
@@ -262,6 +275,28 @@ func _build_metrics() -> void:
 	_memory.add_theme_color_override("default_color", TEXT)
 	box.add_child(_memory)
 	show_memory({})
+
+	# News this NPC has heard, and from whom. Reports travel between NPCs over
+	# time (world_event_store.gd), so this is where a tester watches a rumour
+	# arrive.
+	var news_spacer := Control.new()
+	news_spacer.custom_minimum_size = Vector2(0, 4)
+	box.add_child(news_spacer)
+	var news_heading := _label("HEARD NEWS", 10, TEXT_MUTED)
+	news_heading.tooltip_text = ("Things players reported, as far as this NPC has heard.
+"
+		+ "News spreads from NPC to NPC over time. Type /news or /forget news.")
+	news_heading.mouse_filter = Control.MOUSE_FILTER_STOP
+	box.add_child(news_heading)
+	_news = RichTextLabel.new()
+	_news.bbcode_enabled = true
+	_news.fit_content = true
+	_news.scroll_active = false
+	_news.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_news.add_theme_font_size_override("normal_font_size", 12)
+	_news.add_theme_color_override("default_color", TEXT)
+	box.add_child(_news)
+	show_news([])
 
 
 # --- dialogue --------------------------------------------------------------
@@ -375,9 +410,10 @@ func _build_input() -> HBoxContainer:
 	_input.text_submitted.connect(_on_submit)
 	row.add_child(_input)
 
-	var hint := _label("Enter  ·  Esc", 11, TEXT_MUTED)
-	hint.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	row.add_child(hint)
+	_hint = _label("", 11, TEXT_MUTED)
+	_hint.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	row.add_child(_hint)
+	set_key_hints(_talk_key)
 
 	return row
 
@@ -439,6 +475,40 @@ func show_pending(message: String) -> void:
 	_pending_t = 0.0
 
 
+func show_listening() -> void:
+	_input.editable = false
+	_input.text = ""
+	_said.text = "●  Listening… let go of %s to send" % _talk_key
+	_pending = false
+
+
+## `talk_key` is the push-to-talk key's name, "" when speech input is off.
+func set_key_hints(talk_key: String) -> void:
+	_talk_key = talk_key
+	if _hint == null:
+		return
+	if talk_key.is_empty():
+		_hint.text = "Enter  ·  F2 settings  ·  Esc"
+	else:
+		_hint.text = "Enter  ·  hold %s to talk  ·  F2 settings  ·  Esc" % talk_key
+
+
+func focus_input() -> void:
+	if _panel.visible and _input.editable:
+		_input.grab_focus()
+
+
+func show_transcribing() -> void:
+	_input.editable = false
+	_said.text = "…"
+	_pending = true
+	_pending_t = 0.0
+
+
+func set_metric_heard(ms: float, skipped: String) -> void:
+	_set_metric("heard", ("%.0f ms" % ms) if skipped.is_empty() else "nothing heard", TEXT_DIM)
+
+
 func show_reply(message: String, reply: String) -> void:
 	_pending = false
 	_input.editable = true
@@ -476,6 +546,10 @@ func show_memory(memory: Dictionary, updates: Dictionary = {}) -> void:
 		_memory.text = "[color=#8e96a3]nothing yet[/color]"
 		return
 	var lines: Array[String] = []
+	# How sure the extractor model was when it saved each fact (server-side
+	# dialogue/memory.py). Shown dimmed so a tester can see why a later, less
+	# certain reading did not overwrite it.
+	var confidence: Dictionary = memory.get("_confidence", {})
 	for row in MEMORY_ROWS:
 		if not memory.has(row[0]):
 			continue
@@ -483,9 +557,32 @@ func show_memory(memory: Dictionary, updates: Dictionary = {}) -> void:
 		# Values are the player's own words, so "[" is escaped rather than
 		# trusted as markup.
 		var shown := (", ".join(value) if value is Array else str(value)).replace("[", "[lb]")
+		var sure := ""
+		if confidence.has(row[0]):
+			sure = "  [color=#6f7785]%d%%[/color]" % int(round(float(confidence[row[0]]) * 100.0))
 		var fresh := "  [color=#85e8a1]new[/color]" if updates.has(row[0]) else ""
-		lines.append("[color=#bdc6d8]%s[/color]  %s%s" % [row[1], shown, fresh])
+		lines.append("[color=#bdc6d8]%s[/color]  %s%s%s" % [row[1], shown, sure, fresh])
 	_memory.text = "\n".join(lines)
+
+
+## `known` is WorldEventStore.known_by(): what this NPC has heard and from whom.
+func show_news(known: Array) -> void:
+	if _news == null:
+		return
+	if known.is_empty():
+		_news.text = "[color=#8e96a3]nothing yet[/color]"
+		return
+	var lines: Array[String] = []
+	# Newest first, and only a few: the panel is a glance, /news has the rest.
+	for i in range(known.size() - 1, maxi(-1, known.size() - 4), -1):
+		var e: Dictionary = known[i]
+		var what := str(e.get("what", "")).replace("[", "[lb]")
+		var where := str(e.get("where", "")).replace("[", "[lb]")
+		var source := str(e.get("heard_from", ""))
+		var from_text := "from you" if source == "player" or source.is_empty() else "from " + source.replace("[", "[lb]")
+		lines.append("%s%s  [color=#6f7785]%s[/color]" % [what, (" · " + where) if not where.is_empty() else "", from_text])
+	_news.text = "
+".join(lines)
 
 
 func reset_metrics() -> void:
@@ -529,10 +626,20 @@ func update_metrics(reply: Dictionary) -> void:
 		var repairs: Array = reply.get("repairs", [])
 		_set_metric("guard", "clean" if repairs.is_empty() else ", ".join(repairs),
 			TEXT_MUTED if repairs.is_empty() else WARN)
+	if reply.has("event_leaks"):
+		var news_leaks: Array = reply.get("event_leaks", [])
+		_set_metric("news_leak", "none" if news_leaks.is_empty() else ", ".join(news_leaks),
+			TEXT_MUTED if news_leaks.is_empty() else BAD)
 
 
 func _set_metric(key: String, value: String, color: Color = TEXT) -> void:
-	var label: Label = _metrics[key]
+	# A key with no row must not reach `label.text`: in an exported release build
+	# a null label here is a hard crash, not a script error (it took the game
+	# down on the first reply when the news_leak row was missing).
+	var label: Label = _metrics.get(key)
+	if label == null:
+		push_warning("NpcDialogueHud: no metric row '%s'" % key)
+		return
 	label.text = value
 	label.add_theme_color_override("font_color", color)
 

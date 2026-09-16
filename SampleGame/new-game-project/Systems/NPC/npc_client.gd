@@ -123,6 +123,35 @@ func chat(archetype: String, message: String, persona: Dictionary = {},
 	return parsed
 
 
+## What the player said, as text (backend/stt.py).
+##
+## `pcm` is raw 32-bit float frames as VoiceInput records them. Returns
+## {"text": String, "transcribe_ms": float, ...}; "text" is empty when nothing
+## was heard. On failure {"error": String}.
+func transcribe(pcm: PackedByteArray, sample_rate: int, channels: int) -> Dictionary:
+	var http := _make_request(REQUEST_TIMEOUT)
+	var body := {"audio_b64": Marshalls.raw_to_base64(pcm), "sample_rate": sample_rate,
+		"channels": channels, "format": "f32"}
+	var err := http.request(base_url + "/transcribe", ["Content-Type: application/json"],
+		HTTPClient.METHOD_POST, JSON.stringify(body))
+	if err != OK:
+		http.queue_free()
+		return {"error": "could not start the transcription request"}
+	var result: Array = await http.request_completed
+	http.queue_free()
+	if result[0] != HTTPRequest.RESULT_SUCCESS:
+		return {"error": "no response from the model server"}
+	var parsed = JSON.parse_string(result[3].get_string_from_utf8())
+	if result[1] != 200:
+		var detail := "HTTP %d" % result[1]
+		if parsed is Dictionary and parsed.has("detail"):
+			detail = str(parsed["detail"])
+		return {"error": detail}
+	if not (parsed is Dictionary) or not parsed.has("text"):
+		return {"error": "malformed transcription response"}
+	return parsed
+
+
 ## Synthesises one line of NPC speech.
 ##
 ## Separate from chat() on purpose: the server returns text at generation
